@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-citybatch06" />
+  <meta name="app-build" content="20260920-citywide07" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-citybatch06';
+const APP_BUILD='20260920-citywide07';
 
 async function ensureLatestBuild(){
   try{
@@ -284,6 +284,14 @@ const spots = [
  {name:"カフェミエル",cat:"date",lat:33.5900,lng:130.4190,area:"博多駅",note:"博多駅から近い珈琲専門の喫茶店。買い物や映画の合間にも寄りやすい王道カフェ。",tags:["カフェ","昼","コーヒー","雨の日"],time:["day"],image:"",hours:"平日 9:00〜19:00 / 土日祝 9:00〜18:00",closed:"年末年始は要確認",rating:"3.57",reviews:287},
  {name:"ブラジレイロ",cat:"date",lat:33.5973,lng:130.4105,area:"呉服町",note:"1934年創業の老舗喫茶。レトロな空間と洋食・コーヒーで、落ち着いた街歩きデートに。",tags:["カフェ","昼","SNS人気","レトロ","王道"],time:["day"],image:"",hours:"月〜土 10:00〜19:00",closed:"日曜・祝日",rating:"3.55",reviews:384},
  {name:"I’m donut? 天神",cat:"date",lat:33.5871,lng:130.4022,area:"天神",note:"生ドーナツで高い知名度を持つ天神の人気店。公式Instagramもあり、SNS映え重視の昼デート向け。",tags:["カフェ","昼","SNS人気","スイーツ"],time:["day"],image:"",hours:"10:00〜20:00",closed:"なし",rating:"3.62",reviews:829},
+ {name:"abeki",cat:"date",lat:33.5808,lng:130.3971,area:"薬院",note:"薬院の静かな人気カフェ。チーズケーキとコーヒーで知られ、落ち着いた昼デート向け。",tags:["カフェ","昼","SNS人気","コーヒー","スイーツ"],time:["day"],image:"",hours:"12:00〜17:30",closed:"日曜日",rating:"3.50",reviews:200},
+ {name:"FUK COFFEE Parks",cat:"date",lat:33.5906,lng:130.3770,area:"大濠・荒戸",note:"大濠公園近くの人気店。プリンとラテ、洗練された内装でSNSにも強い。",tags:["カフェ","昼","SNS人気","スイーツ","散歩"],time:["day"],image:"",hours:"8:00〜20:00",closed:"最新情報を要確認",rating:"3.47",reviews:201},
+ {name:"REC COFFEE 薬院駅前店",cat:"date",lat:33.5816,lng:130.4019,area:"薬院",note:"薬院駅すぐのスペシャルティコーヒー店。深夜1時まで使えるため昼夜どちらのデートにも便利。",tags:["カフェ","昼","夜","コーヒー","2軒目"],time:["day","night"],image:"",hours:"平日 8:00〜翌1:00 / 土日祝 10:00〜翌1:00",closed:"不定休",rating:"3.16",reviews:231},
+ {name:"NO COFFEE",cat:"date",lat:33.5751,lng:130.3994,area:"平尾",note:"ミニマルでストリート感のある人気コーヒースタンド。Instagramでも定番の写真映えカフェ。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"10:00〜18:00",closed:"水曜日",rating:"3.39",reviews:133},
+ {name:"STEREO COFFEE",cat:"date",lat:33.5852,lng:130.4066,area:"渡辺通",note:"コーヒー・音楽・アートを組み合わせた一軒家カフェ。公式Instagramもあり雰囲気重視のデート向け。",tags:["カフェ","昼","SNS人気","コーヒー","アート"],time:["day"],image:"",hours:"平日 10:00〜20:00 / 土 9:00〜21:00 / 日 9:00〜20:00",closed:"最新情報を要確認",rating:"3.37",reviews:115},
+ {name:"cafe dacotan",cat:"date",lat:33.5785,lng:130.3772,area:"六本松",note:"人気ベーカリーamam dacotan系列のカフェ。パンとスイーツ、世界観のある内装でSNS映えが強い。",tags:["カフェ","昼","SNS人気","パン","スイーツ"],time:["day"],image:"",hours:"10:00〜18:00",closed:"水曜日"},
+ {name:"白金茶房",cat:"date",lat:33.5756,lng:130.4041,area:"白金・平尾",note:"パンケーキで人気の落ち着いたカフェ。口コミ数も多く、朝〜昼デートの王道候補。",tags:["カフェ","昼","SNS人気","スイーツ","王道"],time:["day"],image:"",hours:"平日 8:00〜17:30 / 土日祝 8:00〜18:30",closed:"最新情報を要確認",rating:"3.54",reviews:612},
+ {name:"パンとエスプレッソと 博多っと",cat:"date",lat:33.5885,lng:130.4160,area:"博多駅前",note:"博多駅から歩いて行けるベーカリーカフェ。パン好きの昼デートや旅行途中にも使いやすい。",tags:["カフェ","昼","SNS人気","パン","雨の日"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.30",reviews:478},
  {name:"PRINCE of the FRUIT",cat:"date",lat:33.5780,lng:130.3971,note:"旬の高級フルーツを使ったパフェで人気。写真映えと口コミ評価の両方が強い昼デート向け。",tags:["カフェ","昼","SNS人気","スイーツ","記念日"],time:["day"],image:"",hours:"平日 11:00〜16:30 / 土日 10:00〜17:30",closed:"火曜日（不定休あり）",rating:"3.94",reviews:683},
  {name:"カフェ オスピターレ",cat:"date",lat:33.5903,lng:130.4207,note:"博多駅直結。スフォリアテッラとラテアートで人気の百名店カフェ。雨の日デートにも使いやすい。",tags:["カフェ","昼","SNS人気","雨の日","スイーツ"],time:["day"],image:"",hours:"10:00〜22:00",closed:"施設営業日に準ずる",rating:"3.64",reviews:876},
  {name:"キャンベル・アーリー 博多店",cat:"date",lat:33.5905,lng:130.4205,note:"旬のフルーツパフェとパンケーキが人気。博多駅直結で、買い物デートの休憩にも。",tags:["カフェ","昼","SNS人気","雨の日","スイーツ"],time:["day"],image:"",hours:"11:00〜22:00",closed:"アミュプラザ博多に準ずる",rating:"3.62",reviews:856},
@@ -314,6 +322,8 @@ const spots = [
  {name:"モモタ バー",cat:"date",lat:33.5875,lng:130.3929,area:"大名",note:"大名の落ち着いたオーセンティックバー。マティーニなど本格カクテルを楽しみたい夜デート向け。",tags:["バー","夜","記念日","2軒目"],time:["bar"],image:"",hours:"火〜日 18:00〜翌1:00",closed:"月曜日",rating:"3.74",reviews:208},
  {name:"万",cat:"date",lat:33.5858,lng:130.3838,area:"赤坂",note:"日本茶・茶酒・甘味を静かな空間で楽しむ個性派バー。雰囲気重視の大人デートに。",tags:["バー","夜","SNS人気","記念日","和"],time:["bar"],image:"",hours:"12:00〜24:00",closed:"不定休",rating:"3.62",reviews:354},
  {name:"HIGHBALLBAR 中洲1923",cat:"date",lat:33.5937,lng:130.4052,area:"中洲",note:"中洲川端駅近くのハイボール専門バー。2軒目でも使いやすく、気軽な夜デート向け。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"18:30〜深夜帯（曜日により変動）",closed:"最新情報を要確認",rating:"3.61",reviews:162},
+ {name:"BAR CAVALLO",cat:"date",lat:33.5807,lng:130.3961,area:"薬院",note:"薬院のラグジュアリーなダイニングバー。食事から2軒目まで使え、記念日デートにも向く。",tags:["バー","夜","記念日","2軒目"],time:["bar"],image:"",hours:"18:00〜深夜帯",closed:"最新情報を要確認",rating:"3.50",reviews:104},
+ {name:"BAR 倉吉 中洲",cat:"date",lat:33.5909,lng:130.4078,area:"中洲",note:"中洲の本格オーセンティックバー。深夜4時まで営業し、食事後にゆっくり飲みたいデート向け。",tags:["バー","夜","王道","2軒目"],time:["bar"],image:"",hours:"月〜土 19:00〜翌4:00",closed:"日曜・祝日"},
  {name:"マリンワールド海の中道",cat:"kids",lat:33.6616,lng:130.3639,note:"家族で楽しみやすい水族館。雨の日にも候補。",tags:["雨OK","水族館"],image:"IMG_0499.webp"},
  {name:"福岡市科学館",cat:"kids",lat:33.5772,lng:130.3780,note:"室内中心で、天気を気にせず遊びやすい。",tags:["室内","雨OK"],image:"IMG_0500.jpeg"},
  {name:"海の中道海浜公園",cat:"kids",lat:33.6635,lng:130.3613,note:"広い公園で思い切り遊びたい日に。",tags:["公園","広い"],image:"IMG_0502.jpeg"},
