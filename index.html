@@ -136,6 +136,25 @@
     .map-head{display:flex;align-items:center;gap:10px;padding:calc(9px + env(safe-area-inset-top)) 14px 2px}
     .back-btn{border:0;background:#fff;width:38px;height:38px;border-radius:13px;font-size:22px;box-shadow:0 5px 16px rgba(0,0,0,.08)}
     .map-head-title{font-size:17px;font-weight:900;flex:1;text-align:center;margin-right:48px}
+    /* Immersive discovery map */
+    #mapScreen{position:relative;background:#f4f6f8}
+    #mapScreen .map-head{position:absolute;z-index:700;top:0;left:0;right:0;padding:calc(10px + env(safe-area-inset-top)) 12px 0;pointer-events:none}
+    #mapScreen .back-btn{pointer-events:auto;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);width:42px;height:42px;border-radius:50%;font-size:25px}
+    #mapScreen .map-head-title{pointer-events:auto;flex:0 0 auto;margin:0 0 0 4px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:11px 15px;border-radius:999px;font-size:14px;box-shadow:0 5px 16px rgba(0,0,0,.08)}
+    #mapScreen .top,#mapScreen .chips,#mapScreen .recommend-wrap{display:none}
+    #mapScreen .map-shell{position:absolute;inset:0;margin:0;border-radius:0;border:0;min-height:0;box-shadow:none}
+    #mapScreen .map-toolbar{top:calc(64px + env(safe-area-inset-top));left:12px;right:auto}
+    #mapScreen #categoryLabel{display:none}
+    #mapScreen .glass{padding:8px 11px;font-size:11px;background:rgba(255,255,255,.9)}
+    #mapScreen .bottom-strip{display:none}
+    #mapScreen .floating{right:14px;bottom:calc(18px + env(safe-area-inset-bottom));width:50px;height:50px;border-radius:50%}
+    #mapScreen .pin{width:34px;height:34px;border-width:2px;box-shadow:0 4px 12px rgba(0,0,0,.18)!important}
+    #mapScreen .pin span{font-size:13px}
+    #mapScreen .leaflet-popup-content-wrapper{border-radius:22px!important}
+    #mapScreen .leaflet-popup-content{width:226px!important;margin:11px!important}
+    #mapScreen .popup-visual{height:118px;margin-bottom:10px}
+    #mapScreen .leaflet-tile-pane{filter:saturate(.72) brightness(1.055) contrast(.88)}
+    #mapScreen .leaflet-control-attribution{opacity:.62}
   </style>
 </head>
 <body>
@@ -222,7 +241,7 @@ const styles={
 };
 
 const map=L.map('map',{zoomControl:false}).setView([33.5902,130.4017],10);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:20,attribution:'&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(map);
 L.control.zoom({position:'bottomleft'}).addTo(map);
 
 let markers=[], userMarker=null, userAccuracy=null, activeCat='date';
@@ -232,7 +251,7 @@ function makeIcon(cat){
  return L.divIcon({
   className:'leaflet-div-icon',
   html:`<div class="pin" style="background:${s.color};box-shadow:0 7px 18px ${s.color}66"><span>${s.emoji}</span></div>`,
-  iconSize:[42,42],iconAnchor:[21,39],popupAnchor:[0,-34]
+  iconSize:[34,34],iconAnchor:[17,31],popupAnchor:[0,-28]
  });
 }
 
@@ -249,7 +268,7 @@ function popupHtml(s){
 }
 
 function focusSpot(s, marker){
- map.flyTo([s.lat,s.lng],13,{duration:.55});
+ map.flyTo([s.lat,s.lng],12,{duration:.55});
  marker.openPopup();
  document.getElementById('recTitle').textContent=s.name;
  document.getElementById('recMeta').textContent=s.note;
@@ -294,7 +313,7 @@ function showCategory(cat){
   strip.appendChild(card);
  });
 
- if(bounds.length) map.fitBounds(bounds,{padding:[54,54],maxZoom:11});
+ if(bounds.length) map.fitBounds(bounds,{paddingTopLeft:[42,110],paddingBottomRight:[42,70],maxZoom:11});
 }
 
 document.querySelectorAll('.chip').forEach(btn=>{
