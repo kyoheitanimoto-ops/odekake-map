@@ -30,7 +30,7 @@
       color:var(--text);
       overflow:hidden;
     }
-    .app{height:100%;display:flex;flex-direction:column;max-width:760px;margin:0 auto}
+    .app{height:100%;max-width:760px;margin:0 auto;position:relative}.screen{height:100%;display:flex;flex-direction:column}.hidden{display:none!important}
     .top{
       padding:calc(10px + env(safe-area-inset-top)) 16px 4px;
       position:relative;
@@ -120,10 +120,44 @@
       padding:10px 14px;border-radius:999px;font-size:12px;font-weight:800;opacity:0;pointer-events:none;transition:.2s;white-space:nowrap
     }
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    .home{background:#f7fbff;position:relative;overflow:hidden;padding-top:env(safe-area-inset-top)}
+    .home-hero{height:43%;min-height:280px;position:relative;background:url("IMG_0504.jpeg") center/cover no-repeat;display:flex;align-items:flex-end}
+    .home-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(16,39,66,.08) 55%,rgba(16,39,66,.35))}
+    .hero-copy{position:relative;z-index:2;color:#fff;padding:0 24px 34px;text-shadow:0 2px 14px rgba(0,0,0,.25)}
+    .hero-copy h2{font-size:31px;line-height:1.35;margin:0;font-weight:850;letter-spacing:.03em}
+    .hero-copy p{font-size:13px;margin:10px 0 0;font-weight:700}
+    .purpose-sheet{flex:1;background:#fff;margin-top:-20px;z-index:3;border-radius:28px 28px 0 0;padding:23px 18px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(28,45,70,.08)}
+    .purpose-title{text-align:center;font-size:16px;font-weight:900;margin:0 0 17px}
+    .purpose-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .purpose{border:0;border-radius:19px;min-height:104px;padding:13px 6px;background:#f7f7fa;font-weight:850;color:#30303a;font-size:12px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.025)}
+    .purpose span{display:block;font-size:30px;margin-bottom:9px}
+    .purpose.date{background:#fff0f4}.purpose.kids{background:#fff5e8}.purpose.solo{background:#edf8ef}.purpose.soon1{background:#f4efff}.purpose.soon2{background:#eef6ff}.purpose.soon3{background:#fff7dc}
+    .home-foot{text-align:center;font-size:11px;color:#9297a2;margin-top:14px}
+    .map-head{display:flex;align-items:center;gap:10px;padding:calc(9px + env(safe-area-inset-top)) 14px 2px}
+    .back-btn{border:0;background:#fff;width:38px;height:38px;border-radius:13px;font-size:22px;box-shadow:0 5px 16px rgba(0,0,0,.08)}
+    .map-head-title{font-size:17px;font-weight:900;flex:1;text-align:center;margin-right:48px}
   </style>
 </head>
 <body>
 <div class="app">
+  <section class="screen home" id="homeScreen">
+    <div class="home-hero"><div class="hero-copy"><h2>今日は、<br>どこへ行こう？</h2><p>いつもの日を、ちょっと特別に。</p></div></div>
+    <div class="purpose-sheet">
+      <div class="purpose-title">目的を選んでください</div>
+      <div class="purpose-grid">
+        <button class="purpose date" data-go="date"><span>♥️</span>デート向け</button>
+        <button class="purpose kids" data-go="kids"><span>👨‍👩‍👧</span>子育て向け</button>
+        <button class="purpose solo" data-go="solo"><span>⛰️</span>一人旅向け</button>
+        <button class="purpose soon1" data-soon="観光・定番"><span>📷</span>観光・定番</button>
+        <button class="purpose soon2" data-soon="カフェ・グルメ"><span>☕</span>カフェ・グルメ</button>
+        <button class="purpose soon3" data-soon="その他"><span>⭐</span>その他</button>
+      </div>
+      <div class="home-foot">行きたい場所が、きっと見つかる。</div>
+    </div>
+  </section>
+
+  <section class="screen hidden" id="mapScreen">
+  <div class="map-head"><button class="back-btn" id="backBtn" aria-label="ホームへ戻る">‹</button><div class="map-head-title" id="mapHeadTitle">デート向け</div></div>
   <div class="top">
     <div class="eyebrow">FUKUOKA GUIDE</div>
     <h1>今日は、どこ行く？</h1>
@@ -161,6 +195,7 @@
     <button class="floating" id="locateBtn" aria-label="現在地を表示">◎</button>
     <div class="toast" id="toast"></div>
   </div>
+  </section>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -227,6 +262,7 @@ function spotBackground(s,st){
 
 function showCategory(cat){
  activeCat=cat;
+ document.getElementById('mapHeadTitle').textContent=styles[cat].label;
  markers.forEach(m=>map.removeLayer(m)); markers=[];
  const chosen=spots.filter(s=>s.cat===cat);
  const st=styles[cat];
@@ -288,6 +324,21 @@ document.getElementById('locateBtn').addEventListener('click',()=>{
   map.setView([latitude,longitude],13,{animate:true});
   showToast('現在地を表示しました');
  },()=>showToast('位置情報を許可すると現在地を表示できます'),{enableHighAccuracy:true,timeout:8000,maximumAge:60000});
+});
+
+function openMap(cat){
+ document.getElementById('homeScreen').classList.add('hidden');
+ document.getElementById('mapScreen').classList.remove('hidden');
+ document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));
+ showCategory(cat);
+ setTimeout(()=>map.invalidateSize(),80);
+}
+
+document.querySelectorAll('[data-go]').forEach(btn=>btn.addEventListener('click',()=>openMap(btn.dataset.go)));
+document.querySelectorAll('[data-soon]').forEach(btn=>btn.addEventListener('click',()=>showToast(btn.dataset.soon+'は次のアップデートで追加予定')));
+document.getElementById('backBtn').addEventListener('click',()=>{
+ document.getElementById('mapScreen').classList.add('hidden');
+ document.getElementById('homeScreen').classList.remove('hidden');
 });
 
 showCategory('date');
