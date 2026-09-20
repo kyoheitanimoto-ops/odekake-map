@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-night15" />
+  <meta name="app-build" content="20260920-drive16" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-night15';
+const APP_BUILD='20260920-drive16';
 
 async function ensureLatestBuild(){
   try{
@@ -275,6 +275,11 @@ const spots = [
  {name:"桜井二見ヶ浦",cat:"date",lat:33.6380,lng:130.1927,area:"糸島",note:"白い鳥居と夫婦岩、夕日で知られる糸島ドライブの超定番。初めての糸島デートなら外しにくい。",tags:["王道","SNS人気","海","夕日","写真","ドライブ"],image:"IMG_0504.jpeg"},
  {name:"宮地嶽神社",cat:"date",lat:33.7817,lng:130.4937,area:"福津",note:"海まで一直線に伸びる『光の道』で有名な福岡の定番デートスポット。参拝と景色を一緒に楽しめる。",tags:["王道","SNS人気","夕日","景色","ドライブ"],image:""},
  {name:"柳川 川下り",cat:"date",lat:33.1647,lng:130.4059,area:"柳川",note:"どんこ舟で掘割を巡る柳川名物。街歩きやうなぎと合わせて一日デートにしやすい。",tags:["王道","体験","一日","街歩き"],image:"",hours:"9:00頃〜夕刻（船会社により異なる）",closed:"無休（運航状況は要確認)"},
+ {name:"志賀島",cat:"date",lat:33.6773,lng:130.3027,area:"福岡市東区・志賀島",note:"海の中道からそのまま走れる福岡の王道シーサイドドライブ。島一周で海・展望・史跡を楽しめる。",tags:["ドライブ","王道","海","景色","一日"],image:""},
+ {name:"平尾台",cat:"date",lat:33.7476,lng:130.9041,area:"北九州・小倉南区",note:"カルスト台地の中を走る非日常感のある絶景ドライブ。季節ごとに景色が変わり、鍾乳洞と組み合わせても楽しめる。",tags:["ドライブ","王道","絶景","自然","一日"],image:""},
+ {name:"波津海岸",cat:"date",lat:33.8917,lng:130.6016,area:"岡垣",note:"白い砂浜と海岸線を楽しむシーサイドドライブ。周辺にカフェや海鮮店もあり、のんびりしたデート向き。",tags:["ドライブ","海","景色","夕日","カフェ"],image:""},
+ {name:"八女中央大茶園",cat:"date",lat:33.2077,lng:130.5826,area:"八女",note:"一面に広がる八女茶の茶畑を見渡せる絶景スポット。写真を撮りながらの郊外ドライブに向く。",tags:["ドライブ","絶景","SNS人気","写真","景色"],image:""},
+ {name:"若戸大橋",cat:"date",lat:33.9012,lng:130.8167,area:"北九州・若松〜戸畑",note:"洞海湾に架かる赤い吊り橋。夕暮れの景色が印象的で、北九州ドライブの立ち寄りポイントに使いやすい。",tags:["ドライブ","夕日","夜景","景色"],image:""},
  {name:"ブルーウィングもじ",cat:"date",lat:33.9472,lng:130.9627,area:"門司港",note:"門司港レトロの跳ね橋。海辺の散歩やライトアップと合わせやすく、写真映えする王道デートスポット。",tags:["王道","SNS人気","夜景","散歩","写真","記念日"],image:""},
  {name:"福岡市美術館",cat:"date",lat:33.5853,lng:130.3766,area:"大濠公園",note:"大濠公園とセットで楽しめるアートデートの定番。雨の日や落ち着いた昼デートにも使いやすい。",tags:["王道","雨の日","アート","散歩","記念日"],image:""},
  {name:"鳥栖プレミアム・アウトレット",cat:"date",lat:33.4316,lng:130.5340,note:"買い物をしながらゆっくり過ごせる定番アウトレットデート。ドライブ先にも使いやすい。",tags:["王道","ショッピング","ドライブ"],image:"",hours:"10:00〜20:00",closed:"年1回（2月）"},
