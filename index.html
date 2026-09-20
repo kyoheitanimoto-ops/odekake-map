@@ -153,7 +153,7 @@
     #mapScreen .leaflet-popup-content-wrapper{border-radius:22px!important}
     #mapScreen .leaflet-popup-content{width:226px!important;margin:11px!important}
     #mapScreen .popup-visual{height:118px;margin-bottom:10px}
-    #mapScreen .leaflet-tile-pane{filter:saturate(.9) brightness(1.02) contrast(.96)}
+    #mapScreen .leaflet-tile-pane{filter:saturate(.62) brightness(1.08) contrast(.90)}
     #mapScreen .leaflet-control-attribution{opacity:.62}
   </style>
 </head>
@@ -241,7 +241,7 @@ const styles={
 };
 
 const map=L.map('map',{zoomControl:false}).setView([33.5902,130.4017],10);
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Tiles &copy; Esri'}).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{subdomains:'abc',maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
 L.control.zoom({position:'bottomleft'}).addTo(map);
 
 let markers=[], userMarker=null, userAccuracy=null, activeCat='date';
