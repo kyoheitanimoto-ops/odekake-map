@@ -349,8 +349,21 @@ function openMap(cat){
  document.getElementById('homeScreen').classList.add('hidden');
  document.getElementById('mapScreen').classList.remove('hidden');
  document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));
- showCategory(cat);
- setTimeout(()=>map.invalidateSize(),80);
+
+ // iPhoneのホーム画面Webアプリでは、非表示中にLeafletを描画すると
+ // タイルが真っ白になることがあるため、表示後にサイズ確定→描画する。
+ requestAnimationFrame(()=>{
+   requestAnimationFrame(()=>{
+     map.invalidateSize(true);
+     showCategory(cat);
+     setTimeout(()=>{
+       map.invalidateSize(true);
+       map.eachLayer(layer=>{
+         if(layer && typeof layer.redraw==='function') layer.redraw();
+       });
+     },220);
+   });
+ });
 }
 
 document.querySelectorAll('[data-go]').forEach(btn=>btn.addEventListener('click',()=>openMap(btn.dataset.go)));
@@ -360,7 +373,17 @@ document.getElementById('backBtn').addEventListener('click',()=>{
  document.getElementById('homeScreen').classList.remove('hidden');
 });
 
-showCategory('date');
+// 初期状態はホーム画面なので、地図の本描画は openMap() 時に行う。
+window.addEventListener('pageshow',()=>{
+  if(!document.getElementById('mapScreen').classList.contains('hidden')){
+    setTimeout(()=>{
+      map.invalidateSize(true);
+      map.eachLayer(layer=>{
+        if(layer && typeof layer.redraw==='function') layer.redraw();
+      });
+    },180);
+  }
+});
 
 if (window.matchMedia('(max-width: 600px)').matches) {
   const zoom = document.querySelector('.leaflet-control-zoom');
