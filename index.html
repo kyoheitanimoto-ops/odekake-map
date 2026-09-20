@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-drive16" />
+  <meta name="app-build" content="20260920-drive17" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-drive16';
+const APP_BUILD='20260920-drive17';
 
 async function ensureLatestBuild(){
   try{
@@ -323,15 +323,15 @@ const spots = [
  {name:"アプテカ フレーゴ",cat:"date",lat:33.7832,lng:130.4868,area:"福津",note:"福津の自然に囲まれた一軒家カフェ＆イタリアン。おしゃれな空間と盛り付けでドライブデート向き。",tags:["カフェ","昼","SNS人気","一軒家","ドライブ"],time:["day"],image:"",hours:"火〜日 11:30〜17:00 / 土 18:00〜22:00も営業",closed:"月曜日",rating:"3.41",reviews:106},
  {name:"Fruit Factory Mooon de Retro",cat:"date",lat:33.9469,lng:130.9624,area:"門司港",note:"旧門司税関のレトロ建築で旬のフルーツパフェを楽しめる。海沿いテラスと門司港散策の組み合わせが強い。",tags:["カフェ","昼","SNS人気","スイーツ","景色"],time:["day"],image:"",hours:"11:00〜18:00（季節変動あり）",closed:"不定休",rating:"3.55",reviews:185},
  {name:"SUNSET",cat:"date",lat:33.6510,lng:130.1985,area:"西区・西浦",note:"海を眺めながら過ごせる西浦の定番カフェ。夕方のドライブデートやサンセット狙いに強い。",tags:["カフェ","昼","SNS人気","海カフェ","景色","ドライブ"],time:["day"],image:"",hours:"最新情報を要確認",closed:"水曜日",rating:"3.48",reviews:227},
- {name:"HICKORY Sea Side cafe",cat:"date",lat:33.5727,lng:130.2834,area:"西区・今宿",note:"全席オーシャンビューのシーサイドカフェ。糸島方面へ向かう前後のデートにも使いやすい。",tags:["カフェ","昼","夜","SNS人気","海カフェ","景色"],time:["day","night"],image:"",hours:"11:00〜15:30 / 17:30〜21:30前後",closed:"水曜夜ほか変更あり",rating:"3.60",reviews:96},
+ {name:"HICKORY Sea Side cafe",cat:"date",lat:33.5727,lng:130.2834,area:"西区・今宿",note:"全席オーシャンビューのシーサイドカフェ。糸島方面へ向かう前後のデートにも使いやすい。",tags:["カフェ","昼","夜","SNS人気","海カフェ","景色","ドライブ"],time:["day","night"],image:"",hours:"11:00〜15:30 / 17:30〜21:30前後",closed:"水曜夜ほか変更あり",rating:"3.60",reviews:96},
  {name:"岩井屋",cat:"date",lat:33.5838,lng:130.3369,area:"西区・愛宕",note:"愛宕神社そばの老舗甘味処。落ち着いた和の雰囲気と景色で、散歩デートの休憩にも。",tags:["カフェ","昼","和カフェ","景色"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.47",reviews:154},
  {name:"CAFFE OTTO. ROOF TOP GARDEN",cat:"date",lat:33.5833,lng:130.3595,area:"早良区・西新",note:"西新駅直結のルーフトップ系カフェ。屋上庭園と開放感があり、昼から夜まで使いやすい。",tags:["カフェ","昼","夜","SNS人気","景色","雨の日"],time:["day","night"],image:"",hours:"10:00〜21:00",closed:"PRALIVAに準ずる",rating:"3.41",reviews:98},
  {name:"そふ珈琲",cat:"date",lat:33.5746,lng:130.3692,area:"城南区・別府",note:"別府の落ち着いた喫茶店。特徴的なカフェモカや静かな空間で、ゆっくり過ごす昼デート向け。",tags:["カフェ","昼","SNS人気","コーヒー","隠れ家"],time:["day"],image:"",hours:"13:00〜18:00",closed:"水曜日",rating:"3.39",reviews:130},
  {name:"サイラー",cat:"date",lat:33.5527,lng:130.3924,area:"南区・長丘",note:"オーストリア菓子とパンで人気の名店。口コミ数が非常に多く、南区の昼カフェ候補として強い。",tags:["カフェ","昼","SNS人気","スイーツ","パン"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.67",reviews:823},
  {name:"長崎阿蘭陀珈琲館",cat:"date",lat:33.564456,lng:130.400723,area:"南区・平和",note:"蔦に包まれた洋館風の老舗カフェ。おしゃれな雰囲気と景色で、落ち着いたデート向き。",tags:["カフェ","昼","夜","SNS人気","レトロ","景色"],time:["day","night"],image:"",hours:"11:00〜21:30",closed:"年末年始",rating:"3.48",reviews:206},
  {name:"sola aburayama",cat:"date",lat:33.5209,lng:130.3578,area:"南区・油山",note:"油山の自然と福岡市街の眺めを楽しめるカフェ＆レストラン。景色重視の郊外デート向け。",tags:["カフェ","昼","SNS人気","景色","記念日","ドライブ"],time:["day"],image:"",hours:"12:00〜18:00",closed:"第1・第3火曜、水曜日",rating:"3.30",reviews:46},
- {name:"パン・ナガタ 本店",cat:"date",lat:33.5225,lng:130.4662,area:"春日",note:"石窯パンで人気の春日市の定番店。ドライブ途中のモーニングや昼カフェに使いやすい。",tags:["カフェ","昼","パン","ドライブ"],time:["day"],image:"",hours:"8:00〜",closed:"火曜日",rating:"3.43",reviews:116},
- {name:"BAKE OTTO",cat:"date",lat:33.5448,lng:130.4551,area:"春日",note:"ふくやとOTTOのコラボ型ベーカリーカフェ。Instagramもあり、郊外でゆったり使いやすい。",tags:["カフェ","昼","SNS人気","パン","ドライブ"],time:["day"],image:"",hours:"平日 9:00〜18:00 / 土日祝 9:00〜20:00",closed:"年末年始"},
+ {name:"パン・ナガタ 本店",cat:"date",lat:33.5225,lng:130.4662,area:"春日",note:"石窯パンで人気の春日市の定番店。ドライブ途中のモーニングや昼カフェに使いやすい。",tags:["カフェ","昼","パン"],time:["day"],image:"",hours:"8:00〜",closed:"火曜日",rating:"3.43",reviews:116},
+ {name:"BAKE OTTO",cat:"date",lat:33.5448,lng:130.4551,area:"春日",note:"ふくやとOTTOのコラボ型ベーカリーカフェ。Instagramもあり、郊外でゆったり使いやすい。",tags:["カフェ","昼","SNS人気","パン"],time:["day"],image:"",hours:"平日 9:00〜18:00 / 土日祝 9:00〜20:00",closed:"年末年始"},
  {name:"豆香洞コーヒー 白木原店",cat:"date",lat:33.5298,lng:130.4830,area:"大野城・白木原",note:"コーヒー好きに知られる白木原の専門店。駅近で、南側エリアの昼カフェ候補として使いやすい。",tags:["カフェ","昼","コーヒー","王道"],time:["day"],image:"",hours:"最新情報を要確認",closed:"水曜日",rating:"3.43",reviews:102},
  {name:"CAFE DE FAN FAN",cat:"date",lat:33.8847,lng:130.8794,area:"小倉・京町",note:"小倉の老舗喫茶。レトロな空間と洋食・コーヒーで、街歩きデートの休憩に使いやすい。",tags:["カフェ","昼","SNS人気","レトロ"],time:["day"],image:"",hours:"月・水・土・日 7:30〜20:00 / 木・金 8:00〜20:00",closed:"火曜日",rating:"3.46",reviews:122},
  {name:"REVERSE",cat:"date",lat:33.8818,lng:130.8767,area:"小倉・船場町",note:"静かで個性的な空間が魅力のカフェ＆バー。昼カフェから深夜の2軒目まで使える。",tags:["カフェ","昼","夜","バー","SNS人気","2軒目"],time:["day","night","bar"],image:"",hours:"11:30〜翌1:00",closed:"不定休",rating:"3.46",reviews:119},
@@ -346,7 +346,7 @@ const spots = [
  {name:"古民家カフェ 琥珀と車輪",cat:"date",lat:33.8139,lng:130.5748,area:"宗像",note:"築140年級の古民家をリノベーションした和洋ミックスのカフェ。公式Instagramがあり、内装とスイーツの写真映えが強い。",tags:["カフェ","昼","SNS人気","古民家","記念日"],time:["day"],image:"",hours:"11:30〜15:00",closed:"火曜日"},
  {name:"コーヒー カウンティ クルメ",cat:"date",lat:33.3148,lng:130.5168,area:"久留米",note:"スペシャルティコーヒーで知られる久留米の人気店。公式Instagramがあり、コーヒー好きの昼デート向け。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"11:00〜19:00",closed:"火曜日",rating:"3.37",reviews:61},
  {name:"林檎と葡萄の樹",cat:"date",lat:33.3525,lng:130.7770,area:"朝倉",note:"果樹園に囲まれた古民家カフェ。アップルパイが名物で、朝倉・原鶴方面のドライブデートに組み込みやすい。",tags:["カフェ","昼","SNS人気","古民家","スイーツ","ドライブ"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.46",reviews:175},
- {name:"廣久葛本舗",cat:"date",lat:33.4690,lng:130.6940,area:"朝倉・秋月",note:"秋月散策と相性のいい老舗の葛専門店。和の雰囲気と葛菓子で、落ち着いた昼デート向け。",tags:["カフェ","昼","和カフェ","ドライブ"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.43",reviews:100},
+ {name:"廣久葛本舗",cat:"date",lat:33.4690,lng:130.6940,area:"朝倉・秋月",note:"秋月散策と相性のいい老舗の葛専門店。和の雰囲気と葛菓子で、落ち着いた昼デート向け。",tags:["カフェ","昼","和カフェ"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.43",reviews:100},
  {name:"TOP ONE CAFE",cat:"date",lat:33.6385,lng:130.6900,area:"飯塚・筑豊",note:"アメリカンダイナー風の内装が写真映えする飯塚のカフェ。公式Instagramがあり、SNS重視の昼デート候補。",tags:["カフェ","昼","SNS人気","筑豊"],time:["day"],image:"",hours:"12:00〜18:00",closed:"月曜・水曜",rating:"3.07",reviews:7},
  {name:"茶寮 千代乃園",cat:"date",lat:33.2155,lng:130.7170,area:"八女・黒木",note:"奥八女の自然と八女茶を楽しめる茶寮。景色と和の雰囲気が強く、ドライブデート向け。",tags:["カフェ","昼","SNS人気","和カフェ","景色","ドライブ"],time:["day"],image:"",hours:"11:00〜16:30",closed:"火曜・水曜",rating:"3.35",reviews:48},
  {name:"ASTRA cafe＆library",cat:"date",lat:33.2109,lng:130.5571,area:"八女",note:"明治・大正・昭和の趣を残す古民家カフェ＆ライブラリー。八女の白壁散策と組み合わせやすい。",tags:["カフェ","昼","夜","SNS人気","古民家"],time:["day","night"],image:"",hours:"11:00〜22:00",closed:"水曜・木曜"},
