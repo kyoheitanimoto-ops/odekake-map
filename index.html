@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-ig01" />
+  <meta name="app-build" content="20260920-day02" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-ig01';
+const APP_BUILD='20260920-day02';
 
 async function ensureLatestBuild(){
   try{
@@ -280,6 +280,11 @@ const spots = [
  {name:"NOOICE tenjin",cat:"date",lat:33.5849,lng:130.3995,note:"メルボルンスタイルのカフェ。パンケーキや店内の雰囲気がSNSとデート利用の両方で強い。",tags:["カフェ","昼","SNS人気","記念日"],time:["day","night"],image:"",hours:"月〜木 8:00〜17:00 / 金〜日・祝 8:00〜21:00",closed:"なし",rating:"3.48",reviews:271},
  {name:"AIMAI",cat:"date",lat:33.5829,lng:130.4157,note:"博多駅エリアの韓国系・ミニマルカフェ。SNS映えとおしゃれな空間を重視するデート向け。",tags:["カフェ","昼","SNS人気"],time:["day"],image:"",hours:"12:00〜19:00",closed:"なし",rating:"3.30",reviews:127},
  {name:"I don't know",cat:"date",lat:33.5822,lng:130.4147,note:"写真映えするスイーツとスタイリッシュな内装でSNS露出が強い博多カフェ。",tags:["カフェ","昼","夜","SNS人気","スイーツ"],time:["day","night"],image:"",hours:"公式案内 11:00〜23:00（掲載媒体に差あり）",closed:"なし",rating:"3.30",reviews:85},
+ {name:"PRINCE of the FRUIT",cat:"date",lat:33.5780,lng:130.3971,note:"旬の高級フルーツを使ったパフェで人気。写真映えと口コミ評価の両方が強い昼デート向け。",tags:["カフェ","昼","SNS人気","スイーツ","記念日"],time:["day"],image:"",hours:"平日 11:00〜16:30 / 土日 10:00〜17:30",closed:"火曜日（不定休あり）",rating:"3.94",reviews:683},
+ {name:"カフェ オスピターレ",cat:"date",lat:33.5903,lng:130.4207,note:"博多駅直結。スフォリアテッラとラテアートで人気の百名店カフェ。雨の日デートにも使いやすい。",tags:["カフェ","昼","SNS人気","雨の日","スイーツ"],time:["day"],image:"",hours:"10:00〜22:00",closed:"施設営業日に準ずる",rating:"3.64",reviews:876},
+ {name:"キャンベル・アーリー 博多店",cat:"date",lat:33.5905,lng:130.4205,note:"旬のフルーツパフェとパンケーキが人気。博多駅直結で、買い物デートの休憩にも。",tags:["カフェ","昼","SNS人気","雨の日","スイーツ"],time:["day"],image:"",hours:"11:00〜22:00",closed:"アミュプラザ博多に準ずる",rating:"3.62",reviews:856},
+ {name:"TOFFEE Park",cat:"date",lat:33.5908,lng:130.4055,note:"天神中央公園のリバーサイドカフェ。テラス席と川沿いのロケーションがデート向き。",tags:["カフェ","昼","SNS人気","景色"],time:["day"],image:"",hours:"平日・土 10:00〜22:00 / 日 10:00〜18:00 / 祝 10:00〜20:00",closed:"月曜日（祝日の場合は翌日）",rating:"3.52",reviews:207},
+ {name:"connect coffee",cat:"date",lat:33.5960,lng:130.3991,note:"ラテアートで知られる天神北の人気店。口コミ数も多く、落ち着いた昼カフェデート向け。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"平日 12:00〜20:00 / 日祝 11:00〜18:00",closed:"火曜日",rating:"3.52",reviews:152},
  {name:"CORDUROY cafe",cat:"date",lat:33.5877,lng:130.3946,note:"大名の街中で深夜まで使いやすいカフェ＆ダイニングバー。食事後の2軒目にも。",tags:["カフェ","夜","2軒目"],time:["night"],image:"",hours:"日〜木 11:00〜翌3:00 / 金土・祝前日 11:00〜翌5:00",closed:"不定休",rating:"3.37",reviews:201},
  {name:"manu coffee 大名店",cat:"date",lat:33.5867,lng:130.3928,note:"大名の定番コーヒースタンド。24時まで営業で、気軽な夜カフェデートに使いやすい。",tags:["カフェ","昼","夜"],time:["day","night"],image:"",hours:"9:00〜24:00",closed:"最新情報を要確認",rating:"3.41",reviews:189},
  {name:"QUON RIVER TERRACE",cat:"date",lat:33.5906,lng:130.4078,note:"那珂川沿いのリバービューが魅力。雰囲気重視の夜デートや記念日に。",tags:["カフェ","夜","記念日","夜景"],time:["night"],image:"",hours:"火〜土 11:00〜翌2:00 / 日 11:00〜24:00",closed:"月曜日",rating:"3.47",reviews:148},
