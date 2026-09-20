@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-herocopy31" />
+  <meta name="app-build" content="20260920-herosmooth32" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -138,37 +138,56 @@
     }
     .hero-slides{position:absolute;inset:0}
     .hero-slide{
-      position:absolute;inset:-2%;background-position:center;background-size:cover;opacity:0;
-      transform:scale(1.02);transition:opacity 1.6s ease;will-change:opacity,transform
+      position:absolute;
+      inset:-3%;
+      background-position:center;
+      background-size:cover;
+      opacity:0;
+      transform:scale(1.035);
+      transition:opacity 1.35s ease-in-out,transform 6s linear;
+      will-change:opacity,transform;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+      transform-origin:center center
     }
-    .hero-slide.is-active{opacity:1;animation:heroKenBurns 6.2s ease-out forwards}
-    @keyframes heroKenBurns{from{transform:scale(1.02)}to{transform:scale(1.08)}}
+    .hero-slide.is-active{
+      opacity:1;
+      transform:scale(1.08)
+    }
+to{transform:scale(1.08)}}
     .home-hero:after{
       content:"";
       position:absolute;
       inset:0;
       background:linear-gradient(
         180deg,
-        rgba(255,255,255,.20) 0%,
-        rgba(255,255,255,.08) 38%,
-        rgba(255,255,255,0) 100%
+        rgba(255,255,255,.10) 0%,
+        rgba(255,255,255,.02) 48%,
+        rgba(18,40,62,.10) 100%
       );
       z-index:1;
       pointer-events:none
     }
     .hero-copy{
       position:absolute;
-      top:56px;
-      left:32px;
-      right:18px;
+      top:54px;
+      left:24px;
+      right:auto;
       z-index:2;
-      color:#1d3147;
-      text-shadow:none
+      color:#17314b;
+      text-shadow:none;
+      padding:16px 18px 15px;
+      border-radius:22px;
+      background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(255,255,255,.38));
+      -webkit-backdrop-filter:blur(7px);
+      backdrop-filter:blur(7px);
+      box-shadow:0 8px 28px rgba(35,55,80,.08);
+      max-width:285px
     }
     .hero-copy h2{
       font-family:"Klee One","Hiragino Mincho ProN","Yu Mincho",serif;
       font-size:28px;
-      line-height:1.52;
+      line-height:1.5;
       margin:0;
       font-weight:600;
       letter-spacing:.035em
@@ -176,17 +195,17 @@
     .hero-copy p{
       font-family:"Klee One","Hiragino Mincho ProN","Yu Mincho",serif;
       font-size:12px;
-      line-height:1.85;
-      margin:14px 0 0 42px;
+      line-height:1.8;
+      margin:12px 0 0 40px;
       font-weight:600;
       letter-spacing:.04em;
-      color:#3a4b61
+      color:#40556a
     }
     .hero-copy h2 br{display:block}
     @media (max-width:380px){
-      .hero-copy{top:52px;left:28px;right:16px}
+      .hero-copy{top:48px;left:18px;max-width:270px;padding:14px 16px}
       .hero-copy h2{font-size:27px}
-      .hero-copy p{font-size:11.5px;margin-left:38px}
+      .hero-copy p{font-size:11.5px;margin-left:36px}
     }
     .purpose-sheet{
       position:relative;z-index:4;flex:1;background:#fff;margin-top:-28px;border-radius:30px 30px 0 0;
@@ -366,7 +385,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-herocopy31';
+const APP_BUILD='20260920-herosmooth32';
 
 async function ensureLatestBuild(){
   try{
@@ -550,34 +569,60 @@ const heroImages = [
 const heroSlides = [...document.querySelectorAll('.hero-slide')];
 let heroIndex = 0;
 let heroLayer = 0;
+let heroTimer = null;
 
-function setHeroImage(layerIndex, imageIndex, immediate=false){
-  const layer = heroSlides[layerIndex];
+// Preload hero images once so the next scene is already decoded before crossfade.
+const heroPreload = heroImages.map(src=>{
+  const img=new Image();
+  img.decoding='async';
+  img.src=src;
+  if(img.decode) img.decode().catch(()=>{});
+  return img;
+});
+
+function prepareHeroLayer(layerIndex,imageIndex){
+  const layer=heroSlides[layerIndex];
   if(!layer) return;
-  layer.style.backgroundImage = `url("${heroImages[imageIndex]}")`;
+  layer.style.backgroundImage=`url("${heroImages[imageIndex]}")`;
   layer.classList.remove('is-active');
-  // Restart the slow zoom animation each time the layer becomes active.
-  void layer.offsetWidth;
-  if(immediate) layer.style.transition = 'none';
-  layer.classList.add('is-active');
-  if(immediate){
-    requestAnimationFrame(()=>{ layer.style.transition = ''; });
-  }
 }
 
-if(heroSlides.length && heroImages.length){
-  setHeroImage(0, 0, true);
-  if(heroImages.length > 1){
-    setInterval(()=>{
-      const nextIndex = (heroIndex + 1) % heroImages.length;
-      const nextLayer = heroLayer === 0 ? 1 : 0;
-      setHeroImage(nextLayer, nextIndex);
-      heroSlides[heroLayer].classList.remove('is-active');
-      heroIndex = nextIndex;
-      heroLayer = nextLayer;
-    }, 5000);
-  }
+function startHeroSlideshow(){
+  if(!heroSlides.length || !heroImages.length) return;
+
+  prepareHeroLayer(0,0);
+  heroSlides[0].classList.add('is-active');
+
+  if(heroImages.length<2) return;
+  prepareHeroLayer(1,1);
+
+  heroTimer=setInterval(()=>{
+    const nextIndex=(heroIndex+1)%heroImages.length;
+    const nextLayer=heroLayer===0?1:0;
+    const currentLayer=heroLayer;
+
+    // Inactive layer has already been prepared whenever possible.
+    heroSlides[nextLayer].style.backgroundImage=`url("${heroImages[nextIndex]}")`;
+
+    requestAnimationFrame(()=>{
+      heroSlides[nextLayer].classList.add('is-active');
+      heroSlides[currentLayer].classList.remove('is-active');
+
+      heroIndex=nextIndex;
+      heroLayer=nextLayer;
+
+      const followingIndex=(heroIndex+1)%heroImages.length;
+      const followingLayer=heroLayer===0?1:0;
+      setTimeout(()=>{
+        if(!heroSlides[followingLayer].classList.contains('is-active')){
+          heroSlides[followingLayer].style.backgroundImage=`url("${heroImages[followingIndex]}")`;
+        }
+      },1450);
+    });
+  },5500);
 }
+
+startHeroSlideshow();
 
 const styles={
  date:{color:"#ff5f8f",emoji:"❤️",label:"デート向け",grad:"linear-gradient(135deg,#ff6a98,#ff8e73)"},
