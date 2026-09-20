@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-suburbs10" />
+  <meta name="app-build" content="20260920-classic11" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-suburbs10';
+const APP_BUILD='20260920-classic11';
 
 async function ensureLatestBuild(){
   try{
@@ -265,6 +265,12 @@ const spots = [
  {name:"キャナルシティ博多",cat:"date",lat:33.5898,lng:130.4107,note:"映画・ショッピング・食事をまとめて楽しめる王道デートスポット。雨の日にも使いやすい。",tags:["王道","雨の日","映画","ショッピング"],image:""},
  {name:"ららぽーと福岡",cat:"date",lat:33.56473,lng:130.44030,note:"買い物や食事をゆっくり楽しめる大型商業施設。天候を気にせず過ごしやすい。",tags:["王道","雨の日","ショッピング"],image:""},
  {name:"MARK IS 福岡ももち",cat:"date",lat:33.59268,lng:130.36363,note:"映画・ショッピング・食事を組み合わせやすい百道エリアの定番デートスポット。",tags:["王道","雨の日","映画","ショッピング"],image:""},
+ {name:"シーサイドももち海浜公園",cat:"date",lat:33.5949,lng:130.3519,area:"百道浜",note:"白い砂浜とマリゾンを楽しめる福岡の王道デートスポット。昼・夕日・夜まで使いやすい。",tags:["王道","海","夕日","散歩","記念日"],image:""},
+ {name:"のこのしまアイランドパーク",cat:"date",lat:33.6285,lng:130.3038,area:"能古島",note:"季節の花と博多湾の景色を楽しめる王道の島デート。写真映えと一日デートの両方に強い。",tags:["王道","自然","景色","一日","SNS人気"],image:""},
+ {name:"チームラボフォレスト 福岡",cat:"date",lat:33.5954,lng:130.3622,area:"地行浜",note:"光とデジタルアートを体験できる屋内スポット。雨の日や写真を残したいデートに向く。",tags:["王道","雨の日","SNS人気","アート","記念日"],image:""},
+ {name:"福岡市科学館 ドームシアター",cat:"date",lat:33.5772,lng:130.3780,area:"六本松",note:"九州最大級のプラネタリウム。雨の日や落ち着いた夜デートにも使いやすい。",tags:["王道","雨の日","プラネタリウム","記念日"],image:"IMG_0500.jpeg"},
+ {name:"太宰府天満宮",cat:"date",lat:33.5214,lng:130.5349,area:"太宰府",note:"参道の食べ歩きやカフェと合わせやすい福岡の王道デート。季節ごとの景色も楽しめる。",tags:["王道","街歩き","和","昼"],image:"IMG_0507.jpeg"},
+ {name:"BOSS E・ZO FUKUOKA",cat:"date",lat:33.5955,lng:130.3623,area:"地行浜",note:"アート・アトラクション・フードを一か所で楽しめる複合エンタメ施設。雨の日にも使いやすい。",tags:["王道","雨の日","アート","体験","一日"],image:""},
  {name:"鳥栖プレミアム・アウトレット",cat:"date",lat:33.4316,lng:130.5340,note:"買い物をしながらゆっくり過ごせる定番アウトレットデート。ドライブ先にも使いやすい。",tags:["王道","ショッピング","ドライブ"],image:"",hours:"10:00〜20:00",closed:"年1回（2月）"},
  {name:"THE OUTLETS KITAKYUSHU",cat:"date",lat:33.8707,lng:130.8106,note:"ショッピングに加えて食事や周辺施設も組み合わせやすい北九州の大型アウトレット。",tags:["王道","ショッピング","雨の日"],image:""},
  {name:"二見ヶ浦カフェエリア",cat:"date",lat:33.6380,lng:130.1927,note:"海沿いにカフェやレストランが集まる糸島デートの定番エリア。夕方はサンセット狙いにも。",tags:["海カフェ","夕日","ドライブ"],image:"IMG_0504.jpeg"},
