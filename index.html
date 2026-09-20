@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-rainspa18" />
+  <meta name="app-build" content="20260920-rainpref19" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-rainspa18';
+const APP_BUILD='20260920-rainpref19';
 
 async function ensureLatestBuild(){
   try{
@@ -295,6 +295,14 @@ const spots = [
  {name:"みなと温泉 波葉の湯",cat:"date",lat:33.6061,lng:130.3983,area:"博多ふ頭",note:"天然温泉・岩盤浴・貸切風呂がそろうベイサイドの温浴施設。雨の日でも滞在しやすい。",tags:["雨の日","スパ","岩盤浴","貸切風呂"],image:"",hours:"入浴 10:00〜23:00 / 岩盤浴 10:00〜22:30",closed:"年中無休（設備点検休業あり）"},
  {name:"ふくの湯 花畑店",cat:"date",lat:33.5382,lng:130.4014,area:"南区・花畑",note:"岩盤浴・サウナ・食事処までそろう大型温浴施設。車で行きやすく、雨の日の長時間デートに使いやすい。",tags:["雨の日","スパ","岩盤浴","一日","ドライブ"],image:"",hours:"6:00〜翌1:00",closed:"最新情報を要確認"},
  {name:"ふくの湯 早良店",cat:"date",lat:33.5648,lng:130.3329,area:"早良区・小田部",note:"岩盤浴・サウナ・食事をまとめて楽しめる温浴施設。雨の日の近場デート候補として使いやすい。",tags:["雨の日","スパ","岩盤浴","一日"],image:"",hours:"9:00〜翌2:50",closed:"最新情報を要確認"},
+ {name:"九州国立博物館",cat:"date",lat:33.5182175,lng:130.5384608,area:"太宰府",note:"大規模展示と特別展をゆっくり楽しめる屋内スポット。太宰府天満宮と組み合わせやすく、雨の日でも目的が成立する。",tags:["雨の日","博物館","王道","アート"],image:"",hours:"9:30〜17:00（特別展期間中は夜間開館日あり）",closed:"月曜日（祝日の場合は翌日）・年末"},
+ {name:"スペースLABO",cat:"date",lat:33.8717931,lng:130.808912,area:"北九州・八幡東区",note:"大型プラネタリウムと科学展示を楽しめる北九州の屋内デート候補。スペースワールド駅から近く雨の日も行きやすい。",tags:["雨の日","科学館","プラネタリウム","駅近","体験"],image:""},
+ {name:"北九州市立いのちのたび博物館",cat:"date",lat:33.8704,lng:130.8113,area:"北九州・八幡東区",note:"恐竜骨格や自然史・歴史展示をじっくり見られる大型博物館。屋内で長時間過ごしやすい。",tags:["雨の日","博物館","駅近","一日"],image:"IMG_0501.jpeg"},
+ {name:"久留米市美術館",cat:"date",lat:33.3120333,lng:130.5303667,area:"久留米",note:"石橋文化センター内の美術館。企画展を中心に落ち着いて過ごせる、筑後エリアの雨の日デート候補。",tags:["雨の日","美術館","アート","記念日"],image:"",hours:"10:00〜17:00",closed:"月曜日（祝日の場合は開館）・展示替え期間"},
+ {name:"筑紫野 天拝の郷",cat:"date",lat:33.4887602,lng:130.4970917,area:"筑紫野",note:"天然温泉・サウナ・食事を楽しめる日帰り温浴施設。駐車場が広く、雨の日にゆっくり過ごしやすい。",tags:["雨の日","スパ","サウナ","貸切風呂","ドライブ"],image:"",hours:"10:30〜23:00最終受付",closed:"原則毎月第2火曜日"},
+ {name:"伊都の湯どころ",cat:"date",lat:33.5859406,lng:130.2133245,area:"糸島",note:"大浴場・岩盤浴・サウナ・家族風呂・食事をまとめて楽しめる。糸島方面の雨の日ドライブにも使いやすい。",tags:["雨の日","スパ","岩盤浴","貸切風呂","ドライブ"],image:"",closed:"1月1日・指定水曜日"},
+ {name:"源じいの森温泉",cat:"date",lat:33.6174261,lng:130.897537,area:"筑豊・赤村",note:"温泉と貸切風呂を備えた筑豊エリアの温浴スポット。雨の日でも落ち着いて過ごせる。",tags:["雨の日","スパ","貸切風呂","ドライブ"],image:""},
+ {name:"川の駅 船小屋 恋ぼたる",cat:"date",lat:33.1932,lng:130.4925,area:"筑後・船小屋",note:"日帰り温泉・食事・物産館がそろう複合施設。筑後エリアで雨の日にゆっくり過ごす候補として使いやすい。",tags:["雨の日","スパ","温泉","ドライブ"],image:"",hours:"温泉館 10:00〜21:00",closed:"火曜日（祝日の場合は翌日）"},
  {name:"糸島ファームハウス UOVO",cat:"date",lat:33.6206,lng:130.1979,note:"糸島ドライブ途中に寄りやすい人気カフェ。卵を使った食事やスイーツも楽しめる。",tags:["カフェ","ドライブ","昼"],time:["day"],image:"",hours:"平日 10:00〜18:00 / 土日 9:00〜18:00",closed:"不定休",rating:"3.54",reviews:291},
  {name:"ロンドンバスカフェ",cat:"date",lat:33.6357,lng:130.1690,note:"赤いロンドンバスと海の景色が印象的な糸島の定番カフェ。ドライブデート向き。",tags:["カフェ","ドライブ","昼","海カフェ"],time:["day"],image:"",hours:"11:00〜日没",closed:"不定休",rating:"3.50",reviews:315},
  {name:"いちごや cafe TANNAL 糸島本店",cat:"date",lat:33.6007,lng:130.2144,note:"いちご農園直営のスイーツ系カフェ。糸島の昼カフェ候補に。",tags:["カフェ","昼","スイーツ","ドライブ"],time:["day"],image:"",hours:"10:00〜17:00",closed:"変更の場合あり",rating:"3.44",reviews:118},
@@ -394,6 +402,8 @@ let markers=[], userMarker=null, userAccuracy=null, activeCat='date';
 function spotVisual(s){
  const tags=s.tags||[];
  if(tags.includes('スパ')) return {emoji:'♨️',color:'#4f8ea8'};
+ if(tags.includes('科学館')) return {emoji:'🔬',color:'#5576c7'};
+ if(tags.includes('美術館') || tags.includes('博物館')) return {emoji:'🖼️',color:'#8a6aa8'};
  if(tags.includes('バー')) return {emoji:'🍸',color:'#7457c8'};
  if(tags.includes('カフェ')) return {emoji:'☕',color:'#5aa6a0'};
  if(tags.includes('夜景')) return {emoji:'🌙',color:'#344a78'};
