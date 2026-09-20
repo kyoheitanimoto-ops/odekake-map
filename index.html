@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-homepolish35" />
+  <meta name="app-build" content="20260920-labels36" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -393,15 +393,15 @@ to{transform:scale(1.08)}}
       <div class="purpose-grid">
         <button class="purpose date" data-go="date">
           <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.6 4.2 13A5.3 5.3 0 0 1 11.7 5.5L12 5.8l.3-.3A5.3 5.3 0 0 1 19.8 13Z" fill="currentColor" stroke="none"/></svg></span>
-          <span class="purpose-label">デート向け</span>
+          <span class="purpose-label">カップル</span>
         </button>
         <button class="purpose kids" data-go="kids">
           <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="2.4"/><circle cx="5.8" cy="9" r="1.8"/><circle cx="18.2" cy="9" r="1.8"/><path d="M8.5 20v-5.2c0-2 1.5-3.6 3.5-3.6s3.5 1.6 3.5 3.6V20M2.8 19v-4c0-1.7 1.3-3 3-3 1 0 1.9.5 2.5 1.2M21.2 19v-4c0-1.7-1.3-3-3-3-1 0-1.9.5-2.5 1.2"/></svg></span>
-          <span class="purpose-label">子育て向け</span>
+          <span class="purpose-label">家族</span>
         </button>
         <button class="purpose solo" data-go="solo">
           <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20 10.2 6.5 14 13l2.1-3.5L21 20Z"/><path d="m8.2 10.2 2 1.7 1.7-2"/></svg></span>
-          <span class="purpose-label">一人旅向け</span>
+          <span class="purpose-label">一人旅</span>
         </button>
         <button class="purpose soon1" data-soon="観光・定番">
           <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h3l1.3-2h7.4l1.3 2h3a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5a2 2 0 0 1 2-2Z"/><circle cx="12" cy="13.5" r="4"/></svg></span>
@@ -435,7 +435,7 @@ to{transform:scale(1.08)}}
   </section>
 
   <section class="screen hidden" id="mapScreen">
-  <div class="map-head"><button class="back-btn" id="backBtn" aria-label="ホームへ戻る">‹</button><div class="map-head-title" id="mapHeadTitle">デート向け</div></div>
+  <div class="map-head"><button class="back-btn" id="backBtn" aria-label="ホームへ戻る">‹</button><div class="map-head-title" id="mapHeadTitle">カップル</div></div>
   <div class="top">
     <div class="eyebrow">FUKUOKA GUIDE</div>
     <h1>今日は、どこ行く？</h1>
@@ -467,7 +467,7 @@ to{transform:scale(1.08)}}
     <div id="map"></div>
     <div class="map-toolbar">
       <div class="glass" id="spotCount">4スポット</div>
-      <div class="glass" id="categoryLabel">デート向け</div>
+      <div class="glass" id="categoryLabel">カップル</div>
     </div>
     <div class="subfilters" id="subfilters"></div>
     <div class="cafefilters" id="cafeTimeFilters"></div>
@@ -480,7 +480,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-homepolish35';
+const APP_BUILD='20260920-labels36';
 
 async function ensureLatestBuild(){
   try{
@@ -525,12 +525,12 @@ const spots = [
  {name:"グランドーム福岡ふくつ",cat:"date",lat:33.7883923,lng:130.4606068,area:"福津",note:"玄界灘を望むオーシャンフロントのグランピング。焚火やBBQ、プライベートサウナ付き客室もあり、カップルの非日常ステイ向き。",tags:["アクティブ・体験","宿泊","グランピング","海","サウナ","記念日","ドライブ"],image:""},
  {name:"INN THE PARK 福岡",cat:"date",lat:33.66822,lng:130.375581,area:"海の中道",note:"球体テントやBBQ、周辺アクティビティを楽しめる“泊まれる公園”。自然の中で一緒に過ごす体験価値が高い。",tags:["アクティブ・体験","宿泊","グランピング","自然","BBQ","一日","ドライブ"],image:""},
  {name:"ザ・リトリート",cat:"date",lat:33.6572,lng:130.7427,area:"飯塚",note:"グランピングとスポーツ・ウェルネスを組み合わせたリトリート施設。BBQ、テニス、マウンテンバイクなど体験が豊富。",tags:["アクティブ・体験","宿泊","グランピング","BBQ","スポーツ","ドライブ"],image:""},
- {name:"プーさんのいちご園",cat:"date",lat:33.20371,lng:130.56562,area:"八女",note:"九州最大級クラスのいちご狩り農園。複数品種の食べ比べを2人で楽しめる季節デート向け。",tags:["アクティブ・体験","いちご狩り","季節","ドライブ"],image:"",hours:"9:30〜16:00（最終受付15:00）",closed:"月曜日（祝日の場合は翌日）"},
+ {name:"プーさんのいちご園",cat:"date",lat:33.20371,lng:130.56562,area:"八女",note:"九州最大級クラスのいちご狩り農園。複数品種の食べ比べを2人で楽しめる季節カップル。",tags:["アクティブ・体験","いちご狩り","季節","ドライブ"],image:"",hours:"9:30〜16:00（最終受付15:00）",closed:"月曜日（祝日の場合は翌日）"},
  {name:"THE TRAILERHOUSE VILLAGE 大牟田 SPA",cat:"date",lat:33.013045,lng:130.468262,area:"大牟田",note:"トレーラーハウス宿泊に温泉・サウナ・BBQ・釣り堀などを組み合わせられる体験型リゾート。",tags:["アクティブ・体験","宿泊","スパ","サウナ","BBQ","釣り堀","ドライブ"],image:""},
  {name:"Glamping五感",cat:"date",lat:33.4688,lng:130.4143,area:"那珂川",note:"ドームテントやログハウス、薪サウナ、天然水風呂、BBQを楽しめるグランピング施設。2人で非日常を味わう宿泊デート向き。",tags:["アクティブ・体験","宿泊","グランピング","サウナ","BBQ","記念日","ドライブ"],image:"",hours:"チェックイン 15:00 / チェックアウト 10:00",closed:"木曜日"},
  {name:"フォレストアドベンチャー・糸島",cat:"date",lat:33.5068,lng:130.1669,area:"糸島・二丈",note:"森の高低差を使った本格アスレチック。ジップスライドや樹上コースを2人で一緒に楽しめる。",tags:["アクティブ・体験","アスレチック","ジップライン","自然","ドライブ"],image:"",hours:"9:00〜17:00",closed:"不定休"},
  {name:"SUPÜP 糸島",cat:"date",lat:33.6386,lng:130.1687,area:"糸島",note:"完全プライベート制のSUPツアー。サンセットSUPはカップル人気が高く、写真や動画も残しやすい。",tags:["アクティブ・体験","SUP","海","SNS人気","夕日","ドライブ"],image:"",hours:"9:00〜16:00（プランにより異なる）",closed:"海況により変動"},
- {name:"カナディアンキャンプ乗馬クラブ 九州",cat:"date",lat:33.8488,lng:130.4932,area:"宗像・神湊",note:"玄界灘の浜辺を馬で走るビーチ乗馬体験。非日常感が強く、記念に残るアクティブデート向け。",tags:["アクティブ・体験","乗馬","海","記念日","ドライブ"],image:"",hours:"9:00〜18:00",closed:"火曜日"},
+ {name:"カナディアンキャンプ乗馬クラブ 九州",cat:"date",lat:33.8488,lng:130.4932,area:"宗像・神湊",note:"玄界灘の浜辺を馬で走るビーチ乗馬体験。非日常感が強く、記念に残るアクティブカップル。",tags:["アクティブ・体験","乗馬","海","記念日","ドライブ"],image:"",hours:"9:00〜18:00",closed:"火曜日"},
  {name:"福岡市海づり公園",cat:"date",lat:33.62655,lng:130.22896,area:"西区・小田",note:"手ぶらでも始めやすい海釣り公園。貸し竿や初心者向け指導があり、海洋釣堀でマダイ釣りも体験できる。",tags:["アクティブ・体験","釣り","釣り堀","海","ドライブ"],image:"",hours:"季節により6:00〜20:00の範囲で変動",closed:"火曜日（祝日の場合は翌日）・年末年始"},
  {name:"陶芸教室やわら木",cat:"date",lat:33.5258,lng:130.4378,area:"春日・博多南",note:"手回しろくろや電動ろくろを体験できる陶芸教室。公式でもデート利用を案内しており、2人で作品を残せる。",tags:["アクティブ・体験","陶芸","ものづくり","雨の日"],image:"",hours:"10:00〜18:30",closed:"月曜日"},
  {name:"SEN CERAMIC WORKS",cat:"date",lat:33.6317,lng:130.4708,area:"東区・名子",note:"自然豊かな郊外の陶芸工房。1日体験はデートコースとしても案内され、写真や動画を撮りながら作品づくりを楽しめる。",tags:["アクティブ・体験","陶芸","ものづくり","SNS人気","雨の日","ドライブ"],image:"",hours:"開催日は予約カレンダーで確認",closed:"開催日により異なる"},
@@ -569,25 +569,25 @@ const spots = [
  {name:"GRANDMIRAGE WHOLE NOTE CAFE",cat:"date",lat:33.5865,lng:130.3992,note:"今泉で昼から深夜まで使える大型カフェ。食事後の2軒目にも向く。",tags:["カフェ","昼","夜","2軒目"],time:["day","night"],image:"",hours:"月〜木・日・祝 12:00〜翌2:00 / 金土・祝前日 12:00〜翌3:00",closed:"最新情報を要確認",rating:"3.36",reviews:195},
  {name:"FUK COFFEE",cat:"date",lat:33.5908169,lng:130.4127872,note:"旅をテーマにしたデザインとプリンで人気の博多カフェ。SNSでも写真を残したくなる雰囲気。",tags:["カフェ","昼","SNS人気"],time:["day"],image:"",hours:"8:00〜20:00",closed:"最新情報を要確認",rating:"3.54",reviews:235},
  {name:"NOOICE tenjin",cat:"date",lat:33.5849,lng:130.3995,note:"メルボルンスタイルのカフェ。パンケーキや店内の雰囲気がSNSとデート利用の両方で強い。",tags:["カフェ","昼","SNS人気"],time:["day","night"],image:"",hours:"月〜木 8:00〜17:00 / 金〜日・祝 8:00〜21:00",closed:"なし",rating:"3.48",reviews:271},
- {name:"AIMAI",cat:"date",lat:33.5829,lng:130.4157,note:"博多駅エリアの韓国系・ミニマルカフェ。SNS映えとおしゃれな空間を重視するデート向け。",tags:["カフェ","昼","SNS人気"],time:["day"],image:"",hours:"12:00〜19:00",closed:"なし",rating:"3.30",reviews:127},
+ {name:"AIMAI",cat:"date",lat:33.5829,lng:130.4157,note:"博多駅エリアの韓国系・ミニマルカフェ。SNS映えとおしゃれな空間を重視するカップル。",tags:["カフェ","昼","SNS人気"],time:["day"],image:"",hours:"12:00〜19:00",closed:"なし",rating:"3.30",reviews:127},
  {name:"I don't know",cat:"date",lat:33.5822,lng:130.4147,note:"写真映えするスイーツとスタイリッシュな内装でSNS露出が強い博多カフェ。",tags:["カフェ","昼","夜","SNS人気","スイーツ"],time:["day","night"],image:"",hours:"公式案内 11:00〜23:00（掲載媒体に差あり）",closed:"なし",rating:"3.30",reviews:85},
  {name:"珈琲美美",cat:"date",lat:33.5827279,lng:130.3827986,area:"赤坂・大濠",note:"福岡を代表する老舗コーヒー専門店。木の温もりある店内とネルドリップで、落ち着いた昼デート向き。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"12:00〜18:00",closed:"月曜・火曜",rating:"3.68",reviews:431},
  {name:"カフェミエル",cat:"date",lat:33.5900,lng:130.4190,area:"博多駅",note:"博多駅から近い珈琲専門の喫茶店。買い物や映画の合間にも寄りやすい王道カフェ。",tags:["カフェ","昼","コーヒー","雨の日"],time:["day"],image:"",hours:"平日 9:00〜19:00 / 土日祝 9:00〜18:00",closed:"年末年始は要確認",rating:"3.57",reviews:287},
  {name:"ブラジレイロ",cat:"date",lat:33.5973,lng:130.4105,area:"呉服町",note:"1934年創業の老舗喫茶。レトロな空間と洋食・コーヒーで、落ち着いた街歩きデートに。",tags:["カフェ","昼","SNS人気","レトロ"],time:["day"],image:"",hours:"月〜土 10:00〜19:00",closed:"日曜・祝日",rating:"3.55",reviews:384},
- {name:"I’m donut? 天神",cat:"date",lat:33.5871,lng:130.4022,area:"天神",note:"生ドーナツで高い知名度を持つ天神の人気店。公式Instagramもあり、SNS映え重視の昼デート向け。",tags:["カフェ","昼","SNS人気","スイーツ"],time:["day"],image:"",hours:"10:00〜20:00",closed:"なし",rating:"3.62",reviews:829},
- {name:"abeki",cat:"date",lat:33.5808,lng:130.3971,area:"薬院",note:"薬院の静かな人気カフェ。チーズケーキとコーヒーで知られ、落ち着いた昼デート向け。",tags:["カフェ","昼","SNS人気","コーヒー","スイーツ"],time:["day"],image:"",hours:"12:00〜17:30",closed:"日曜日",rating:"3.50",reviews:200},
+ {name:"I’m donut? 天神",cat:"date",lat:33.5871,lng:130.4022,area:"天神",note:"生ドーナツで高い知名度を持つ天神の人気店。公式Instagramもあり、SNS映え重視の昼カップル。",tags:["カフェ","昼","SNS人気","スイーツ"],time:["day"],image:"",hours:"10:00〜20:00",closed:"なし",rating:"3.62",reviews:829},
+ {name:"abeki",cat:"date",lat:33.5808,lng:130.3971,area:"薬院",note:"薬院の静かな人気カフェ。チーズケーキとコーヒーで知られ、落ち着いた昼カップル。",tags:["カフェ","昼","SNS人気","コーヒー","スイーツ"],time:["day"],image:"",hours:"12:00〜17:30",closed:"日曜日",rating:"3.50",reviews:200},
  {name:"FUK COFFEE Parks",cat:"date",lat:33.5906,lng:130.3770,area:"大濠・荒戸",note:"大濠公園近くの人気店。プリンとラテ、洗練された内装でSNSにも強い。",tags:["カフェ","昼","SNS人気","スイーツ","散歩"],time:["day"],image:"",hours:"8:00〜20:00",closed:"最新情報を要確認",rating:"3.47",reviews:201},
  {name:"REC COFFEE 薬院駅前店",cat:"date",lat:33.5816,lng:130.4019,area:"薬院",note:"薬院駅すぐのスペシャルティコーヒー店。深夜1時まで使えるため昼夜どちらのデートにも便利。",tags:["カフェ","昼","夜","コーヒー","2軒目"],time:["day","night"],image:"",hours:"平日 8:00〜翌1:00 / 土日祝 10:00〜翌1:00",closed:"不定休",rating:"3.16",reviews:231},
  {name:"NO COFFEE",cat:"date",lat:33.5751,lng:130.3994,area:"平尾",note:"ミニマルでストリート感のある人気コーヒースタンド。Instagramでも定番の写真映えカフェ。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"10:00〜18:00",closed:"水曜日",rating:"3.39",reviews:133},
- {name:"STEREO COFFEE",cat:"date",lat:33.5852,lng:130.4066,area:"渡辺通",note:"コーヒー・音楽・アートを組み合わせた一軒家カフェ。公式Instagramもあり雰囲気重視のデート向け。",tags:["カフェ","昼","SNS人気","コーヒー","アート"],time:["day"],image:"",hours:"平日 10:00〜20:00 / 土 9:00〜21:00 / 日 9:00〜20:00",closed:"最新情報を要確認",rating:"3.37",reviews:115},
+ {name:"STEREO COFFEE",cat:"date",lat:33.5852,lng:130.4066,area:"渡辺通",note:"コーヒー・音楽・アートを組み合わせた一軒家カフェ。公式Instagramもあり雰囲気重視のカップル。",tags:["カフェ","昼","SNS人気","コーヒー","アート"],time:["day"],image:"",hours:"平日 10:00〜20:00 / 土 9:00〜21:00 / 日 9:00〜20:00",closed:"最新情報を要確認",rating:"3.37",reviews:115},
  {name:"cafe dacotan",cat:"date",lat:33.5785,lng:130.3772,area:"六本松",note:"人気ベーカリーamam dacotan系列のカフェ。パンとスイーツ、世界観のある内装でSNS映えが強い。",tags:["カフェ","昼","SNS人気","パン","スイーツ"],time:["day"],image:"",hours:"10:00〜18:00",closed:"水曜日"},
  {name:"白金茶房",cat:"date",lat:33.5756,lng:130.4041,area:"白金・平尾",note:"パンケーキで人気の落ち着いたカフェ。口コミ数も多く、朝〜昼デートの王道候補。",tags:["カフェ","昼","SNS人気","スイーツ"],time:["day"],image:"",hours:"平日 8:00〜17:30 / 土日祝 8:00〜18:30",closed:"最新情報を要確認",rating:"3.54",reviews:612},
  {name:"パンとエスプレッソと 博多っと",cat:"date",lat:33.5885,lng:130.4160,area:"博多駅前",note:"博多駅から歩いて行けるベーカリーカフェ。パン好きの昼デートや旅行途中にも使いやすい。",tags:["カフェ","昼","SNS人気","パン","雨の日"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.30",reviews:478},
- {name:"PRINCE of the FRUIT",cat:"date",lat:33.5780,lng:130.3971,note:"旬の高級フルーツを使ったパフェで人気。写真映えと口コミ評価の両方が強い昼デート向け。",tags:["カフェ","昼","SNS人気","スイーツ"],time:["day"],image:"",hours:"平日 11:00〜16:30 / 土日 10:00〜17:30",closed:"火曜日（不定休あり）",rating:"3.94",reviews:683},
+ {name:"PRINCE of the FRUIT",cat:"date",lat:33.5780,lng:130.3971,note:"旬の高級フルーツを使ったパフェで人気。写真映えと口コミ評価の両方が強い昼カップル。",tags:["カフェ","昼","SNS人気","スイーツ"],time:["day"],image:"",hours:"平日 11:00〜16:30 / 土日 10:00〜17:30",closed:"火曜日（不定休あり）",rating:"3.94",reviews:683},
  {name:"カフェ オスピターレ",cat:"date",lat:33.5903,lng:130.4207,note:"博多駅直結。スフォリアテッラとラテアートで人気の百名店カフェ。雨の日デートにも使いやすい。",tags:["カフェ","昼","SNS人気","雨の日","スイーツ"],time:["day"],image:"",hours:"10:00〜22:00",closed:"施設営業日に準ずる",rating:"3.64",reviews:876},
  {name:"キャンベル・アーリー 博多店",cat:"date",lat:33.5905,lng:130.4205,note:"旬のフルーツパフェとパンケーキが人気。博多駅直結で、買い物デートの休憩にも。",tags:["カフェ","昼","SNS人気","雨の日","スイーツ"],time:["day"],image:"",hours:"11:00〜22:00",closed:"アミュプラザ博多に準ずる",rating:"3.62",reviews:856},
  {name:"TOFFEE Park",cat:"date",lat:33.5908,lng:130.4055,note:"天神中央公園のリバーサイドカフェ。テラス席と川沿いのロケーションがデート向き。",tags:["カフェ","昼","SNS人気","景色"],time:["day"],image:"",hours:"平日・土 10:00〜22:00 / 日 10:00〜18:00 / 祝 10:00〜20:00",closed:"月曜日（祝日の場合は翌日）",rating:"3.52",reviews:207},
- {name:"connect coffee",cat:"date",lat:33.5960,lng:130.3991,note:"ラテアートで知られる天神北の人気店。口コミ数も多く、落ち着いた昼カフェデート向け。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"平日 12:00〜20:00 / 日祝 11:00〜18:00",closed:"火曜日",rating:"3.52",reviews:152},
+ {name:"connect coffee",cat:"date",lat:33.5960,lng:130.3991,note:"ラテアートで知られる天神北の人気店。口コミ数も多く、落ち着いた昼カフェカップル。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"平日 12:00〜20:00 / 日祝 11:00〜18:00",closed:"火曜日",rating:"3.52",reviews:152},
  {name:"茶房 わらび野",cat:"date",lat:33.6209,lng:130.5426,area:"篠栗・糟屋",note:"若杉山中腹の絶景カフェ。全面ガラスの店内から景色を楽しめ、デートや記念日に強い。",tags:["カフェ","昼","SNS人気","景色","ドライブ"],time:["day"],image:"",hours:"11:00〜20:00（L.O.18:30）",closed:"金曜日",rating:"3.48",reviews:319},
  {name:"cafe たねの隣り",cat:"date",lat:33.3398,lng:130.7886,area:"うきは",note:"柿畑や自然に囲まれた古民家系カフェ。テラスと季節のランチ・甘味がドライブデート向き。",tags:["カフェ","昼","SNS人気","古民家","景色","ドライブ"],time:["day"],image:"",hours:"11:00〜15:30",closed:"木曜日",rating:"3.41",reviews:128},
  {name:"茶房 ぎゃらりー かさの家",cat:"date",lat:33.5198,lng:130.5335,area:"太宰府",note:"太宰府参道で梅ヶ枝餅や甘味を楽しめる落ち着いた茶房。太宰府デートの休憩に使いやすい。",tags:["カフェ","昼","和カフェ"],time:["day"],image:"",hours:"11:00〜17:30",closed:"最新情報を要確認",rating:"3.54",reviews:308},
@@ -597,10 +597,10 @@ const spots = [
  {name:"HICKORY Sea Side cafe",cat:"date",lat:33.5727,lng:130.2834,area:"西区・今宿",note:"全席オーシャンビューのシーサイドカフェ。糸島方面へ向かう前後のデートにも使いやすい。",tags:["カフェ","昼","夜","SNS人気","海カフェ","景色","ドライブ"],time:["day","night"],image:"",hours:"11:00〜15:30 / 17:30〜21:30前後",closed:"水曜夜ほか変更あり",rating:"3.60",reviews:96},
  {name:"岩井屋",cat:"date",lat:33.5838,lng:130.3369,area:"西区・愛宕",note:"愛宕神社そばの老舗甘味処。落ち着いた和の雰囲気と景色で、散歩デートの休憩にも。",tags:["カフェ","昼","和カフェ","景色"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.47",reviews:154},
  {name:"CAFFE OTTO. ROOF TOP GARDEN",cat:"date",lat:33.5833,lng:130.3595,area:"早良区・西新",note:"西新駅直結のルーフトップ系カフェ。屋上庭園と開放感があり、昼から夜まで使いやすい。",tags:["カフェ","昼","夜","SNS人気","景色","雨の日"],time:["day","night"],image:"",hours:"10:00〜21:00",closed:"PRALIVAに準ずる",rating:"3.41",reviews:98},
- {name:"そふ珈琲",cat:"date",lat:33.5746,lng:130.3692,area:"城南区・別府",note:"別府の落ち着いた喫茶店。特徴的なカフェモカや静かな空間で、ゆっくり過ごす昼デート向け。",tags:["カフェ","昼","SNS人気","コーヒー","隠れ家"],time:["day"],image:"",hours:"13:00〜18:00",closed:"水曜日",rating:"3.39",reviews:130},
+ {name:"そふ珈琲",cat:"date",lat:33.5746,lng:130.3692,area:"城南区・別府",note:"別府の落ち着いた喫茶店。特徴的なカフェモカや静かな空間で、ゆっくり過ごす昼カップル。",tags:["カフェ","昼","SNS人気","コーヒー","隠れ家"],time:["day"],image:"",hours:"13:00〜18:00",closed:"水曜日",rating:"3.39",reviews:130},
  {name:"サイラー",cat:"date",lat:33.5527,lng:130.3924,area:"南区・長丘",note:"オーストリア菓子とパンで人気の名店。口コミ数が非常に多く、南区の昼カフェ候補として強い。",tags:["カフェ","昼","SNS人気","スイーツ","パン"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.67",reviews:823},
  {name:"長崎阿蘭陀珈琲館",cat:"date",lat:33.564456,lng:130.400723,area:"南区・平和",note:"蔦に包まれた洋館風の老舗カフェ。おしゃれな雰囲気と景色で、落ち着いたデート向き。",tags:["カフェ","昼","夜","SNS人気","レトロ","景色"],time:["day","night"],image:"",hours:"11:00〜21:30",closed:"年末年始",rating:"3.48",reviews:206},
- {name:"sola aburayama",cat:"date",lat:33.5209,lng:130.3578,area:"南区・油山",note:"油山の自然と福岡市街の眺めを楽しめるカフェ＆レストラン。景色重視の郊外デート向け。",tags:["カフェ","昼","SNS人気","景色","ドライブ"],time:["day"],image:"",hours:"12:00〜18:00",closed:"第1・第3火曜、水曜日",rating:"3.30",reviews:46},
+ {name:"sola aburayama",cat:"date",lat:33.5209,lng:130.3578,area:"南区・油山",note:"油山の自然と福岡市街の眺めを楽しめるカフェ＆レストラン。景色重視の郊外カップル。",tags:["カフェ","昼","SNS人気","景色","ドライブ"],time:["day"],image:"",hours:"12:00〜18:00",closed:"第1・第3火曜、水曜日",rating:"3.30",reviews:46},
  {name:"パン・ナガタ 本店",cat:"date",lat:33.5225,lng:130.4662,area:"春日",note:"石窯パンで人気の春日市の定番店。ドライブ途中のモーニングや昼カフェに使いやすい。",tags:["カフェ","昼","パン"],time:["day"],image:"",hours:"8:00〜",closed:"火曜日",rating:"3.43",reviews:116},
  {name:"BAKE OTTO",cat:"date",lat:33.5448,lng:130.4551,area:"春日",note:"ふくやとOTTOのコラボ型ベーカリーカフェ。Instagramもあり、郊外でゆったり使いやすい。",tags:["カフェ","昼","SNS人気","パン"],time:["day"],image:"",hours:"平日 9:00〜18:00 / 土日祝 9:00〜20:00",closed:"年末年始"},
  {name:"豆香洞コーヒー 白木原店",cat:"date",lat:33.5298,lng:130.4830,area:"大野城・白木原",note:"コーヒー好きに知られる白木原の専門店。駅近で、南側エリアの昼カフェ候補として使いやすい。",tags:["カフェ","昼","コーヒー"],time:["day"],image:"",hours:"最新情報を要確認",closed:"水曜日",rating:"3.43",reviews:102},
@@ -610,29 +610,29 @@ const spots = [
  {name:"plain",cat:"date",lat:33.8667,lng:130.9001,area:"小倉北区・寿山町",note:"住宅地にある隠れ家カフェ。ミニマルな空間とスイーツで、Instagram重視の昼デート候補。",tags:["カフェ","昼","SNS人気","隠れ家"],time:["day"],image:"",hours:"11:00〜17:00",closed:"火曜・水曜"},
  {name:"こがねむし",cat:"date",lat:33.9479,lng:130.9652,area:"門司港",note:"昭和レトロな喫茶店。焼きカレーでも人気が高く、門司港散策と組み合わせやすい。",tags:["カフェ","昼","夜","SNS人気","レトロ"],time:["day","night"],image:"",hours:"11:45〜15:00 / 17:00〜21:00",closed:"金曜日",rating:"3.58",reviews:399},
  {name:"BEAR FRUITS",cat:"date",lat:33.9447,lng:130.9607,area:"門司港",note:"門司港駅近くの焼きカレー有名店。口コミ数が多く、門司港デートの食事兼カフェ枠に。",tags:["カフェ","昼","夜","門司港"],time:["day","night"],image:"",hours:"平日 11:00〜21:00 / 土日 11:00〜22:00",closed:"最新情報を要確認",rating:"3.49",reviews:570},
- {name:"Bar BULL Kitakyushu",cat:"date",lat:33.8841,lng:130.8798,area:"小倉・魚町",note:"アートな内装にダーツやカラオケもある深夜バー。公式Instagramありで、遊べる夜デート向け。",tags:["バー","夜","SNS人気","2軒目"],time:["bar"],image:"",hours:"20:00〜翌5:00",closed:"不定休",rating:"3.02",reviews:2},
+ {name:"Bar BULL Kitakyushu",cat:"date",lat:33.8841,lng:130.8798,area:"小倉・魚町",note:"アートな内装にダーツやカラオケもある深夜バー。公式Instagramありで、遊べる夜カップル。",tags:["バー","夜","SNS人気","2軒目"],time:["bar"],image:"",hours:"20:00〜翌5:00",closed:"不定休",rating:"3.02",reviews:2},
  {name:"Public House BRAVO!",cat:"date",lat:33.8651,lng:130.7676,area:"黒崎",note:"クラフトビールと肉料理が強い黒崎のビアバー。カジュアルな夜デートや2軒目に。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"月〜土 17:00〜翌1:00",closed:"日曜日",rating:"3.38",reviews:41},
- {name:"Bar Brera",cat:"date",lat:33.8659,lng:130.7670,area:"黒崎",note:"黒崎駅近くの落ち着いたオーセンティックバー。公式Instagramがあり、大人の夜デート向け。",tags:["バー","夜","SNS人気","2軒目"],time:["bar"],image:"",hours:"19:00〜翌2:00",closed:"最新情報を要確認"},
+ {name:"Bar Brera",cat:"date",lat:33.8659,lng:130.7670,area:"黒崎",note:"黒崎駅近くの落ち着いたオーセンティックバー。公式Instagramがあり、大人の夜カップル。",tags:["バー","夜","SNS人気","2軒目"],time:["bar"],image:"",hours:"19:00〜翌2:00",closed:"最新情報を要確認"},
  {name:"むなかた茶愉",cat:"date",lat:33.8312,lng:130.5142,area:"宗像",note:"宗像大社参拝とセットで寄れる甘味処。姫餅やスイーツが人気で、公式Instagramでも季節情報を発信。",tags:["カフェ","昼","SNS人気","和カフェ","ドライブ"],time:["day"],image:"",hours:"平日 10:00〜15:00 / 土日祝 9:00〜16:00",closed:"なし",rating:"3.41",reviews:79},
  {name:"古民家カフェ 琥珀と車輪",cat:"date",lat:33.8139,lng:130.5748,area:"宗像",note:"築140年級の古民家をリノベーションした和洋ミックスのカフェ。公式Instagramがあり、内装とスイーツの写真映えが強い。",tags:["カフェ","昼","SNS人気","古民家"],time:["day"],image:"",hours:"11:30〜15:00",closed:"火曜日"},
- {name:"コーヒー カウンティ クルメ",cat:"date",lat:33.3148,lng:130.5168,area:"久留米",note:"スペシャルティコーヒーで知られる久留米の人気店。公式Instagramがあり、コーヒー好きの昼デート向け。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"11:00〜19:00",closed:"火曜日",rating:"3.37",reviews:61},
+ {name:"コーヒー カウンティ クルメ",cat:"date",lat:33.3148,lng:130.5168,area:"久留米",note:"スペシャルティコーヒーで知られる久留米の人気店。公式Instagramがあり、コーヒー好きの昼カップル。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"11:00〜19:00",closed:"火曜日",rating:"3.37",reviews:61},
  {name:"林檎と葡萄の樹",cat:"date",lat:33.3525,lng:130.7770,area:"朝倉",note:"果樹園に囲まれた古民家カフェ。アップルパイが名物で、朝倉・原鶴方面のドライブデートに組み込みやすい。",tags:["カフェ","昼","SNS人気","古民家","スイーツ","ドライブ"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.46",reviews:175},
- {name:"廣久葛本舗",cat:"date",lat:33.4690,lng:130.6940,area:"朝倉・秋月",note:"秋月散策と相性のいい老舗の葛専門店。和の雰囲気と葛菓子で、落ち着いた昼デート向け。",tags:["カフェ","昼","和カフェ"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.43",reviews:100},
+ {name:"廣久葛本舗",cat:"date",lat:33.4690,lng:130.6940,area:"朝倉・秋月",note:"秋月散策と相性のいい老舗の葛専門店。和の雰囲気と葛菓子で、落ち着いた昼カップル。",tags:["カフェ","昼","和カフェ"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.43",reviews:100},
  {name:"TOP ONE CAFE",cat:"date",lat:33.6385,lng:130.6900,area:"飯塚・筑豊",note:"アメリカンダイナー風の内装が写真映えする飯塚のカフェ。公式Instagramがあり、SNS重視の昼デート候補。",tags:["カフェ","昼","SNS人気","筑豊"],time:["day"],image:"",hours:"12:00〜18:00",closed:"月曜・水曜",rating:"3.07",reviews:7},
- {name:"茶寮 千代乃園",cat:"date",lat:33.2155,lng:130.7170,area:"八女・黒木",note:"奥八女の自然と八女茶を楽しめる茶寮。景色と和の雰囲気が強く、ドライブデート向け。",tags:["カフェ","昼","SNS人気","和カフェ","景色","ドライブ"],time:["day"],image:"",hours:"11:00〜16:30",closed:"火曜・水曜",rating:"3.35",reviews:48},
+ {name:"茶寮 千代乃園",cat:"date",lat:33.2155,lng:130.7170,area:"八女・黒木",note:"奥八女の自然と八女茶を楽しめる茶寮。景色と和の雰囲気が強く、ドライブカップル。",tags:["カフェ","昼","SNS人気","和カフェ","景色","ドライブ"],time:["day"],image:"",hours:"11:00〜16:30",closed:"火曜・水曜",rating:"3.35",reviews:48},
  {name:"ASTRA cafe＆library",cat:"date",lat:33.2109,lng:130.5571,area:"八女",note:"明治・大正・昭和の趣を残す古民家カフェ＆ライブラリー。八女の白壁散策と組み合わせやすい。",tags:["カフェ","昼","夜","SNS人気","古民家"],time:["day","night"],image:"",hours:"11:00〜22:00",closed:"水曜・木曜"},
- {name:"コトリ",cat:"date",lat:33.1978,lng:130.5023,area:"筑後",note:"古民家をリノベーションした落ち着いたカフェ。素材にこだわった食事と雰囲気を楽しむ昼デート向け。",tags:["カフェ","昼","SNS人気","古民家"],time:["day"],image:"",hours:"11:00〜17:00",closed:"火曜・不定休"},
+ {name:"コトリ",cat:"date",lat:33.1978,lng:130.5023,area:"筑後",note:"古民家をリノベーションした落ち着いたカフェ。素材にこだわった食事と雰囲気を楽しむ昼カップル。",tags:["カフェ","昼","SNS人気","古民家"],time:["day"],image:"",hours:"11:00〜17:00",closed:"火曜・不定休"},
  {name:"CORDUROY cafe",cat:"date",lat:33.5877,lng:130.3946,note:"大名の街中で深夜まで使いやすいカフェ＆ダイニングバー。食事後の2軒目にも。",tags:["カフェ","夜","2軒目"],time:["night"],image:"",hours:"日〜木 11:00〜翌3:00 / 金土・祝前日 11:00〜翌5:00",closed:"不定休",rating:"3.37",reviews:201},
  {name:"manu coffee 大名店",cat:"date",lat:33.5867,lng:130.3928,note:"大名の定番コーヒースタンド。24時まで営業で、気軽な夜カフェデートに使いやすい。",tags:["カフェ","昼","夜"],time:["day","night"],image:"",hours:"9:00〜24:00",closed:"最新情報を要確認",rating:"3.41",reviews:189},
  {name:"QUON RIVER TERRACE",cat:"date",lat:33.5906,lng:130.4078,note:"那珂川沿いのリバービューが魅力。雰囲気重視の夜デートや記念日に。",tags:["カフェ","夜","夜景"],time:["night"],image:"",hours:"火〜土 11:00〜翌2:00 / 日 11:00〜24:00",closed:"月曜日",rating:"3.47",reviews:148},
- {name:"バー オスカー",cat:"date",lat:33.5879,lng:130.3929,note:"大名のオーセンティックバー。口コミ数が多く、落ち着いた大人のデート向け。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"月 19:00〜翌2:00 / 火〜土 18:00〜翌2:00",closed:"日曜日",rating:"3.85",reviews:437},
+ {name:"バー オスカー",cat:"date",lat:33.5879,lng:130.3929,note:"大名のオーセンティックバー。口コミ数が多く、落ち着いた大人のカップル。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"月 19:00〜翌2:00 / 火〜土 18:00〜翌2:00",closed:"日曜日",rating:"3.85",reviews:437},
  {name:"バー ヒグチ",cat:"date",lat:33.5942,lng:130.4062,note:"中洲川端の老舗バー。静かな雰囲気で食事後の一杯に向く。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"月〜土 19:00〜翌1:00",closed:"日曜・祝日",rating:"3.65",reviews:165},
  {name:"ラウンジ＆バー ハカタガワ",cat:"date",lat:33.5950,lng:130.4054,note:"ホテルオークラ福岡のラウンジバー。落ち着いた雰囲気で記念日デートにも使いやすい。",tags:["バー","夜"],time:["bar"],image:"",hours:"平日 14:00〜23:00 / 土日祝 12:00〜23:00",closed:"なし",rating:"3.50",reviews:96},
  {name:"ハート・ストリングス",cat:"date",lat:33.5924,lng:130.4057,area:"中洲",note:"中洲の正統派オーセンティックバー。ムーディーで落ち着いた空間は大人のデート向き。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"月〜木 19:00〜翌2:00 / 金土 19:00〜翌3:00 / 祝 19:00〜翌1:00",closed:"日曜日",rating:"3.82",reviews:319},
  {name:"ニッカバー 七島",cat:"date",lat:33.5934,lng:130.4057,area:"中洲",note:"1958年創業の老舗オーセンティックバー。木の温もりある空間で、食事後の一杯に向く。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"18:00〜24:00",closed:"最新情報を要確認",rating:"3.77",reviews:302},
- {name:"モモタ バー",cat:"date",lat:33.5875,lng:130.3929,area:"大名",note:"大名の落ち着いたオーセンティックバー。マティーニなど本格カクテルを楽しみたい夜デート向け。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"火〜日 18:00〜翌1:00",closed:"月曜日",rating:"3.74",reviews:208},
+ {name:"モモタ バー",cat:"date",lat:33.5875,lng:130.3929,area:"大名",note:"大名の落ち着いたオーセンティックバー。マティーニなど本格カクテルを楽しみたい夜カップル。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"火〜日 18:00〜翌1:00",closed:"月曜日",rating:"3.74",reviews:208},
  {name:"万",cat:"date",lat:33.5858,lng:130.3838,area:"赤坂",note:"日本茶・茶酒・甘味を静かな空間で楽しむ個性派バー。雰囲気重視の大人デートに。",tags:["バー","夜","SNS人気","和"],time:["bar"],image:"",hours:"12:00〜24:00",closed:"不定休",rating:"3.62",reviews:354},
- {name:"HIGHBALLBAR 中洲1923",cat:"date",lat:33.5937,lng:130.4052,area:"中洲",note:"中洲川端駅近くのハイボール専門バー。2軒目でも使いやすく、気軽な夜デート向け。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"18:30〜深夜帯（曜日により変動）",closed:"最新情報を要確認",rating:"3.61",reviews:162},
+ {name:"HIGHBALLBAR 中洲1923",cat:"date",lat:33.5937,lng:130.4052,area:"中洲",note:"中洲川端駅近くのハイボール専門バー。2軒目でも使いやすく、気軽な夜カップル。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"18:30〜深夜帯（曜日により変動）",closed:"最新情報を要確認",rating:"3.61",reviews:162},
  {name:"BAR CAVALLO",cat:"date",lat:33.5807,lng:130.3961,area:"薬院",note:"薬院のラグジュアリーなダイニングバー。食事から2軒目まで使え、記念日デートにも向く。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"18:00〜深夜帯",closed:"最新情報を要確認",rating:"3.50",reviews:104},
  {name:"レストラン シャンボール",cat:"date",lat:33.8859,lng:130.8822,area:"北九州・小倉",note:"リーガロイヤルホテル小倉の高層階フレンチ。夜景と記念日・プロポーズ向けプランで特別感がある。",tags:["記念日","レストラン","夜景","ホテル"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認"},
  {name:"海の彩",cat:"date",lat:33.7793,lng:130.4756,area:"福津",note:"海を眺めながら寿司や和食を楽しめる記念日向けレストラン。福津ドライブと組み合わせやすい。",tags:["記念日","レストラン","海","ドライブ"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.39",reviews:147},
@@ -640,8 +640,8 @@ const spots = [
  {name:"バー＆ダイニング CLOUDS",cat:"date",lat:33.5955,lng:130.3623,area:"百道浜",note:"高層階から福岡の夜景を楽しめるホテルダイニング。アニバーサリープランや花束・ケーキの相談ができる。",tags:["記念日","バー","夜景","ホテル"],time:["bar"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認"},
  {name:"IMURI",cat:"date",lat:33.5704,lng:130.3908,area:"桜坂",note:"高台の落ち着いた空間と市街地の夜景が魅力。記念日コースやケーキ対応のある大人向けデートスポット。",tags:["記念日","レストラン","夜景","景色"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.60",reviews:274},
  {name:"Hakata Mitsubachi",cat:"date",lat:33.5898,lng:130.4066,area:"春吉",note:"那珂川沿いのリバーサイドレストラン。夜景とアニバーサリープランがあり、誕生日や記念日に使いやすい。",tags:["記念日","レストラン","夜景","川沿い"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.46",reviews:490},
- {name:"OCEAN HOUSE",cat:"date",lat:33.6268,lng:130.2673,area:"西区・今津",note:"海を目の前にしたロケーションと記念日プランが魅力。特別感のあるランチ・ディナーデート向け。",tags:["記念日","レストラン","海","景色"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.53",reviews:275},
- {name:"BAR 倉吉 中洲",cat:"date",lat:33.5909,lng:130.4078,area:"中洲",note:"中洲の本格オーセンティックバー。深夜4時まで営業し、食事後にゆっくり飲みたいデート向け。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"月〜土 19:00〜翌4:00",closed:"日曜・祝日"},
+ {name:"OCEAN HOUSE",cat:"date",lat:33.6268,lng:130.2673,area:"西区・今津",note:"海を目の前にしたロケーションと記念日プランが魅力。特別感のあるランチ・ディナーカップル。",tags:["記念日","レストラン","海","景色"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.53",reviews:275},
+ {name:"BAR 倉吉 中洲",cat:"date",lat:33.5909,lng:130.4078,area:"中洲",note:"中洲の本格オーセンティックバー。深夜4時まで営業し、食事後にゆっくり飲みたいカップル。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"月〜土 19:00〜翌4:00",closed:"日曜・祝日"},
  {name:"マリンワールド海の中道",cat:"kids",lat:33.6616,lng:130.3639,note:"家族で楽しみやすい水族館。雨の日にも候補。",tags:["雨OK","水族館"],image:"IMG_0499.webp"},
  {name:"福岡市科学館",cat:"kids",lat:33.5772,lng:130.3780,note:"室内中心で、天気を気にせず遊びやすい。",tags:["室内","雨OK"],image:"IMG_0500.jpeg"},
  {name:"海の中道海浜公園",cat:"kids",lat:33.6635,lng:130.3613,note:"広い公園で思い切り遊びたい日に。",tags:["公園","広い"],image:"IMG_0502.jpeg"},
@@ -720,9 +720,9 @@ function startHeroSlideshow(){
 startHeroSlideshow();
 
 const styles={
- date:{color:"#ff5f8f",emoji:"❤️",label:"デート向け",grad:"linear-gradient(135deg,#ff6a98,#ff8e73)"},
- kids:{color:"#4f8cff",emoji:"🎈",label:"子育て向け",grad:"linear-gradient(135deg,#4f8cff,#68c9ff)"},
- solo:{color:"#7a67ee",emoji:"🧳",label:"一人旅向け",grad:"linear-gradient(135deg,#7a67ee,#a06cf2)"}
+ date:{color:"#ff5f8f",emoji:"❤️",label:"カップル",grad:"linear-gradient(135deg,#ff6a98,#ff8e73)"},
+ kids:{color:"#4f8cff",emoji:"🎈",label:"家族",grad:"linear-gradient(135deg,#4f8cff,#68c9ff)"},
+ solo:{color:"#7a67ee",emoji:"🧳",label:"一人旅",grad:"linear-gradient(135deg,#7a67ee,#a06cf2)"}
 };
 
 const map=L.map('map',{zoomControl:false}).setView([33.5902,130.4017],10);
