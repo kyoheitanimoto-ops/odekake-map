@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-active22" />
+  <meta name="app-build" content="20260920-active23" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-active22';
+const APP_BUILD='20260920-active23';
 
 async function ensureLatestBuild(){
   try{
@@ -282,6 +282,12 @@ const spots = [
  {name:"プーさんのいちご園",cat:"date",lat:33.20371,lng:130.56562,area:"八女",note:"九州最大級クラスのいちご狩り農園。複数品種の食べ比べを2人で楽しめる季節デート向け。",tags:["アクティブ・体験","いちご狩り","季節","ドライブ"],image:"",hours:"9:30〜16:00（最終受付15:00）",closed:"月曜日（祝日の場合は翌日）"},
  {name:"THE TRAILERHOUSE VILLAGE 大牟田 SPA",cat:"date",lat:33.013045,lng:130.468262,area:"大牟田",note:"トレーラーハウス宿泊に温泉・サウナ・BBQ・釣り堀などを組み合わせられる体験型リゾート。",tags:["アクティブ・体験","宿泊","スパ","サウナ","BBQ","釣り堀","ドライブ"],image:""},
  {name:"Glamping五感",cat:"date",lat:33.4688,lng:130.4143,area:"那珂川",note:"ドームテントやログハウス、薪サウナ、天然水風呂、BBQを楽しめるグランピング施設。2人で非日常を味わう宿泊デート向き。",tags:["アクティブ・体験","宿泊","グランピング","サウナ","BBQ","記念日","ドライブ"],image:"",hours:"チェックイン 15:00 / チェックアウト 10:00",closed:"木曜日"},
+ {name:"フォレストアドベンチャー・糸島",cat:"date",lat:33.5068,lng:130.1669,area:"糸島・二丈",note:"森の高低差を使った本格アスレチック。ジップスライドや樹上コースを2人で一緒に楽しめる。",tags:["アクティブ・体験","アスレチック","ジップライン","自然","ドライブ"],image:"",hours:"9:00〜17:00",closed:"不定休"},
+ {name:"SUPÜP 糸島",cat:"date",lat:33.6386,lng:130.1687,area:"糸島",note:"完全プライベート制のSUPツアー。サンセットSUPはカップル人気が高く、写真や動画も残しやすい。",tags:["アクティブ・体験","SUP","海","SNS人気","夕日","ドライブ"],image:"",hours:"9:00〜16:00（プランにより異なる）",closed:"海況により変動"},
+ {name:"カナディアンキャンプ乗馬クラブ 九州",cat:"date",lat:33.8488,lng:130.4932,area:"宗像・神湊",note:"玄界灘の浜辺を馬で走るビーチ乗馬体験。非日常感が強く、記念に残るアクティブデート向け。",tags:["アクティブ・体験","乗馬","海","記念日","ドライブ"],image:"",hours:"9:00〜18:00",closed:"火曜日"},
+ {name:"福岡市海づり公園",cat:"date",lat:33.62655,lng:130.22896,area:"西区・小田",note:"手ぶらでも始めやすい海釣り公園。貸し竿や初心者向け指導があり、海洋釣堀でマダイ釣りも体験できる。",tags:["アクティブ・体験","釣り","釣り堀","海","ドライブ"],image:"",hours:"季節により6:00〜20:00の範囲で変動",closed:"火曜日（祝日の場合は翌日）・年末年始"},
+ {name:"陶芸教室やわら木",cat:"date",lat:33.5258,lng:130.4378,area:"春日・博多南",note:"手回しろくろや電動ろくろを体験できる陶芸教室。公式でもデート利用を案内しており、2人で作品を残せる。",tags:["アクティブ・体験","陶芸","ものづくり","雨の日"],image:"",hours:"10:00〜18:30",closed:"月曜日"},
+ {name:"SEN CERAMIC WORKS",cat:"date",lat:33.6317,lng:130.4708,area:"東区・名子",note:"自然豊かな郊外の陶芸工房。1日体験はデートコースとしても案内され、写真や動画を撮りながら作品づくりを楽しめる。",tags:["アクティブ・体験","陶芸","ものづくり","SNS人気","雨の日","ドライブ"],image:"",hours:"開催日は予約カレンダーで確認",closed:"開催日により異なる"},
  {name:"志賀島",cat:"date",lat:33.6773,lng:130.3027,area:"福岡市東区・志賀島",note:"海の中道からそのまま走れる福岡の王道シーサイドドライブ。島一周で海・展望・史跡を楽しめる。",tags:["ドライブ","王道","海","景色","一日"],image:""},
  {name:"平尾台",cat:"date",lat:33.7476,lng:130.9041,area:"北九州・小倉南区",note:"カルスト台地の中を走る非日常感のある絶景ドライブ。季節ごとに景色が変わり、鍾乳洞と組み合わせても楽しめる。",tags:["ドライブ","王道","絶景","自然","一日"],image:""},
  {name:"波津海岸",cat:"date",lat:33.8917,lng:130.6016,area:"岡垣",note:"白い砂浜と海岸線を楽しむシーサイドドライブ。周辺にカフェや海鮮店もあり、のんびりしたデート向き。",tags:["ドライブ","海","景色","夕日","カフェ"],image:""},
@@ -415,6 +421,11 @@ let markers=[], userMarker=null, userAccuracy=null, activeCat='date';
 
 function spotVisual(s){
  const tags=s.tags||[];
+ if(tags.includes('乗馬')) return {emoji:'🐎',color:'#8b6b4d'};
+ if(tags.includes('SUP')) return {emoji:'🏄',color:'#3c97b8'};
+ if(tags.includes('釣り')) return {emoji:'🎣',color:'#3f7da3'};
+ if(tags.includes('陶芸')) return {emoji:'🏺',color:'#9a6f5a'};
+ if(tags.includes('アスレチック')) return {emoji:'🧗',color:'#5f8b56'};
  if(tags.includes('グランピング') || tags.includes('宿泊')) return {emoji:'⛺',color:'#5f7f52'};
  if(tags.includes('いちご狩り')) return {emoji:'🍓',color:'#d95d6a'};
  if(tags.includes('スパ')) return {emoji:'♨️',color:'#4f8ea8'};
@@ -479,7 +490,7 @@ function buildSubfilters(cat){
  const wrap=document.getElementById('subfilters');
  wrap.innerHTML='';
  const presets = cat==='date'
-   ? ['すべて','王道','夜景','カフェ・バー','ドライブ','雨の日','記念日','アクティブ・体験']
+   ? ['すべて','王道','夜景','カフェ・バー','ドライブ','アクティブ・体験','雨の日','記念日']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
