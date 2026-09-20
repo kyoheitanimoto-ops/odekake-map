@@ -276,6 +276,12 @@ const spots = [
  {name:"THE CRAFT Bar and Grill",cat:"date",lat:33.5894,lng:130.3935,note:"大名ガーデンシティのニューアメリカン。昼から夜まで使いやすい街中デート候補。",tags:["カフェ","昼","夜","記念日"],time:["day","night"],image:"",hours:"11:00〜23:00",closed:"最新情報を要確認",rating:"3.50",reviews:279},
  {name:"マハロ大人の隠れ家 大名店",cat:"date",lat:33.5898,lng:130.3916,note:"アンティーク調の落ち着いた雰囲気で、夜デートや記念日にも使いやすい。",tags:["カフェ","夜","記念日"],time:["night"],image:"",hours:"月・水〜金 15:00〜24:00 / 土日 11:30〜14:00・15:00〜24:00",closed:"火曜日",rating:"3.61",reviews:172},
  {name:"GRANDMIRAGE WHOLE NOTE CAFE",cat:"date",lat:33.5865,lng:130.3992,note:"今泉で昼から深夜まで使える大型カフェ。食事後の2軒目にも向く。",tags:["カフェ","昼","夜","2軒目"],time:["day","night"],image:"",hours:"月〜木・日・祝 12:00〜翌2:00 / 金土・祝前日 12:00〜翌3:00",closed:"最新情報を要確認",rating:"3.36",reviews:195},
+ {name:"CORDUROY cafe",cat:"date",lat:33.5877,lng:130.3946,note:"大名の街中で深夜まで使いやすいカフェ＆ダイニングバー。食事後の2軒目にも。",tags:["カフェ","夜","2軒目"],time:["night"],image:"",hours:"日〜木 11:00〜翌3:00 / 金土・祝前日 11:00〜翌5:00",closed:"不定休",rating:"3.37",reviews:201},
+ {name:"manu coffee 大名店",cat:"date",lat:33.5867,lng:130.3928,note:"大名の定番コーヒースタンド。24時まで営業で、気軽な夜カフェデートに使いやすい。",tags:["カフェ","昼","夜"],time:["day","night"],image:"",hours:"9:00〜24:00",closed:"最新情報を要確認",rating:"3.41",reviews:189},
+ {name:"QUON RIVER TERRACE",cat:"date",lat:33.5906,lng:130.4078,note:"那珂川沿いのリバービューが魅力。雰囲気重視の夜デートや記念日に。",tags:["カフェ","夜","記念日","夜景"],time:["night"],image:"",hours:"火〜土 11:00〜翌2:00 / 日 11:00〜24:00",closed:"月曜日",rating:"3.47",reviews:148},
+ {name:"バー オスカー",cat:"date",lat:33.5879,lng:130.3929,note:"大名のオーセンティックバー。口コミ数が多く、落ち着いた大人のデート向け。",tags:["バー","夜","記念日","2軒目"],time:["bar"],image:"",hours:"月 19:00〜翌2:00 / 火〜土 18:00〜翌2:00",closed:"日曜日",rating:"3.85",reviews:437},
+ {name:"バー ヒグチ",cat:"date",lat:33.5942,lng:130.4062,note:"中洲川端の老舗バー。静かな雰囲気で食事後の一杯に向く。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"月〜土 19:00〜翌1:00",closed:"日曜・祝日",rating:"3.65",reviews:165},
+ {name:"ラウンジ＆バー ハカタガワ",cat:"date",lat:33.5950,lng:130.4054,note:"ホテルオークラ福岡のラウンジバー。落ち着いた雰囲気で記念日デートにも使いやすい。",tags:["バー","夜","記念日"],time:["bar"],image:"",hours:"平日 14:00〜23:00 / 土日祝 12:00〜23:00",closed:"なし",rating:"3.50",reviews:96},
  {name:"マリンワールド海の中道",cat:"kids",lat:33.6616,lng:130.3639,note:"家族で楽しみやすい水族館。雨の日にも候補。",tags:["雨OK","水族館"],image:"IMG_0499.webp"},
  {name:"福岡市科学館",cat:"kids",lat:33.5772,lng:130.3780,note:"室内中心で、天気を気にせず遊びやすい。",tags:["室内","雨OK"],image:"IMG_0500.jpeg"},
  {name:"海の中道海浜公園",cat:"kids",lat:33.6635,lng:130.3613,note:"広い公園で思い切り遊びたい日に。",tags:["公園","広い"],image:"IMG_0502.jpeg"},
@@ -344,7 +350,7 @@ function buildSubfilters(cat){
  const wrap=document.getElementById('subfilters');
  wrap.innerHTML='';
  const presets = cat==='date'
-   ? ['すべて','王道','夜景','カフェ','ドライブ','雨の日','記念日']
+   ? ['すべて','王道','夜景','カフェ・バー','ドライブ','雨の日','記念日']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
@@ -364,12 +370,13 @@ function buildSubfilters(cat){
 function buildCafeTimeFilters(cat){
  const wrap=document.getElementById('cafeTimeFilters');
  wrap.innerHTML='';
- wrap.classList.toggle('show',cat==='date' && activeSubfilter==='カフェ');
- if(cat!=='date' || activeSubfilter!=='カフェ') return;
+ wrap.classList.toggle('show',cat==='date' && activeSubfilter==='カフェ・バー');
+ if(cat!=='date' || activeSubfilter!=='カフェ・バー') return;
  [
    ['all','すべて'],
    ['day','☀️ 昼カフェ'],
-   ['night','🌙 夜カフェ']
+   ['night','🌙 夜カフェ'],
+   ['bar','🍸 バー']
  ].forEach(([value,label])=>{
    const b=document.createElement('button');
    b.className='cafetime'+(activeCafeTime===value?' active':'');
@@ -387,9 +394,13 @@ function renderCategory(cat){
  markers.forEach(m=>map.removeLayer(m)); markers=[];
  let chosen=spots.filter(s=>s.cat===cat);
  if(activeSubfilter!=='すべて'){
-   chosen=chosen.filter(s=>s.tags.includes(activeSubfilter));
+   if(activeSubfilter==='カフェ・バー'){
+     chosen=chosen.filter(s=>s.tags.includes('カフェ') || s.tags.includes('バー'));
+   } else {
+     chosen=chosen.filter(s=>s.tags.includes(activeSubfilter));
+   }
  }
- if(activeSubfilter==='カフェ' && activeCafeTime!=='all'){
+ if(activeSubfilter==='カフェ・バー' && activeCafeTime!=='all'){
    chosen=chosen.filter(s=>Array.isArray(s.time) && s.time.includes(activeCafeTime));
  }
  const st=styles[cat];
