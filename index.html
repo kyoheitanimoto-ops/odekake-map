@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-copy27" />
+  <meta name="app-build" content="20260920-homeconcept28" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -131,23 +131,75 @@
       padding:10px 14px;border-radius:999px;font-size:12px;font-weight:800;opacity:0;pointer-events:none;transition:.2s;white-space:nowrap
     }
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-    .home{background:#f7fbff;position:relative;overflow:hidden;padding-top:env(safe-area-inset-top)}
-    .home-hero{height:43%;min-height:280px;position:relative;display:flex;align-items:flex-end;overflow:hidden;background:#dfe7ee}
+    .home{background:#fff;position:relative;overflow:hidden;padding-top:env(safe-area-inset-top)}
+    .home-hero{
+      height:55%;min-height:360px;position:relative;display:flex;align-items:flex-end;
+      overflow:hidden;background:#dfe7ee
+    }
     .hero-slides{position:absolute;inset:0}
-    .hero-slide{position:absolute;inset:-2%;background-position:center;background-size:cover;opacity:0;transform:scale(1.02);transition:opacity 1.6s ease;will-change:opacity,transform}
+    .hero-slide{
+      position:absolute;inset:-2%;background-position:center;background-size:cover;opacity:0;
+      transform:scale(1.02);transition:opacity 1.6s ease;will-change:opacity,transform
+    }
     .hero-slide.is-active{opacity:1;animation:heroKenBurns 6.2s ease-out forwards}
     @keyframes heroKenBurns{from{transform:scale(1.02)}to{transform:scale(1.08)}}
-    .home-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(16,39,66,.06) 50%,rgba(16,39,66,.42));z-index:1;pointer-events:none}
-    .hero-copy{position:relative;z-index:2;color:#fff;padding:0 24px 34px;text-shadow:0 2px 16px rgba(0,0,0,.28);max-width:92%}
-    .hero-copy h2{font-family:"Klee One","Hiragino Mincho ProN","Yu Mincho",serif;font-size:33px;line-height:1.3;margin:0;font-weight:600;letter-spacing:.045em}
-    .hero-copy p{font-family:"Klee One","Hiragino Mincho ProN","Yu Mincho",serif;font-size:13px;line-height:1.7;margin:12px 0 0;font-weight:600;letter-spacing:.04em}
-    .purpose-sheet{flex:1;background:#fff;margin-top:-20px;z-index:3;border-radius:28px 28px 0 0;padding:23px 18px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(28,45,70,.08)}
-    .purpose-title{text-align:center;font-size:16px;font-weight:900;margin:0 0 17px}
+    .home-hero:after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.01) 45%,rgba(14,39,63,.22) 100%);
+      z-index:1;pointer-events:none
+    }
+    .hero-copy{
+      position:relative;z-index:2;color:#14324f;padding:0 0 72px 42px;
+      text-shadow:0 1px 8px rgba(255,255,255,.55);max-width:78%
+    }
+    .hero-copy h2{
+      font-family:"Klee One","Hiragino Mincho ProN","Yu Mincho",serif;
+      font-size:34px;line-height:1.5;margin:0;font-weight:600;letter-spacing:.07em
+    }
+    .hero-copy p{
+      font-family:"Klee One","Hiragino Mincho ProN","Yu Mincho",serif;
+      font-size:13px;line-height:1.7;margin:20px 0 0 44px;font-weight:600;letter-spacing:.08em;color:#24425d
+    }
+    .purpose-sheet{
+      position:relative;z-index:4;flex:1;background:#fff;margin-top:-28px;border-radius:30px 30px 0 0;
+      padding:22px 18px calc(92px + env(safe-area-inset-bottom));
+      box-shadow:0 -12px 30px rgba(35,55,80,.08)
+    }
+    .purpose-title{text-align:center;font-size:16px;font-weight:900;margin:0 0 17px;color:#17171c}
     .purpose-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .purpose{border:0;border-radius:19px;min-height:104px;padding:13px 6px;background:#f7f7fa;font-weight:850;color:#30303a;font-size:12px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.025)}
-    .purpose span{display:block;font-size:30px;margin-bottom:9px}
-    .purpose.date{background:#fff0f4}.purpose.kids{background:#fff5e8}.purpose.solo{background:#edf8ef}.purpose.soon1{background:#f4efff}.purpose.soon2{background:#eef6ff}.purpose.soon3{background:#fff7dc}
-    .home-foot{text-align:center;font-size:11px;color:#9297a2;margin-top:14px}
+    .purpose{
+      border:0;border-radius:18px;min-height:112px;padding:14px 6px 12px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+      font-weight:850;color:#30303a;font-size:12px;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.018)
+    }
+    .purpose-icon{width:38px;height:38px;display:grid;place-items:center}
+    .purpose-icon svg{width:36px;height:36px;stroke:currentColor;fill:none;stroke-width:2.15;stroke-linecap:round;stroke-linejoin:round}
+    .purpose-label{display:block;line-height:1.2}
+    .purpose.date{background:#fff0f4;color:#ef5d82}
+    .purpose.kids{background:#fff3e7;color:#f08a42}
+    .purpose.solo{background:#edf8ef;color:#4da466}
+    .purpose.soon1{background:#f5efff;color:#8057bd}
+    .purpose.soon2{background:#eef6ff;color:#4f91c6}
+    .purpose.soon3{background:#fff7dc;color:#e2a92f}
+    .home-nav{
+      position:absolute;z-index:8;left:0;right:0;bottom:0;
+      height:calc(72px + env(safe-area-inset-bottom));padding:8px 26px env(safe-area-inset-bottom);
+      background:rgba(255,255,255,.98);border-top:1px solid #eceff3;
+      display:grid;grid-template-columns:repeat(3,1fr);align-items:start
+    }
+    .home-nav-item{
+      border:0;background:transparent;color:#a3a9b1;display:flex;flex-direction:column;
+      align-items:center;gap:4px;font-size:10px;font-weight:750;padding:0
+    }
+    .home-nav-item.active{color:#2589e8}
+    .home-nav-icon{width:25px;height:25px;display:grid;place-items:center}
+    .home-nav-icon svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    @media (max-height:760px){
+      .home-hero{height:49%;min-height:310px}
+      .hero-copy{padding-bottom:58px}
+      .purpose{min-height:96px}
+    }
     .map-head{display:flex;align-items:center;gap:10px;padding:calc(9px + env(safe-area-inset-top)) 14px 2px}
     .back-btn{border:0;background:#fff;width:38px;height:38px;border-radius:13px;font-size:22px;box-shadow:0 5px 16px rgba(0,0,0,.08)}
     .map-head-title{font-size:17px;font-weight:900;flex:1;text-align:center;margin-right:48px}
@@ -184,24 +236,60 @@
 <div class="app">
   <section class="screen home" id="homeScreen">
     <div class="home-hero">
-    <div class="hero-slides" aria-hidden="true">
-      <div class="hero-slide is-active"></div>
-      <div class="hero-slide"></div>
+      <div class="hero-slides" aria-hidden="true">
+        <div class="hero-slide is-active"></div>
+        <div class="hero-slide"></div>
+      </div>
+      <div class="hero-copy">
+        <h2>今日は、<br>どこへ行こう？</h2>
+        <p>いつもの日を、<br>ちょっと特別に。</p>
+      </div>
     </div>
-    <div class="hero-copy"><h2>今日は、<br>どこへ行こう？</h2><p>いつもの日を、ちょっと特別に。</p></div>
-  </div>
+
     <div class="purpose-sheet">
       <div class="purpose-title">目的を選んでください</div>
       <div class="purpose-grid">
-        <button class="purpose date" data-go="date"><span>♥️</span>デート向け</button>
-        <button class="purpose kids" data-go="kids"><span>👨‍👩‍👧</span>子育て向け</button>
-        <button class="purpose solo" data-go="solo"><span>⛰️</span>一人旅向け</button>
-        <button class="purpose soon1" data-soon="観光・定番"><span>📷</span>観光・定番</button>
-        <button class="purpose soon2" data-soon="カフェ・グルメ"><span>☕</span>カフェ・グルメ</button>
-        <button class="purpose soon3" data-soon="その他"><span>⭐</span>その他</button>
+        <button class="purpose date" data-go="date">
+          <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.6 4.2 13A5.3 5.3 0 0 1 11.7 5.5L12 5.8l.3-.3A5.3 5.3 0 0 1 19.8 13Z" fill="currentColor" stroke="none"/></svg></span>
+          <span class="purpose-label">デート向け</span>
+        </button>
+        <button class="purpose kids" data-go="kids">
+          <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="2.4"/><circle cx="5.8" cy="9" r="1.8"/><circle cx="18.2" cy="9" r="1.8"/><path d="M8.5 20v-5.2c0-2 1.5-3.6 3.5-3.6s3.5 1.6 3.5 3.6V20M2.8 19v-4c0-1.7 1.3-3 3-3 1 0 1.9.5 2.5 1.2M21.2 19v-4c0-1.7-1.3-3-3-3-1 0-1.9.5-2.5 1.2"/></svg></span>
+          <span class="purpose-label">子育て向け</span>
+        </button>
+        <button class="purpose solo" data-go="solo">
+          <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20 10.2 6.5 14 13l2.1-3.5L21 20Z"/><path d="m8.2 10.2 2 1.7 1.7-2"/></svg></span>
+          <span class="purpose-label">一人旅向け</span>
+        </button>
+        <button class="purpose soon1" data-soon="観光・定番">
+          <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h3l1.3-2h7.4l1.3 2h3a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5a2 2 0 0 1 2-2Z"/><circle cx="12" cy="13.5" r="4"/></svg></span>
+          <span class="purpose-label">観光・定番</span>
+        </button>
+        <button class="purpose soon2" data-soon="カフェ・グルメ">
+          <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h13v8a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z"/><path d="M17 8h1.5a3 3 0 0 1 0 6H17M3 21h16"/></svg></span>
+          <span class="purpose-label">カフェ・グルメ</span>
+        </button>
+        <button class="purpose soon3" data-soon="その他">
+          <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9Z" fill="currentColor" stroke="none"/></svg></span>
+          <span class="purpose-label">その他</span>
+        </button>
       </div>
-      <div class="home-foot">行きたい場所が、きっと見つかる。</div>
     </div>
+
+    <nav class="home-nav" aria-label="メインナビゲーション">
+      <button class="home-nav-item active" type="button">
+        <span class="home-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10H6V10"/><path d="M9 20v-6h6v6"/></svg></span>
+        <span>ホーム</span>
+      </button>
+      <button class="home-nav-item" type="button" data-soon="お気に入り">
+        <span class="home-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.6 4.2 13A5.3 5.3 0 0 1 11.7 5.5L12 5.8l.3-.3A5.3 5.3 0 0 1 19.8 13Z"/></svg></span>
+        <span>お気に入り</span>
+      </button>
+      <button class="home-nav-item" type="button" data-soon="設定">
+        <span class="home-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.8 1.8 0 0 0 .36 2l.06.06-2.76 2.76-.06-.06a1.8 1.8 0 0 0-2-.36 1.8 1.8 0 0 0-1.1 1.65V21h-3.9v-.08A1.8 1.8 0 0 0 8.9 19.3a1.8 1.8 0 0 0-2 .36l-.06.06-2.76-2.76.06-.06a1.8 1.8 0 0 0 .36-2 1.8 1.8 0 0 0-1.65-1.1H2.8V10h.08A1.8 1.8 0 0 0 4.5 8.9a1.8 1.8 0 0 0-.36-2l-.06-.06 2.76-2.76.06.06a1.8 1.8 0 0 0 2 .36A1.8 1.8 0 0 0 10 2.85V2.8h3.9v.08A1.8 1.8 0 0 0 15 4.5a1.8 1.8 0 0 0 2-.36l.06-.06 2.76 2.76-.06.06a1.8 1.8 0 0 0-.36 2 1.8 1.8 0 0 0 1.65 1.1h.08v3.9h-.08A1.8 1.8 0 0 0 19.4 15Z"/></svg></span>
+        <span>設定</span>
+      </button>
+    </nav>
   </section>
 
   <section class="screen hidden" id="mapScreen">
@@ -250,7 +338,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-copy27';
+const APP_BUILD='20260920-homeconcept28';
 
 async function ensureLatestBuild(){
   try{
