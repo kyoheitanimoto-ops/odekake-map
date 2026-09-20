@@ -100,7 +100,11 @@
     .popup-title{font-size:16px;font-weight:900;letter-spacing:-.02em;margin-bottom:6px}
     .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
     .tag{font-size:10px;font-weight:800;background:#f4f4f7;color:#5c5c66;padding:5px 7px;border-radius:999px}
-    .popup-note{font-size:12px;line-height:1.6;color:var(--muted);margin-bottom:12px}
+    .popup-note{font-size:12px;line-height:1.6;color:var(--muted);margin-bottom:10px}
+    .popup-info{display:grid;gap:6px;margin:8px 0 11px}
+    .popup-row{display:flex;gap:7px;align-items:flex-start;font-size:11px;line-height:1.45;color:#4f4f59}
+    .popup-row b{color:#222;font-weight:850;min-width:58px}
+    .popup-disclaimer{font-size:9px;color:#9a9aa4;line-height:1.4;margin-top:-3px;margin-bottom:10px}
     .gmaps{display:block;text-decoration:none;text-align:center;color:#fff!important;background:#111116;padding:11px 12px;border-radius:12px;font-weight:850;font-size:13px}
     .bottom-strip{
       position:absolute;left:10px;right:68px;bottom:12px;z-index:490;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px
@@ -262,11 +266,17 @@ function popupHtml(s){
  const st=styles[s.cat];
  const tags=s.tags.map(t=>`<span class="tag">${t}</span>`).join('');
  const q=encodeURIComponent(s.name);
+ const info=[
+  s.hours ? `<div class="popup-row"><b>営業時間</b><span>${s.hours}</span></div>` : '',
+  s.closed ? `<div class="popup-row"><b>定休日</b><span>${s.closed}</span></div>` : '',
+  s.rating ? `<div class="popup-row"><b>食べログ</b><span>★ ${s.rating}${s.reviews ? `（口コミ${s.reviews}件）` : ''}</span></div>` : ''
+ ].join('');
  return `
   <div class="popup-visual" style="background:${st.grad}">${s.image ? `<img src="${s.image}" alt="${s.name}">` : st.emoji}</div>
   <div class="popup-title">${s.name}</div>
   <div class="tags">${tags}</div>
   <div class="popup-note">${s.note}</div>
+  ${info ? `<div class="popup-info">${info}</div><div class="popup-disclaimer">営業時間・定休日・評価は変更される場合があります。最新情報は店舗・Googleマップ等でご確認ください。</div>` : ''}
   <a class="gmaps" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${q}">Googleマップで見る</a>`;
 }
 
