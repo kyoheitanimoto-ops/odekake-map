@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-rainpref19" />
+  <meta name="app-build" content="20260920-anniv20" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-rainpref19';
+const APP_BUILD='20260920-anniv20';
 
 async function ensureLatestBuild(){
   try{
@@ -376,6 +376,13 @@ const spots = [
  {name:"万",cat:"date",lat:33.5858,lng:130.3838,area:"赤坂",note:"日本茶・茶酒・甘味を静かな空間で楽しむ個性派バー。雰囲気重視の大人デートに。",tags:["バー","夜","SNS人気","記念日","和"],time:["bar"],image:"",hours:"12:00〜24:00",closed:"不定休",rating:"3.62",reviews:354},
  {name:"HIGHBALLBAR 中洲1923",cat:"date",lat:33.5937,lng:130.4052,area:"中洲",note:"中洲川端駅近くのハイボール専門バー。2軒目でも使いやすく、気軽な夜デート向け。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"18:30〜深夜帯（曜日により変動）",closed:"最新情報を要確認",rating:"3.61",reviews:162},
  {name:"BAR CAVALLO",cat:"date",lat:33.5807,lng:130.3961,area:"薬院",note:"薬院のラグジュアリーなダイニングバー。食事から2軒目まで使え、記念日デートにも向く。",tags:["バー","夜","記念日","2軒目"],time:["bar"],image:"",hours:"18:00〜深夜帯",closed:"最新情報を要確認",rating:"3.50",reviews:104},
+ {name:"レストラン シャンボール",cat:"date",lat:33.8859,lng:130.8822,area:"北九州・小倉",note:"リーガロイヤルホテル小倉の高層階フレンチ。夜景と記念日・プロポーズ向けプランで特別感がある。",tags:["記念日","レストラン","夜景","ホテル"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認"},
+ {name:"海の彩",cat:"date",lat:33.7793,lng:130.4756,area:"福津",note:"海を眺めながら寿司や和食を楽しめる記念日向けレストラン。福津ドライブと組み合わせやすい。",tags:["記念日","レストラン","海","ドライブ"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.39",reviews:147},
+ {name:"レッドフランマ",cat:"date",lat:33.5896,lng:130.3994,area:"天神",note:"夜景とアニバーサリー向けプランが魅力のホテルレストラン。花束やメッセージプレートにも対応しやすい。",tags:["記念日","レストラン","夜景","ホテル"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認"},
+ {name:"バー＆ダイニング CLOUDS",cat:"date",lat:33.5955,lng:130.3623,area:"百道浜",note:"高層階から福岡の夜景を楽しめるホテルダイニング。アニバーサリープランや花束・ケーキの相談ができる。",tags:["記念日","バー","夜景","ホテル"],time:["bar"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認"},
+ {name:"IMURI",cat:"date",lat:33.5704,lng:130.3908,area:"桜坂",note:"高台の落ち着いた空間と市街地の夜景が魅力。記念日コースやケーキ対応のある大人向けデートスポット。",tags:["記念日","レストラン","夜景","景色"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.60",reviews:274},
+ {name:"Hakata Mitsubachi",cat:"date",lat:33.5898,lng:130.4066,area:"春吉",note:"那珂川沿いのリバーサイドレストラン。夜景とアニバーサリープランがあり、誕生日や記念日に使いやすい。",tags:["記念日","レストラン","夜景","川沿い"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.46",reviews:490},
+ {name:"OCEAN HOUSE",cat:"date",lat:33.6268,lng:130.2673,area:"西区・今津",note:"海を目の前にしたロケーションと記念日プランが魅力。特別感のあるランチ・ディナーデート向け。",tags:["記念日","レストラン","海","景色"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.53",reviews:275},
  {name:"BAR 倉吉 中洲",cat:"date",lat:33.5909,lng:130.4078,area:"中洲",note:"中洲の本格オーセンティックバー。深夜4時まで営業し、食事後にゆっくり飲みたいデート向け。",tags:["バー","夜","王道","2軒目"],time:["bar"],image:"",hours:"月〜土 19:00〜翌4:00",closed:"日曜・祝日"},
  {name:"マリンワールド海の中道",cat:"kids",lat:33.6616,lng:130.3639,note:"家族で楽しみやすい水族館。雨の日にも候補。",tags:["雨OK","水族館"],image:"IMG_0499.webp"},
  {name:"福岡市科学館",cat:"kids",lat:33.5772,lng:130.3780,note:"室内中心で、天気を気にせず遊びやすい。",tags:["室内","雨OK"],image:"IMG_0500.jpeg"},
@@ -404,6 +411,7 @@ function spotVisual(s){
  if(tags.includes('スパ')) return {emoji:'♨️',color:'#4f8ea8'};
  if(tags.includes('科学館')) return {emoji:'🔬',color:'#5576c7'};
  if(tags.includes('美術館') || tags.includes('博物館')) return {emoji:'🖼️',color:'#8a6aa8'};
+ if(tags.includes('レストラン')) return {emoji:'🍽️',color:'#b65f78'};
  if(tags.includes('バー')) return {emoji:'🍸',color:'#7457c8'};
  if(tags.includes('カフェ')) return {emoji:'☕',color:'#5aa6a0'};
  if(tags.includes('夜景')) return {emoji:'🌙',color:'#344a78'};
