@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-cafecolor08" />
+  <meta name="app-build" content="20260920-kitakyushu09" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-cafecolor08';
+const APP_BUILD='20260920-kitakyushu09';
 
 async function ensureLatestBuild(){
   try{
@@ -302,6 +302,15 @@ const spots = [
  {name:"茶房 ぎゃらりー かさの家",cat:"date",lat:33.5198,lng:130.5335,area:"太宰府",note:"太宰府参道で梅ヶ枝餅や甘味を楽しめる落ち着いた茶房。太宰府デートの休憩に使いやすい。",tags:["カフェ","昼","和カフェ","王道"],time:["day"],image:"",hours:"11:00〜17:30",closed:"最新情報を要確認",rating:"3.54",reviews:308},
  {name:"アプテカ フレーゴ",cat:"date",lat:33.7832,lng:130.4868,area:"福津",note:"福津の自然に囲まれた一軒家カフェ＆イタリアン。おしゃれな空間と盛り付けでドライブデート向き。",tags:["カフェ","昼","SNS人気","一軒家","ドライブ"],time:["day"],image:"",hours:"火〜日 11:30〜17:00 / 土 18:00〜22:00も営業",closed:"月曜日",rating:"3.41",reviews:106},
  {name:"Fruit Factory Mooon de Retro",cat:"date",lat:33.9469,lng:130.9624,area:"門司港",note:"旧門司税関のレトロ建築で旬のフルーツパフェを楽しめる。海沿いテラスと門司港散策の組み合わせが強い。",tags:["カフェ","昼","SNS人気","スイーツ","景色","王道"],time:["day"],image:"",hours:"11:00〜18:00（季節変動あり）",closed:"不定休",rating:"3.55",reviews:185},
+ {name:"CAFE DE FAN FAN",cat:"date",lat:33.8847,lng:130.8794,area:"小倉・京町",note:"小倉の老舗喫茶。レトロな空間と洋食・コーヒーで、街歩きデートの休憩に使いやすい。",tags:["カフェ","昼","SNS人気","レトロ","王道"],time:["day"],image:"",hours:"月・水・土・日 7:30〜20:00 / 木・金 8:00〜20:00",closed:"火曜日",rating:"3.46",reviews:122},
+ {name:"REVERSE",cat:"date",lat:33.8818,lng:130.8767,area:"小倉・船場町",note:"静かで個性的な空間が魅力のカフェ＆バー。昼カフェから深夜の2軒目まで使える。",tags:["カフェ","昼","夜","バー","SNS人気","2軒目"],time:["day","night","bar"],image:"",hours:"11:30〜翌1:00",closed:"不定休",rating:"3.46",reviews:119},
+ {name:"CafeBar Plusmet",cat:"date",lat:33.8863,lng:130.8815,area:"小倉駅前",note:"小倉駅近くのカフェバー。昼はスイーツ、夜はバー利用まででき、公式Instagramもある。",tags:["カフェ","昼","夜","バー","SNS人気"],time:["day","night","bar"],image:"",hours:"11:00〜16:00 / 17:00〜23:00",closed:"火曜日"},
+ {name:"plain",cat:"date",lat:33.8667,lng:130.9001,area:"小倉北区・寿山町",note:"住宅地にある隠れ家カフェ。ミニマルな空間とスイーツで、Instagram重視の昼デート候補。",tags:["カフェ","昼","SNS人気","隠れ家"],time:["day"],image:"",hours:"11:00〜17:00",closed:"火曜・水曜"},
+ {name:"こがねむし",cat:"date",lat:33.9479,lng:130.9652,area:"門司港",note:"昭和レトロな喫茶店。焼きカレーでも人気が高く、門司港散策と組み合わせやすい。",tags:["カフェ","昼","夜","SNS人気","レトロ","王道"],time:["day","night"],image:"",hours:"11:45〜15:00 / 17:00〜21:00",closed:"金曜日",rating:"3.58",reviews:399},
+ {name:"BEAR FRUITS",cat:"date",lat:33.9447,lng:130.9607,area:"門司港",note:"門司港駅近くの焼きカレー有名店。口コミ数が多く、門司港デートの食事兼カフェ枠に。",tags:["カフェ","昼","夜","王道","門司港"],time:["day","night"],image:"",hours:"平日 11:00〜21:00 / 土日 11:00〜22:00",closed:"最新情報を要確認",rating:"3.49",reviews:570},
+ {name:"Bar BULL Kitakyushu",cat:"date",lat:33.8841,lng:130.8798,area:"小倉・魚町",note:"アートな内装にダーツやカラオケもある深夜バー。公式Instagramありで、遊べる夜デート向け。",tags:["バー","夜","SNS人気","2軒目"],time:["bar"],image:"",hours:"20:00〜翌5:00",closed:"不定休",rating:"3.02",reviews:2},
+ {name:"Public House BRAVO!",cat:"date",lat:33.8651,lng:130.7676,area:"黒崎",note:"クラフトビールと肉料理が強い黒崎のビアバー。カジュアルな夜デートや2軒目に。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"月〜土 17:00〜翌1:00",closed:"日曜日",rating:"3.38",reviews:41},
+ {name:"Bar Brera",cat:"date",lat:33.8659,lng:130.7670,area:"黒崎",note:"黒崎駅近くの落ち着いたオーセンティックバー。公式Instagramがあり、大人の夜デート向け。",tags:["バー","夜","SNS人気","記念日","2軒目"],time:["bar"],image:"",hours:"19:00〜翌2:00",closed:"最新情報を要確認"},
  {name:"むなかた茶愉",cat:"date",lat:33.8312,lng:130.5142,area:"宗像",note:"宗像大社参拝とセットで寄れる甘味処。姫餅やスイーツが人気で、公式Instagramでも季節情報を発信。",tags:["カフェ","昼","SNS人気","和カフェ","ドライブ"],time:["day"],image:"",hours:"平日 10:00〜15:00 / 土日祝 9:00〜16:00",closed:"なし",rating:"3.41",reviews:79},
  {name:"古民家カフェ 琥珀と車輪",cat:"date",lat:33.8139,lng:130.5748,area:"宗像",note:"築140年級の古民家をリノベーションした和洋ミックスのカフェ。公式Instagramがあり、内装とスイーツの写真映えが強い。",tags:["カフェ","昼","SNS人気","古民家","記念日"],time:["day"],image:"",hours:"11:30〜15:00",closed:"火曜日"},
  {name:"コーヒー カウンティ クルメ",cat:"date",lat:33.3148,lng:130.5168,area:"久留米",note:"スペシャルティコーヒーで知られる久留米の人気店。公式Instagramがあり、コーヒー好きの昼デート向け。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"11:00〜19:00",closed:"火曜日",rating:"3.37",reviews:61},
