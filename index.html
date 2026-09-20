@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-citywide07" />
+  <meta name="app-build" content="20260920-cafecolor08" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-citywide07';
+const APP_BUILD='20260920-cafecolor08';
 
 async function ensureLatestBuild(){
   try{
@@ -349,7 +349,7 @@ let markers=[], userMarker=null, userAccuracy=null, activeCat='date';
 function spotVisual(s){
  const tags=s.tags||[];
  if(tags.includes('バー')) return {emoji:'🍸',color:'#7457c8'};
- if(tags.includes('カフェ')) return {emoji:'☕',color:'#b98252'};
+ if(tags.includes('カフェ')) return {emoji:'☕',color:'#5aa6a0'};
  if(tags.includes('夜景')) return {emoji:'🌙',color:'#344a78'};
  if(tags.includes('ショッピング')) return {emoji:'🛍️',color:'#e56c91'};
  if(tags.includes('水族館')) return {emoji:'🐬',color:'#3a91d8'};
