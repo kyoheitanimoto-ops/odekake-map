@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-audit24" />
+  <meta name="app-build" content="20260920-hero25" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -129,11 +129,15 @@
     }
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
     .home{background:#f7fbff;position:relative;overflow:hidden;padding-top:env(safe-area-inset-top)}
-    .home-hero{height:43%;min-height:280px;position:relative;background:url("IMG_0504.jpeg") center/cover no-repeat;display:flex;align-items:flex-end}
-    .home-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(16,39,66,.08) 55%,rgba(16,39,66,.35))}
-    .hero-copy{position:relative;z-index:2;color:#fff;padding:0 24px 34px;text-shadow:0 2px 14px rgba(0,0,0,.25)}
-    .hero-copy h2{font-size:31px;line-height:1.35;margin:0;font-weight:850;letter-spacing:.03em}
-    .hero-copy p{font-size:13px;margin:10px 0 0;font-weight:700}
+    .home-hero{height:43%;min-height:280px;position:relative;display:flex;align-items:flex-end;overflow:hidden;background:#dfe7ee}
+    .hero-slides{position:absolute;inset:0}
+    .hero-slide{position:absolute;inset:-2%;background-position:center;background-size:cover;opacity:0;transform:scale(1.02);transition:opacity 1.6s ease;will-change:opacity,transform}
+    .hero-slide.is-active{opacity:1;animation:heroKenBurns 6.2s ease-out forwards}
+    @keyframes heroKenBurns{from{transform:scale(1.02)}to{transform:scale(1.08)}}
+    .home-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(16,39,66,.06) 50%,rgba(16,39,66,.42));z-index:1;pointer-events:none}
+    .hero-copy{position:relative;z-index:2;color:#fff;padding:0 24px 34px;text-shadow:0 2px 16px rgba(0,0,0,.28);max-width:92%}
+    .hero-copy h2{font-size:32px;line-height:1.22;margin:0;font-weight:850;letter-spacing:.015em}
+    .hero-copy p{font-size:12.5px;line-height:1.55;margin:11px 0 0;font-weight:700;letter-spacing:.01em}
     .purpose-sheet{flex:1;background:#fff;margin-top:-20px;z-index:3;border-radius:28px 28px 0 0;padding:23px 18px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(28,45,70,.08)}
     .purpose-title{text-align:center;font-size:16px;font-weight:900;margin:0 0 17px}
     .purpose-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -176,7 +180,13 @@
 <body>
 <div class="app">
   <section class="screen home" id="homeScreen">
-    <div class="home-hero"><div class="hero-copy"><h2>今日は、<br>どこへ行こう？</h2><p>いつもの日を、ちょっと特別に。</p></div></div>
+    <div class="home-hero">
+    <div class="hero-slides" aria-hidden="true">
+      <div class="hero-slide is-active"></div>
+      <div class="hero-slide"></div>
+    </div>
+    <div class="hero-copy"><h2>まだ知らない、今日へ。</h2><p>ふたりの時間も、家族の休日も、ひとりの寄り道も。</p></div>
+  </div>
     <div class="purpose-sheet">
       <div class="purpose-title">目的を選んでください</div>
       <div class="purpose-grid">
@@ -237,7 +247,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-audit24';
+const APP_BUILD='20260920-hero25';
 
 async function ensureLatestBuild(){
   try{
@@ -405,6 +415,47 @@ const spots = [
  {name:"門司港レトロ",cat:"solo",lat:33.9477,lng:130.9610,note:"写真を撮りながら自由に街歩き。",tags:["写真","街歩き"],image:"IMG_0503.jpeg"},
  {name:"糸島・桜井二見ヶ浦",cat:"solo",lat:33.6380,lng:130.1927,note:"海沿いの景色を楽しみたいひとりドライブに。",tags:["海","ドライブ"],image:"IMG_0504.jpeg"}
 ];
+
+const heroImages = [
+  "IMG_0504.jpeg",
+  "IMG_0505.jpeg",
+  "IMG_0502.jpeg",
+  "IMG_0503.jpeg",
+  "IMG_0506.jpeg",
+  "IMG_0499.webp"
+];
+
+const heroSlides = [...document.querySelectorAll('.hero-slide')];
+let heroIndex = 0;
+let heroLayer = 0;
+
+function setHeroImage(layerIndex, imageIndex, immediate=false){
+  const layer = heroSlides[layerIndex];
+  if(!layer) return;
+  layer.style.backgroundImage = `url("${heroImages[imageIndex]}")`;
+  layer.classList.remove('is-active');
+  // Restart the slow zoom animation each time the layer becomes active.
+  void layer.offsetWidth;
+  if(immediate) layer.style.transition = 'none';
+  layer.classList.add('is-active');
+  if(immediate){
+    requestAnimationFrame(()=>{ layer.style.transition = ''; });
+  }
+}
+
+if(heroSlides.length && heroImages.length){
+  setHeroImage(0, 0, true);
+  if(heroImages.length > 1){
+    setInterval(()=>{
+      const nextIndex = (heroIndex + 1) % heroImages.length;
+      const nextLayer = heroLayer === 0 ? 1 : 0;
+      setHeroImage(nextLayer, nextIndex);
+      heroSlides[heroLayer].classList.remove('is-active');
+      heroIndex = nextIndex;
+      heroLayer = nextLayer;
+    }, 5000);
+  }
+}
 
 const styles={
  date:{color:"#ff5f8f",emoji:"❤️",label:"デート向け",grad:"linear-gradient(135deg,#ff6a98,#ff8e73)"},
