@@ -3,76 +3,367 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#fff8f2" />
+  <meta name="theme-color" content="#f7f7fb" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <title>おでかけMAP 福岡</title>
+  <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <style>
-    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;background:#fffaf6;color:#292929}
-    header{padding:18px 16px 12px;background:#fff;box-shadow:0 2px 12px #00000010;position:relative;z-index:1000}
-    h1{font-size:21px;margin:0 0 5px} .sub{font-size:12px;color:#777}
-    .tabs{display:flex;gap:8px;padding:12px;overflow-x:auto;background:#fff;position:relative;z-index:999}
-    button{border:0;border-radius:999px;padding:10px 15px;font-weight:700;white-space:nowrap;background:#f2f2f2;color:#444}
-    button.active{background:#ff6f91;color:#fff}
-    #map{height:calc(100vh - 126px);min-height:500px}
-    .popup-title{font-size:15px;font-weight:800;margin-bottom:4px}.popup-note{font-size:12px;color:#666;margin-bottom:9px}
-    .gmaps{display:block;text-decoration:none;text-align:center;background:#4285f4;color:white!important;padding:8px 10px;border-radius:9px;font-weight:700}
-    .leaflet-popup-content{margin:14px;width:210px!important}
+    :root{
+      --bg:#f7f7fb;
+      --card:#ffffff;
+      --text:#17171c;
+      --muted:#7b7b86;
+      --line:#ececf2;
+      --accent:#ff5f8f;
+      --accent-soft:#fff0f5;
+      --shadow:0 14px 36px rgba(20,20,40,.10);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Hiragino Sans","Noto Sans JP",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow:hidden;
+    }
+    .app{
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      max-width:760px;
+      margin:0 auto;
+      background:var(--bg);
+    }
+    .top{
+      padding:calc(14px + env(safe-area-inset-top)) 18px 10px;
+    }
+    .eyebrow{
+      font-size:12px;
+      font-weight:700;
+      color:var(--accent);
+      letter-spacing:.08em;
+      margin-bottom:4px;
+    }
+    h1{
+      font-size:28px;
+      line-height:1.15;
+      margin:0;
+      letter-spacing:-.03em;
+    }
+    .sub{
+      margin-top:7px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .chips-wrap{
+      padding:8px 14px 10px;
+    }
+    .chips{
+      display:flex;
+      gap:9px;
+      overflow-x:auto;
+      padding:2px 4px 6px;
+      scrollbar-width:none;
+      -webkit-overflow-scrolling:touch;
+    }
+    .chips::-webkit-scrollbar{display:none}
+    .chip{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:11px 15px;
+      font-size:14px;
+      font-weight:750;
+      white-space:nowrap;
+      background:rgba(255,255,255,.9);
+      color:#44444d;
+      box-shadow:0 3px 10px rgba(20,20,40,.04);
+      transition:.18s ease;
+    }
+    .chip.active{
+      background:var(--text);
+      color:white;
+      border-color:var(--text);
+      transform:translateY(-1px);
+    }
+    .map-shell{
+      position:relative;
+      flex:1;
+      margin:0 12px 12px;
+      min-height:0;
+      border-radius:28px;
+      overflow:hidden;
+      background:#e9e9ef;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.8);
+    }
+    #map{position:absolute;inset:0}
+    .map-fade{
+      pointer-events:none;
+      position:absolute;
+      left:0;right:0;top:0;height:74px;
+      background:linear-gradient(to bottom,rgba(0,0,0,.10),rgba(0,0,0,0));
+      z-index:450;
+    }
+    .floating{
+      position:absolute;
+      right:14px;
+      z-index:500;
+      width:46px;height:46px;
+      border:none;
+      border-radius:15px;
+      background:rgba(255,255,255,.96);
+      box-shadow:0 8px 24px rgba(0,0,0,.16);
+      display:grid;
+      place-items:center;
+      font-size:20px;
+      color:#222;
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
+    #locateBtn{bottom:18px}
+    .spot-count{
+      position:absolute;
+      top:14px;
+      left:14px;
+      z-index:500;
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border-radius:999px;
+      padding:9px 12px;
+      font-size:12px;
+      font-weight:800;
+      box-shadow:0 7px 22px rgba(0,0,0,.10);
+    }
+    .pin{
+      width:40px;height:40px;
+      border-radius:50% 50% 50% 12px;
+      transform:rotate(-45deg);
+      background:var(--accent);
+      display:grid;
+      place-items:center;
+      border:3px solid white;
+      box-shadow:0 6px 16px rgba(255,95,143,.35);
+    }
+    .pin > span{
+      transform:rotate(45deg);
+      font-size:16px;
+      line-height:1;
+    }
+    .leaflet-div-icon{
+      background:transparent!important;
+      border:none!important;
+    }
+    .leaflet-control-attribution{
+      font-size:9px!important;
+      background:rgba(255,255,255,.72)!important;
+    }
+    .leaflet-popup-content-wrapper{
+      border-radius:18px!important;
+      box-shadow:0 14px 34px rgba(0,0,0,.16)!important;
+      padding:2px!important;
+    }
+    .leaflet-popup-content{
+      margin:14px!important;
+      width:230px!important;
+    }
+    .popup-title{
+      font-size:16px;
+      font-weight:850;
+      letter-spacing:-.02em;
+      margin-bottom:5px;
+    }
+    .popup-note{
+      font-size:12px;
+      line-height:1.6;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+    .gmaps{
+      display:block;
+      text-decoration:none;
+      text-align:center;
+      color:white!important;
+      background:#111116;
+      padding:11px 12px;
+      border-radius:12px;
+      font-weight:800;
+      font-size:13px;
+    }
+    .toast{
+      position:absolute;
+      left:50%;
+      bottom:76px;
+      transform:translateX(-50%) translateY(10px);
+      z-index:800;
+      background:#111116;
+      color:white;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      opacity:0;
+      pointer-events:none;
+      transition:.2s ease;
+      white-space:nowrap;
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   </style>
 </head>
 <body>
-<header>
-  <h1>📍 おでかけMAP 福岡</h1>
-  <div class="sub">目的を選ぶだけ。気になる場所を見つけよう。</div>
-</header>
-<div class="tabs">
-  <button class="active" data-cat="date">❤️ デート向け</button>
-  <button data-cat="kids">👨‍👩‍👧 子育て向け</button>
-  <button data-cat="solo">🧳 一人旅向け</button>
+<div class="app">
+  <div class="top">
+    <div class="eyebrow">FUKUOKA GUIDE</div>
+    <h1>今日は、どこ行く？</h1>
+    <div class="sub">目的を選ぶと、おすすめスポットだけ地図に表示します。</div>
+  </div>
+
+  <div class="chips-wrap">
+    <div class="chips">
+      <button class="chip active" data-cat="date" data-emoji="❤️">❤️ デート向け</button>
+      <button class="chip" data-cat="kids" data-emoji="👨‍👩‍👧">👨‍👩‍👧 子育て向け</button>
+      <button class="chip" data-cat="solo" data-emoji="🧳">🧳 一人旅向け</button>
+    </div>
+  </div>
+
+  <div class="map-shell">
+    <div id="map"></div>
+    <div class="map-fade"></div>
+    <div class="spot-count" id="spotCount">4スポット</div>
+    <button class="floating" id="locateBtn" aria-label="現在地を表示">◎</button>
+    <div class="toast" id="toast"></div>
+  </div>
 </div>
-<div id="map"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const spots = [
- {name:"福岡タワー",cat:"date",lat:33.5933,lng:130.3515,note:"夜景デートの定番"},
- {name:"大濠公園",cat:"date",lat:33.5861,lng:130.3764,note:"散歩やカフェ巡りに"},
- {name:"海の中道海浜公園",cat:"date",lat:33.6635,lng:130.3613,note:"のんびり一日デート"},
- {name:"門司港レトロ",cat:"date",lat:33.9477,lng:130.9610,note:"街歩きと夜景を楽しめる"},
- {name:"マリンワールド海の中道",cat:"kids",lat:33.6616,lng:130.3639,note:"家族で楽しめる水族館"},
- {name:"福岡市科学館",cat:"kids",lat:33.5772,lng:130.3780,note:"雨の日のおでかけにも"},
- {name:"海の中道海浜公園",cat:"kids",lat:33.6635,lng:130.3613,note:"広い公園でたっぷり遊べる"},
- {name:"北九州市立いのちのたび博物館",cat:"kids",lat:33.8704,lng:130.8113,note:"恐竜好きにもおすすめ"},
- {name:"太宰府天満宮",cat:"solo",lat:33.5214,lng:130.5349,note:"参道をゆっくり散策"},
- {name:"大濠公園",cat:"solo",lat:33.5861,lng:130.3764,note:"一人で散歩・休憩しやすい"},
- {name:"門司港レトロ",cat:"solo",lat:33.9477,lng:130.9610,note:"気ままな街歩きに"},
- {name:"糸島・桜井二見ヶ浦",cat:"solo",lat:33.6380,lng:130.1927,note:"海沿いドライブにも"}
+ {name:"福岡タワー",cat:"date",lat:33.5933,lng:130.3515,note:"夜景デートの定番。海沿い散歩とセットにも。"},
+ {name:"大濠公園",cat:"date",lat:33.5861,lng:130.3764,note:"カフェや散歩をゆっくり楽しみたい日に。"},
+ {name:"海の中道海浜公園",cat:"date",lat:33.6635,lng:130.3613,note:"のんびり一日デート。季節ごとの景色も魅力。"},
+ {name:"門司港レトロ",cat:"date",lat:33.9477,lng:130.9610,note:"街歩きと夜景を楽しめる定番スポット。"},
+ {name:"マリンワールド海の中道",cat:"kids",lat:33.6616,lng:130.3639,note:"家族で楽しみやすい水族館。雨の日にも候補。"},
+ {name:"福岡市科学館",cat:"kids",lat:33.5772,lng:130.3780,note:"室内中心で、天気を気にせず遊びやすい。"},
+ {name:"海の中道海浜公園",cat:"kids",lat:33.6635,lng:130.3613,note:"広い公園で思い切り遊びたい日に。"},
+ {name:"北九州市立いのちのたび博物館",cat:"kids",lat:33.8704,lng:130.8113,note:"恐竜や自然史が好きな子どもにもおすすめ。"},
+ {name:"太宰府天満宮",cat:"solo",lat:33.5214,lng:130.5349,note:"参道を歩きながら、気ままにひとり散策。"},
+ {name:"大濠公園",cat:"solo",lat:33.5861,lng:130.3764,note:"一人で歩いたり、ベンチで休憩したりしやすい。"},
+ {name:"門司港レトロ",cat:"solo",lat:33.9477,lng:130.9610,note:"写真を撮りながら自由に街歩き。"},
+ {name:"糸島・桜井二見ヶ浦",cat:"solo",lat:33.6380,lng:130.1927,note:"海沿いの景色を楽しみたいひとりドライブに。"}
 ];
 
-const map = L.map('map').setView([33.5902,130.4017], 10);
+const map = L.map('map',{zoomControl:false}).setView([33.5902,130.4017],10);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
- maxZoom:19,
- attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  maxZoom:19,
+  attribution:'&copy; OpenStreetMap contributors'
 }).addTo(map);
 
+L.control.zoom({position:'bottomleft'}).addTo(map);
+
 let markers=[];
-function showCategory(cat){
- markers.forEach(m=>map.removeLayer(m)); markers=[];
- const chosen=spots.filter(s=>s.cat===cat);
- const bounds=[];
- chosen.forEach(s=>{
-   const q=encodeURIComponent(s.name);
-   const marker=L.marker([s.lat,s.lng]).addTo(map);
-   marker.bindPopup(`<div class="popup-title">${s.name}</div><div class="popup-note">${s.note}</div><a class="gmaps" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${q}">Googleマップで見る</a>`);
-   markers.push(marker); bounds.push([s.lat,s.lng]);
- });
- if(bounds.length) map.fitBounds(bounds,{padding:[35,35],maxZoom:11});
+let userMarker=null;
+let userAccuracy=null;
+let activeCat='date';
+
+const categoryStyle={
+  date:{color:'#ff5f8f',emoji:'❤️'},
+  kids:{color:'#4f8cff',emoji:'🎈'},
+  solo:{color:'#7a67ee',emoji:'🧳'}
+};
+
+function makeIcon(cat){
+  const style=categoryStyle[cat];
+  return L.divIcon({
+    className:'leaflet-div-icon',
+    html:`<div class="pin" style="background:${style.color};box-shadow:0 6px 16px ${style.color}55"><span>${style.emoji}</span></div>`,
+    iconSize:[40,40],
+    iconAnchor:[20,38],
+    popupAnchor:[0,-34]
+  });
 }
-document.querySelectorAll('button[data-cat]').forEach(btn=>{
- btn.addEventListener('click',()=>{
-  document.querySelectorAll('button[data-cat]').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active'); showCategory(btn.dataset.cat);
- });
+
+function showCategory(cat){
+  activeCat=cat;
+  markers.forEach(m=>map.removeLayer(m));
+  markers=[];
+  const chosen=spots.filter(s=>s.cat===cat);
+  document.getElementById('spotCount').textContent=`${chosen.length}スポット`;
+  const bounds=[];
+  chosen.forEach(s=>{
+    const q=encodeURIComponent(s.name);
+    const marker=L.marker([s.lat,s.lng],{icon:makeIcon(cat)}).addTo(map);
+    marker.bindPopup(`
+      <div class="popup-title">${s.name}</div>
+      <div class="popup-note">${s.note}</div>
+      <a class="gmaps" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/search/?api=1&query=${q}">
+        Googleマップで見る
+      </a>`);
+    markers.push(marker);
+    bounds.push([s.lat,s.lng]);
+  });
+  if(bounds.length) map.fitBounds(bounds,{padding:[44,44],maxZoom:11});
+}
+
+document.querySelectorAll('.chip').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.chip').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    showCategory(btn.dataset.cat);
+  });
 });
+
+const toast=document.getElementById('toast');
+function showToast(message){
+  toast.textContent=message;
+  toast.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer=setTimeout(()=>toast.classList.remove('show'),1800);
+}
+
+document.getElementById('locateBtn').addEventListener('click',()=>{
+  if(!navigator.geolocation){
+    showToast('現在地取得に対応していません');
+    return;
+  }
+  showToast('現在地を取得中…');
+  navigator.geolocation.getCurrentPosition(pos=>{
+    const {latitude,longitude,accuracy}=pos.coords;
+    if(userMarker) map.removeLayer(userMarker);
+    if(userAccuracy) map.removeLayer(userAccuracy);
+
+    userAccuracy=L.circle([latitude,longitude],{
+      radius:accuracy,
+      color:'#4f8cff',
+      weight:1,
+      fillColor:'#4f8cff',
+      fillOpacity:.08
+    }).addTo(map);
+
+    userMarker=L.circleMarker([latitude,longitude],{
+      radius:8,
+      color:'#fff',
+      weight:4,
+      fillColor:'#4285f4',
+      fillOpacity:1
+    }).addTo(map);
+
+    map.setView([latitude,longitude],13,{animate:true});
+    showToast('現在地を表示しました');
+  },()=>{
+    showToast('位置情報を許可すると現在地を表示できます');
+  },{
+    enableHighAccuracy:true,
+    timeout:8000,
+    maximumAge:60000
+  });
+});
+
 showCategory('date');
 </script>
 </body>
