@@ -166,18 +166,18 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const spots = [
- {name:"福岡タワー",cat:"date",lat:33.5933,lng:130.3515,note:"夜景デートの定番。海沿い散歩とセットにも。",tags:["夜景","王道"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Fukuoka_Tower.JPG/960px-Fukuoka_Tower.JPG"},
- {name:"大濠公園",cat:"date",lat:33.5861,lng:130.3764,note:"カフェや散歩をゆっくり楽しみたい日に。",tags:["散歩","カフェ"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Ohori_Park%2C_Fukuoka.JPG/1280px-Ohori_Park%2C_Fukuoka.JPG"},
- {name:"海の中道海浜公園",cat:"date",lat:33.6635,lng:130.3613,note:"のんびり一日デート。季節ごとの景色も魅力。",tags:["自然","一日"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Gate_of_Uminonakamichi_Seaside_Park.jpg/1280px-Gate_of_Uminonakamichi_Seaside_Park.jpg"},
- {name:"門司港レトロ",cat:"date",lat:33.9477,lng:130.9610,note:"街歩きと夜景を楽しめる定番スポット。",tags:["街歩き","夜景"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/140721_Mojiko_Retro_Kitakyushu_Japan01s3.jpg/1280px-140721_Mojiko_Retro_Kitakyushu_Japan01s3.jpg"},
- {name:"マリンワールド海の中道",cat:"kids",lat:33.6616,lng:130.3639,note:"家族で楽しみやすい水族館。雨の日にも候補。",tags:["雨OK","水族館"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Marine_World_Uminonakamichi.jpg/1280px-Marine_World_Uminonakamichi.jpg"},
- {name:"福岡市科学館",cat:"kids",lat:33.5772,lng:130.3780,note:"室内中心で、天気を気にせず遊びやすい。",tags:["室内","雨OK"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Fukuoka_City_Science_Museum_20171103-1.jpg/1280px-Fukuoka_City_Science_Museum_20171103-1.jpg"},
- {name:"海の中道海浜公園",cat:"kids",lat:33.6635,lng:130.3613,note:"広い公園で思い切り遊びたい日に。",tags:["公園","広い"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Gate_of_Uminonakamichi_Seaside_Park.jpg/1280px-Gate_of_Uminonakamichi_Seaside_Park.jpg"},
- {name:"北九州市立いのちのたび博物館",cat:"kids",lat:33.8704,lng:130.8113,note:"恐竜や自然史が好きな子どもにもおすすめ。",tags:["恐竜","学び"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Kitakyushu_Museum_of_Natural_History_%26_Human_History_20170303.jpg/1280px-Kitakyushu_Museum_of_Natural_History_%26_Human_History_20170303.jpg"},
- {name:"太宰府天満宮",cat:"solo",lat:33.5214,lng:130.5349,note:"参道を歩きながら、気ままにひとり散策。",tags:["散策","定番"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Dazaifu_Tenmangu.jpg/1280px-Dazaifu_Tenmangu.jpg"},
- {name:"大濠公園",cat:"solo",lat:33.5861,lng:130.3764,note:"一人で歩いたり、ベンチで休憩したりしやすい。",tags:["散歩","休憩"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Ohori_Park%2C_Fukuoka.JPG/1280px-Ohori_Park%2C_Fukuoka.JPG"},
- {name:"門司港レトロ",cat:"solo",lat:33.9477,lng:130.9610,note:"写真を撮りながら自由に街歩き。",tags:["写真","街歩き"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/140721_Mojiko_Retro_Kitakyushu_Japan01s3.jpg/1280px-140721_Mojiko_Retro_Kitakyushu_Japan01s3.jpg"},
- {name:"糸島・桜井二見ヶ浦",cat:"solo",lat:33.6380,lng:130.1927,note:"海沿いの景色を楽しみたいひとりドライブに。",tags:["海","ドライブ"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sakurai_Futamigaura.jpg/1280px-Sakurai_Futamigaura.jpg"}
+ {name:"福岡タワー",cat:"date",lat:33.5933,lng:130.3515,note:"夜景デートの定番。海沿い散歩とセットにも。",tags:["夜景","王道"],image:"IMG_0505.jpeg"},
+ {name:"大濠公園",cat:"date",lat:33.5861,lng:130.3764,note:"カフェや散歩をゆっくり楽しみたい日に。",tags:["散歩","カフェ"],image:"IMG_0506.jpeg"},
+ {name:"海の中道海浜公園",cat:"date",lat:33.6635,lng:130.3613,note:"のんびり一日デート。季節ごとの景色も魅力。",tags:["自然","一日"],image:"IMG_0502.jpeg"},
+ {name:"門司港レトロ",cat:"date",lat:33.9477,lng:130.9610,note:"街歩きと夜景を楽しめる定番スポット。",tags:["街歩き","夜景"],image:"IMG_0503.jpeg"},
+ {name:"マリンワールド海の中道",cat:"kids",lat:33.6616,lng:130.3639,note:"家族で楽しみやすい水族館。雨の日にも候補。",tags:["雨OK","水族館"],image:"IMG_0499.webp"},
+ {name:"福岡市科学館",cat:"kids",lat:33.5772,lng:130.3780,note:"室内中心で、天気を気にせず遊びやすい。",tags:["室内","雨OK"],image:"IMG_0500.jpeg"},
+ {name:"海の中道海浜公園",cat:"kids",lat:33.6635,lng:130.3613,note:"広い公園で思い切り遊びたい日に。",tags:["公園","広い"],image:"IMG_0502.jpeg"},
+ {name:"北九州市立いのちのたび博物館",cat:"kids",lat:33.8704,lng:130.8113,note:"恐竜や自然史が好きな子どもにもおすすめ。",tags:["恐竜","学び"],image:"IMG_0501.jpeg"},
+ {name:"太宰府天満宮",cat:"solo",lat:33.5214,lng:130.5349,note:"参道を歩きながら、気ままにひとり散策。",tags:["散策","定番"],image:"IMG_0507.jpeg"},
+ {name:"大濠公園",cat:"solo",lat:33.5861,lng:130.3764,note:"一人で歩いたり、ベンチで休憩したりしやすい。",tags:["散歩","休憩"],image:"IMG_0506.jpeg"},
+ {name:"門司港レトロ",cat:"solo",lat:33.9477,lng:130.9610,note:"写真を撮りながら自由に街歩き。",tags:["写真","街歩き"],image:"IMG_0503.jpeg"},
+ {name:"糸島・桜井二見ヶ浦",cat:"solo",lat:33.6380,lng:130.1927,note:"海沿いの景色を楽しみたいひとりドライブに。",tags:["海","ドライブ"],image:"IMG_0504.jpeg"}
 ];
 
 const styles={
