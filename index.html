@@ -148,6 +148,10 @@
     #mapScreen .top,#mapScreen .chips,#mapScreen .recommend-wrap{display:none}
     #mapScreen .map-shell{position:absolute;inset:0;margin:0;border-radius:0;border:0;min-height:0;box-shadow:none}
     #mapScreen .map-toolbar{top:calc(64px + env(safe-area-inset-top));left:12px;right:auto}
+    .subfilters{position:absolute;z-index:690;top:calc(108px + env(safe-area-inset-top));left:10px;right:10px;display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 4px}
+    .subfilters::-webkit-scrollbar{display:none}
+    .subfilter{border:0;border-radius:999px;padding:8px 11px;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:11px;font-weight:850;color:#555;white-space:nowrap;box-shadow:0 5px 14px rgba(0,0,0,.08)}
+    .subfilter.active{background:#111116;color:#fff}
     #mapScreen #categoryLabel{display:none}
     #mapScreen .glass{padding:8px 11px;font-size:11px;background:rgba(255,255,255,.9)}
     #mapScreen .bottom-strip{display:none}
@@ -214,6 +218,7 @@
       <div class="glass" id="spotCount">4スポット</div>
       <div class="glass" id="categoryLabel">デート向け</div>
     </div>
+    <div class="subfilters" id="subfilters"></div>
     <div class="bottom-strip" id="bottomStrip"></div>
     <button class="floating" id="locateBtn" aria-label="現在地を表示">◎</button>
     <div class="toast" id="toast"></div>
@@ -224,10 +229,10 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const spots = [
- {name:"福岡タワー",cat:"date",lat:33.5933,lng:130.3515,note:"夜景デートの定番。海沿い散歩とセットにも。",tags:["夜景","王道"],image:"IMG_0505.jpeg"},
- {name:"大濠公園",cat:"date",lat:33.5861,lng:130.3764,note:"カフェや散歩をゆっくり楽しみたい日に。",tags:["散歩","カフェ"],image:"IMG_0506.jpeg"},
- {name:"海の中道海浜公園",cat:"date",lat:33.6635,lng:130.3613,note:"のんびり一日デート。季節ごとの景色も魅力。",tags:["自然","一日"],image:"IMG_0502.jpeg"},
- {name:"門司港レトロ",cat:"date",lat:33.9477,lng:130.9610,note:"街歩きと夜景を楽しめる定番スポット。",tags:["街歩き","夜景"],image:"IMG_0503.jpeg"},
+ {name:"福岡タワー",cat:"date",lat:33.5933,lng:130.3515,note:"夜景デートの定番。海沿い散歩とセットにも。",tags:["夜景","王道","記念日"],image:"IMG_0505.jpeg"},
+ {name:"大濠公園",cat:"date",lat:33.5861,lng:130.3764,note:"カフェや散歩をゆっくり楽しみたい日に。",tags:["散歩","カフェ","昼"],image:"IMG_0506.jpeg"},
+ {name:"海の中道海浜公園",cat:"date",lat:33.6635,lng:130.3613,note:"のんびり一日デート。季節ごとの景色も魅力。",tags:["自然","一日","ドライブ"],image:"IMG_0502.jpeg"},
+ {name:"門司港レトロ",cat:"date",lat:33.9477,lng:130.9610,note:"街歩きと夜景を楽しめる定番スポット。",tags:["街歩き","夜景","記念日"],image:"IMG_0503.jpeg"},
  {name:"二見ヶ浦カフェエリア",cat:"date",lat:33.6380,lng:130.1927,note:"海沿いにカフェやレストランが集まる糸島デートの定番エリア。夕方はサンセット狙いにも。",tags:["海カフェ","夕日","ドライブ"],image:"IMG_0504.jpeg"},
  {name:"皿倉山",cat:"date",lat:33.8460,lng:130.7969,note:"北九州市街を一望できる王道の夜景スポット。記念日デートにも使いやすい。",tags:["夜景","王道","記念日"],image:""},
  {name:"油山・片江展望台",cat:"date",lat:33.5462,lng:130.3611,note:"福岡市街を見渡せるドライブ夜景スポット。気軽な夜デートに。",tags:["夜景","ドライブ","市街地"],image:""},
@@ -292,18 +297,43 @@ function spotBackground(s,st){
  return s.image ? 'linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.22)), url("' + s.image + '")' : st.grad;
 }
 
-function showCategory(cat){
- activeCat=cat;
- document.getElementById('mapHeadTitle').textContent=styles[cat].label;
+let activeSubfilter='すべて';
+
+function buildSubfilters(cat){
+ const wrap=document.getElementById('subfilters');
+ wrap.innerHTML='';
+ const presets = cat==='date'
+   ? ['すべて','王道','夜景','カフェ','ドライブ','雨の日','記念日']
+   : ['すべて'];
+ presets.forEach(label=>{
+   const b=document.createElement('button');
+   b.className='subfilter'+(label===activeSubfilter?' active':'');
+   b.textContent=label;
+   b.addEventListener('click',()=>{
+     activeSubfilter=label;
+     renderCategory(cat);
+     buildSubfilters(cat);
+   });
+   wrap.appendChild(b);
+ });
+}
+
+function renderCategory(cat){
  markers.forEach(m=>map.removeLayer(m)); markers=[];
- const chosen=spots.filter(s=>s.cat===cat);
+ let chosen=spots.filter(s=>s.cat===cat);
+ if(activeSubfilter!=='すべて'){
+   chosen=chosen.filter(s=>s.tags.includes(activeSubfilter));
+ }
  const st=styles[cat];
  document.getElementById('spotCount').textContent=`${chosen.length}スポット`;
  document.getElementById('categoryLabel').textContent=st.label;
- document.getElementById('recommendCard').style.background=spotBackground(chosen[0],st);
- document.getElementById('recBadge').textContent=`${st.emoji} ${st.label.replace('向け','')}`;
- document.getElementById('recTitle').textContent=chosen[0].name;
- document.getElementById('recMeta').textContent=chosen[0].note;
+
+ if(chosen[0]){
+   document.getElementById('recommendCard').style.background=spotBackground(chosen[0],st);
+   document.getElementById('recBadge').textContent=`${st.emoji} ${st.label.replace('向け','')}`;
+   document.getElementById('recTitle').textContent=chosen[0].name;
+   document.getElementById('recMeta').textContent=chosen[0].note;
+ }
 
  const strip=document.getElementById('bottomStrip');
  strip.innerHTML='';
@@ -326,7 +356,15 @@ function showCategory(cat){
   strip.appendChild(card);
  });
 
- if(bounds.length) map.fitBounds(bounds,{paddingTopLeft:[42,110],paddingBottomRight:[42,70],maxZoom:11});
+ if(bounds.length) map.fitBounds(bounds,{paddingTopLeft:[42,145],paddingBottomRight:[42,70],maxZoom:11});
+}
+
+function showCategory(cat){
+ activeCat=cat;
+ activeSubfilter='すべて';
+ document.getElementById('mapHeadTitle').textContent=styles[cat].label;
+ buildSubfilters(cat);
+ renderCategory(cat);
 }
 
 document.querySelectorAll('.chip').forEach(btn=>{
