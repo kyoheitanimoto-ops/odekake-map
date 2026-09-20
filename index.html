@@ -152,6 +152,10 @@
     .subfilters::-webkit-scrollbar{display:none}
     .subfilter{border:0;border-radius:999px;padding:8px 11px;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:11px;font-weight:850;color:#555;white-space:nowrap;box-shadow:0 5px 14px rgba(0,0,0,.08)}
     .subfilter.active{background:#111116;color:#fff}
+    .cafefilters{position:absolute;z-index:689;top:calc(147px + env(safe-area-inset-top));left:12px;display:none;gap:7px}
+    .cafefilters.show{display:flex}
+    .cafetime{border:0;border-radius:999px;padding:8px 12px;background:rgba(255,255,255,.96);font-size:11px;font-weight:850;color:#555;box-shadow:0 5px 14px rgba(0,0,0,.08)}
+    .cafetime.active{background:#ff5f8f;color:#fff}
     #mapScreen #categoryLabel{display:none}
     #mapScreen .glass{padding:8px 11px;font-size:11px;background:rgba(255,255,255,.9)}
     #mapScreen .bottom-strip{display:none}
@@ -219,6 +223,7 @@
       <div class="glass" id="categoryLabel">デート向け</div>
     </div>
     <div class="subfilters" id="subfilters"></div>
+    <div class="cafefilters" id="cafeTimeFilters"></div>
     <div class="bottom-strip" id="bottomStrip"></div>
     <button class="floating" id="locateBtn" aria-label="現在地を表示">◎</button>
     <div class="toast" id="toast"></div>
@@ -244,6 +249,12 @@ const spots = [
  {name:"二見ヶ浦カフェエリア",cat:"date",lat:33.6380,lng:130.1927,note:"海沿いにカフェやレストランが集まる糸島デートの定番エリア。夕方はサンセット狙いにも。",tags:["海カフェ","夕日","ドライブ"],image:"IMG_0504.jpeg"},
  {name:"皿倉山",cat:"date",lat:33.8460,lng:130.7969,note:"北九州市街を一望できる王道の夜景スポット。記念日デートにも使いやすい。",tags:["夜景","王道","記念日"],image:""},
  {name:"油山・片江展望台",cat:"date",lat:33.5462,lng:130.3611,note:"福岡市街を見渡せるドライブ夜景スポット。気軽な夜デートに。",tags:["夜景","ドライブ","市街地"],image:""},
+ {name:"糸島ファームハウス UOVO",cat:"date",lat:33.6206,lng:130.1979,note:"糸島ドライブ途中に寄りやすい人気カフェ。卵を使った食事やスイーツも楽しめる。",tags:["カフェ","ドライブ","昼"],time:["day"],image:"",hours:"平日 10:00〜18:00 / 土日 9:00〜18:00",closed:"不定休",rating:"3.54",reviews:291},
+ {name:"ロンドンバスカフェ",cat:"date",lat:33.6357,lng:130.1690,note:"赤いロンドンバスと海の景色が印象的な糸島の定番カフェ。ドライブデート向き。",tags:["カフェ","ドライブ","昼","海カフェ"],time:["day"],image:"",hours:"11:00〜日没",closed:"不定休",rating:"3.50",reviews:315},
+ {name:"いちごや cafe TANNAL 糸島本店",cat:"date",lat:33.6007,lng:130.2144,note:"いちご農園直営のスイーツ系カフェ。糸島の昼カフェ候補に。",tags:["カフェ","昼","スイーツ","ドライブ"],time:["day"],image:"",hours:"10:00〜17:00",closed:"変更の場合あり",rating:"3.44",reviews:118},
+ {name:"THE CRAFT Bar and Grill",cat:"date",lat:33.5894,lng:130.3935,note:"大名ガーデンシティのニューアメリカン。昼から夜まで使いやすい街中デート候補。",tags:["カフェ","昼","夜","記念日"],time:["day","night"],image:"",hours:"11:00〜23:00",closed:"最新情報を要確認",rating:"3.50",reviews:279},
+ {name:"マハロ大人の隠れ家 大名店",cat:"date",lat:33.5898,lng:130.3916,note:"アンティーク調の落ち着いた雰囲気で、夜デートや記念日にも使いやすい。",tags:["カフェ","夜","記念日"],time:["night"],image:"",hours:"月・水〜金 15:00〜24:00 / 土日 11:30〜14:00・15:00〜24:00",closed:"火曜日",rating:"3.61",reviews:172},
+ {name:"GRANDMIRAGE WHOLE NOTE CAFE",cat:"date",lat:33.5865,lng:130.3992,note:"今泉で昼から深夜まで使える大型カフェ。食事後の2軒目にも向く。",tags:["カフェ","昼","夜","2軒目"],time:["day","night"],image:"",hours:"月〜木・日・祝 12:00〜翌2:00 / 金土・祝前日 12:00〜翌3:00",closed:"最新情報を要確認",rating:"3.36",reviews:195},
  {name:"マリンワールド海の中道",cat:"kids",lat:33.6616,lng:130.3639,note:"家族で楽しみやすい水族館。雨の日にも候補。",tags:["雨OK","水族館"],image:"IMG_0499.webp"},
  {name:"福岡市科学館",cat:"kids",lat:33.5772,lng:130.3780,note:"室内中心で、天気を気にせず遊びやすい。",tags:["室内","雨OK"],image:"IMG_0500.jpeg"},
  {name:"海の中道海浜公園",cat:"kids",lat:33.6635,lng:130.3613,note:"広い公園で思い切り遊びたい日に。",tags:["公園","広い"],image:"IMG_0502.jpeg"},
@@ -306,6 +317,7 @@ function spotBackground(s,st){
 }
 
 let activeSubfilter='すべて';
+let activeCafeTime='all';
 
 function buildSubfilters(cat){
  const wrap=document.getElementById('subfilters');
@@ -319,8 +331,32 @@ function buildSubfilters(cat){
    b.textContent=label;
    b.addEventListener('click',()=>{
      activeSubfilter=label;
-     renderCategory(cat);
+     activeCafeTime='all';
      buildSubfilters(cat);
+     buildCafeTimeFilters(cat);
+     renderCategory(cat);
+   });
+   wrap.appendChild(b);
+ });
+}
+
+function buildCafeTimeFilters(cat){
+ const wrap=document.getElementById('cafeTimeFilters');
+ wrap.innerHTML='';
+ wrap.classList.toggle('show',cat==='date' && activeSubfilter==='カフェ');
+ if(cat!=='date' || activeSubfilter!=='カフェ') return;
+ [
+   ['all','すべて'],
+   ['day','☀️ 昼カフェ'],
+   ['night','🌙 夜カフェ']
+ ].forEach(([value,label])=>{
+   const b=document.createElement('button');
+   b.className='cafetime'+(activeCafeTime===value?' active':'');
+   b.textContent=label;
+   b.addEventListener('click',()=>{
+     activeCafeTime=value;
+     buildCafeTimeFilters(cat);
+     renderCategory(cat);
    });
    wrap.appendChild(b);
  });
@@ -331,6 +367,9 @@ function renderCategory(cat){
  let chosen=spots.filter(s=>s.cat===cat);
  if(activeSubfilter!=='すべて'){
    chosen=chosen.filter(s=>s.tags.includes(activeSubfilter));
+ }
+ if(activeSubfilter==='カフェ' && activeCafeTime!=='all'){
+   chosen=chosen.filter(s=>Array.isArray(s.time) && s.time.includes(activeCafeTime));
  }
  const st=styles[cat];
  document.getElementById('spotCount').textContent=`${chosen.length}スポット`;
@@ -370,8 +409,10 @@ function renderCategory(cat){
 function showCategory(cat){
  activeCat=cat;
  activeSubfilter='すべて';
+ activeCafeTime='all';
  document.getElementById('mapHeadTitle').textContent=styles[cat].label;
  buildSubfilters(cat);
+ buildCafeTimeFilters(cat);
  renderCategory(cat);
 }
 
