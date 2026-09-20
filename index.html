@@ -53,13 +53,15 @@
     .chip.active{color:#fff;border-color:transparent;background:#17171c;transform:translateY(-1px)}
     .recommend-wrap{padding:0 14px 10px}
     .recommend-card{
-      border-radius:22px;padding:14px 15px;color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden;
+      border-radius:22px;padding:0;color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden;
       background:linear-gradient(135deg,#ff6a98 0%,#ff8e73 100%);
+      min-height:150px;background-size:cover!important;background-position:center!important;
     }
-    .recommend-card:after{
-      content:"";position:absolute;right:-24px;top:-30px;width:120px;height:120px;border-radius:50%;
-      background:rgba(255,255,255,.16)
+    .recommend-overlay{
+      min-height:150px;padding:18px 16px;display:flex;flex-direction:column;justify-content:flex-end;
+      background:linear-gradient(180deg,rgba(0,0,0,.05) 10%,rgba(0,0,0,.62) 100%);position:relative;z-index:1;
     }
+    .recommend-card:after{display:none}
     .rec-kicker{font-size:11px;font-weight:800;letter-spacing:.08em;opacity:.88}
     .rec-main{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-top:5px}
     .rec-title{font-size:17px;font-weight:900;line-height:1.2}
@@ -91,9 +93,10 @@
     .leaflet-popup-content-wrapper{border-radius:20px!important;box-shadow:0 16px 38px rgba(0,0,0,.16)!important;padding:2px!important}
     .leaflet-popup-content{margin:14px!important;width:245px!important}
     .popup-visual{
-      height:76px;border-radius:14px;margin-bottom:11px;padding:12px;color:#fff;display:flex;align-items:flex-end;
+      height:104px;border-radius:14px;margin-bottom:11px;overflow:hidden;display:flex;align-items:center;justify-content:center;
       font-size:26px;font-weight:900;background:linear-gradient(135deg,#ff7da5,#ff9a7a)
     }
+    .popup-visual img{width:100%;height:100%;object-fit:cover;display:block}
     .popup-title{font-size:16px;font-weight:900;letter-spacing:-.02em;margin-bottom:6px}
     .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
     .tag{font-size:10px;font-weight:800;background:#f4f4f7;color:#5c5c66;padding:5px 7px;border-radius:999px}
@@ -104,9 +107,12 @@
     }
     .bottom-strip::-webkit-scrollbar{display:none}
     .mini-card{
-      min-width:155px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border:none;border-radius:16px;padding:10px 11px;text-align:left;
-      box-shadow:0 8px 20px rgba(0,0,0,.12)
+      min-width:165px;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border:none;border-radius:16px;padding:0;text-align:left;
+      overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.12)
     }
+    .mini-photo{height:72px;background:#ececf2;display:flex;align-items:center;justify-content:center;font-size:24px}
+    .mini-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .mini-body{padding:9px 11px}
     .mini-title{font-size:12px;font-weight:850;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .mini-meta{font-size:10px;color:var(--muted);margin-top:4px}
     .toast{
@@ -132,6 +138,7 @@
 
   <div class="recommend-wrap">
     <div class="recommend-card" id="recommendCard">
+      <div class="recommend-overlay">
       <div class="rec-kicker">TODAY'S PICK</div>
       <div class="rec-main">
         <div>
@@ -139,6 +146,7 @@
           <div class="rec-meta" id="recMeta">夜景デートの定番</div>
         </div>
         <div class="rec-badge" id="recBadge">❤️ デート</div>
+      </div>
       </div>
     </div>
   </div>
@@ -158,16 +166,16 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const spots = [
- {name:"福岡タワー",cat:"date",lat:33.5933,lng:130.3515,note:"夜景デートの定番。海沿い散歩とセットにも。",tags:["夜景","王道"]},
- {name:"大濠公園",cat:"date",lat:33.5861,lng:130.3764,note:"カフェや散歩をゆっくり楽しみたい日に。",tags:["散歩","カフェ"]},
+ {name:"福岡タワー",cat:"date",lat:33.5933,lng:130.3515,note:"夜景デートの定番。海沿い散歩とセットにも。",tags:["夜景","王道"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Fukuoka_Tower.JPG/960px-Fukuoka_Tower.JPG"},
+ {name:"大濠公園",cat:"date",lat:33.5861,lng:130.3764,note:"カフェや散歩をゆっくり楽しみたい日に。",tags:["散歩","カフェ"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Ohori_Park%2C_Fukuoka.JPG/1280px-Ohori_Park%2C_Fukuoka.JPG"},
  {name:"海の中道海浜公園",cat:"date",lat:33.6635,lng:130.3613,note:"のんびり一日デート。季節ごとの景色も魅力。",tags:["自然","一日"]},
  {name:"門司港レトロ",cat:"date",lat:33.9477,lng:130.9610,note:"街歩きと夜景を楽しめる定番スポット。",tags:["街歩き","夜景"]},
  {name:"マリンワールド海の中道",cat:"kids",lat:33.6616,lng:130.3639,note:"家族で楽しみやすい水族館。雨の日にも候補。",tags:["雨OK","水族館"]},
  {name:"福岡市科学館",cat:"kids",lat:33.5772,lng:130.3780,note:"室内中心で、天気を気にせず遊びやすい。",tags:["室内","雨OK"]},
  {name:"海の中道海浜公園",cat:"kids",lat:33.6635,lng:130.3613,note:"広い公園で思い切り遊びたい日に。",tags:["公園","広い"]},
  {name:"北九州市立いのちのたび博物館",cat:"kids",lat:33.8704,lng:130.8113,note:"恐竜や自然史が好きな子どもにもおすすめ。",tags:["恐竜","学び"]},
- {name:"太宰府天満宮",cat:"solo",lat:33.5214,lng:130.5349,note:"参道を歩きながら、気ままにひとり散策。",tags:["散策","定番"]},
- {name:"大濠公園",cat:"solo",lat:33.5861,lng:130.3764,note:"一人で歩いたり、ベンチで休憩したりしやすい。",tags:["散歩","休憩"]},
+ {name:"太宰府天満宮",cat:"solo",lat:33.5214,lng:130.5349,note:"参道を歩きながら、気ままにひとり散策。",tags:["散策","定番"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Dazaifu_Tenmangu.jpg/1280px-Dazaifu_Tenmangu.jpg"},
+ {name:"大濠公園",cat:"solo",lat:33.5861,lng:130.3764,note:"一人で歩いたり、ベンチで休憩したりしやすい。",tags:["散歩","休憩"],image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Ohori_Park%2C_Fukuoka.JPG/1280px-Ohori_Park%2C_Fukuoka.JPG"},
  {name:"門司港レトロ",cat:"solo",lat:33.9477,lng:130.9610,note:"写真を撮りながら自由に街歩き。",tags:["写真","街歩き"]},
  {name:"糸島・桜井二見ヶ浦",cat:"solo",lat:33.6380,lng:130.1927,note:"海沿いの景色を楽しみたいひとりドライブに。",tags:["海","ドライブ"]}
 ];
@@ -198,7 +206,7 @@ function popupHtml(s){
  const tags=s.tags.map(t=>`<span class="tag">${t}</span>`).join('');
  const q=encodeURIComponent(s.name);
  return `
-  <div class="popup-visual" style="background:${st.grad}">${st.emoji}</div>
+  <div class="popup-visual" style="background:${st.grad}">${s.image ? `<img src="${s.image}" alt="${s.name}">` : st.emoji}</div>
   <div class="popup-title">${s.name}</div>
   <div class="tags">${tags}</div>
   <div class="popup-note">${s.note}</div>
@@ -210,6 +218,11 @@ function focusSpot(s, marker){
  marker.openPopup();
  document.getElementById('recTitle').textContent=s.name;
  document.getElementById('recMeta').textContent=s.note;
+ document.getElementById('recommendCard').style.background=spotBackground(s,styles[s.cat]);
+}
+
+function spotBackground(s,st){
+ return s.image ? 'linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.22)), url("' + s.image + '")' : st.grad;
 }
 
 function showCategory(cat){
@@ -219,7 +232,7 @@ function showCategory(cat){
  const st=styles[cat];
  document.getElementById('spotCount').textContent=`${chosen.length}スポット`;
  document.getElementById('categoryLabel').textContent=st.label;
- document.getElementById('recommendCard').style.background=st.grad;
+ document.getElementById('recommendCard').style.background=spotBackground(chosen[0],st);
  document.getElementById('recBadge').textContent=`${st.emoji} ${st.label.replace('向け','')}`;
  document.getElementById('recTitle').textContent=chosen[0].name;
  document.getElementById('recMeta').textContent=chosen[0].note;
@@ -234,12 +247,13 @@ function showCategory(cat){
   marker.on('click',()=>{
     document.getElementById('recTitle').textContent=s.name;
     document.getElementById('recMeta').textContent=s.note;
+    document.getElementById('recommendCard').style.background=spotBackground(s,styles[s.cat]);
   });
   markers.push(marker); bounds.push([s.lat,s.lng]);
 
   const card=document.createElement('button');
   card.className='mini-card';
-  card.innerHTML=`<div class="mini-title">${s.name}</div><div class="mini-meta">${s.tags.join('・')}</div>`;
+  card.innerHTML=`<div class="mini-photo">${s.image ? `<img src="${s.image}" alt="${s.name}">` : styles[s.cat].emoji}</div><div class="mini-body"><div class="mini-title">${s.name}</div><div class="mini-meta">${s.tags.join('・')}</div></div>`;
   card.addEventListener('click',()=>focusSpot(s,marker));
   strip.appendChild(card);
  });
