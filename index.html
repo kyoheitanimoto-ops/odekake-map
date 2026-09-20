@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-anniv20" />
+  <meta name="app-build" content="20260920-active21" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-anniv20';
+const APP_BUILD='20260920-active21';
 
 async function ensureLatestBuild(){
   try{
@@ -470,7 +470,7 @@ function buildSubfilters(cat){
  const wrap=document.getElementById('subfilters');
  wrap.innerHTML='';
  const presets = cat==='date'
-   ? ['すべて','王道','夜景','カフェ・バー','ドライブ','雨の日','記念日']
+   ? ['すべて','王道','夜景','カフェ・バー','ドライブ','雨の日','記念日','アクティブ・体験']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
