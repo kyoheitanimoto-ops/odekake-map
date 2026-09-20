@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260921-familyindoor45" />
+  <meta name="app-build" content="20260921-familyoutdoor46" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -480,7 +480,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260921-familyindoor45';
+const APP_BUILD='20260921-familyoutdoor46';
 
 async function ensureLatestBuild(){
   try{
@@ -666,7 +666,21 @@ const spots = [
  {name:"香春町子育て支援施設 かぱる",cat:"kids",lat:33.677807,lng:130.838501,area:"田川郡香春町",note:"木をふんだんに使った未就学児向けの『かぱるの森』。ハイハイ用の畳、マグネットブロック、ボルダリング、ごっこ遊びに加え、授乳・ランチスペースもそろう。",tags:["雨の日","室内遊び"],age:"0歳〜未就学児",ageGroups:["0〜2歳","3〜6歳"],price:"無料（町外からも利用可）",image:"",hours:"9:30〜16:30",closed:"土曜日・祝日・年末年始ほか"},
  {name:"大川市子育て支援総合施設 モッカランド",cat:"kids",lat:33.200966,lng:130.383698,area:"大川市・上巻",note:"家具のまち大川らしい木製遊具と絵本を楽しめる『モッカルーム』が中心。親子で食事できるスペースや館内カフェもあり、乳幼児連れの休憩負担が少ない。",tags:["雨の日","室内遊び"],age:"0歳〜小学生（未就学児を含む家族向け）",ageGroups:["0〜2歳","3〜6歳","小学生","全年齢"],price:"無料",image:"",hours:"モッカルーム 9:00〜16:30（入替制）",closed:"火曜日（祝日の場合は翌日）・年末年始"},
  {name:"だざいふおもちやのもり",cat:"kids",lat:33.521699,lng:130.537248,area:"太宰府市・だざいふ遊園地",note:"九州産木材の木製遊具と木のおもちゃで遊べる屋内施設。0〜2歳専用のはいはいサークル、木のたまごプール、ごっこ遊び、秘密基地など乳幼児向けの遊びが充実。",tags:["雨の日","室内遊び"],age:"生後7カ月〜小学生中心",ageGroups:["0〜2歳","3〜6歳","小学生","全年齢"],price:"1人1時間600円（別途だざいふ遊園地入園料）",image:"",hours:"平日10:45〜16:00／土日祝10:15〜16:30",closed:"だざいふ遊園地の休園日に準ずる"},
- {name:"海の中道海浜公園",cat:"kids",lat:33.6635,lng:130.3613,area:"福岡市東区・海の中道",note:"大型遊具や広い芝生、季節の花などを楽しめる県内有数の大型公園。",tags:["公園・外遊び","一日遊べる"],age:"幼児〜小学生",price:"入園料・施設料金は最新情報を要確認",image:"IMG_0502.jpeg"},
+ {name:"海の中道海浜公園",cat:"kids",lat:33.6635,lng:130.3613,area:"福岡市東区・海の中道",note:"大型複合遊具、広い芝生、サイクリング、夏の水遊びまでそろう県内屈指の大型公園。年齢の違うきょうだいでも一日過ごしやすい。",tags:["公園・外遊び","大型遊具","水遊び","自然体験","一日遊べる"],age:"幼児〜小学生（乳幼児向け遊具あり）",price:"中学生以下無料／大人450円（別途有料施設あり）",image:"IMG_0502.jpeg",hours:"季節により9:30〜17:30頃",closed:"年末年始・2月の指定日ほか"},
+ {name:"今津運動公園",cat:"kids",lat:33.5858,lng:130.2408,area:"福岡市西区・今津",note:"大型複合遊具、ローラー滑り台、芝生広場を無料で楽しめる。幼児向けエリアもあり、ピクニックと外遊びを組み合わせやすい。",tags:["公園・外遊び","大型遊具"],age:"幼児〜小学生",price:"公園利用無料／駐車場は有料",image:"",hours:"公園は終日（駐車場・施設は時間指定あり）",closed:"公園は原則無休"},
+ {name:"大野城いこいの森 中央公園",cat:"kids",lat:33.4767,lng:130.4938,area:"大野城市・牛頸",note:"山の斜面を生かした大型遊具や長いローラー滑り台が魅力。広場や水辺もあり、自然の中でしっかり体を動かせる。",tags:["公園・外遊び","大型遊具","アスレチック","自然体験"],age:"3歳頃〜小学生",price:"入園無料／駐車場は有料",image:"",hours:"9:00〜17:00頃（季節・施設により変更）",closed:"月曜日（祝日の場合は翌日）・年末年始ほか"},
+ {name:"筑紫野市総合公園",cat:"kids",lat:33.4489,lng:130.5336,area:"筑紫野市・山口",note:"巨大な船型遊具『天拝の船』が主役。急傾斜の滑り台やチューブ遊具に加え、幼児や障がいのある子も遊びやすい遊具が整う。",tags:["公園・外遊び","大型遊具","アスレチック"],age:"幼児〜小学生（主遊具は6歳以上目安）",price:"無料",image:"",hours:"3〜10月 9:00〜18:00／11〜2月 9:00〜17:00",closed:"12月29日〜1月3日"},
+ {name:"夜須高原記念の森",cat:"kids",lat:33.4557,lng:130.6546,area:"朝倉郡筑前町・夜須高原",note:"巨大複合遊具やローラー滑り台、芝生広場を備えた高原の大型公園。森の散策もでき、暑い時期の外遊び先としても選びやすい。",tags:["公園・外遊び","大型遊具","アスレチック","自然体験"],age:"幼児〜小学生",price:"入園無料",image:"",hours:"4〜10月 9:00〜18:00／11〜3月 9:00〜17:00",closed:"月曜日・年末年始（祝日等は変更あり）"},
+ {name:"古賀グリーンパーク",cat:"kids",lat:33.7147,lng:130.4832,area:"古賀市・青柳町",note:"大型複合遊具と広い芝生、多目的広場がそろう。福岡市近郊で無料の外遊びを半日楽しみたい家族に使いやすい。",tags:["公園・外遊び","大型遊具"],age:"幼児〜小学生",price:"無料",image:"",hours:"公園は終日（施設・駐車場は時間指定あり）",closed:"施設により異なる"},
+ {name:"響灘緑地 GREEN PARK",cat:"kids",lat:33.9390,lng:130.7289,area:"北九州市若松区・竹並",note:"大芝生、世界最長級のブランコ、複合遊具、ポニーやカンガルーとのふれあいなど遊びが豊富。北九州で一日遊べる屋外施設の本命。",tags:["公園・外遊び","大型遊具","アスレチック","自然体験","一日遊べる"],age:"幼児〜小学生を中心に全年齢",price:"入園料・駐車料金あり（遊具等は一部有料）",image:"",hours:"9:00〜17:00",closed:"火曜日・年末年始ほか（季節により変更あり）"},
+ {name:"平尾台自然の郷",cat:"kids",lat:33.7448,lng:130.9092,area:"北九州市小倉南区・平尾台",note:"カルスト台地の景色の中で、草そり、遊具、展望、自然散策を楽しめる。遊具だけでなく自然そのものが目的になる外遊びスポット。",tags:["公園・外遊び","アスレチック","自然体験"],age:"3歳頃〜小学生を中心に全年齢",price:"入園無料／駐車場・一部体験は有料",image:"",hours:"9:00〜17:00（季節により変更）",closed:"火曜日・年末年始ほか"},
+ {name:"福岡県営筑豊緑地",cat:"kids",lat:33.6497,lng:130.7163,area:"飯塚市・仁保",note:"大型複合遊具、幼児向け遊具、広い芝生を備える筑豊エリアの大型公園。無料で長く遊びやすく、きょうだい連れにも向く。",tags:["公園・外遊び","大型遊具"],age:"幼児〜小学生",price:"公園利用無料／一部施設は有料",image:"",hours:"公園は終日（各施設は時間指定あり）",closed:"施設により異なる"},
+ {name:"あまぎ水の文化村",cat:"kids",lat:33.4068,lng:130.7152,area:"朝倉市・矢野竹",note:"ローラー滑り台や広場に加え、開放日には水遊び施設『ウォーターパレット』を楽しめる。夏のおでかけは公式カレンダー確認が必須。",tags:["公園・外遊び","大型遊具","水遊び","自然体験"],age:"幼児〜小学生",price:"入園無料／プール・キャンプ等は別料金",image:"",hours:"4〜10月 10:00〜18:00／11〜3月 10:00〜17:00",closed:"月曜日・第3火曜日・12月28日〜1月4日ほか"},
+ {name:"白水大池公園",cat:"kids",lat:33.5147,lng:130.4520,area:"春日市・下白水",note:"大型複合遊具、ちびっこ広場、芝生、大池周回路を備える。年齢別に遊び場を選びやすく、近郊で無料の外遊びに強い。",tags:["公園・外遊び","大型遊具"],age:"幼児〜小学生",price:"無料",image:"",hours:"公園は終日（駐車場は利用時間あり）",closed:"公園は原則無休"},
+ {name:"浦山公園",cat:"kids",lat:33.2811,lng:130.5337,area:"久留米市・上津町",note:"斜面を生かした長い滑り台や大型複合遊具が人気。木陰も多く、久留米で体を動かす公園遊びの有力候補。",tags:["公園・外遊び","大型遊具","アスレチック","自然体験"],age:"3歳頃〜小学生",price:"無料",image:"",hours:"公園は終日",closed:"公園は原則無休"},
+ {name:"筑後広域公園",cat:"kids",lat:33.1980,lng:130.4895,area:"筑後市・みやま市／筑後船小屋",note:"大型遊具、芝生、川沿いの自然、サイクリングなどを楽しめる県南の広域公園。広さがあり、半日から一日しっかり遊べる。",tags:["公園・外遊び","大型遊具","自然体験","一日遊べる"],age:"幼児〜小学生を中心に全年齢",price:"公園利用無料／一部施設は有料",image:"",hours:"公園は終日（各施設は時間指定あり）",closed:"施設により異なる"},
+ {name:"むつごろうランド",cat:"kids",lat:33.1332,lng:130.3918,area:"柳川市・橋本町",note:"有明海をテーマにした大型複合遊具と広い芝生が魅力。干潟の生き物や有明海の自然に触れるきっかけにもなる。",tags:["公園・外遊び","大型遊具","自然体験"],age:"幼児〜小学生",price:"公園利用無料／一部施設は有料",image:"",hours:"施設により異なる",closed:"施設により異なる"},
+ {name:"諏訪公園",cat:"kids",lat:33.0274,lng:130.4418,area:"大牟田市・岬町",note:"大型複合遊具、冒険広場、芝生を備える大牟田の代表的な総合公園。無料で体を動かせ、県南のおでかけ先として使いやすい。",tags:["公園・外遊び","大型遊具","アスレチック"],age:"幼児〜小学生",price:"無料",image:"",hours:"公園は終日",closed:"公園は原則無休"},
  {name:"太宰府天満宮",cat:"solo",lat:33.5214,lng:130.5349,note:"参道を歩きながら、気ままにひとり散策。",tags:["散策","定番"],image:"IMG_0507.jpeg"},
  {name:"大濠公園",cat:"solo",lat:33.5861,lng:130.3764,note:"一人で歩いたり、ベンチで休憩したりしやすい。",tags:["散歩","休憩"],image:"IMG_0506.jpeg"},
  {name:"門司港レトロ",cat:"solo",lat:33.9477,lng:130.9610,note:"写真を撮りながら自由に街歩き。",tags:["写真","街歩き"],image:"IMG_0503.jpeg"},
@@ -823,6 +837,7 @@ function spotBackground(s,st){
 let activeSubfilter='すべて';
 let activeCafeTime='all';
 let activeKidsAge='all';
+let activeOutdoorType='all';
 
 function buildSubfilters(cat){
  const wrap=document.getElementById('subfilters');
@@ -830,7 +845,7 @@ function buildSubfilters(cat){
  const presets = cat==='date'
    ? ['すべて','王道','夜景','カフェ・バー','ドライブ','アクティブ・体験','雨の日','記念日']
    : cat==='kids'
-   ? ['すべて','雨の日','室内遊び']
+   ? ['すべて','雨の日','室内遊び','公園・外遊び']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
@@ -840,6 +855,7 @@ function buildSubfilters(cat){
      activeSubfilter=label;
      activeCafeTime='all';
      activeKidsAge='all';
+     activeOutdoorType='all';
      buildSubfilters(cat);
      buildCafeTimeFilters(cat);
      renderCategory(cat);
@@ -853,19 +869,23 @@ function buildCafeTimeFilters(cat){
  wrap.innerHTML='';
  const isCafe = cat==='date' && activeSubfilter==='カフェ・バー';
  const isKidsIndoor = cat==='kids' && activeSubfilter==='室内遊び';
- wrap.classList.toggle('show',isCafe || isKidsIndoor);
- if(!isCafe && !isKidsIndoor) return;
+ const isKidsOutdoor = cat==='kids' && activeSubfilter==='公園・外遊び';
+ wrap.classList.toggle('show',isCafe || isKidsIndoor || isKidsOutdoor);
+ if(!isCafe && !isKidsIndoor && !isKidsOutdoor) return;
  const options = isCafe
    ? [['all','すべて'],['day','☀️ 昼カフェ'],['night','🌙 夜カフェ'],['bar','🍸 バー']]
-   : [['all','すべて'],['0〜2歳','0〜2歳'],['3〜6歳','3〜6歳'],['小学生','小学生'],['全年齢','全年齢']];
+   : isKidsIndoor
+   ? [['all','すべて'],['0〜2歳','0〜2歳'],['3〜6歳','3〜6歳'],['小学生','小学生'],['全年齢','全年齢']]
+   : [['all','すべて'],['大型遊具','大型遊具'],['アスレチック','アスレチック'],['水遊び','水遊び'],['自然体験','自然体験']];
  options.forEach(([value,label])=>{
    const b=document.createElement('button');
-   const activeValue = isCafe ? activeCafeTime : activeKidsAge;
+   const activeValue = isCafe ? activeCafeTime : isKidsIndoor ? activeKidsAge : activeOutdoorType;
    b.className='cafetime'+(activeValue===value?' active':'');
    b.textContent=label;
    b.addEventListener('click',()=>{
      if(isCafe) activeCafeTime=value;
-     else activeKidsAge=value;
+     else if(isKidsIndoor) activeKidsAge=value;
+     else activeOutdoorType=value;
      buildCafeTimeFilters(cat);
      renderCategory(cat);
    });
@@ -888,6 +908,9 @@ function renderCategory(cat){
  }
  if(cat==='kids' && activeSubfilter==='室内遊び' && activeKidsAge!=='all'){
    chosen=chosen.filter(s=>Array.isArray(s.ageGroups) && s.ageGroups.includes(activeKidsAge));
+ }
+ if(cat==='kids' && activeSubfilter==='公園・外遊び' && activeOutdoorType!=='all'){
+   chosen=chosen.filter(s=>s.tags.includes(activeOutdoorType));
  }
  const st=styles[cat];
  document.getElementById('spotCount').textContent=`${chosen.length}スポット`;
@@ -929,6 +952,7 @@ function showCategory(cat){
  activeSubfilter='すべて';
  activeCafeTime='all';
  activeKidsAge='all';
+ activeOutdoorType='all';
  document.getElementById('mapHeadTitle').textContent=styles[cat].label;
  buildSubfilters(cat);
  buildCafeTimeFilters(cat);
