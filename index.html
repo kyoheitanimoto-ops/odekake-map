@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-day02" />
+  <meta name="app-build" content="20260920-area03" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-day02';
+const APP_BUILD='20260920-area03';
 
 async function ensureLatestBuild(){
   try{
@@ -285,6 +285,11 @@ const spots = [
  {name:"キャンベル・アーリー 博多店",cat:"date",lat:33.5905,lng:130.4205,note:"旬のフルーツパフェとパンケーキが人気。博多駅直結で、買い物デートの休憩にも。",tags:["カフェ","昼","SNS人気","雨の日","スイーツ"],time:["day"],image:"",hours:"11:00〜22:00",closed:"アミュプラザ博多に準ずる",rating:"3.62",reviews:856},
  {name:"TOFFEE Park",cat:"date",lat:33.5908,lng:130.4055,note:"天神中央公園のリバーサイドカフェ。テラス席と川沿いのロケーションがデート向き。",tags:["カフェ","昼","SNS人気","景色"],time:["day"],image:"",hours:"平日・土 10:00〜22:00 / 日 10:00〜18:00 / 祝 10:00〜20:00",closed:"月曜日（祝日の場合は翌日）",rating:"3.52",reviews:207},
  {name:"connect coffee",cat:"date",lat:33.5960,lng:130.3991,note:"ラテアートで知られる天神北の人気店。口コミ数も多く、落ち着いた昼カフェデート向け。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"平日 12:00〜20:00 / 日祝 11:00〜18:00",closed:"火曜日",rating:"3.52",reviews:152},
+ {name:"茶房 わらび野",cat:"date",lat:33.6209,lng:130.5426,area:"篠栗・糟屋",note:"若杉山中腹の絶景カフェ。全面ガラスの店内から景色を楽しめ、デートや記念日に強い。",tags:["カフェ","昼","SNS人気","景色","記念日","ドライブ"],time:["day"],image:"",hours:"11:00〜20:00（L.O.18:30）",closed:"金曜日",rating:"3.48",reviews:319},
+ {name:"cafe たねの隣り",cat:"date",lat:33.3398,lng:130.7886,area:"うきは",note:"柿畑や自然に囲まれた古民家系カフェ。テラスと季節のランチ・甘味がドライブデート向き。",tags:["カフェ","昼","SNS人気","古民家","景色","ドライブ"],time:["day"],image:"",hours:"11:00〜15:30",closed:"木曜日",rating:"3.41",reviews:128},
+ {name:"茶房 ぎゃらりー かさの家",cat:"date",lat:33.5198,lng:130.5335,area:"太宰府",note:"太宰府参道で梅ヶ枝餅や甘味を楽しめる落ち着いた茶房。太宰府デートの休憩に使いやすい。",tags:["カフェ","昼","和カフェ","王道"],time:["day"],image:"",hours:"11:00〜17:30",closed:"最新情報を要確認",rating:"3.54",reviews:308},
+ {name:"アプテカ フレーゴ",cat:"date",lat:33.7832,lng:130.4868,area:"福津",note:"福津の自然に囲まれた一軒家カフェ＆イタリアン。おしゃれな空間と盛り付けでドライブデート向き。",tags:["カフェ","昼","SNS人気","一軒家","ドライブ"],time:["day"],image:"",hours:"火〜日 11:30〜17:00 / 土 18:00〜22:00も営業",closed:"月曜日",rating:"3.41",reviews:106},
+ {name:"Fruit Factory Mooon de Retro",cat:"date",lat:33.9469,lng:130.9624,area:"門司港",note:"旧門司税関のレトロ建築で旬のフルーツパフェを楽しめる。海沿いテラスと門司港散策の組み合わせが強い。",tags:["カフェ","昼","SNS人気","スイーツ","景色","王道"],time:["day"],image:"",hours:"11:00〜18:00（季節変動あり）",closed:"不定休",rating:"3.55",reviews:185},
  {name:"CORDUROY cafe",cat:"date",lat:33.5877,lng:130.3946,note:"大名の街中で深夜まで使いやすいカフェ＆ダイニングバー。食事後の2軒目にも。",tags:["カフェ","夜","2軒目"],time:["night"],image:"",hours:"日〜木 11:00〜翌3:00 / 金土・祝前日 11:00〜翌5:00",closed:"不定休",rating:"3.37",reviews:201},
  {name:"manu coffee 大名店",cat:"date",lat:33.5867,lng:130.3928,note:"大名の定番コーヒースタンド。24時まで営業で、気軽な夜カフェデートに使いやすい。",tags:["カフェ","昼","夜"],time:["day","night"],image:"",hours:"9:00〜24:00",closed:"最新情報を要確認",rating:"3.41",reviews:189},
  {name:"QUON RIVER TERRACE",cat:"date",lat:33.5906,lng:130.4078,note:"那珂川沿いのリバービューが魅力。雰囲気重視の夜デートや記念日に。",tags:["カフェ","夜","記念日","夜景"],time:["night"],image:"",hours:"火〜土 11:00〜翌2:00 / 日 11:00〜24:00",closed:"月曜日",rating:"3.47",reviews:148},
@@ -327,6 +332,7 @@ function popupHtml(s){
  const tags=s.tags.map(t=>`<span class="tag">${t}</span>`).join('');
  const q=encodeURIComponent(s.name);
  const info=[
+  s.area ? `<div class="popup-row"><b>エリア</b><span>${s.area}</span></div>` : '',
   s.hours ? `<div class="popup-row"><b>営業時間</b><span>${s.hours}</span></div>` : '',
   s.closed ? `<div class="popup-row"><b>定休日</b><span>${s.closed}</span></div>` : '',
   s.rating ? `<div class="popup-row"><b>食べログ</b><span>★ ${s.rating}${s.reviews ? `（口コミ${s.reviews}件）` : ''}</span></div>` : ''
