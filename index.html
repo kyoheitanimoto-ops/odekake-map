@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260920-area04" />
+  <meta name="app-build" content="20260920-icons05" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -237,7 +237,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260920-area04';
+const APP_BUILD='20260920-icons05';
 
 async function ensureLatestBuild(){
   try{
@@ -295,6 +295,10 @@ const spots = [
  {name:"コーヒー カウンティ クルメ",cat:"date",lat:33.3148,lng:130.5168,area:"久留米",note:"スペシャルティコーヒーで知られる久留米の人気店。公式Instagramがあり、コーヒー好きの昼デート向け。",tags:["カフェ","昼","SNS人気","コーヒー"],time:["day"],image:"",hours:"11:00〜19:00",closed:"火曜日",rating:"3.37",reviews:61},
  {name:"林檎と葡萄の樹",cat:"date",lat:33.3525,lng:130.7770,area:"朝倉",note:"果樹園に囲まれた古民家カフェ。アップルパイが名物で、朝倉・原鶴方面のドライブデートに組み込みやすい。",tags:["カフェ","昼","SNS人気","古民家","スイーツ","ドライブ"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.46",reviews:175},
  {name:"廣久葛本舗",cat:"date",lat:33.4690,lng:130.6940,area:"朝倉・秋月",note:"秋月散策と相性のいい老舗の葛専門店。和の雰囲気と葛菓子で、落ち着いた昼デート向け。",tags:["カフェ","昼","和カフェ","王道","ドライブ"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.43",reviews:100},
+ {name:"TOP ONE CAFE",cat:"date",lat:33.6385,lng:130.6900,area:"飯塚・筑豊",note:"アメリカンダイナー風の内装が写真映えする飯塚のカフェ。公式Instagramがあり、SNS重視の昼デート候補。",tags:["カフェ","昼","SNS人気","筑豊"],time:["day"],image:"",hours:"12:00〜18:00",closed:"月曜・水曜",rating:"3.07",reviews:7},
+ {name:"茶寮 千代乃園",cat:"date",lat:33.2155,lng:130.7170,area:"八女・黒木",note:"奥八女の自然と八女茶を楽しめる茶寮。景色と和の雰囲気が強く、ドライブデート向け。",tags:["カフェ","昼","SNS人気","和カフェ","景色","ドライブ"],time:["day"],image:"",hours:"11:00〜16:30",closed:"火曜・水曜",rating:"3.35",reviews:48},
+ {name:"ASTRA cafe＆library",cat:"date",lat:33.2109,lng:130.5571,area:"八女",note:"明治・大正・昭和の趣を残す古民家カフェ＆ライブラリー。八女の白壁散策と組み合わせやすい。",tags:["カフェ","昼","夜","SNS人気","古民家"],time:["day","night"],image:"",hours:"11:00〜22:00",closed:"水曜・木曜"},
+ {name:"コトリ",cat:"date",lat:33.1978,lng:130.5023,area:"筑後",note:"古民家をリノベーションした落ち着いたカフェ。素材にこだわった食事と雰囲気を楽しむ昼デート向け。",tags:["カフェ","昼","SNS人気","古民家"],time:["day"],image:"",hours:"11:00〜17:00",closed:"火曜・不定休"},
  {name:"CORDUROY cafe",cat:"date",lat:33.5877,lng:130.3946,note:"大名の街中で深夜まで使いやすいカフェ＆ダイニングバー。食事後の2軒目にも。",tags:["カフェ","夜","2軒目"],time:["night"],image:"",hours:"日〜木 11:00〜翌3:00 / 金土・祝前日 11:00〜翌5:00",closed:"不定休",rating:"3.37",reviews:201},
  {name:"manu coffee 大名店",cat:"date",lat:33.5867,lng:130.3928,note:"大名の定番コーヒースタンド。24時まで営業で、気軽な夜カフェデートに使いやすい。",tags:["カフェ","昼","夜"],time:["day","night"],image:"",hours:"9:00〜24:00",closed:"最新情報を要確認",rating:"3.41",reviews:189},
  {name:"QUON RIVER TERRACE",cat:"date",lat:33.5906,lng:130.4078,note:"那珂川沿いのリバービューが魅力。雰囲気重視の夜デートや記念日に。",tags:["カフェ","夜","記念日","夜景"],time:["night"],image:"",hours:"火〜土 11:00〜翌2:00 / 日 11:00〜24:00",closed:"月曜日",rating:"3.47",reviews:148},
@@ -323,11 +327,24 @@ L.control.zoom({position:'bottomleft'}).addTo(map);
 
 let markers=[], userMarker=null, userAccuracy=null, activeCat='date';
 
-function makeIcon(cat){
- const s=styles[cat];
+function spotVisual(s){
+ const tags=s.tags||[];
+ if(tags.includes('バー')) return {emoji:'🍸',color:'#7457c8'};
+ if(tags.includes('カフェ')) return {emoji:'☕',color:'#b98252'};
+ if(tags.includes('夜景')) return {emoji:'🌙',color:'#344a78'};
+ if(tags.includes('ショッピング')) return {emoji:'🛍️',color:'#e56c91'};
+ if(tags.includes('水族館')) return {emoji:'🐬',color:'#3a91d8'};
+ if(tags.includes('動物園')) return {emoji:'🦁',color:'#d4933f'};
+ if(tags.includes('映画')) return {emoji:'🎬',color:'#686873'};
+ if(tags.includes('ドライブ')) return {emoji:'🚗',color:'#4f9569'};
+ return {emoji:styles[s.cat].emoji,color:styles[s.cat].color};
+}
+
+function makeIcon(s){
+ const v=spotVisual(s);
  return L.divIcon({
   className:'leaflet-div-icon',
-  html:`<div class="pin" style="background:${s.color};box-shadow:0 7px 18px ${s.color}66"><span>${s.emoji}</span></div>`,
+  html:`<div class="pin" style="background:${v.color};box-shadow:0 7px 18px ${v.color}66"><span>${v.emoji}</span></div>`,
   iconSize:[34,34],iconAnchor:[17,31],popupAnchor:[0,-28]
  });
 }
@@ -439,7 +456,7 @@ function renderCategory(cat){
  const bounds=[];
 
  chosen.forEach((s,i)=>{
-  const marker=L.marker([s.lat,s.lng],{icon:makeIcon(cat)}).addTo(map);
+  const marker=L.marker([s.lat,s.lng],{icon:makeIcon(s)}).addTo(map);
   marker.bindPopup(popupHtml(s));
   marker.on('click',()=>{
     document.getElementById('recTitle').textContent=s.name;
