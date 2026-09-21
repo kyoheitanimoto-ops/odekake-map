@@ -6,11 +6,36 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260921-solofinal66" />
-  <meta name="theme-color" content="#fffafc" />
+  <meta name="app-build" content="20260922-brand67" />
+  <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <title>おでかけMAP 福岡</title>
+  <title>myCocomo｜ここも、行きたいが見つかる。</title>
+  <meta name="description" content="福岡のおでかけ先を、カップル・家族・一人旅など目的別に探せる地図アプリ。ここも、行きたいが見つかる。" />
+  <meta name="application-name" content="myCocomo" />
+  <meta name="apple-mobile-web-app-title" content="myCocomo" />
+  <link rel="canonical" href="https://kyoheitanimoto-ops.github.io/odekake-map/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="myCocomo" />
+  <meta property="og:title" content="myCocomo｜ここも、行きたいが見つかる。" />
+  <meta property="og:description" content="福岡のおでかけ先を、目的やシーンから地図で見つけよう。" />
+  <meta property="og:url" content="https://kyoheitanimoto-ops.github.io/odekake-map/" />
+  <meta property="og:image" content="https://kyoheitanimoto-ops.github.io/odekake-map/assets/og-image.png" />
+  <meta property="og:image:secure_url" content="https://kyoheitanimoto-ops.github.io/odekake-map/assets/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="myCocomo ここも、行きたいが見つかる。" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="myCocomo｜ここも、行きたいが見つかる。" />
+  <meta name="twitter:description" content="福岡のおでかけ先を、目的やシーンから地図で見つけよう。" />
+  <meta name="twitter:image" content="https://kyoheitanimoto-ops.github.io/odekake-map/assets/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Yomogi&display=swap" rel="stylesheet">
@@ -374,6 +399,23 @@ to{transform:scale(1.08)}}
     #mapScreen .popup-visual{height:118px;margin-bottom:10px}
     #mapScreen .leaflet-tile-pane{filter:saturate(.62) brightness(1.08) contrast(.90)}
     #mapScreen .leaflet-control-attribution{opacity:.62}
+
+    .brand-lockup{
+      position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;z-index:3;
+      display:flex;align-items:center;gap:8px;padding:7px 10px 7px 8px;border-radius:16px;
+      background:rgba(246,242,234,.88);border:1px solid rgba(255,255,255,.72);
+      box-shadow:0 6px 20px rgba(35,45,55,.10);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)
+    }
+    .brand-symbol{width:34px;height:34px;display:block;flex:0 0 auto}
+    .brand-words{display:flex;flex-direction:column;gap:1px;line-height:1}
+    .brand-name{font-size:16px;font-weight:900;letter-spacing:-.025em;color:#333}
+    .brand-name .coral{color:#FF7A6B}.brand-name .sun{color:#F4C15D}
+    .brand-name .leaf{color:#5FA57A}.brand-name .sky{color:#4A90E2}
+    .brand-tagline{font-size:7.5px;font-weight:750;color:#333;letter-spacing:.01em;white-space:nowrap}
+    @media (max-width:380px){
+      .brand-lockup{top:calc(11px + env(safe-area-inset-top));right:10px;padding:6px 8px 6px 7px}
+      .brand-symbol{width:30px;height:30px}.brand-name{font-size:14px}.brand-tagline{font-size:7px}
+    }
   </style>
 </head>
 <body>
@@ -383,6 +425,13 @@ to{transform:scale(1.08)}}
       <div class="hero-slides" aria-hidden="true">
         <div class="hero-slide is-active"></div>
         <div class="hero-slide"></div>
+      </div>
+      <div class="brand-lockup" aria-label="myCocomo ここも、行きたいが見つかる。">
+        <img class="brand-symbol" src="assets/mycocomo-symbol.svg" alt="" width="34" height="34">
+        <span class="brand-words">
+          <span class="brand-name">my<span class="coral">C</span><span class="sun">o</span><span class="leaf">c</span><span class="sky">o</span><span class="coral">m</span><span class="sun">o</span></span>
+          <span class="brand-tagline">ここも、行きたいが見つかる。</span>
+        </span>
       </div>
       <div class="hero-copy">
         <h2>今日は、どこへいこう？</h2>
@@ -482,7 +531,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260921-solofinal66';
+const APP_BUILD='20260922-brand67';
 
 async function ensureLatestBuild(){
   try{
