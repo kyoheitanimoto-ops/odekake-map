@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260922-copylayout70" />
+  <meta name="app-build" content="20260922-svgpins71" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -116,10 +116,15 @@
       background:rgba(255,255,255,.96);box-shadow:0 8px 24px rgba(0,0,0,.16);display:grid;place-items:center;font-size:20px;color:#222
     }
     .pin{
-      width:42px;height:42px;border-radius:50% 50% 50% 12px;transform:rotate(-45deg);
-      display:grid;place-items:center;border:3px solid #fff
+      width:36px;height:44px;display:block;position:relative;
+      filter:drop-shadow(0 5px 7px rgba(38,45,54,.24));
+      transform:translateZ(0)
     }
-    .pin span{transform:rotate(45deg);font-size:16px}
+    .pin-shape{width:36px;height:44px;display:block;overflow:visible}
+    .pin-body{stroke:rgba(255,255,255,.96);stroke-width:2}
+    .pin-highlight{fill:none;stroke:rgba(255,255,255,.34);stroke-width:2.2;stroke-linecap:round}
+    .pin-glyph{color:#fff;filter:drop-shadow(0 1px 1px rgba(40,45,50,.10))}
+    .pin-glyph path,.pin-glyph circle,.pin-glyph line,.pin-glyph polyline,.pin-glyph rect{vector-effect:non-scaling-stroke}
     .leaflet-div-icon{background:transparent!important;border:none!important}
     .leaflet-control-attribution{font-size:9px!important;background:rgba(255,255,255,.72)!important}
     .leaflet-popup-content-wrapper{border-radius:20px!important;box-shadow:0 16px 38px rgba(0,0,0,.16)!important;padding:2px!important}
@@ -392,8 +397,8 @@ to{transform:scale(1.08)}}
     #mapScreen .glass{padding:8px 11px;font-size:11px;background:rgba(255,255,255,.9)}
     #mapScreen .bottom-strip{display:none}
     #mapScreen .floating{right:14px;bottom:calc(18px + env(safe-area-inset-bottom));width:50px;height:50px;border-radius:50%}
-    #mapScreen .pin{width:34px;height:34px;border-width:2px;box-shadow:0 4px 12px rgba(0,0,0,.18)!important}
-    #mapScreen .pin span{font-size:13px}
+    #mapScreen .pin{width:36px;height:44px;filter:drop-shadow(0 4px 6px rgba(38,45,54,.22))}
+    #mapScreen .pin-shape{width:36px;height:44px}
     #mapScreen .leaflet-popup-content-wrapper{border-radius:22px!important}
     #mapScreen .leaflet-popup-content{width:226px!important;margin:11px!important}
     #mapScreen .popup-visual{height:118px;margin-bottom:10px}
@@ -531,7 +536,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260922-copylayout70';
+const APP_BUILD='20260922-svgpins71';
 
 async function ensureLatestBuild(){
   try{
@@ -938,61 +943,60 @@ L.control.zoom({position:'bottomleft'}).addTo(map);
 
 let markers=[], userMarker=null, userAccuracy=null, activeCat='date';
 
+
 function spotVisual(s){
  const tags=s.tags||[];
+ const base={date:{icon:'heart',color:'#FF7A6B'},kids:{icon:'home',color:'#F08A42'},solo:{icon:'compass',color:'#5FA57A'}}[s.cat] || {icon:'dots',color:'#7D8791'};
+ if(activeSubfilter==='雨の日' || tags.includes('雨の日')) return {icon:'umbrella',color:'#7E6AAE'};
+ if(tags.includes('水遊び') || tags.includes('プール')) return {icon:'waves',color:'#43AFC4'};
  if(activeCat==='kids' && activeSubfilter==='動物・水族館'){
-  if(tags.includes('水族館')) return {emoji:'🐬',color:'#3a91d8'};
-  if(tags.includes('動物園')) return {emoji:'🦁',color:'#d4933f'};
-  if(tags.includes('ふれあい・牧場')) return {emoji:'🐐',color:'#6d9a59'};
-  return {emoji:'🐾',color:'#8a704f'};
+  if(tags.includes('水族館')) return {icon:'fish',color:'#4A90E2'};
+  if(tags.includes('動物園')) return {icon:'paw',color:'#D86F8B'};
+  return {icon:'paw',color:'#C47A68'};
  }
+ if(activeCat==='kids' && activeSubfilter==='学び・体験') return {icon:'book',color:'#D39A2C'};
+ if(activeCat==='kids' && activeSubfilter==='公園・外遊び') return {icon:'tree',color:'#5FA57A'};
  if(activeCat==='solo'){
-  if(tags.includes('パン')) return {emoji:'🥐',color:'#c98a45'};
-  if(tags.includes('サンドイッチ')) return {emoji:'🥪',color:'#c77b45'};
-  if(tags.includes('スイーツ')) return {emoji:'🍮',color:'#d58a72'};
-  if(tags.includes('食べ歩き')) return {emoji:'🥡',color:'#c9794d'};
-  if(tags.includes('カフェ・喫茶')) return {emoji:'☕',color:'#5aa6a0'};
-  if(tags.includes('ひとりグルメ')) return {emoji:'🍜',color:'#d4773f'};
-  if(tags.includes('温泉・癒し')) return {emoji:'♨️',color:'#4f8ea8'};
-  if(tags.includes('文化・学び')) return {emoji:'▣',color:'#7566a8'};
-  if(tags.includes('自然・絶景')) return {emoji:'◆',color:'#4f9271'};
-  if(tags.includes('街歩き・散策')) return {emoji:'●',color:'#a06d50'};
-  if(tags.includes('一人ドライブ')) return {emoji:'▶',color:'#4d78a8'};
+  if(tags.includes('パン') || tags.includes('サンドイッチ') || tags.includes('スイーツ') || tags.includes('食べ歩き') || tags.includes('ひとりグルメ')) return {icon:'meal',color:'#B96E4B'};
+  if(tags.includes('カフェ・喫茶')) return {icon:'cup',color:'#A7674F'};
+  if(tags.includes('温泉・癒し')) return {icon:'spa',color:'#4F8EA8'};
+  if(tags.includes('文化・学び')) return {icon:'book',color:'#7566A8'};
+  if(tags.includes('自然・絶景')) return {icon:'mountain',color:'#4F9271'};
+  if(tags.includes('街歩き・散策')) return {icon:'compass',color:'#9B7055'};
+  if(tags.includes('一人ドライブ')) return {icon:'car',color:'#4D78A8'};
  }
- if(tags.includes('乗馬')) return {emoji:'🐎',color:'#8b6b4d'};
- if(tags.includes('SUP')) return {emoji:'🏄',color:'#3c97b8'};
- if(tags.includes('釣り')) return {emoji:'🎣',color:'#3f7da3'};
- if(tags.includes('陶芸')) return {emoji:'🏺',color:'#9a6f5a'};
- if(tags.includes('アスレチック')) return {emoji:'🧗',color:'#5f8b56'};
- if(tags.includes('グランピング') || tags.includes('宿泊')) return {emoji:'⛺',color:'#5f7f52'};
- if(tags.includes('いちご狩り')) return {emoji:'🍓',color:'#d95d6a'};
- if(tags.includes('スパ')) return {emoji:'♨️',color:'#4f8ea8'};
- if(tags.includes('科学館')) return {emoji:'🔬',color:'#5576c7'};
- if(tags.includes('美術館') || tags.includes('博物館')) return {emoji:'🖼️',color:'#8a6aa8'};
- if(tags.includes('レストラン')) return {emoji:'🍽️',color:'#b65f78'};
- if(tags.includes('バー')) return {emoji:'🍸',color:'#7457c8'};
- if(tags.includes('カフェ')) return {emoji:'☕',color:'#5aa6a0'};
- if(tags.includes('夜景')) return {emoji:'🌙',color:'#344a78'};
- if(tags.includes('ショッピング')) return {emoji:'🛍️',color:'#e56c91'};
- if(tags.includes('季節イベント')) return {emoji:'◆',color:'#d06b86'};
- if(tags.includes('室内遊び')) return {emoji:'◉',color:'#f08a42'};
- if(tags.includes('学び・体験') || tags.includes('恐竜')) return {emoji:'✦',color:'#5576c7'};
- if(tags.includes('水族館')) return {emoji:'🐬',color:'#3a91d8'};
- if(tags.includes('動物園')) return {emoji:'🦁',color:'#d4933f'};
- if(tags.includes('ふれあい・牧場')) return {emoji:'🐐',color:'#6d9a59'};
- if(tags.includes('動物・水族館')) return {emoji:'🐾',color:'#8a704f'};
- if(tags.includes('映画')) return {emoji:'🎬',color:'#686873'};
- if(tags.includes('ドライブ')) return {emoji:'🚗',color:'#4f9569'};
- return {emoji:styles[s.cat].emoji,color:styles[s.cat].color};
+ if(tags.includes('SUP')) return {icon:'waves',color:'#3C97B8'};
+ if(tags.includes('釣り')) return {icon:'fish',color:'#3F7DA3'};
+ if(tags.includes('アスレチック') || tags.includes('乗馬') || tags.includes('陶芸')) return {icon:'activity',color:'#6E8758'};
+ if(tags.includes('グランピング') || tags.includes('宿泊')) return {icon:'tent',color:'#5F7F52'};
+ if(tags.includes('スパ')) return {icon:'spa',color:'#4F8EA8'};
+ if(tags.includes('科学館') || tags.includes('学び・体験') || tags.includes('恐竜')) return {icon:'book',color:'#D39A2C'};
+ if(tags.includes('美術館') || tags.includes('博物館')) return {icon:'landmark',color:'#7566A8'};
+ if(tags.includes('レストラン')) return {icon:'meal',color:'#B65F78'};
+ if(tags.includes('バー')) return {icon:'cup',color:'#7457C8'};
+ if(tags.includes('カフェ')) return {icon:'cup',color:'#A7674F'};
+ if(tags.includes('夜景')) return {icon:'moon',color:'#455A86'};
+ if(tags.includes('ショッピング')) return {icon:'bag',color:'#D66F89'};
+ if(tags.includes('季節イベント')) return {icon:'star',color:'#D06B86'};
+ if(tags.includes('室内遊び')) return {icon:'home',color:'#F08A42'};
+ if(tags.includes('水族館')) return {icon:'fish',color:'#4A90E2'};
+ if(tags.includes('動物園') || tags.includes('ふれあい・牧場') || tags.includes('動物・水族館')) return {icon:'paw',color:'#D86F8B'};
+ if(tags.includes('ドライブ')) return {icon:'car',color:'#4F9569'};
+ return base;
 }
+
+const pinIcons={"heart":"<path d=\"M12 20.2 4.7 13.1A5.1 5.1 0 0 1 11.9 5.9L12 6l.1-.1a5.1 5.1 0 0 1 7.2 7.2Z\" fill=\"currentColor\" stroke=\"none\"/>","home":"<path d=\"m3 11 9-7 9 7\"/><path d=\"M5.5 9.5V20h13V9.5\"/><path d=\"M9.5 20v-6h5v6\"/>","compass":"<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"m15.8 8.2-2.1 5.5-5.5 2.1 2.1-5.5Z\" fill=\"currentColor\" stroke=\"none\"/>","star":"<path d=\"m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9Z\" fill=\"currentColor\" stroke=\"none\"/>","cup":"<path d=\"M4 7h13v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z\"/><path d=\"M17 9h1.5a3 3 0 0 1 0 6H17M3 21h16\"/>","umbrella":"<path d=\"M4 12a8 8 0 0 1 16 0Z\"/><path d=\"M12 12v6.2a2.2 2.2 0 0 0 4.4 0\"/>","waves":"<path d=\"M3 9c3-2 5-2 8 0s5 2 10 0M3 14c3-2 5-2 8 0s5 2 10 0M3 19c3-2 5-2 8 0s5 2 10 0\"/>","paw":"<circle cx=\"7\" cy=\"9\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"17\" cy=\"9\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"10\" cy=\"5.5\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"14\" cy=\"5.5\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M7.2 16.1c0-3 2.2-5.2 4.8-5.2s4.8 2.2 4.8 5.2c0 2.4-2 3.7-4.8 3.7s-4.8-1.3-4.8-3.7Z\" fill=\"currentColor\" stroke=\"none\"/>","fish":"<path d=\"M4 12c3.8-5 9.2-5.7 13.8-1.2L21 8v8l-3.2-2.8C13.2 17.7 7.8 17 4 12Z\"/><circle cx=\"14.5\" cy=\"11\" r=\"1\" fill=\"currentColor\" stroke=\"none\"/>","book":"<path d=\"M4 5.5h5.2c1.6 0 2.8 1.2 2.8 2.8V20c0-1.6-1.2-2.8-2.8-2.8H4Z\"/><path d=\"M20 5.5h-5.2c-1.6 0-2.8 1.2-2.8 2.8V20c0-1.6 1.2-2.8 2.8-2.8H20Z\"/>","dots":"<circle cx=\"5\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"19\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/>","meal":"<path d=\"M6 4v7M3.5 4v4.5A2.5 2.5 0 0 0 6 11v9M8.5 4v4.5A2.5 2.5 0 0 1 6 11\"/><path d=\"M16 4v16M16 4c3 1 4 3.5 4 6h-4\"/>","spa":"<path d=\"M7 4c-2 2 2 3 0 5M12 4c-2 2 2 3 0 5M17 4c-2 2 2 3 0 5M4 14c3-2 5-2 8 0s5 2 8 0M4 19c3-2 5-2 8 0s5 2 8 0\"/>","mountain":"<path d=\"m3 19 7-12 4 6 2-3 5 9Z\"/><path d=\"m8 11 2 2 2-3\"/>","car":"<path d=\"m5 15 1.8-6h10.4l1.8 6\"/><rect x=\"3\" y=\"13\" width=\"18\" height=\"6\" rx=\"2\"/><circle cx=\"7\" cy=\"19\" r=\"1.5\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"17\" cy=\"19\" r=\"1.5\" fill=\"currentColor\" stroke=\"none\"/>","activity":"<path d=\"M13 2 5 13h6l-1 9 9-13h-6Z\" fill=\"currentColor\" stroke=\"none\"/>","tent":"<path d=\"m3 20 9-16 9 16ZM12 4v16M8 20l4-7 4 7\"/>","bag":"<path d=\"M5 8h14l-1 12H6Z\"/><path d=\"M9 9V7a3 3 0 0 1 6 0v2\"/>","moon":"<path d=\"M19 15.5A8.5 8.5 0 0 1 8.5 5 8.5 8.5 0 1 0 19 15.5Z\" fill=\"currentColor\" stroke=\"none\"/>","tree":"<path d=\"M12 3 6 11h3l-5 7h16l-5-7h3Z\"/><path d=\"M12 18v3\"/>","landmark":"<path d=\"m3 9 9-5 9 5ZM5 10v8M10 10v8M14 10v8M19 10v8M3 20h18\"/>"};
+function pinIconSvg(icon){return pinIcons[icon] || pinIcons.dots;}
 
 function makeIcon(s){
  const v=spotVisual(s);
- return L.divIcon({
-  className:'leaflet-div-icon',
-  html:`<div class="pin" style="background:${v.color};box-shadow:0 7px 18px ${v.color}66"><span>${v.emoji}</span></div>`,
-  iconSize:[34,34],iconAnchor:[17,31],popupAnchor:[0,-28]
- });
+ const glyph=pinIconSvg(v.icon);
+ const html='<div class="pin"><svg class="pin-shape" viewBox="0 0 36 44" aria-hidden="true">'
+  +'<path class="pin-body" fill="'+v.color+'" d="M18 1C8.6 1 1 8.5 1 17.8c0 11.8 13.2 22.5 16 24.7.6.5 1.4.5 2 0 2.8-2.2 16-12.9 16-24.7C35 8.5 27.4 1 18 1Z"/>'
+  +'<path class="pin-highlight" d="M7.2 14.2C8.5 8.9 12.4 5.8 17 5.3"/>'
+  +'<svg class="pin-glyph" x="8" y="7" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">'
+  +glyph+'</svg></svg></div>';
+ return L.divIcon({className:'leaflet-div-icon',html,iconSize:[36,44],iconAnchor:[18,42],popupAnchor:[0,-39]});
 }
 
 function popupHtml(s){
