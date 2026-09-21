@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260921-solo61" />
+  <meta name="app-build" content="20260921-sologourmet62" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -482,7 +482,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260921-solo61';
+const APP_BUILD='20260921-sologourmet62';
 
 async function ensureLatestBuild(){
   try{
@@ -739,7 +739,17 @@ const spots = [
  {name:"源泉野天風呂 那珂川清滝",cat:"solo",lat:33.4527,lng:130.4318,area:"那珂川市",note:"露天風呂と休憩を自分のペースで楽しめる日帰り温泉。公式発信でも一人でくつろぐ利用を案内している。",tags:["温泉・癒し","一人ドライブ"],price:"入浴料は曜日等で変動（公式確認）",hours:"10:00〜23:00目安",ratingSource:"Googleマップ",rating:"4.2",reviews:3352,soloEvidence:"公式が一人利用を案内",image:""},
  {name:"筑紫野 天拝の郷",cat:"solo",lat:33.4887602,lng:130.4970917,area:"筑紫野市",note:"高台の眺めと温浴を組み合わせ、半日ゆっくり過ごせる。一人でも利用目的が明確で、駐車場も使いやすい。",tags:["温泉・癒し","一人ドライブ"],price:"入浴料は曜日等で変動（公式確認）",hours:"10:30〜23:00目安",ratingSource:"Googleマップ",rating:"4.1",reviews:2424,image:""},
  {name:"源じいの森温泉",cat:"solo",lat:33.6174261,lng:130.897537,area:"赤村",note:"自然の中の温泉を目的に、筑豊方面を走る一人ドライブに向く。観光地の混雑を離れて休みたい日に選びやすい。",tags:["温泉・癒し","一人ドライブ"],price:"入浴料は公式確認",hours:"10:00〜21:00目安",ratingSource:"Googleマップ",rating:"4.0",reviews:1316,image:""},
- {name:"みなと温泉 波葉の湯",cat:"solo",lat:33.6038939,lng:130.3982115,area:"福岡市博多区",note:"都心から行きやすく、温浴と休憩を一人の予定に組み込みやすい。買い物や港周辺の散策ともつなげられる。",tags:["温泉・癒し"],price:"入浴料は曜日等で変動（公式確認）",hours:"10:00〜23:00目安",ratingSource:"Googleマップ",rating:"4.0",reviews:3733,image:""}
+ {name:"みなと温泉 波葉の湯",cat:"solo",lat:33.6038939,lng:130.3982115,area:"福岡市博多区",note:"都心から行きやすく、温浴と休憩を一人の予定に組み込みやすい。買い物や港周辺の散策ともつなげられる。",tags:["温泉・癒し"],price:"入浴料は曜日等で変動（公式確認）",hours:"10:00〜23:00目安",ratingSource:"Googleマップ",rating:"4.0",reviews:3733,image:""},
+ {name:"天麩羅処ひらお 本店",cat:"solo",lat:33.583843627083226,lng:130.45656939972483,area:"福岡市博多区",note:"全56席がカウンターで、食券を買って揚げたてを一品ずつ受け取るスタイル。一人利用◎とする口コミもあり、福岡らしい食事を気兼ねなく楽しめる。",tags:["ひとりグルメ"],price:"1,000〜2,000円目安",hours:"10:30〜21:30（L.O.21:00）",closed:"年末年始",ratingSource:"食べログ",rating:"3.72",reviews:2161,soloEvidence:"口コミに一人利用◎の記述あり",image:""},
+ {name:"うどん平",cat:"solo",lat:33.58318858707075,lng:130.41604991974663,area:"福岡市博多区",note:"博多うどんを自分のペースで味わえる人気店。一人で訪れた口コミが確認でき、短時間の昼食にも組み込みやすい。",tags:["ひとりグルメ"],price:"1,000円前後",hours:"営業時間は最新情報を要確認",ratingSource:"食べログ",rating:"3.69",reviews:942,soloEvidence:"一人訪問の口コミを確認",image:""},
+ {name:"博多一双 博多駅東本店",cat:"solo",lat:33.5863863270716,lng:130.42510773977256,area:"福岡市博多区",note:"カウンター席で濃厚な博多豚骨ラーメンを一杯から楽しめる。博多駅から歩けるため、一人旅の食事動線に入れやすい。",tags:["ひとりグルメ"],price:"1,000円前後",hours:"11:00〜24:00目安",ratingSource:"食べログ",rating:"3.72",reviews:5715,soloEvidence:"カウンター席を確認",image:""},
+ {name:"一蘭 本社総本店",cat:"solo",lat:33.59324948706071,lng:130.40460519985626,area:"福岡市博多区",note:"一席ずつ仕切られた味集中カウンターで、一人でも周囲を気にせず食べやすい。深い時間帯にも利用しやすい福岡発祥の定番。",tags:["ひとりグルメ"],price:"1,000〜2,000円目安",hours:"24時間営業を基本（最新情報を要確認）",ratingSource:"食べログ",rating:"3.45",reviews:1344,soloEvidence:"一人向けカウンター形式",image:""},
+ {name:"ひょうたんの回転寿司",cat:"solo",lat:33.589759537061134,lng:130.39899011982496,area:"福岡市中央区・天神",note:"天神駅近くの地下街で、カウンターから一皿ずつ注文できる。一人でも量を調整しやすく、福岡の魚を気軽に試せる。",tags:["ひとりグルメ"],price:"3,000〜4,000円目安",hours:"11:00〜21:00目安",ratingSource:"食べログ",rating:"3.54",reviews:572,soloEvidence:"カウンター席を確認",image:""},
+ {name:"珈琲美美",cat:"solo",lat:33.58271073706037,lng:130.3825173297653,area:"福岡市中央区",note:"ネルドリップの一杯と静かな時間を目的に訪れたい専門店。カウンター席があり、一人で入りやすい利用シーンも確認できる。",tags:["ひとりグルメ"],price:"1,000〜2,000円目安",hours:"12:00〜18:00目安",ratingSource:"食べログ",rating:"3.68",reviews:432,soloEvidence:"「一人で入りやすい」・カウンター席を確認",image:""},
+ {name:"ブラジレイロ",cat:"solo",lat:33.59655551706037,lng:130.4101241698858,area:"福岡市博多区",note:"歴史ある喫茶店で、コーヒーや洋食を落ち着いて楽しめる。カウンター席と一人利用向けの利用シーンが確認できる。",tags:["ひとりグルメ"],price:"1,000円前後",hours:"月〜土 10:00〜19:00目安",closed:"日曜日・祝日など",ratingSource:"食べログ",rating:"3.55",reviews:388,soloEvidence:"「一人で入りやすい」・カウンター席を確認",image:""},
+ {name:"こがねむし",cat:"solo",lat:33.946904517015035,lng:130.96647833303464,area:"北九州市門司区",note:"門司港名物の焼きカレーを気軽に味わえる昔ながらの店。カウンター席があり、一人で入りやすい利用シーンも確認できる。",tags:["ひとりグルメ"],price:"1,000円前後",hours:"11:45〜15:00／17:00〜21:00目安",ratingSource:"食べログ",rating:"3.58",reviews:400,soloEvidence:"「一人で入りやすい」・カウンター席を確認",image:""},
+ {name:"資さんうどん 魚町店",cat:"solo",lat:33.88350550702802,lng:130.8807913524543,area:"北九州市小倉北区",note:"カウンター席で北九州のうどんとぼた餅を一人でも注文しやすい。小倉駅周辺の観光途中や遅い時間の食事にも使いやすい。",tags:["ひとりグルメ"],price:"1,000円前後",hours:"24時間営業を基本（最新情報を要確認）",ratingSource:"食べログ",rating:"3.48",reviews:1246,soloEvidence:"カウンター席を確認",image:""},
+ {name:"大砲ラーメン 本店",cat:"solo",lat:33.315276797275814,lng:130.5256727769636,area:"久留米市",note:"久留米ラーメンの歴史を感じられる本店。カウンター席があり、一杯を目的に一人で訪れる価値が明確。",tags:["ひとりグルメ"],price:"1,000円前後",hours:"10:30〜21:00目安",ratingSource:"食べログ",rating:"3.54",reviews:1298,soloEvidence:"カウンター席を確認",image:""}
 ];
 
 // 「料金」は大人2名＋小学生1名＋未就学児1名の基本利用料で区分する。
@@ -876,6 +886,7 @@ function spotVisual(s){
   return {emoji:'🐾',color:'#8a704f'};
  }
  if(activeCat==='solo'){
+  if(tags.includes('ひとりグルメ')) return {emoji:'🍜',color:'#d4773f'};
   if(tags.includes('温泉・癒し')) return {emoji:'♨️',color:'#4f8ea8'};
   if(tags.includes('文化・学び')) return {emoji:'▣',color:'#7566a8'};
   if(tags.includes('自然・絶景')) return {emoji:'◆',color:'#4f9271'};
@@ -1014,7 +1025,7 @@ function buildSubfilters(cat){
    : cat==='kids'
    ? ['すべて','料金','雨の日','室内遊び','公園・外遊び','動物・水族館','学び・体験','季節イベント']
    : cat==='solo'
-   ? ['すべて','街歩き・参拝','自然・絶景','文化・学び','温泉・癒し','一人ドライブ']
+   ? ['すべて','街歩き・参拝','自然・絶景','文化・学び','ひとりグルメ','温泉・癒し','一人ドライブ']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
