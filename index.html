@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260921-familyprice57" />
+  <meta name="app-build" content="20260921-familyprice58" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -482,7 +482,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260921-familyprice57';
+const APP_BUILD='20260921-familyprice58';
 
 async function ensureLatestBuild(){
   try{
@@ -986,7 +986,7 @@ function buildSubfilters(cat){
  const presets = cat==='date'
    ? ['すべて','王道','夜景','カフェ・バー','ドライブ','アクティブ・体験','雨の日','記念日']
    : cat==='kids'
-   ? ['すべて','雨の日','室内遊び','公園・外遊び','動物・水族館','学び・体験','季節イベント','料金']
+   ? ['すべて','料金','雨の日','室内遊び','公園・外遊び','動物・水族館','学び・体験','季節イベント']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
