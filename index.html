@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260921-familyevents56" />
+  <meta name="app-build" content="20260921-familyprice57" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -482,7 +482,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260921-familyevents56';
+const APP_BUILD='20260921-familyprice57';
 
 async function ensureLatestBuild(){
   try{
@@ -646,7 +646,7 @@ const spots = [
  {name:"BAR 倉吉 中洲",cat:"date",lat:33.5909,lng:130.4078,area:"中洲",note:"中洲の本格オーセンティックバー。深夜4時まで営業し、食事後にゆっくり飲みたいカップル。",tags:["バー","夜","2軒目"],time:["bar"],image:"",hours:"月〜土 19:00〜翌4:00",closed:"日曜・祝日"},
  {name:"マリンワールド海の中道",cat:"kids",lat:33.6616,lng:130.3639,area:"福岡市東区・海の中道",note:"九州の海をテーマにした大型水族館。屋内展示が充実し、ショー観覧席にも屋根があるため雨の日でも長く楽しみやすい。",tags:["雨の日","動物・水族館","水族館","一日遊べる"],age:"3歳頃〜小学生を中心に全年齢",price:"大人2,500円／小中学生1,200円／3歳以上700円",image:"IMG_0499.webp",hours:"通常 9:30〜17:30（季節により変更）",closed:"1月に休館期間あり"},
  {name:"福岡市科学館",cat:"kids",lat:33.5772,lng:130.3780,area:"福岡市中央区・六本松",note:"体験型の基本展示とプラネタリウムを楽しめる科学館。未就学児無料の展示もあり、雨の日の学び系おでかけに強い。",tags:["雨の日","学び・体験","科学・自然","一日遊べる"],age:"未就学児〜小学生",price:"基本展示 大人510円／小中学生200円／未就学児無料",image:"IMG_0500.jpeg",hours:"9:30〜18:00",closed:"火曜日・年末年始（長期休暇中は例外あり）"},
- {name:"北九州市立いのちのたび博物館",cat:"kids",lat:33.8704,lng:130.8113,area:"北九州市八幡東区",note:"恐竜・自然史・歴史を大規模展示で楽しめる博物館。プレイルームや授乳設備もあり、子ども連れで長時間過ごしやすい。",tags:["雨の日","学び・体験","科学・自然","歴史・文化","恐竜","一日遊べる"],age:"幼児〜小学生",price:"料金は最新情報を要確認",image:"IMG_0501.jpeg",hours:"9:00〜17:00",closed:"最新情報を要確認"},
+ {name:"北九州市立いのちのたび博物館",cat:"kids",lat:33.8704,lng:130.8113,area:"北九州市八幡東区",note:"恐竜・自然史・歴史を大規模展示で楽しめる博物館。プレイルームや授乳設備もあり、子ども連れで長時間過ごしやすい。",tags:["雨の日","学び・体験","科学・自然","歴史・文化","恐竜","一日遊べる"],age:"幼児〜小学生",price:"大人600円／小中学生240円／小学生未満無料",image:"IMG_0501.jpeg",hours:"9:00〜17:00（入館16:30まで）",closed:"年末年始・害虫駆除期間"},
  {name:"福岡アンパンマンこどもミュージアムinモール",cat:"kids",lat:33.5943,lng:130.4057,area:"福岡市博多区・中洲川端",note:"アンパンマンの世界で遊具・ステージ・グリーティングを楽しめる全天候型施設。駅直結で雨の日の移動負担も少ない。",tags:["雨の日","室内遊び","一日遊べる"],age:"0歳〜未就学児中心",ageGroups:["0〜2歳","3〜6歳"],price:"1歳以上 2,000〜2,200円程度（日により変動）",image:"",hours:"10:00〜17:00（最終入場16:00）",closed:"指定休館日あり"},
  {name:"キッザニア福岡",cat:"kids",lat:33.5639,lng:130.4402,area:"福岡市博多区・ららぽーと福岡",note:"仕事やサービスを本格的に体験できる屋内型の職業・社会体験施設。雨の日でも半日以上しっかり遊べる。",tags:["雨の日","学び・体験","仕事・社会","一日遊べる"],age:"3〜15歳",price:"日時・プランで変動。予約画面で要確認",image:"",hours:"平日9:00〜17:00／休日は2部制の日あり",closed:"ららぽーと福岡の休館等に準ずる"},
  {name:"福岡おもちゃ美術館",cat:"kids",lat:33.5637,lng:130.4405,area:"福岡市博多区・ららぽーと福岡",note:"福岡県産木材を使った館内で約8,000点のおもちゃに触れて遊べる。赤ちゃん木育広場もあり、乳幼児連れにも強い。",tags:["雨の日","室内遊び"],age:"0歳〜小学生",ageGroups:["0〜2歳","3〜6歳","小学生","全年齢"],price:"6カ月〜小学生 1日1,200円〜／大人1日1,600円〜",image:"",hours:"最新情報を要確認",closed:"ららぽーと福岡の営業等に準ずる"},
@@ -722,6 +722,52 @@ const spots = [
  {name:"門司港レトロ",cat:"solo",lat:33.9477,lng:130.9610,note:"写真を撮りながら自由に街歩き。",tags:["写真","街歩き"],image:"IMG_0503.jpeg"},
  {name:"糸島・桜井二見ヶ浦",cat:"solo",lat:33.6380,lng:130.1927,note:"海沿いの景色を楽しみたいひとりドライブに。",tags:["海","ドライブ"],image:"IMG_0504.jpeg"}
 ];
+
+// 「料金」は大人2名＋小学生1名＋未就学児1名の基本利用料で区分する。
+// 駐車場・交通費・飲食・任意の追加体験は含めない。
+const familyPriceGroups={
+ '無料':[
+  '北九州市立子どもの館 HOW!?','久留米市児童センター','ふるさとわらべ館','福岡市民防災センター',
+  '北九州交通公園','貝塚公園（貝塚交通公園）','美術館の秋祭り','ナカガワクエストⅠ 水源のひみつを解き明かせ！',
+  '九州国立博物館 あじっぱ','福岡市博物館 みたいけんラボ','博多の食と文化の博物館 ハクハク',
+  '香春町子育て支援施設 かぱる','大川市子育て支援総合施設 モッカランド','今津運動公園',
+  '大野城いこいの森 中央公園','筑紫野市総合公園','夜須高原記念の森','古賀グリーンパーク',
+  '平尾台自然の郷','福岡県営筑豊緑地','あまぎ水の文化村','白水大池公園','浦山公園','筑後広域公園',
+  'むつごろうランド','諏訪公園','ABURAYAMA FUKUOKA 牧場エリア','筑後川防災施設 くるめウス',
+  'むつごろうランド 有明海水族館','北九州市立 水環境館'
+ ],
+ '〜1,000円':[
+  'スペースLABO','北九州市立子育てふれあい交流プラザ 元気のもり','行橋市室内型子どもの遊び場 あそぼっちゃ',
+  'うみなか＊はなまつり2026','サンリオキャラクターズ ハロウィンパレード','植物細密画を描いてみよう！',
+  '海の中道海浜公園','響灘緑地 GREEN PARK','大牟田市動物園','久留米市鳥類センター'
+ ],
+ '〜3,000円':[
+  '福岡市科学館','北九州市立いのちのたび博物館','あそびたいけん！ミルキーウェイ','ボートキッズパーク モーヴィ芦屋',
+  '全天候型こども広場 Mu-Mo','MPLC石炭館','九州鉄道記念館','Itozu Yoru Zoo シルバーウィーク版',
+  '秋のいとうづの森調査隊','化石の日イベント いのちのたびの恐竜','関門海峡ミュージアム',
+  'リトルプラネット ゆめタウン久留米','アドベンチャープール','グリーンピア八女 レジャープール',
+  '福岡市動植物園','到津の森公園','トリアスふれあい動物園'
+ ],
+ '〜5,000円':[
+  'ちきゅうのにわ福岡店','ファンタジーキッズリゾート福岡','キッズランドUS 福岡アイランドアイ店'
+ ],
+ '5,000円以上':[
+  'マリンワールド海の中道','福岡アンパンマンこどもミュージアムinモール','キッザニア福岡',
+  '福岡おもちゃ美術館','だざいふおもちやのもり'
+ ],
+ '要確認':[
+  '福岡県青少年科学館','FaN Week 2026','星の文化館','芦屋海浜公園レジャープール アクアシアン',
+  '宗像ユリックス ゆ〜ゆ〜プール','ピクニカ共和国','Moff animal cafe ららぽーと福岡店',
+  'Moff animal cafe マークイズ福岡ももち店'
+ ]
+};
+const familyPriceBandByName=Object.fromEntries(
+ Object.entries(familyPriceGroups).flatMap(([band,names])=>names.map(name=>[name,band]))
+);
+
+function getFamilyPriceBand(s){
+ return familyPriceBandByName[s.name] || '要確認';
+}
 
 const heroImages = [
   "IMG_0504.jpeg",
@@ -857,6 +903,7 @@ function popupHtml(s){
   s.eventStart && s.eventEnd ? `<div class="popup-row"><b>開催期間</b><span>${formatEventRange(s)}</span></div>` : '',
   s.eventType ? `<div class="popup-row"><b>イベント</b><span>${s.eventType}</span></div>` : '',
   s.age ? `<div class="popup-row"><b>年齢目安</b><span>${s.age}</span></div>` : '',
+  s.cat==='kids' ? `<div class="popup-row"><b>家族料金区分</b><span>${getFamilyPriceBand(s)}</span></div>` : '',
   s.price ? `<div class="popup-row"><b>料金目安</b><span>${s.price}</span></div>` : '',
   s.hours ? `<div class="popup-row"><b>営業時間</b><span>${s.hours}</span></div>` : '',
   s.closed ? `<div class="popup-row"><b>${s.eventStart ? '注意事項' : '定休日'}</b><span>${s.closed}</span></div>` : '',
@@ -931,6 +978,7 @@ let activeOutdoorType='all';
 let activeAnimalType='all';
 let activeLearningType='all';
 let activeSeasonType='all';
+let activeKidsPrice='all';
 
 function buildSubfilters(cat){
  const wrap=document.getElementById('subfilters');
@@ -938,7 +986,7 @@ function buildSubfilters(cat){
  const presets = cat==='date'
    ? ['すべて','王道','夜景','カフェ・バー','ドライブ','アクティブ・体験','雨の日','記念日']
    : cat==='kids'
-   ? ['すべて','雨の日','室内遊び','公園・外遊び','動物・水族館','学び・体験','季節イベント']
+   ? ['すべて','雨の日','室内遊び','公園・外遊び','動物・水族館','学び・体験','季節イベント','料金']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
@@ -952,6 +1000,7 @@ function buildSubfilters(cat){
      activeAnimalType='all';
      activeLearningType='all';
      activeSeasonType='all';
+     activeKidsPrice='all';
      buildSubfilters(cat);
      buildCafeTimeFilters(cat);
      renderCategory(cat);
@@ -969,8 +1018,9 @@ function buildCafeTimeFilters(cat){
  const isKidsAnimal = cat==='kids' && activeSubfilter==='動物・水族館';
  const isKidsLearning = cat==='kids' && activeSubfilter==='学び・体験';
  const isKidsSeason = cat==='kids' && activeSubfilter==='季節イベント';
- wrap.classList.toggle('show',isCafe || isKidsIndoor || isKidsOutdoor || isKidsAnimal || isKidsLearning || isKidsSeason);
- if(!isCafe && !isKidsIndoor && !isKidsOutdoor && !isKidsAnimal && !isKidsLearning && !isKidsSeason) return;
+ const isKidsPrice = cat==='kids' && activeSubfilter==='料金';
+ wrap.classList.toggle('show',isCafe || isKidsIndoor || isKidsOutdoor || isKidsAnimal || isKidsLearning || isKidsSeason || isKidsPrice);
+ if(!isCafe && !isKidsIndoor && !isKidsOutdoor && !isKidsAnimal && !isKidsLearning && !isKidsSeason && !isKidsPrice) return;
  const options = isCafe
    ? [['all','すべて'],['day','☀️ 昼カフェ'],['night','🌙 夜カフェ'],['bar','🍸 バー']]
    : isKidsIndoor
@@ -981,10 +1031,12 @@ function buildCafeTimeFilters(cat){
    ? [['all','すべて'],['水族館','水族館'],['動物園','動物園'],['ふれあい・牧場','ふれあい・牧場']]
    : isKidsLearning
    ? [['all','すべて'],['科学・自然','科学・自然'],['ものづくり','ものづくり'],['仕事・社会','仕事・社会'],['歴史・文化','歴史・文化'],['食・農業','食・農業']]
-   : [['all','すべて'],['春','春'],['夏','夏'],['秋','秋'],['冬','冬']];
+   : isKidsSeason
+   ? [['all','すべて'],['春','春'],['夏','夏'],['秋','秋'],['冬','冬']]
+   : [['all','すべて'],['無料','無料'],['〜1,000円','〜1,000円'],['〜3,000円','〜3,000円'],['〜5,000円','〜5,000円'],['5,000円以上','5,000円以上'],['要確認','要確認']];
  options.forEach(([value,label])=>{
    const b=document.createElement('button');
-   const activeValue = isCafe ? activeCafeTime : isKidsIndoor ? activeKidsAge : isKidsOutdoor ? activeOutdoorType : isKidsAnimal ? activeAnimalType : isKidsLearning ? activeLearningType : activeSeasonType;
+   const activeValue = isCafe ? activeCafeTime : isKidsIndoor ? activeKidsAge : isKidsOutdoor ? activeOutdoorType : isKidsAnimal ? activeAnimalType : isKidsLearning ? activeLearningType : isKidsSeason ? activeSeasonType : activeKidsPrice;
    b.className='cafetime'+(activeValue===value?' active':'');
    b.textContent=label;
    b.addEventListener('click',()=>{
@@ -993,7 +1045,8 @@ function buildCafeTimeFilters(cat){
      else if(isKidsOutdoor) activeOutdoorType=value;
      else if(isKidsAnimal) activeAnimalType=value;
      else if(isKidsLearning) activeLearningType=value;
-     else activeSeasonType=value;
+     else if(isKidsSeason) activeSeasonType=value;
+     else activeKidsPrice=value;
      buildCafeTimeFilters(cat);
      renderCategory(cat);
    });
@@ -1007,7 +1060,7 @@ function renderCategory(cat){
  if(activeSubfilter!=='すべて'){
    if(activeSubfilter==='カフェ・バー'){
      chosen=chosen.filter(s=>s.tags.includes('カフェ') || s.tags.includes('バー'));
-   } else {
+   } else if(activeSubfilter!=='料金') {
      chosen=chosen.filter(s=>s.tags.includes(activeSubfilter));
    }
  }
@@ -1029,8 +1082,15 @@ function renderCategory(cat){
  if(cat==='kids' && activeSubfilter==='季節イベント' && activeSeasonType!=='all'){
    chosen=chosen.filter(s=>s.tags.includes(activeSeasonType));
  }
+ if(cat==='kids' && activeSubfilter==='料金' && activeKidsPrice!=='all'){
+   chosen=chosen.filter(s=>getFamilyPriceBand(s)===activeKidsPrice);
+ }
  if(cat==='kids' && activeSubfilter==='季節イベント'){
    chosen.sort((a,b)=>(a.eventStart || '').localeCompare(b.eventStart || ''));
+ }
+ if(cat==='kids' && activeSubfilter==='料金'){
+   const order=['無料','〜1,000円','〜3,000円','〜5,000円','5,000円以上','要確認'];
+   chosen.sort((a,b)=>order.indexOf(getFamilyPriceBand(a))-order.indexOf(getFamilyPriceBand(b)));
  }
  const st=styles[cat];
  document.getElementById('spotCount').textContent=`${chosen.length}スポット`;
@@ -1064,7 +1124,9 @@ function renderCategory(cat){
 
   const card=document.createElement('button');
   card.className='mini-card';
-  const miniMeta=s.eventStart
+  const miniMeta=cat==='kids' && activeSubfilter==='料金'
+   ? `家族料金目安：${getFamilyPriceBand(s)}`
+   : s.eventStart
    ? `${formatEventRange(s)}｜${getEventState(s)}`
    : s.tags.join('・');
   card.innerHTML=`<div class="mini-photo">${s.image ? `<img src="${s.image}" alt="${s.name}">` : styles[s.cat].emoji}</div><div class="mini-body"><div class="mini-title">${s.name}</div><div class="mini-meta">${miniMeta}</div></div>`;
