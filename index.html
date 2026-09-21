@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260921-familytransport53" />
+  <meta name="app-build" content="20260921-familyevents54" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -112,7 +112,8 @@
     .popup-row{display:flex;gap:7px;align-items:flex-start;font-size:11px;line-height:1.45;color:#4f4f59}
     .popup-row b{color:#222;font-weight:850;min-width:58px}
     .popup-disclaimer{font-size:9px;color:#9a9aa4;line-height:1.4;margin-top:-3px;margin-bottom:10px}
-    .gmaps{display:block;text-decoration:none;text-align:center;color:#fff!important;background:#111116;padding:11px 12px;border-radius:12px;font-weight:850;font-size:13px}
+    .gmaps,.official-link{display:block;text-decoration:none;text-align:center;color:#fff!important;background:#111116;padding:11px 12px;border-radius:12px;font-weight:850;font-size:13px}
+    .official-link{background:#5576c7;margin-bottom:7px}
     .bottom-strip{
       position:absolute;left:10px;right:68px;bottom:12px;z-index:490;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px
     }
@@ -481,7 +482,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260921-familytransport53';
+const APP_BUILD='20260921-familyevents54';
 
 async function ensureLatestBuild(){
   try{
@@ -665,6 +666,9 @@ const spots = [
  {name:"九州鉄道記念館",cat:"kids",lat:33.9466,lng:130.9616,area:"北九州市門司区・門司港レトロ",note:"九州の鉄道史を実物車両や大パノラマで学べる鉄道博物館。運転シミュレーターやミニ鉄道もあり、見るだけでなく親子で体験できる。",tags:["雨の日","学び・体験","仕事・社会","歴史・文化"],age:"幼児〜小学生を中心に全年齢",price:"大人500円／中学生以下250円（ミニ鉄道等は別料金）",image:"",hours:"9:00〜17:00（入館16:30まで）",closed:"毎月第2水曜日（7月は除く）ほか"},
  {name:"北九州交通公園",cat:"kids",lat:33.8801,lng:130.8418,area:"北九州市小倉北区・井堀",note:"信号機・横断歩道・踏切のある模擬道路で、遊びながら交通ルールと自転車の乗り方を学べる。子ども用自転車の無料貸出や初心者コースもある。",tags:["公園・外遊び","学び・体験","仕事・社会"],age:"幼児〜小学生（自転車利用は保護者同伴）",price:"入園・自転車貸出無料",image:"",hours:"9:00〜17:00",closed:"月曜日・祝日の翌日・年末年始"},
  {name:"貝塚公園（貝塚交通公園）",cat:"kids",lat:33.6340,lng:130.4246,area:"福岡市東区・箱崎",note:"信号や横断歩道のある交通コースをゴーカートで走り、交通ルールを楽しく学べる公園。蒸気機関車・ブルートレイン・飛行機の実物展示も楽しめる。",tags:["公園・外遊び","学び・体験","仕事・社会","歴史・文化"],age:"4歳頃〜小学生（ゴーカートは利用条件あり）",price:"入園無料／バッテリーカー1回50円",image:"",hours:"9:00〜17:00（ゴーカート貸出9:30〜16:30）",closed:"火曜日・年末年始ほか"},
+ {name:"FaN Week 2026",cat:"kids",lat:33.5869,lng:130.3763,area:"福岡市内各所（福岡市美術館ほか）",note:"福岡の街を『アートの遊び場』にする期間限定イベント。無料展示や中学生以下無料の企画もあり、親子で現代アートに触れるきっかけになる。会場ごとに開催日・休館日が異なる。",tags:["季節イベント","秋","学び・体験","歴史・文化"],age:"幼児〜小学生を含む家族",price:"無料会場あり／一部展示は有料（中学生以下無料の企画あり）",image:"",hours:"会場ごとに異なるため公式情報を要確認",closed:"会場ごとに異なる",eventStart:"2026-09-19",eventEnd:"2026-10-12",eventType:"今年限定",lastVerified:"2026-09-21",officialUrl:"https://yokanavi.com/features/274289"},
+ {name:"Itozu Yoru Zoo シルバーウィーク版",cat:"kids",lat:33.8743,lng:130.8464,area:"北九州市小倉北区・到津の森公園",note:"通常より夜まで開園し、夜行性動物のガイド、ワオキツネザル観察、光の遊び場などを楽しめる5日間限定の夜の動物園。",tags:["季節イベント","秋","動物・水族館","動物園"],age:"乳幼児〜小学生を中心に全年齢",price:"大人800円／中高生400円／4歳〜小学生100円／3歳以下無料",image:"",hours:"9:00〜20:00（入園19:00まで）",closed:"開催期間中は9月24日休園",eventStart:"2026-09-19",eventEnd:"2026-09-23",eventType:"今年限定",lastVerified:"2026-09-21",officialUrl:"https://www.itozu-zoo.jp/event/2026/09/14972.php"},
+ {name:"秋のいとうづの森調査隊",cat:"kids",lat:33.8743,lng:130.8464,area:"北九州市小倉北区・到津の森公園",note:"里山で生き物を採集・観察し、スケッチしてオリジナル図鑑を作る子ども向け自然教育イベント。事前申込・抽選制で、申込期限は10月3日。",tags:["季節イベント","秋","学び・体験","科学・自然","自然体験"],age:"子どもを含む家族（1組4名程度）",price:"参加無料／別途入園料が必要",image:"",hours:"2026年10月18日 13:00〜15:00（雨天時は内容変更）",closed:"事前申込・抽選6組",eventStart:"2026-10-18",eventEnd:"2026-10-18",bookingRequired:true,bookingEnd:"2026-10-03",eventType:"今年限定",lastVerified:"2026-09-21",officialUrl:"https://www.itozu-zoo.jp/event/2026/09/14973.php"},
  {name:"九州国立博物館 あじっぱ",cat:"kids",lat:33.5183,lng:130.5382,area:"太宰府市・石坂",note:"アジア各地の衣装、楽器、おもちゃ、生活道具などに実際に触れながら文化の違いを体験できる、子ども向けの無料展示室。",tags:["雨の日","学び・体験","歴史・文化"],age:"幼児〜小学生を中心に全年齢",price:"あじっぱは無料",image:"",hours:"9:30〜17:00（入館16:30まで）",closed:"月曜日（祝日・振替休日の場合は翌日）・年末"},
  {name:"福岡市博物館 みたいけんラボ",cat:"kids",lat:33.5952,lng:130.3519,area:"福岡市早良区・百道浜",note:"アジアの楽器や玩具、衣服、生活道具を手に取り、鳴らす・着る・遊ぶ体験ができる無料の体験学習室。展示を見るだけで終わらない。",tags:["雨の日","学び・体験","歴史・文化"],age:"幼児〜小学生を中心に全年齢",price:"みたいけんラボは無料／常設展示は別料金",image:"",hours:"9:30〜17:30（入館17:00まで）",closed:"月曜日（祝休日の場合は翌平日）・年末年始"},
  {name:"博多の食と文化の博物館 ハクハク",cat:"kids",lat:33.6120,lng:130.4447,area:"福岡市東区・社領",note:"明太子の原料や製造工程、博多の食文化を体験展示で学べる。予約制の明太子手作り体験は、味付けから持ち帰りまで子どもも参加しやすい。",tags:["雨の日","学び・体験","食・農業","ものづくり"],age:"幼児〜小学生（手作り体験は保護者同伴推奨）",price:"入館・手作り体験料金は最新情報を公式で要確認",image:"",hours:"10:00〜16:00頃（入館・体験受付は公式で要確認）",closed:"火曜日・水曜日・年末年始ほか"},
@@ -815,6 +819,7 @@ function spotVisual(s){
  if(tags.includes('カフェ')) return {emoji:'☕',color:'#5aa6a0'};
  if(tags.includes('夜景')) return {emoji:'🌙',color:'#344a78'};
  if(tags.includes('ショッピング')) return {emoji:'🛍️',color:'#e56c91'};
+ if(tags.includes('季節イベント')) return {emoji:'◆',color:'#d06b86'};
  if(tags.includes('室内遊び')) return {emoji:'◉',color:'#f08a42'};
  if(tags.includes('学び・体験') || tags.includes('恐竜')) return {emoji:'✦',color:'#5576c7'};
  if(tags.includes('水族館')) return {emoji:'🐬',color:'#3a91d8'};
@@ -839,12 +844,17 @@ function popupHtml(s){
  const st=styles[s.cat];
  const tags=s.tags.map(t=>`<span class="tag">${t}</span>`).join('');
  const q=encodeURIComponent(s.name);
+ const eventState=s.eventStart && s.eventEnd ? getEventState(s) : '';
  const info=[
   s.area ? `<div class="popup-row"><b>エリア</b><span>${s.area}</span></div>` : '',
+  eventState ? `<div class="popup-row"><b>開催状況</b><span>${eventState}</span></div>` : '',
+  s.eventStart && s.eventEnd ? `<div class="popup-row"><b>開催期間</b><span>${formatEventDate(s.eventStart)}〜${formatEventDate(s.eventEnd)}</span></div>` : '',
+  s.eventType ? `<div class="popup-row"><b>イベント</b><span>${s.eventType}</span></div>` : '',
   s.age ? `<div class="popup-row"><b>年齢目安</b><span>${s.age}</span></div>` : '',
   s.price ? `<div class="popup-row"><b>料金目安</b><span>${s.price}</span></div>` : '',
   s.hours ? `<div class="popup-row"><b>営業時間</b><span>${s.hours}</span></div>` : '',
   s.closed ? `<div class="popup-row"><b>定休日</b><span>${s.closed}</span></div>` : '',
+  s.lastVerified ? `<div class="popup-row"><b>最終確認</b><span>${formatEventDate(s.lastVerified)}</span></div>` : '',
   s.rating ? `<div class="popup-row"><b>食べログ</b><span>★ ${s.rating}${s.reviews ? `（口コミ${s.reviews}件）` : ''}</span></div>` : ''
  ].join('');
  return `
@@ -853,7 +863,38 @@ function popupHtml(s){
   <div class="tags">${tags}</div>
   <div class="popup-note">${s.note}</div>
   ${info ? `<div class="popup-info">${info}</div><div class="popup-disclaimer">営業時間・定休日・評価は変更される場合があります。最新情報は店舗・Googleマップ等でご確認ください。</div>` : ''}
+  ${s.officialUrl ? `<a class="official-link" target="_blank" rel="noopener" href="${s.officialUrl}">公式情報を確認</a>` : ''}
   <a class="gmaps" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${q}">Googleマップで見る</a>`;
+}
+
+function localDateKey(){
+ const d=new Date();
+ const y=d.getFullYear();
+ const m=String(d.getMonth()+1).padStart(2,'0');
+ const day=String(d.getDate()).padStart(2,'0');
+ return `${y}-${m}-${day}`;
+}
+
+function formatEventDate(value){
+ const [y,m,d]=value.split('-');
+ return `${y}年${Number(m)}月${Number(d)}日`;
+}
+
+function getEventState(s){
+ const today=localDateKey();
+ if(s.eventStatus==='中止') return '中止';
+ if(s.bookingRequired && today<=s.bookingEnd) return '申込受付中';
+ if(s.bookingRequired && today>s.bookingEnd) return '申込受付終了';
+ if(today<s.eventStart) return '開催予定';
+ if(today<=s.eventEnd) return '開催中';
+ return '終了';
+}
+
+function isSpotVisible(s){
+ if(!s.eventStart || !s.eventEnd) return true;
+ const today=localDateKey();
+ if(s.bookingRequired && s.bookingEnd && today>s.bookingEnd) return false;
+ return s.eventStatus!=='中止' && today<=s.eventEnd;
 }
 
 function focusSpot(s, marker){
@@ -874,6 +915,7 @@ let activeKidsAge='all';
 let activeOutdoorType='all';
 let activeAnimalType='all';
 let activeLearningType='all';
+let activeSeasonType='all';
 
 function buildSubfilters(cat){
  const wrap=document.getElementById('subfilters');
@@ -881,7 +923,7 @@ function buildSubfilters(cat){
  const presets = cat==='date'
    ? ['すべて','王道','夜景','カフェ・バー','ドライブ','アクティブ・体験','雨の日','記念日']
    : cat==='kids'
-   ? ['すべて','雨の日','室内遊び','公園・外遊び','動物・水族館','学び・体験']
+   ? ['すべて','雨の日','室内遊び','公園・外遊び','動物・水族館','学び・体験','季節イベント']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
@@ -894,6 +936,7 @@ function buildSubfilters(cat){
      activeOutdoorType='all';
      activeAnimalType='all';
      activeLearningType='all';
+     activeSeasonType='all';
      buildSubfilters(cat);
      buildCafeTimeFilters(cat);
      renderCategory(cat);
@@ -910,8 +953,9 @@ function buildCafeTimeFilters(cat){
  const isKidsOutdoor = cat==='kids' && activeSubfilter==='公園・外遊び';
  const isKidsAnimal = cat==='kids' && activeSubfilter==='動物・水族館';
  const isKidsLearning = cat==='kids' && activeSubfilter==='学び・体験';
- wrap.classList.toggle('show',isCafe || isKidsIndoor || isKidsOutdoor || isKidsAnimal || isKidsLearning);
- if(!isCafe && !isKidsIndoor && !isKidsOutdoor && !isKidsAnimal && !isKidsLearning) return;
+ const isKidsSeason = cat==='kids' && activeSubfilter==='季節イベント';
+ wrap.classList.toggle('show',isCafe || isKidsIndoor || isKidsOutdoor || isKidsAnimal || isKidsLearning || isKidsSeason);
+ if(!isCafe && !isKidsIndoor && !isKidsOutdoor && !isKidsAnimal && !isKidsLearning && !isKidsSeason) return;
  const options = isCafe
    ? [['all','すべて'],['day','☀️ 昼カフェ'],['night','🌙 夜カフェ'],['bar','🍸 バー']]
    : isKidsIndoor
@@ -920,10 +964,12 @@ function buildCafeTimeFilters(cat){
    ? [['all','すべて'],['大型遊具','大型遊具'],['アスレチック','アスレチック'],['自然体験','自然体験'],['水遊び','水遊び']]
    : isKidsAnimal
    ? [['all','すべて'],['水族館','水族館'],['動物園','動物園'],['ふれあい・牧場','ふれあい・牧場']]
-   : [['all','すべて'],['科学・自然','科学・自然'],['ものづくり','ものづくり'],['仕事・社会','仕事・社会'],['歴史・文化','歴史・文化'],['食・農業','食・農業']];
+   : isKidsLearning
+   ? [['all','すべて'],['科学・自然','科学・自然'],['ものづくり','ものづくり'],['仕事・社会','仕事・社会'],['歴史・文化','歴史・文化'],['食・農業','食・農業']]
+   : [['all','すべて'],['春','春'],['夏','夏'],['秋','秋'],['冬','冬']];
  options.forEach(([value,label])=>{
    const b=document.createElement('button');
-   const activeValue = isCafe ? activeCafeTime : isKidsIndoor ? activeKidsAge : isKidsOutdoor ? activeOutdoorType : isKidsAnimal ? activeAnimalType : activeLearningType;
+   const activeValue = isCafe ? activeCafeTime : isKidsIndoor ? activeKidsAge : isKidsOutdoor ? activeOutdoorType : isKidsAnimal ? activeAnimalType : isKidsLearning ? activeLearningType : activeSeasonType;
    b.className='cafetime'+(activeValue===value?' active':'');
    b.textContent=label;
    b.addEventListener('click',()=>{
@@ -931,7 +977,8 @@ function buildCafeTimeFilters(cat){
      else if(isKidsIndoor) activeKidsAge=value;
      else if(isKidsOutdoor) activeOutdoorType=value;
      else if(isKidsAnimal) activeAnimalType=value;
-     else activeLearningType=value;
+     else if(isKidsLearning) activeLearningType=value;
+     else activeSeasonType=value;
      buildCafeTimeFilters(cat);
      renderCategory(cat);
    });
@@ -941,7 +988,7 @@ function buildCafeTimeFilters(cat){
 
 function renderCategory(cat){
  markers.forEach(m=>map.removeLayer(m)); markers=[];
- let chosen=spots.filter(s=>s.cat===cat);
+ let chosen=spots.filter(s=>s.cat===cat && isSpotVisible(s));
  if(activeSubfilter!=='すべて'){
    if(activeSubfilter==='カフェ・バー'){
      chosen=chosen.filter(s=>s.tags.includes('カフェ') || s.tags.includes('バー'));
@@ -964,6 +1011,9 @@ function renderCategory(cat){
  if(cat==='kids' && activeSubfilter==='学び・体験' && activeLearningType!=='all'){
    chosen=chosen.filter(s=>s.tags.includes(activeLearningType));
  }
+ if(cat==='kids' && activeSubfilter==='季節イベント' && activeSeasonType!=='all'){
+   chosen=chosen.filter(s=>s.tags.includes(activeSeasonType));
+ }
  const st=styles[cat];
  document.getElementById('spotCount').textContent=`${chosen.length}スポット`;
  document.getElementById('categoryLabel').textContent=st.label;
@@ -973,6 +1023,11 @@ function renderCategory(cat){
    document.getElementById('recBadge').textContent=`${st.emoji} ${st.label.replace('向け','')}`;
    document.getElementById('recTitle').textContent=chosen[0].name;
    document.getElementById('recMeta').textContent=chosen[0].note;
+ } else if(cat==='kids' && activeSubfilter==='季節イベント'){
+   document.getElementById('recommendCard').style.background=st.grad;
+   document.getElementById('recBadge').textContent='開催情報';
+   document.getElementById('recTitle').textContent='現在掲載中のイベントはありません';
+   document.getElementById('recMeta').textContent='公式発表を確認できたイベントから順次掲載します。';
  }
 
  const strip=document.getElementById('bottomStrip');
@@ -1007,6 +1062,7 @@ function showCategory(cat){
  activeOutdoorType='all';
  activeAnimalType='all';
  activeLearningType='all';
+ activeSeasonType='all';
  document.getElementById('mapHeadTitle').textContent=styles[cat].label;
  buildSubfilters(cat);
  buildCafeTimeFilters(cat);
