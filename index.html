@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260922-svgpins71" />
+  <meta name="app-build" content="20260922-svgpins72" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -536,7 +536,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260922-svgpins71';
+const APP_BUILD='20260922-svgpins72';
 
 async function ensureLatestBuild(){
   try{
@@ -957,8 +957,8 @@ function spotVisual(s){
  if(activeCat==='kids' && activeSubfilter==='学び・体験') return {icon:'book',color:'#D39A2C'};
  if(activeCat==='kids' && activeSubfilter==='公園・外遊び') return {icon:'tree',color:'#5FA57A'};
  if(activeCat==='solo'){
-  if(tags.includes('パン') || tags.includes('サンドイッチ') || tags.includes('スイーツ') || tags.includes('食べ歩き') || tags.includes('ひとりグルメ')) return {icon:'meal',color:'#B96E4B'};
   if(tags.includes('カフェ・喫茶')) return {icon:'cup',color:'#A7674F'};
+  if(tags.includes('パン') || tags.includes('サンドイッチ') || tags.includes('スイーツ') || tags.includes('食べ歩き') || tags.includes('ひとりグルメ')) return {icon:'meal',color:'#B96E4B'};
   if(tags.includes('温泉・癒し')) return {icon:'spa',color:'#4F8EA8'};
   if(tags.includes('文化・学び')) return {icon:'book',color:'#7566A8'};
   if(tags.includes('自然・絶景')) return {icon:'mountain',color:'#4F9271'};
