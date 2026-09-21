@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260921-familyaudit59" />
+  <meta name="app-build" content="20260921-solo60" />
   <meta name="theme-color" content="#fffafc" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -482,7 +482,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260921-familyaudit59';
+const APP_BUILD='20260921-solo60';
 
 async function ensureLatestBuild(){
   try{
@@ -716,10 +716,30 @@ const spots = [
  {name:"筑後川防災施設 くるめウス",cat:"kids",lat:33.3225669,lng:130.53603,area:"久留米市・新合川",note:"筑後川に生息する淡水魚を水槽で観察しながら、川や防災について無料で学べる。短時間でも立ち寄りやすい小型水族館。",tags:["動物・水族館","水族館","学び・体験","科学・自然"],age:"幼児〜小学生",price:"無料",image:"",hours:"9:30〜17:00",closed:"月曜日（祝日の場合は翌日）・年末年始"},
  {name:"むつごろうランド 有明海水族館",cat:"kids",lat:33.1335,lng:130.3916,area:"柳川市・橋本町",note:"ムツゴロウやワラスボなど有明海ならではの生き物を間近で観察できる小型水族館。公園の大型遊具と一緒に楽しめる。",tags:["動物・水族館","水族館","公園・外遊び"],age:"幼児〜小学生",price:"入館無料",image:"",hours:"9:00〜17:00頃（最新情報を要確認）",closed:"月曜日・年末年始ほか（最新情報を要確認）"},
  {name:"北九州市立 水環境館",cat:"kids",lat:33.8842811,lng:130.8776023,area:"北九州市小倉北区・船場町",note:"紫川の水中を直接のぞける日本最大級の観察窓と水槽で、魚や水辺の生き物を無料で観察できる。街なかで立ち寄りやすく、川や水環境の学びにもつながる。",tags:["動物・水族館","水族館","学び・体験","科学・自然","雨の日"],age:"乳幼児〜小学生",price:"無料",image:"",hours:"10:00〜19:00",closed:"火曜日・年末年始"},
- {name:"太宰府天満宮",cat:"solo",lat:33.5214,lng:130.5349,note:"参道を歩きながら、気ままにひとり散策。",tags:["散策","定番"],image:"IMG_0507.jpeg"},
- {name:"大濠公園",cat:"solo",lat:33.5861,lng:130.3764,note:"一人で歩いたり、ベンチで休憩したりしやすい。",tags:["散歩","休憩"],image:"IMG_0506.jpeg"},
- {name:"門司港レトロ",cat:"solo",lat:33.9477,lng:130.9610,note:"写真を撮りながら自由に街歩き。",tags:["写真","街歩き"],image:"IMG_0503.jpeg"},
- {name:"糸島・桜井二見ヶ浦",cat:"solo",lat:33.6380,lng:130.1927,note:"海沿いの景色を楽しみたいひとりドライブに。",tags:["海","ドライブ"],image:"IMG_0504.jpeg"}
+ {name:"太宰府天満宮",cat:"solo",lat:33.5214,lng:130.5349,area:"太宰府市",note:"参道、境内、九州国立博物館まで自分のペースで巡れる。公共交通で行きやすく、初めての一人旅にも選びやすい定番。",tags:["街歩き・参拝","文化・学び"],price:"参拝無料",hours:"開門時間は季節により変動",rating:"4.5",reviews:44194,image:"IMG_0507.jpeg"},
+ {name:"大濠公園",cat:"solo",lat:33.5861,lng:130.3764,area:"福岡市中央区",note:"池畔の散歩、読書、美術館を気分に合わせて組み合わせられる。一人でも滞在しやすく、地下鉄からのアクセスも良い。",tags:["街歩き・参拝","自然・絶景"],price:"公園無料",hours:"終日",rating:"4.5",reviews:15572,image:"IMG_0506.jpeg"},
+ {name:"門司港レトロ",cat:"solo",lat:33.9477,lng:130.9610,area:"北九州市門司区",note:"駅舎や海峡沿いの建築を写真に収めながら自由に歩ける。一人で訪れた口コミも確認でき、電車で行きやすい。",tags:["街歩き・参拝","文化・学び"],price:"散策無料（各施設は別料金）",hours:"各施設により異なる",rating:"4.3",reviews:13700,soloEvidence:"一人訪問の口コミを確認",image:"IMG_0503.jpeg"},
+ {name:"桜井二見ヶ浦 夫婦岩",cat:"solo",lat:33.6380,lng:130.1927,area:"糸島市",note:"海沿いの景色と夕景を目的に、自分のペースで走りたい日に向く。周辺を含めた一人ドライブの目的地として価値が明確。",tags:["自然・絶景","一人ドライブ"],price:"無料",hours:"終日",rating:"4.4",reviews:5479,image:"IMG_0504.jpeg"},
+ {name:"舞鶴公園・福岡城跡",cat:"solo",lat:33.5860599,lng:130.3831703,area:"福岡市中央区",note:"石垣や櫓跡を巡りながら、歴史散策と季節の景色を楽しめる。大濠公園にも歩いてつなげやすい。",tags:["街歩き・参拝","文化・学び"],price:"散策無料",hours:"終日（一部施設を除く）",rating:"4.3",reviews:7178,image:""},
+ {name:"秋月城下町",cat:"solo",lat:33.4695721,lng:130.693526,area:"朝倉市",note:"城下町の小道、石垣、寺社を寄り道しながら歩ける。自分のペースで歴史と町並みを味わいたい一人旅に合う。",tags:["街歩き・参拝","文化・学び","一人ドライブ"],price:"散策無料",hours:"終日（各施設は異なる）",rating:"4.2",reviews:334,image:""},
+ {name:"宗像大社 辺津宮",cat:"solo",lat:33.8310594,lng:130.5143997,area:"宗像市",note:"静かな境内と神宝館を落ち着いて巡れる。福岡市・北九州のどちらからも一人ドライブの目的地にしやすい。",tags:["街歩き・参拝","文化・学び","一人ドライブ"],price:"参拝無料（神宝館は有料）",hours:"施設により異なる",rating:"4.4",reviews:8926,image:""},
+ {name:"宮地嶽神社",cat:"solo",lat:33.7817,lng:130.4937,area:"福津市",note:"参道から海へ続く眺めと広い境内を自分のペースで参拝できる。公共交通でも車でも訪れやすい。",tags:["街歩き・参拝","自然・絶景","一人ドライブ"],price:"参拝無料",hours:"終日（授与所等は時間あり）",rating:"4.5",reviews:6135,image:""},
+ {name:"小倉城",cat:"solo",lat:33.8844357,lng:130.8742541,area:"北九州市小倉北区",note:"天守閣、庭園、周辺の紫川沿いを一人で無理なく回れる。駅から徒歩圏で、歴史をじっくり見たい日に向く。",tags:["街歩き・参拝","文化・学び"],price:"天守閣は有料",hours:"9:00〜20:00（季節変動あり）",rating:"4.3",reviews:12833,image:""},
+ {name:"志賀島",cat:"solo",lat:33.6773,lng:130.3027,area:"福岡市東区",note:"海沿いを一周しながら展望地や神社へ立ち寄れる。走ること自体が楽しみになる、福岡市内発の一人ドライブ向けコース。",tags:["自然・絶景","一人ドライブ","街歩き・参拝"],price:"散策無料",hours:"終日",image:""},
+ {name:"ソラランド平尾台（平尾台自然の郷）",cat:"solo",lat:33.7476,lng:130.9041,area:"北九州市小倉南区",note:"カルスト台地の眺めと散策を自分のペースで楽しめる。市街地から景色が大きく変わり、ドライブの目的が明確。",tags:["自然・絶景","一人ドライブ"],price:"入園無料（体験等は別料金）",hours:"9:00〜17:00（季節変動あり）",closed:"火曜日など",rating:"4.2",reviews:1371,image:""},
+ {name:"八女中央大茶園 展望所",cat:"solo",lat:33.2385212,lng:130.6010123,area:"八女市",note:"丘陵に広がる茶畑を一望でき、短時間でも景色を目的に訪れる価値がある。八女の町歩きと組み合わせやすい。",tags:["自然・絶景","一人ドライブ"],price:"無料",hours:"日中推奨",rating:"4.5",reviews:903,image:""},
+ {name:"篠栗九大の森",cat:"solo",lat:33.632541,lng:130.5031623,area:"篠栗町",note:"森と池を巡る約2kmの散策路。静かな自然の中を歩くこと自体が目的になり、一人でも過ごしやすい。",tags:["自然・絶景"],price:"無料",hours:"開園時間は季節により変動",rating:"4.1",reviews:1404,image:""},
+ {name:"千仏鍾乳洞",cat:"solo",lat:33.7543635,lng:130.9043258,area:"北九州市小倉南区",note:"鍾乳洞の奥を水の中を歩いて進む、平尾台ならではの体験。足元装備と天候を確認し、無理のない範囲で楽しみたい。",tags:["自然・絶景","一人ドライブ"],price:"大人1,000円目安",hours:"9:00〜17:00目安（季節変動）",rating:"4.5",reviews:1598,image:""},
+ {name:"福岡市美術館",cat:"solo",lat:33.5841636,lng:130.3796718,area:"福岡市中央区",note:"大濠公園内でアクセスが良く、展示を自分のペースで見られる。一人で静かに過ごす場所として使いやすい。",tags:["文化・学び"],price:"コレクション展 一般200円",hours:"9:30〜17:30",closed:"月曜日・年末年始",rating:"4.4",reviews:4945,image:""},
+ {name:"福岡アジア美術館",cat:"solo",lat:33.595182,lng:130.4058401,area:"福岡市博多区",note:"地下鉄駅直結で天候を選ばず、アジア美術を一人でじっくり見られる。街歩きの途中にも組み込みやすい。",tags:["文化・学び"],price:"アジアギャラリー 一般200円",hours:"9:30〜18:00（金・土は20:00まで）",closed:"水曜日・年末年始",rating:"4.2",reviews:2318,image:""},
+ {name:"九州国立博物館",cat:"solo",lat:33.5182175,lng:130.5384608,area:"太宰府市",note:"展示量が多く、自分の関心に合わせて時間配分できる一人鑑賞と相性が良い。太宰府散策と一日でつなげられる。",tags:["文化・学び","街歩き・参拝"],price:"文化交流展 一般700円",hours:"9:30〜17:00",closed:"月曜日（祝日の場合は翌日）",rating:"4.3",reviews:10294,image:""},
+ {name:"TOTOミュージアム",cat:"solo",lat:33.8722021,lng:130.8721962,area:"北九州市小倉北区",note:"製品の進化と暮らしの歴史を、落ち着いて見学できる無料ミュージアム。建築やデザインが好きな一人旅にも向く。",tags:["文化・学び"],price:"無料",hours:"10:00〜17:00",closed:"月曜日・夏期休暇・年末年始",rating:"4.5",reviews:2336,image:""},
+ {name:"久留米市美術館",cat:"solo",lat:33.3120333,lng:130.5303667,area:"久留米市",note:"石橋文化センターの庭園と合わせて、作品と季節の景色を静かに楽しめる。久留米で一人時間を過ごす目的地にしやすい。",tags:["文化・学び","自然・絶景"],price:"展覧会により異なる",hours:"10:00〜17:00",closed:"月曜日など",rating:"4.3",reviews:1086,image:""},
+ {name:"MPLC石炭館（大牟田市石炭産業科学館）",cat:"solo",lat:33.0310707,lng:130.4244537,area:"大牟田市",note:"炭鉱の歴史、機械、地下坑道の雰囲気をじっくり学べる。産業遺産に関心がある一人旅なら訪れる理由が明確。",tags:["文化・学び"],price:"大人420円目安",hours:"9:30〜17:00",closed:"最終月曜日・年末年始",rating:"4.2",reviews:446,image:""},
+ {name:"源泉野天風呂 那珂川清滝",cat:"solo",lat:33.4527,lng:130.4318,area:"那珂川市",note:"露天風呂と休憩を自分のペースで楽しめる日帰り温泉。公式発信でも一人でくつろぐ利用を案内している。",tags:["温泉・癒し","一人ドライブ"],price:"入浴料は曜日等で変動（公式確認）",hours:"10:00〜23:00目安",rating:"4.2",reviews:3352,soloEvidence:"公式が一人利用を案内",image:""},
+ {name:"筑紫野 天拝の郷",cat:"solo",lat:33.4887602,lng:130.4970917,area:"筑紫野市",note:"高台の眺めと温浴を組み合わせ、半日ゆっくり過ごせる。一人でも利用目的が明確で、駐車場も使いやすい。",tags:["温泉・癒し","一人ドライブ"],price:"入浴料は曜日等で変動（公式確認）",hours:"10:30〜23:00目安",rating:"4.1",reviews:2424,image:""},
+ {name:"源じいの森温泉",cat:"solo",lat:33.6174261,lng:130.897537,area:"赤村",note:"自然の中の温泉を目的に、筑豊方面を走る一人ドライブに向く。観光地の混雑を離れて休みたい日に選びやすい。",tags:["温泉・癒し","一人ドライブ"],price:"入浴料は公式確認",hours:"10:00〜21:00目安",rating:"4.0",reviews:1316,image:""},
+ {name:"みなと温泉 波葉の湯",cat:"solo",lat:33.6038939,lng:130.3982115,area:"福岡市博多区",note:"都心から行きやすく、温浴と休憩を一人の予定に組み込みやすい。買い物や港周辺の散策ともつなげられる。",tags:["温泉・癒し"],price:"入浴料は曜日等で変動（公式確認）",hours:"10:00〜23:00目安",rating:"4.0",reviews:3733,image:""}
 ];
 
 // 「料金」は大人2名＋小学生1名＋未就学児1名の基本利用料で区分する。
@@ -855,6 +875,13 @@ function spotVisual(s){
   if(tags.includes('ふれあい・牧場')) return {emoji:'🐐',color:'#6d9a59'};
   return {emoji:'🐾',color:'#8a704f'};
  }
+ if(activeCat==='solo'){
+  if(tags.includes('温泉・癒し')) return {emoji:'♨️',color:'#4f8ea8'};
+  if(tags.includes('文化・学び')) return {emoji:'▣',color:'#7566a8'};
+  if(tags.includes('自然・絶景')) return {emoji:'◆',color:'#4f9271'};
+  if(tags.includes('街歩き・参拝')) return {emoji:'●',color:'#a06d50'};
+  if(tags.includes('一人ドライブ')) return {emoji:'▶',color:'#4d78a8'};
+ }
  if(tags.includes('乗馬')) return {emoji:'🐎',color:'#8b6b4d'};
  if(tags.includes('SUP')) return {emoji:'🏄',color:'#3c97b8'};
  if(tags.includes('釣り')) return {emoji:'🎣',color:'#3f7da3'};
@@ -986,6 +1013,8 @@ function buildSubfilters(cat){
    ? ['すべて','王道','夜景','カフェ・バー','ドライブ','アクティブ・体験','雨の日','記念日']
    : cat==='kids'
    ? ['すべて','料金','雨の日','室内遊び','公園・外遊び','動物・水族館','学び・体験','季節イベント']
+   : cat==='solo'
+   ? ['すべて','街歩き・参拝','自然・絶景','文化・学び','温泉・癒し','一人ドライブ']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
@@ -1145,6 +1174,7 @@ function showCategory(cat){
  activeAnimalType='all';
  activeLearningType='all';
  activeSeasonType='all';
+ activeKidsPrice='all';
  document.getElementById('mapHeadTitle').textContent=styles[cat].label;
  buildSubfilters(cat);
  buildCafeTimeFilters(cat);
