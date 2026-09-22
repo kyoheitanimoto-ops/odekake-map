@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260922-onsen76" />
+  <meta name="app-build" content="20260922-pin77" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -536,7 +536,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260922-onsen76';
+const APP_BUILD='20260922-pin77';
 
 async function ensureLatestBuild(){
   try{
@@ -1048,56 +1048,121 @@ L.control.zoom({position:'bottomleft'}).addTo(map);
 let markers=[], userMarker=null, userAccuracy=null, activeCat='date';
 
 
+const SPOT_VISUALS={
+ defaultDate:{icon:'heart',color:'#FF7A6B'},
+ defaultKids:{icon:'home',color:'#E9984A'},
+ defaultSolo:{icon:'compass',color:'#5FA57A'},
+ classic:{icon:'star',color:'#4A90E2'},
+ shrine:{icon:'torii',color:'#6676A8'},
+ heritage:{icon:'building',color:'#71869A'},
+ museum:{icon:'book',color:'#D5A43A'},
+ nature:{icon:'mountain',color:'#5FA57A'},
+ water:{icon:'waves',color:'#45A9C2'},
+ town:{icon:'city',color:'#C97B62'},
+ activity:{icon:'activity',color:'#7F9C62'},
+ spa:{icon:'spa',color:'#758EB2'},
+ meal:{icon:'meal',color:'#E88961'},
+ cafe:{icon:'cup',color:'#D98278'},
+ bar:{icon:'glass',color:'#7867A8'},
+ night:{icon:'moon',color:'#52678F'},
+ animal:{icon:'paw',color:'#D87891'},
+ aquarium:{icon:'fish',color:'#438FC2'},
+ park:{icon:'tree',color:'#62A36F'},
+ indoor:{icon:'home',color:'#E9984A'},
+ rain:{icon:'umbrella',color:'#8172AE'},
+ drive:{icon:'car',color:'#538F82'},
+ stay:{icon:'tent',color:'#68865F'},
+ seasonal:{icon:'flower',color:'#C978A2'},
+ shopping:{icon:'bag',color:'#D87891'},
+ other:{icon:'dots',color:'#7D8791'}
+};
+
 function spotVisual(s){
  const tags=s.tags||[];
- const base={date:{icon:'heart',color:'#FF7A6B'},kids:{icon:'home',color:'#F08A42'},solo:{icon:'compass',color:'#5FA57A'},tourism:{icon:'star',color:'#4A90E2'}}[s.cat] || {icon:'dots',color:'#7D8791'};
- if(activeSubfilter==='雨の日' || tags.includes('雨の日')) return {icon:'umbrella',color:'#7E6AAE'};
- if(tags.includes('水遊び') || tags.includes('プール')) return {icon:'waves',color:'#43AFC4'};
- if(activeCat==='kids' && activeSubfilter==='動物・水族館'){
-  if(tags.includes('水族館')) return {icon:'fish',color:'#4A90E2'};
-  if(tags.includes('動物園')) return {icon:'paw',color:'#D86F8B'};
-  return {icon:'paw',color:'#C47A68'};
- }
- if(activeCat==='kids' && activeSubfilter==='学び・体験') return {icon:'book',color:'#D39A2C'};
- if(activeCat==='kids' && activeSubfilter==='公園・外遊び') return {icon:'tree',color:'#5FA57A'};
- if(activeCat==='tourism'){
-  if(tags.includes('歴史・文化')) return {icon:'landmark',color:'#4A90E2'};
-  if(tags.includes('絶景・景色')) return {icon:'mountain',color:'#3E83C7'};
-  if(tags.includes('街歩き・エリア')) return {icon:'compass',color:'#4A90E2'};
-  if(tags.includes('体験・名物')) return {icon:'flag',color:'#397BB8'};
-  return {icon:'star',color:'#4A90E2'};
- }
- if(activeCat==='solo'){
-  if(tags.includes('カフェ・喫茶')) return {icon:'cup',color:'#A7674F'};
-  if(tags.includes('パン') || tags.includes('サンドイッチ') || tags.includes('スイーツ') || tags.includes('食べ歩き') || tags.includes('ひとりグルメ')) return {icon:'meal',color:'#B96E4B'};
-  if(tags.includes('温泉・癒し')) return {icon:'spa',color:'#4F8EA8'};
-  if(tags.includes('文化・学び')) return {icon:'book',color:'#7566A8'};
-  if(tags.includes('自然・絶景')) return {icon:'mountain',color:'#4F9271'};
-  if(tags.includes('街歩き・散策')) return {icon:'compass',color:'#9B7055'};
-  if(tags.includes('一人ドライブ')) return {icon:'car',color:'#4D78A8'};
- }
- if(tags.includes('温泉・癒し')) return {icon:'spa',color:'#4F8EA8'};
- if(tags.includes('SUP')) return {icon:'waves',color:'#3C97B8'};
- if(tags.includes('釣り')) return {icon:'fish',color:'#3F7DA3'};
- if(tags.includes('アスレチック') || tags.includes('乗馬') || tags.includes('陶芸')) return {icon:'activity',color:'#6E8758'};
- if(tags.includes('グランピング') || tags.includes('宿泊')) return {icon:'tent',color:'#5F7F52'};
- if(tags.includes('スパ')) return {icon:'spa',color:'#4F8EA8'};
- if(tags.includes('科学館') || tags.includes('学び・体験') || tags.includes('恐竜')) return {icon:'book',color:'#D39A2C'};
- if(tags.includes('美術館') || tags.includes('博物館')) return {icon:'landmark',color:'#7566A8'};
- if(tags.includes('レストラン')) return {icon:'meal',color:'#B65F78'};
- if(tags.includes('バー')) return {icon:'cup',color:'#7457C8'};
- if(tags.includes('カフェ')) return {icon:'cup',color:'#A7674F'};
- if(tags.includes('夜景')) return {icon:'moon',color:'#455A86'};
- if(tags.includes('ショッピング')) return {icon:'bag',color:'#D66F89'};
- if(tags.includes('季節イベント')) return {icon:'star',color:'#D06B86'};
- if(tags.includes('室内遊び')) return {icon:'home',color:'#F08A42'};
- if(tags.includes('水族館')) return {icon:'fish',color:'#4A90E2'};
- if(tags.includes('動物園') || tags.includes('ふれあい・牧場') || tags.includes('動物・水族館')) return {icon:'paw',color:'#D86F8B'};
- if(tags.includes('ドライブ')) return {icon:'car',color:'#4F9569'};
- return base;
+ const has=(...values)=>values.some(value=>tags.includes(value));
+ const name=s.name||'';
+ const details=[s.area,s.note].filter(Boolean).join(' ');
+ const named=pattern=>pattern.test(name);
+ const described=pattern=>pattern.test(details);
+
+ // 1. 施設名から分かるタイプ。別用途の紹介文や複合タグに影響されない。
+ if(named(/水族館|マリンワールド|アクアリウム/)) return SPOT_VISUALS.aquarium;
+ if(named(/動物園|動植物園|牧場|ふれあい動物/)) return SPOT_VISUALS.animal;
+ if(named(/温泉|温泉館|湯どころ|湯乃禅|清滝|波葉の湯|天拝の郷|恋ぼたる|べんがら村|スパリゾート/)) return SPOT_VISUALS.spa;
+ if(named(/博物館|美術館|科学館|資料館|記念館|ミュージアム|Museum|LABO|プラネタリウム|天文|文化館|文化センター|星の文化館/i)) return SPOT_VISUALS.museum;
+ if(named(/神社|大社|天満宮|水天宮|宮地嶽|寺|観世音|南蔵院|千如寺|大悲王院|祠/)) return SPOT_VISUALS.shrine;
+ if(named(/町並み|城下町|門前町|商店街|門司港レトロ|八女福島|柳川観光|白壁の町/)) return SPOT_VISUALS.town;
+ if(named(/城跡|城址|^.{1,8}城$|旧.*邸|旧.*館|町家|炭鉱|宮原坑|史跡|遺跡|港倶楽部|赤煉瓦|レンガ/)) return SPOT_VISUALS.heritage;
+ if(named(/川下り|観光船|遊覧船|クルーズ|体験工房/)) return SPOT_VISUALS.activity;
+ if(named(/海岸|海辺|海水浴|二見ヶ浦|芥屋の大門|志賀島|能古島|宗像大島|波津/)) return SPOT_VISUALS.water;
+ if(named(/公園|ピクニック|アイランドパーク/)) return SPOT_VISUALS.park;
+ if(named(/キッズパーク|こども広場|子どもの館|児童センター|室内型|屋内遊び|ボールプール|トランポリン/)) return SPOT_VISUALS.indoor;
+ if(named(/カフェ|喫茶|COFFEE|珈琲|coffee/i)) return SPOT_VISUALS.cafe;
+ if(named(/^(バー|Bar |BAR )|バー＆|CafeBar|HIGHBALLBAR|ニッカバー|夜カフェ/i)) return SPOT_VISUALS.bar;
+ if(named(/ラーメン|うどん|寿司|食堂|レストラン|食事処|ベーカリー|パン屋/)) return SPOT_VISUALS.meal;
+
+ // 2. 明示された施設タイプのタグ。
+ if(has('水族館')) return SPOT_VISUALS.aquarium;
+ if(has('動物園','ふれあい・牧場')) return SPOT_VISUALS.animal;
+ if(has('温泉・癒し','スパ','温泉','岩盤浴')) return SPOT_VISUALS.spa;
+ if(has('歴史建築','産業遺産')) return SPOT_VISUALS.heritage;
+ if(has('科学館','美術館','博物館')) return SPOT_VISUALS.museum;
+ if(has('室内遊び')) return SPOT_VISUALS.indoor;
+ if(has('公園・外遊び')) return SPOT_VISUALS.park;
+ if(has('バー')) return SPOT_VISUALS.bar;
+ if(has('カフェ・喫茶','カフェ','コーヒー')) return SPOT_VISUALS.cafe;
+ if(has('レストラン','ひとりグルメ','ラーメン','うどん','寿司','パン','サンドイッチ','食べ歩き')) return SPOT_VISUALS.meal;
+ if(has('動物・水族館')) return described(/水族館|水生生物/) ? SPOT_VISUALS.aquarium : SPOT_VISUALS.animal;
+
+ // 3. その場所へ行く主目的。
+ if(has('街歩き・エリア','街歩き・散策','街歩き')) return SPOT_VISUALS.town;
+ if(has('夜景')) return SPOT_VISUALS.night;
+ if(has('季節の定番','季節イベント') || described(/ネモフィラ|コスモス|あじさい|紫陽花|藤|桜まつり|紅葉まつり|イルミネーション/)) return SPOT_VISUALS.seasonal;
+ if(has('水遊び','プール') || described(/海岸|海辺|海水浴|水辺|川景色/)) return SPOT_VISUALS.water;
+ if(named(/展望台|展望所|山|高原|森林|渓谷|茶園|鍾乳洞|平尾台|滝/) || has('自然・絶景','絶景・景色')) return SPOT_VISUALS.nature;
+ if(has('SUP','釣り','アスレチック','乗馬','陶芸','体験・名物','アクティブ・体験') || described(/川下り|観光船|遊覧船|クルーズ|体験工房|果物狩り/)) return SPOT_VISUALS.activity;
+ if(has('グランピング') || (has('宿泊') && described(/グランピング|キャンプ|ヴィラ|コテージ/))) return SPOT_VISUALS.stay;
+ if(has('文化・学び','学び・体験') || described(/学習|文化センター/)) return SPOT_VISUALS.museum;
+ if(has('ショッピング')) return SPOT_VISUALS.shopping;
+
+ // 4. 最後に利用シーン。明確な施設タイプを上書きしない。
+ if(activeSubfilter==='雨の日' || has('雨の日')) return SPOT_VISUALS.rain;
+ if(has('ドライブ','一人ドライブ')) return SPOT_VISUALS.drive;
+ if(has('王道観光')) return SPOT_VISUALS.classic;
+ if(s.cat==='date') return SPOT_VISUALS.defaultDate;
+ if(s.cat==='kids') return SPOT_VISUALS.defaultKids;
+ if(s.cat==='solo') return SPOT_VISUALS.defaultSolo;
+ if(s.cat==='tourism') return SPOT_VISUALS.classic;
+ return SPOT_VISUALS.other;
 }
 
-const pinIcons={"heart":"<path d=\"M12 20.2 4.7 13.1A5.1 5.1 0 0 1 11.9 5.9L12 6l.1-.1a5.1 5.1 0 0 1 7.2 7.2Z\" fill=\"currentColor\" stroke=\"none\"/>","home":"<path d=\"m3 11 9-7 9 7\"/><path d=\"M5.5 9.5V20h13V9.5\"/><path d=\"M9.5 20v-6h5v6\"/>","compass":"<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"m15.8 8.2-2.1 5.5-5.5 2.1 2.1-5.5Z\" fill=\"currentColor\" stroke=\"none\"/>","star":"<path d=\"m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9Z\" fill=\"currentColor\" stroke=\"none\"/>","cup":"<path d=\"M4 7h13v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z\"/><path d=\"M17 9h1.5a3 3 0 0 1 0 6H17M3 21h16\"/>","umbrella":"<path d=\"M4 12a8 8 0 0 1 16 0Z\"/><path d=\"M12 12v6.2a2.2 2.2 0 0 0 4.4 0\"/>","waves":"<path d=\"M3 9c3-2 5-2 8 0s5 2 10 0M3 14c3-2 5-2 8 0s5 2 10 0M3 19c3-2 5-2 8 0s5 2 10 0\"/>","paw":"<circle cx=\"7\" cy=\"9\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"17\" cy=\"9\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"10\" cy=\"5.5\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"14\" cy=\"5.5\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M7.2 16.1c0-3 2.2-5.2 4.8-5.2s4.8 2.2 4.8 5.2c0 2.4-2 3.7-4.8 3.7s-4.8-1.3-4.8-3.7Z\" fill=\"currentColor\" stroke=\"none\"/>","fish":"<path d=\"M4 12c3.8-5 9.2-5.7 13.8-1.2L21 8v8l-3.2-2.8C13.2 17.7 7.8 17 4 12Z\"/><circle cx=\"14.5\" cy=\"11\" r=\"1\" fill=\"currentColor\" stroke=\"none\"/>","book":"<path d=\"M4 5.5h5.2c1.6 0 2.8 1.2 2.8 2.8V20c0-1.6-1.2-2.8-2.8-2.8H4Z\"/><path d=\"M20 5.5h-5.2c-1.6 0-2.8 1.2-2.8 2.8V20c0-1.6 1.2-2.8 2.8-2.8H20Z\"/>","dots":"<circle cx=\"5\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"19\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/>","meal":"<path d=\"M6 4v7M3.5 4v4.5A2.5 2.5 0 0 0 6 11v9M8.5 4v4.5A2.5 2.5 0 0 1 6 11\"/><path d=\"M16 4v16M16 4c3 1 4 3.5 4 6h-4\"/>","spa":"<path d=\"M7 4c-2 2 2 3 0 5M12 4c-2 2 2 3 0 5M17 4c-2 2 2 3 0 5M4 14c3-2 5-2 8 0s5 2 8 0M4 19c3-2 5-2 8 0s5 2 8 0\"/>","mountain":"<path d=\"m3 19 7-12 4 6 2-3 5 9Z\"/><path d=\"m8 11 2 2 2-3\"/>","car":"<path d=\"m5 15 1.8-6h10.4l1.8 6\"/><rect x=\"3\" y=\"13\" width=\"18\" height=\"6\" rx=\"2\"/><circle cx=\"7\" cy=\"19\" r=\"1.5\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"17\" cy=\"19\" r=\"1.5\" fill=\"currentColor\" stroke=\"none\"/>","activity":"<path d=\"M13 2 5 13h6l-1 9 9-13h-6Z\" fill=\"currentColor\" stroke=\"none\"/>","tent":"<path d=\"m3 20 9-16 9 16ZM12 4v16M8 20l4-7 4 7\"/>","bag":"<path d=\"M5 8h14l-1 12H6Z\"/><path d=\"M9 9V7a3 3 0 0 1 6 0v2\"/>","moon":"<path d=\"M19 15.5A8.5 8.5 0 0 1 8.5 5 8.5 8.5 0 1 0 19 15.5Z\" fill=\"currentColor\" stroke=\"none\"/>","tree":"<path d=\"M12 3 6 11h3l-5 7h16l-5-7h3Z\"/><path d=\"M12 18v3\"/>","landmark":"<path d=\"m3 9 9-5 9 5ZM5 10v8M10 10v8M14 10v8M19 10v8M3 20h18\"/>","flag":"<path d=\"M6 21V4M6 5h11l-2 4 2 4H6\"/>"};
+const pinIcons={
+ heart:'<path d="M12 20.2 4.7 13.1A5.1 5.1 0 0 1 11.9 5.9L12 6l.1-.1a5.1 5.1 0 0 1 7.2 7.2Z" fill="currentColor" stroke="none"/>',
+ home:'<path d="m3 11 9-7 9 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M9.5 20v-6h5v6"/>',
+ compass:'<circle cx="12" cy="12" r="8.5"/><path d="m15.8 8.2-2.1 5.5-5.5 2.1 2.1-5.5Z" fill="currentColor" stroke="none"/>',
+ star:'<path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9Z" fill="currentColor" stroke="none"/>',
+ torii:'<path d="M4 5h16M3 8h18M7 8v12M17 8v12M5 20h14M9 12h6"/>',
+ building:'<path d="M4 20V8l8-4 8 4v12M8 10h2M14 10h2M8 14h2M14 14h2M10 20v-3h4v3M3 20h18"/>',
+ book:'<path d="M4 5.5h5.2c1.6 0 2.8 1.2 2.8 2.8V20c0-1.6-1.2-2.8-2.8-2.8H4Z"/><path d="M20 5.5h-5.2c-1.6 0-2.8 1.2-2.8 2.8V20c0-1.6 1.2-2.8 2.8-2.8H20Z"/>',
+ mountain:'<path d="m3 19 7-12 4 6 2-3 5 9Z"/><path d="m8 11 2 2 2-3"/>',
+ waves:'<path d="M3 9c3-2 5-2 8 0s5 2 10 0M3 14c3-2 5-2 8 0s5 2 10 0M3 19c3-2 5-2 8 0s5 2 10 0"/>',
+ city:'<path d="M3 20V9h6v11M9 20V5h7v15M16 20v-8h5v8M5 12h2M5 16h2M11 8h2M11 12h2M11 16h2M18 15h1M18 18h1M2 20h20"/>',
+ activity:'<path d="M13 2 5 13h6l-1 9 9-13h-6Z" fill="currentColor" stroke="none"/>',
+ spa:'<path d="M7 4c-2 2 2 3 0 5M12 4c-2 2 2 3 0 5M17 4c-2 2 2 3 0 5M4 14c3-2 5-2 8 0s5 2 8 0M4 19c3-2 5-2 8 0s5 2 8 0"/>',
+ meal:'<path d="M6 4v7M3.5 4v4.5A2.5 2.5 0 0 0 6 11v9M8.5 4v4.5A2.5 2.5 0 0 1 6 11"/><path d="M16 4v16M16 4c3 1 4 3.5 4 6h-4"/>',
+ cup:'<path d="M4 7h13v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z"/><path d="M17 9h1.5a3 3 0 0 1 0 6H17M3 21h16"/>',
+ glass:'<path d="M5 4h14l-2 7a5.2 5.2 0 0 1-10 0ZM12 16v5M8 21h8M7 8h10"/>',
+ moon:'<path d="M19 15.5A8.5 8.5 0 0 1 8.5 5 8.5 8.5 0 1 0 19 15.5Z" fill="currentColor" stroke="none"/>',
+ paw:'<circle cx="7" cy="9" r="2" fill="currentColor" stroke="none"/><circle cx="17" cy="9" r="2" fill="currentColor" stroke="none"/><circle cx="10" cy="5.5" r="2" fill="currentColor" stroke="none"/><circle cx="14" cy="5.5" r="2" fill="currentColor" stroke="none"/><path d="M7.2 16.1c0-3 2.2-5.2 4.8-5.2s4.8 2.2 4.8 5.2c0 2.4-2 3.7-4.8 3.7s-4.8-1.3-4.8-3.7Z" fill="currentColor" stroke="none"/>',
+ fish:'<path d="M4 12c3.8-5 9.2-5.7 13.8-1.2L21 8v8l-3.2-2.8C13.2 17.7 7.8 17 4 12Z"/><circle cx="14.5" cy="11" r="1" fill="currentColor" stroke="none"/>',
+ tree:'<path d="M12 3 6 11h3l-5 7h16l-5-7h3Z"/><path d="M12 18v3"/>',
+ umbrella:'<path d="M4 12a8 8 0 0 1 16 0Z"/><path d="M12 12v6.2a2.2 2.2 0 0 0 4.4 0"/>',
+ car:'<path d="m5 15 1.8-6h10.4l1.8 6"/><rect x="3" y="13" width="18" height="6" rx="2"/><circle cx="7" cy="19" r="1.5" fill="currentColor" stroke="none"/><circle cx="17" cy="19" r="1.5" fill="currentColor" stroke="none"/>',
+ tent:'<path d="m3 20 9-16 9 16ZM12 4v16M8 20l4-7 4 7"/>',
+ flower:'<circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/><path d="M12 9c-3-1-3-5 0-6 3 1 3 5 0 6ZM15 12c1-3 5-3 6 0-1 3-5 3-6 0ZM12 15c3 1 3 5 0 6-3-1-3-5 0-6ZM9 12c-1 3-5 3-6 0 1-3 5-3 6 0Z"/>',
+ bag:'<path d="M5 8h14l-1 12H6Z"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/>',
+ dots:'<circle cx="5" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="2" fill="currentColor" stroke="none"/>'
+};
 function pinIconSvg(icon){return pinIcons[icon] || pinIcons.dots;}
 
 function makeIcon(s){
