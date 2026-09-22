@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260922-pin77" />
+  <meta name="app-build" content="20260922-season78" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -536,7 +536,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260922-pin77';
+const APP_BUILD='20260922-season78';
 
 async function ensureLatestBuild(){
   try{
@@ -817,22 +817,22 @@ const spots = [
  {name:"皿倉山展望台",cat:"solo",lat:33.84685,lng:130.79625,area:"北九州市八幡東区",note:"北九州の市街地を一望でき、夜景そのものを目的に訪れる価値がある展望台。ケーブルカーとスロープカーで山頂まで約10分、JR八幡駅から山麓駅への無料シャトルバスもあり、門司港・小倉観光と組み合わせやすい。",tags:["自然・絶景","夜景","一人ドライブ","公共交通向き"],price:"ケーブルカー・スロープカー運賃は公式で要確認",hours:"展望台 10:00〜ケーブルカー下り最終時刻の20分前",closed:"ケーブルカー運休日は閉館",officialUrl:"https://www.sarakurayama-cablecar.co.jp/",soloEvidence:"一人で夜景鑑賞・ドライブ・公共交通利用が可能",lastVerified:"2026-09-21",image:""},
  {name:"旧伊藤伝右衛門邸",cat:"solo",lat:33.65873,lng:130.68084,area:"飯塚市",note:"筑豊の炭鉱王・伊藤伝右衛門の邸宅で、和洋の建築と庭園を自分のペースで見学できる。歴史観光の目的地として、飯塚のうどんやスイーツと組み合わせた一人旅コースを作りやすい。",tags:["文化・学び","街歩き・散策","一人ドライブ"],price:"高校生以上300円、小・中学生100円",hours:"9:30〜17:00（入館16:30まで）",closed:"水曜（祝日は開館）・12月29日〜1月3日",officialUrl:"https://www.city.iizuka.lg.jp/site/itoutei/",soloEvidence:"歴史・建築・庭園を一人でじっくり見学できる",lastVerified:"2026-09-21",image:""}
 ,
- {name:"福岡タワー",cat:"tourism",lat:33.5933,lng:130.3515,area:"福岡市早良区",note:"海と福岡市街を360度見渡せる福岡の代表的ランドマーク。昼景から夕景・夜景まで楽しめ、初めての福岡観光でも候補に入れやすい。",tags:["王道観光","絶景・景色"],price:"展望料 大人1,000円",hours:"9:30〜22:00（最終入館21:30）",officialUrl:"https://www.fukuokatower.co.jp/"},
- {name:"太宰府天満宮",cat:"tourism",lat:33.5214,lng:130.5349,area:"太宰府市",note:"全国的な知名度があり、御本殿参拝に加えて参道散策や九州国立博物館まで回遊できる福岡観光の王道。",tags:["王道観光","歴史・文化","街歩き・エリア"],price:"参拝無料",hours:"開門時間は季節により変動",officialUrl:"https://www.dazaifutenmangu.or.jp/"},
- {name:"門司港レトロ",cat:"tourism",lat:33.9477,lng:130.9610,area:"北九州市門司区",note:"門司港駅や洋館、海峡沿いの景色を徒歩で巡れる北九州の代表的観光エリア。建築・食・夜景を一度に組み合わせやすい。",tags:["王道観光","歴史・文化","街歩き・エリア"],price:"散策無料（各施設は別料金）",hours:"各施設により異なる",officialUrl:"https://www.mojiko.info/"},
+ {name:"福岡タワー",cat:"tourism",lat:33.5933,lng:130.3515,area:"福岡市早良区",note:"海と福岡市街を360度見渡せる福岡の代表的ランドマーク。昼景から夕景・夜景まで楽しめ、初めての福岡観光でも候補に入れやすい。",tags:["王道観光","絶景・景色","季節の定番"],season:["冬"],seasonNotes:{"冬":"冬季イルミネーションやクリスマス演出と夜景を一緒に楽しめる。"},price:"展望料 大人1,000円",hours:"9:30〜22:00（最終入館21:30）",officialUrl:"https://www.fukuokatower.co.jp/",lastVerified:"2026-09-22"},
+ {name:"太宰府天満宮",cat:"tourism",lat:33.5214,lng:130.5349,area:"太宰府市",note:"全国的な知名度があり、御本殿参拝に加えて参道散策や九州国立博物館まで回遊できる福岡観光の王道。",tags:["王道観光","歴史・文化","街歩き・エリア","季節の定番"],season:["冬","春","秋"],seasonNotes:{"冬":"境内の梅が咲き始める時期に、天神さまゆかりの早春景観を楽しめる。","春":"梅の見頃と参道散策を組み合わせられる福岡の春定番。","秋":"境内や周辺で秋の色づきと歴史景観を楽しめる。"},price:"参拝無料",hours:"開門時間は季節により変動",officialUrl:"https://www.dazaifutenmangu.or.jp/",lastVerified:"2026-09-22"},
+ {name:"門司港レトロ",cat:"tourism",lat:33.9477,lng:130.9610,area:"北九州市門司区",note:"門司港駅や洋館、海峡沿いの景色を徒歩で巡れる北九州の代表的観光エリア。建築・食・夜景を一度に組み合わせやすい。",tags:["王道観光","歴史・文化","街歩き・エリア","季節の定番"],season:["冬"],seasonNotes:{"冬":"歴史建築を包む門司港レトロ浪漫灯彩を目的に夜の街歩きを楽しめる。"},price:"散策無料（各施設は別料金）",hours:"各施設・浪漫灯彩の当年日程を公式確認",officialUrl:"https://www.mojiko.info/",lastVerified:"2026-09-22"},
  {name:"大濠公園",cat:"tourism",lat:33.5861,lng:130.3764,area:"福岡市中央区",note:"大きな池を中心に散策、美術館、日本庭園、カフェを組み合わせられる市街地の定番。地下鉄で訪れやすく地元の休日利用にも向く。",tags:["王道観光","絶景・景色"],price:"公園無料",hours:"終日（一部施設を除く）",officialUrl:"https://www.ohorikouen.jp/"},
  {name:"桜井二見ヶ浦 夫婦岩",cat:"tourism",lat:33.6380,lng:130.1927,area:"糸島市",note:"海上の白い鳥居と夫婦岩、夕景で知られる糸島の代表的景勝地。海岸ドライブと組み合わせて訪れる目的が明確。",tags:["王道観光","絶景・景色"],price:"見学無料（駐車場は有料の場合あり）",hours:"終日・日中〜夕方推奨",officialUrl:"https://kanko-itoshima.jp/spot/sakuraihutamigaura/"},
  {name:"宗像大社 辺津宮",cat:"tourism",lat:33.8310594,lng:130.5143997,area:"宗像市",note:"世界文化遺産の構成資産を巡る起点となる古社。境内と神宝館を通して宗像・沖ノ島の歴史に触れられる。",tags:["王道観光","歴史・文化"],price:"参拝無料（神宝館は有料）",hours:"施設により異なる",officialUrl:"https://munakata-taisha.or.jp/"},
  {name:"柳川川下り",cat:"tourism",lat:33.1648,lng:130.4061,area:"柳川市",note:"城下町の掘割をどんこ舟で進む、柳川を代表する観光体験。船頭の案内や水辺の景色そのものが旅の目的になる。",tags:["王道観光","体験・名物","街歩き・エリア"],price:"乗船会社・コースにより異なる",hours:"各運航会社の最新情報を確認",officialUrl:"https://www.yanagawa-net.com/"},
  {name:"小倉城",cat:"tourism",lat:33.8844357,lng:130.8742541,area:"北九州市小倉北区",note:"展示演出のある天守閣と庭園、紫川周辺をまとめて楽しめる北九州の歴史観光拠点。小倉駅から徒歩圏。",tags:["王道観光","歴史・文化"],price:"天守閣は有料",hours:"9:00〜20:00を基本（季節変動あり）",officialUrl:"https://www.kokura-castle.jp/"},
- {name:"海の中道海浜公園",cat:"tourism",lat:33.6745,lng:130.3648,area:"福岡市東区",note:"季節の花畑、海辺の景観、広大な園内を一日かけて楽しめる福岡の定番公園。ネモフィラやコスモスの時期は特に観光価値が高い。",tags:["王道観光","季節の定番"],price:"大人450円を基本",hours:"季節により変動",officialUrl:"https://uminaka-park.jp/"},
+ {name:"海の中道海浜公園",cat:"tourism",lat:33.6745,lng:130.3648,area:"福岡市東区",note:"季節の花畑、海辺の景観、広大な園内を一日かけて楽しめる福岡の定番公園。ネモフィラやコスモスの時期は特に観光価値が高い。",tags:["王道観光","季節の定番"],season:["春","夏","秋"],seasonNotes:{"春":"桜やネモフィラなど、一面に広がる春の花景色を楽しめる。","夏":"水遊びや夏レジャーを一日楽しめる海辺の定番公園。","秋":"コスモスを中心とした秋の花畑が見どころになる。"},price:"大人450円を基本",hours:"季節により変動",officialUrl:"https://uminaka-park.jp/",lastVerified:"2026-09-22"},
  {name:"マリンワールド海の中道",cat:"tourism",lat:33.6610,lng:130.3632,area:"福岡市東区",note:"九州の海をテーマにした展示と博多湾を背景にしたショーが楽しめる、天候を選びにくい福岡の代表的観光施設。",tags:["王道観光"],price:"大人2,500円、高校生2,500円、小中学生1,200円、幼児700円を基本",hours:"季節・日により変動",officialUrl:"https://marine-world.jp/"},
  {name:"櫛田神社",cat:"tourism",lat:33.5932,lng:130.4105,area:"福岡市博多区",note:"博多祇園山笠が奉納される博多の総鎮守。常設の飾り山笠や博多旧市街散策と合わせ、短時間でも福岡らしい文化に触れられる。",tags:["王道観光","歴史・文化","街歩き・エリア"],price:"参拝無料",hours:"境内参拝時間は公式確認",officialUrl:"https://hakatanomiryoku.com/spot/櫛田神社"},
- {name:"宮地嶽神社",cat:"tourism",lat:33.7817,lng:130.4937,area:"福津市",note:"参道が海へ一直線に延びる景観と大注連縄で知られる古社。年2回の「光の道」の時期は全国から訪れる季節の定番になる。",tags:["歴史・文化","絶景・景色","季節の定番"],price:"参拝無料",hours:"終日（授与所等は時間あり）",officialUrl:"https://www.miyajidake.or.jp/"},
+ {name:"宮地嶽神社",cat:"tourism",lat:33.7817,lng:130.4937,area:"福津市",note:"参道が海へ一直線に延びる景観と大注連縄で知られる古社。年2回の「光の道」の時期は全国から訪れる季節の定番になる。",tags:["歴史・文化","絶景・景色","季節の定番"],season:["秋","冬"],seasonNotes:{"秋":"例年10月頃、参道の先へ夕日が沈む『光の道』が大きな見どころ。","冬":"例年2月頃の『光の道』を目的に、夕景と参拝を組み合わせられる。"},price:"参拝無料",hours:"終日（光の道観覧条件は当年の公式情報を確認）",officialUrl:"https://www.miyajidake.or.jp/",lastVerified:"2026-09-22"},
  {name:"九州国立博物館",cat:"tourism",lat:33.5182175,lng:130.5384608,area:"太宰府市",note:"日本文化をアジア史の視点から紹介する国立博物館。建築自体にも見応えがあり、太宰府天満宮から徒歩で回遊できる。",tags:["歴史・文化","王道観光"],price:"文化交流展 一般700円",hours:"9:30〜17:00を基本",closed:"月曜日（祝日の場合は翌日）",officialUrl:"https://www.kyuhaku.jp/"},
- {name:"舞鶴公園・福岡城跡",cat:"tourism",lat:33.5860599,lng:130.3831703,area:"福岡市中央区",note:"石垣や櫓跡、天守台からの眺めを楽しめる都心の史跡。大濠公園と徒歩でつながり、桜の季節は特に定番度が高い。",tags:["歴史・文化","季節の定番","街歩き・エリア"],price:"散策無料（一部施設を除く）",hours:"終日（一部施設を除く）",officialUrl:"https://www.midorimachi.jp/maiduru/"},
+ {name:"舞鶴公園・福岡城跡",cat:"tourism",lat:33.5860599,lng:130.3831703,area:"福岡市中央区",note:"石垣や櫓跡、天守台からの眺めを楽しめる都心の史跡。大濠公園と徒歩でつながり、桜の季節は特に定番度が高い。",tags:["歴史・文化","季節の定番","街歩き・エリア"],season:["冬","春"],seasonNotes:{"冬":"梅園で冬から早春の梅を楽しめる都心の季節散策先。","春":"福岡城跡の石垣と桜が重なる、市内を代表する花見スポット。"},price:"散策無料（一部施設を除く）",hours:"終日（催事は当年の公式情報を確認）",officialUrl:"https://www.midorimachi.jp/maiduru/",lastVerified:"2026-09-22"},
  {name:"南蔵院",cat:"tourism",lat:33.6206,lng:130.5722,area:"篠栗町",note:"巨大な釈迦涅槃像で知られ、篠栗観光の明確な目的地になる寺院。JR城戸南蔵院前駅から徒歩圏で公共交通でも訪れやすい。",tags:["歴史・文化","王道観光"],price:"参拝無料",hours:"参拝時間・注意事項は公式確認",officialUrl:"https://nanzoin.net/"},
- {name:"秋月城下町",cat:"tourism",lat:33.4695721,lng:130.693526,area:"朝倉市",note:"石垣や黒門、寺社、古い町並みを歩いて楽しめる城下町。桜と紅葉の名所としても知られ、季節を変えて訪れる価値がある。",tags:["歴史・文化","街歩き・エリア","季節の定番"],price:"散策無料（各施設は別料金）",hours:"終日（各施設は異なる）",officialUrl:"https://amagiasakura.net/"},
+ {name:"秋月城下町",cat:"tourism",lat:33.4695721,lng:130.693526,area:"朝倉市",note:"石垣や黒門、寺社、古い町並みを歩いて楽しめる城下町。桜と紅葉の名所としても知られ、季節を変えて訪れる価値がある。",tags:["歴史・文化","街歩き・エリア","季節の定番"],season:["春","秋"],seasonNotes:{"春":"杉の馬場の桜並木と城下町散策を一緒に楽しめる。","秋":"黒門周辺の紅葉と歴史ある町並みが重なる福岡有数の秋定番。"},price:"散策無料（各施設は別料金）",hours:"終日（各施設は異なる）",officialUrl:"https://amagiasakura.net/",lastVerified:"2026-09-22"},
  {name:"旧伊藤伝右衛門邸",cat:"tourism",lat:33.65873,lng:130.68084,area:"飯塚市",note:"筑豊の炭鉱王の暮らしを伝える和洋折衷の邸宅と庭園。飯塚・筑豊を観光する際の核になる歴史建築。",tags:["歴史・文化"],price:"高校生以上300円、小・中学生100円",hours:"9:30〜17:00",closed:"水曜日・年末年始など",officialUrl:"https://www.kankou-iizuka.jp/denemon/"},
  {name:"田川市石炭・歴史博物館",cat:"tourism",lat:33.6407,lng:130.8053,area:"田川市",note:"炭坑跡地の公園、竪坑櫓、SLとともに筑豊の石炭産業を立体的に理解できる博物館。山本作兵衛コレクションも大きな見どころ。",tags:["歴史・文化"],price:"一般400円、高校生100円、小中学生50円を基本",hours:"9:30〜17:30",closed:"月曜日・年末年始など",officialUrl:"https://www.joho.tagawa.fukuoka.jp/list00784.html"},
  {name:"三池炭鉱 宮原坑",cat:"tourism",lat:33.0139,lng:130.4693,area:"大牟田市",note:"世界文化遺産「明治日本の産業革命遺産」の構成資産。現存する竪坑櫓と巻揚機室から、大牟田の近代化の歴史を体感できる。",tags:["歴史・文化"],price:"見学無料",hours:"公開時間・休場日は公式確認",officialUrl:"https://www.city.omuta.lg.jp/kiji0037272/index.html"},
@@ -852,28 +852,39 @@ const spots = [
  {name:"小石原焼伝統産業会館",cat:"tourism",lat:33.4621,lng:130.8242,area:"東峰村",note:"小石原焼の歴史と作品を見た後、周辺の窯元巡りへつなげられる。陶芸体験の開催状況を確認して訪れたい地域文化の拠点。",tags:["体験・名物","歴史・文化"],price:"入館料・体験料は公式確認",hours:"9:00〜17:00を基本",closed:"火曜日など",officialUrl:"https://koishiwara.com/"},
  {name:"九州鉄道記念館",cat:"tourism",lat:33.9450,lng:130.9618,area:"北九州市門司区",note:"九州鉄道の歴史、実物車両、運転シミュレーターを楽しめる門司港ならではの施設。レトロ地区の街歩きと相性が良い。",tags:["体験・名物","歴史・文化"],price:"大人300円、中学生以下150円を基本",hours:"9:00〜17:00",closed:"不定休・公式確認",officialUrl:"https://www.k-rhm.jp/"},
  {name:"関門海峡ミュージアム",cat:"tourism",lat:33.9442,lng:130.9678,area:"北九州市門司区",note:"関門海峡の歴史と文化を大型映像や体験展示で紹介。展望デッキからの海峡景観もあり、門司港での滞在を深められる。",tags:["体験・名物","歴史・文化","絶景・景色"],price:"無料エリアあり（展示は有料）",hours:"9:00〜17:00を基本",officialUrl:"https://www.kanmon-kaikyo-museum.jp/"},
- {name:"河内藤園",cat:"tourism",lat:33.8326,lng:130.7935,area:"北九州市八幡東区",note:"藤のトンネルで世界的に知られる春の景勝地。見頃・営業期間が限られ、事前予約制になる場合があるため公式確認が必須。",tags:["季節の定番","絶景・景色"],price:"開花状況により変動",hours:"春季・秋季の開園情報を公式確認",closed:"開園期間外は入園不可",officialUrl:"https://kawachi-fujien.com/"},
- {name:"柳川雛祭り さげもんめぐり",cat:"tourism",lat:33.1639,lng:130.4055,area:"柳川市",note:"町中が色鮮やかな「さげもん」で彩られる柳川の春の風物詩。例年2〜4月頃に開催され、川下りや城下町散策と合わせて楽しめる。",tags:["季節の定番","街歩き・エリア"],price:"散策無料（各催事・施設は別料金）",hours:"開催年の公式日程を確認",officialUrl:"https://www.yanagawa-net.com/"},
- {name:"博多祇園山笠",cat:"tourism",lat:33.5932,lng:130.4105,area:"福岡市博多区",note:"博多の町を舞台に毎年7月に行われるユネスコ無形文化遺産の祭り。飾り山笠の公開や追い山笠など、時期そのものが訪問理由になる。",tags:["季節の定番","歴史・文化","街歩き・エリア"],price:"見物無料",hours:"毎年7月・当年の行事日程を公式確認",officialUrl:"https://www.hakatayamakasa.com/"},
- {name:"筥崎宮 放生会",cat:"tourism",lat:33.6180,lng:130.4239,area:"福岡市東区",note:"毎年9月に参道一帯で行われる博多三大祭りの一つ。神事と多くの露店が並び、福岡の秋を代表する季節行事。",tags:["季節の定番","歴史・文化"],price:"参拝・見物無料",hours:"毎年9月・当年の公式日程を確認",officialUrl:"https://www.hakozakigu.or.jp/"}
+ {name:"河内藤園",cat:"tourism",lat:33.8326,lng:130.7935,area:"北九州市八幡東区",note:"藤のトンネルで世界的に知られる春の景勝地。見頃・営業期間が限られ、事前予約制になる場合があるため公式確認が必須。",tags:["季節の定番","絶景・景色"],season:["春","秋"],seasonNotes:{"春":"藤トンネルと大藤棚が見頃を迎える、福岡を代表する春の花名所。","秋":"秋季開園時には園内の紅葉景観を楽しめる。"},price:"開花状況により変動",hours:"春季・秋季の開園情報を公式確認",closed:"開園期間外は入園不可",officialUrl:"https://kawachi-fujien.com/",lastVerified:"2026-09-22"},
+ {name:"柳川雛祭り さげもんめぐり",cat:"tourism",lat:33.1639,lng:130.4055,area:"柳川市",note:"町中が色鮮やかな「さげもん」で彩られる柳川の春の風物詩。例年2〜4月頃に開催され、川下りや城下町散策と合わせて楽しめる。",tags:["季節の定番","街歩き・エリア"],season:["冬","春"],seasonNotes:{"冬":"例年2月頃から、色鮮やかなさげもんが柳川の町を彩る。","春":"さげもん展示と川下りを組み合わせて柳川の春を楽しめる。"},price:"散策無料（各催事・施設は別料金）",hours:"開催年の公式日程を確認",officialUrl:"https://www.yanagawa-net.com/",lastVerified:"2026-09-22"},
+ {name:"博多祇園山笠",cat:"tourism",lat:33.5932,lng:130.4105,area:"福岡市博多区",note:"博多の町を舞台に毎年7月に行われるユネスコ無形文化遺産の祭り。飾り山笠の公開や追い山笠など、時期そのものが訪問理由になる。",tags:["季節の定番","歴史・文化","街歩き・エリア"],season:["夏"],seasonNotes:{"夏":"飾り山笠から追い山笠まで、博多の熱気を体感できる代表的な夏祭り。"},price:"見物無料",hours:"毎年7月・当年の行事日程を公式確認",officialUrl:"https://www.hakatayamakasa.com/",lastVerified:"2026-09-22"},
+ {name:"筥崎宮 放生会",cat:"tourism",lat:33.6180,lng:130.4239,area:"福岡市東区",note:"毎年9月に参道一帯で行われる博多三大祭りの一つ。神事と多くの露店が並び、福岡の秋を代表する季節行事。",tags:["季節の定番","歴史・文化"],season:["秋"],seasonNotes:{"秋":"神事と参道の露店で、福岡の秋の訪れを感じられる恒例行事。"},price:"参拝・見物無料",hours:"毎年9月・当年の公式日程を確認",officialUrl:"https://www.hakozakigu.or.jp/",lastVerified:"2026-09-22"}
 
 , {name:"星の文化館",cat:"tourism",lat:33.2517,lng:130.7587,area:"八女市星野村",note:"九州最大級の100cm反射望遠鏡とプラネタリウムを備えた、星野村を代表する公開天文台。昼の星と夜空の観望、宿泊まで含めて奥八女ならではの天文観光を楽しめる。",tags:["絶景・景色","体験・名物"],price:"入館・観望料金は時間帯やプログラムにより異なる",hours:"曜日・季節で異なるため公式カレンダーを確認",closed:"火曜日ほか（夏休み等は変更あり）",officialUrl:"https://www.hoshinofurusato.jp/constellation/",lastVerified:"2026-09-22",image:""}
 , {name:"芥屋の大門・遊覧船",cat:"tourism",lat:33.5966,lng:130.1078,area:"糸島市志摩芥屋",note:"国の天然記念物に指定された玄武岩の海食洞と柱状節理を、遊覧船から間近に見られる糸島の代表的景勝地。船に乗る体験そのものが観光目的になる。",tags:["絶景・景色","体験・名物"],price:"遊覧船料金は公式確認",hours:"遊覧船は例年3月中旬〜11月に運航",closed:"12月〜3月頃は冬季運休・天候により欠航",officialUrl:"https://kanko-itoshima.jp/spot/keya-tourboat/",lastVerified:"2026-09-22",image:""}
-, {name:"白糸の滝",cat:"tourism",lat:33.4887,lng:130.1779,area:"糸島市白糸",note:"落差約24mの滝と渓谷の涼景を楽しめる糸島の定番自然スポット。夏の避暑や新緑、紅葉時期のドライブ目的地として分かりやすい。",tags:["絶景・景色"],price:"見学無料（体験・駐車場等は別途確認）",hours:"9:00〜17:00（7・8月は18:00まで）",closed:"12月〜3月は水曜日",officialUrl:"https://shiraitonotaki.jp/",lastVerified:"2026-09-22",image:""}
-, {name:"雷山千如寺大悲王院",cat:"tourism",lat:33.4965,lng:130.2188,area:"糸島市雷山",note:"重要文化財の千手観音立像や心字庭園を拝観でき、樹齢約400年の大楓でも知られる古刹。歴史と紅葉の両方を目的に訪れる価値がある。",tags:["歴史・文化","季節の定番"],price:"堂内拝観・11月の大楓見学は志納料あり",hours:"拝観時間は公式確認",closed:"行事・天候等で拝観制限の場合あり",officialUrl:"https://sennyoji.or.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"白糸の滝",cat:"tourism",lat:33.4887,lng:130.1779,area:"糸島市白糸",note:"落差約24mの滝と渓谷の涼景を楽しめる糸島の定番自然スポット。夏の避暑や新緑、紅葉時期のドライブ目的地として分かりやすい。",tags:["絶景・景色","季節の定番"],season:["夏","秋"],seasonNotes:{"夏":"落差約24mの滝と渓谷の涼感を求めて訪れたい夏の糸島定番。","秋":"滝と渓谷の色づきを楽しむ秋ドライブの目的地になる。"},price:"見学無料（体験・駐車場等は別途確認）",hours:"9:00〜17:00（7・8月は18:00まで）",closed:"12月〜3月は水曜日",officialUrl:"https://shiraitonotaki.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"雷山千如寺大悲王院",cat:"tourism",lat:33.4965,lng:130.2188,area:"糸島市雷山",note:"重要文化財の千手観音立像や心字庭園を拝観でき、樹齢約400年の大楓でも知られる古刹。歴史と紅葉の両方を目的に訪れる価値がある。",tags:["歴史・文化","季節の定番"],season:["秋"],seasonNotes:{"秋":"樹齢約400年の大楓と心字庭園の紅葉を目当てに訪れたい最優先の名所。"},price:"堂内拝観・11月の大楓見学は志納料あり",hours:"拝観時間は公式確認",closed:"行事・天候等で拝観制限の場合あり",officialUrl:"https://sennyoji.or.jp/",lastVerified:"2026-09-22",image:""}
 , {name:"宗像大社 中津宮・沖津宮遙拝所",cat:"tourism",lat:33.8979,lng:130.4306,area:"宗像市大島",note:"宗像大島にある世界遺産の構成資産を、フェリーと島内周遊で巡る観光ルート。中津宮への参拝と、沖ノ島を遥かに拝む沖津宮遙拝所を通して宗像信仰の全体像に触れられる。",tags:["歴史・文化","体験・名物","絶景・景色"],price:"参拝無料（フェリー・島内移動費は別）",hours:"参拝自由・フェリー時刻を事前確認",officialUrl:"https://www.city.munakata.lg.jp/kanko/kiji0037594/index.html",lastVerified:"2026-09-22",image:""}
 , {name:"柳川藩主立花邸 御花",cat:"tourism",lat:33.1576,lng:130.3973,area:"柳川市新外町",note:"国指定名勝の松濤園、大広間、西洋館、立花家史料館を見学できる柳川観光の中心施設。川下りと組み合わせると城下町の歴史をより深く味わえる。",tags:["王道観光","歴史・文化"],price:"一般1,200円／高校生500円／小中学生400円",hours:"10:00〜16:00",closed:"月ごとの営業案内を公式確認",officialUrl:"https://ohana.co.jp/about/visit/",lastVerified:"2026-09-22",image:""}
 , {name:"北原白秋生家・記念館",cat:"tourism",lat:33.1582,lng:130.3960,area:"柳川市沖端町",note:"柳川出身の詩人・北原白秋の生家と資料展示を通して、作品と水郷の文化背景に触れられる。御花や川下り乗船場からも回遊しやすい。",tags:["歴史・文化"],price:"大人600円／高大生450円／小中学生250円",hours:"9:00〜17:00（入館16:30まで）",closed:"12月29日〜1月3日",officialUrl:"https://www.hakushu.or.jp/",lastVerified:"2026-09-22",image:""}
 , {name:"浮羽稲荷神社",cat:"tourism",lat:33.3219,lng:130.7951,area:"うきは市浮羽町",note:"山の斜面に連なる赤い鳥居と、筑後平野・原鶴温泉方面を見渡す眺望が印象的。景観と参拝の両方を目的にできる、うきはの代表的スポット。",tags:["絶景・景色","歴史・文化"],price:"参拝無料",hours:"日中推奨",closed:"鳥居周辺は生活道路のため駐車・マナーに注意",officialUrl:"https://ukihalove.jp/contents/ukihainarijinjya/",lastVerified:"2026-09-22",image:""}
 , {name:"筑後吉井白壁の町並み",cat:"tourism",lat:33.3467,lng:130.7540,area:"うきは市吉井町",note:"白壁の商家、土蔵、社寺、水路が一体となって残る重要伝統的建造物群保存地区。店や文化施設に立ち寄りながら歩く、うきは観光の核になるエリア。",tags:["街歩き・エリア","歴史・文化"],price:"散策無料（各施設は別料金）",hours:"散策自由・各店舗の営業日は要確認",officialUrl:"https://ukihalove.jp/contents/shirakabenomachinami/",lastVerified:"2026-09-22",image:""}
-, {name:"石橋文化センター",cat:"tourism",lat:33.3120333,lng:130.5303667,area:"久留米市野中町",note:"久留米市美術館、庭園、文化ホール、記念館などが集まる複合文化施設。バラやツバキ、紅葉と季節を変えて散策でき、地元の休日利用にも向く。",tags:["歴史・文化","季節の定番"],price:"入園無料（美術館等は有料）",hours:"9:00〜17:00（園内は季節延長あり）",closed:"施設ごとに異なる",officialUrl:"https://www.ishibashi-bunka.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"石橋文化センター",cat:"tourism",lat:33.3120333,lng:130.5303667,area:"久留米市野中町",note:"久留米市美術館、庭園、文化ホール、記念館などが集まる複合文化施設。バラやツバキ、紅葉と季節を変えて散策でき、地元の休日利用にも向く。",tags:["歴史・文化","季節の定番"],season:["春","秋","冬"],seasonNotes:{"春":"バラをはじめとする春花と庭園散策を楽しめる。","秋":"秋バラや紅葉と美術館を組み合わせて過ごせる。","冬":"ツバキなど冬の植物を見ながら庭園を歩ける。"},price:"入園無料（美術館等は有料）",hours:"9:00〜17:00（園内は季節延長あり）",closed:"施設ごとに異なる",officialUrl:"https://www.ishibashi-bunka.jp/",lastVerified:"2026-09-22",image:""}
 , {name:"原鶴温泉",cat:"tourism",lat:33.3433,lng:130.7870,area:"朝倉市杷木志波",note:"筑後川沿いに旅館が並ぶ朝倉を代表する温泉地。二種類の泉質を併せ持つ湯や宿泊、夏季の鵜飼観覧を目的に滞在型観光ができる。",tags:["王道観光","体験・名物"],price:"宿泊・日帰り入浴は各施設により異なる",hours:"各旅館・施設の最新情報を確認",officialUrl:"https://www.harazuru.jp/",lastVerified:"2026-09-22",image:""}
-, {name:"朝倉の三連水車",cat:"tourism",lat:33.3808,lng:130.7190,area:"朝倉市菱野",note:"堀川用水から農地へ水をくみ上げる、日本最古の実働する重連水車群。現役の農業施設として動く姿を見られる時期にこそ価値が高い朝倉の歴史景観。",tags:["歴史・文化","季節の定番"],price:"見学無料",hours:"2026年は6月17日〜10月3日朝まで稼働予定",closed:"稼働期間外は主要部材が取り外される",officialUrl:"https://amagiasakura.net/sightseeing_post/sanrensuisha/",lastVerified:"2026-09-22",image:""}
+, {name:"朝倉の三連水車",cat:"tourism",lat:33.3808,lng:130.7190,area:"朝倉市菱野",note:"堀川用水から農地へ水をくみ上げる、日本最古の実働する重連水車群。現役の農業施設として動く姿を見られる時期にこそ価値が高い朝倉の歴史景観。",tags:["歴史・文化","季節の定番"],season:["夏","秋"],seasonNotes:{"夏":"田へ水を送る三連水車が力強く稼働する姿を見られる。","秋":"例年10月上旬頃まで、実働する水車と田園景観を楽しめる。"},price:"見学無料",hours:"2026年は6月17日〜10月3日朝まで稼働予定",closed:"稼働期間外は主要部材が取り外される",officialUrl:"https://amagiasakura.net/sightseeing_post/sanrensuisha/",lastVerified:"2026-09-22",image:""}
 , {name:"三池港展望所",cat:"tourism",lat:33.016666,lng:130.42484,area:"大牟田市新港町",note:"世界文化遺産・三池港の閘門や港湾設備を見渡し、三池炭の輸送を支えた近代化の歴史を理解できる展望所。宮原坑と合わせた産業遺産巡りに向く。",tags:["王道観光","歴史・文化","絶景・景色"],price:"見学無料",hours:"10:00〜17:00を基本・公開状況を公式確認",closed:"ガイド対応日は公式カレンダーを確認",officialUrl:"https://www.miike-coalmines.jp/port.html",lastVerified:"2026-09-22",image:""}
 , {name:"三井港倶楽部",cat:"tourism",lat:33.018226,lng:130.42806,area:"大牟田市西港町",note:"1908年の三池港開港に合わせて建てられた迎賓館で、大牟田市指定有形文化財。洋館建築と港町の近代産業史を感じられる。",tags:["歴史・文化"],price:"館内見学・飲食料金は公式確認",hours:"10:00〜21:00（館内見学は17:00まで）",closed:"火曜日（祝日の場合は翌日）・特定日",officialUrl:"https://www.mitsui-minatoclub.com/",lastVerified:"2026-09-22",image:""}
 , {name:"直方市石炭記念館",cat:"tourism",lat:33.7507,lng:130.7227,area:"直方市直方",note:"旧筑豊石炭鉱業組合の建物を活用し、資料、救護練習坑道、蒸気機関車などで筑豊炭田の歴史を伝える代表施設。",tags:["歴史・文化"],price:"一般100円を基本",hours:"9:00〜17:00（受付16:00まで）",closed:"月曜日・年末年始など",officialUrl:"https://nogata-kankoh.com/hangout/4451.html",lastVerified:"2026-09-22",image:""}
 , {name:"全国総本宮 水天宮",cat:"tourism",lat:33.3167,lng:130.4987,area:"久留米市瀬下町",note:"全国各地にある水天宮の総本宮で、筑後川沿いに鎮座する久留米の重要な歴史観光地。JR久留米駅から徒歩約10分で訪れやすい。",tags:["歴史・文化"],price:"参拝無料",hours:"授与所・祈願受付時間は公式確認",officialUrl:"https://suitengu.net/",lastVerified:"2026-09-22",image:""}
-, {name:"のこのしまアイランドパーク",cat:"tourism",lat:33.6285,lng:130.3038,area:"福岡市西区・能古島",note:"博多湾を渡る船旅と、海を望む季節の花畑を一緒に楽しめる島の定番。菜の花、桜、コスモスなど季節ごとに訪問理由が変わる。",tags:["絶景・景色","季節の定番"],price:"入園料・フェリー・バス料金は公式確認",hours:"季節により変動",officialUrl:"https://nokonoshima.com/",lastVerified:"2026-09-22",image:""}
+, {name:"のこのしまアイランドパーク",cat:"tourism",lat:33.6285,lng:130.3038,area:"福岡市西区・能古島",note:"博多湾を渡る船旅と、海を望む季節の花畑を一緒に楽しめる島の定番。菜の花、桜、コスモスなど季節ごとに訪問理由が変わる。",tags:["絶景・景色","季節の定番"],season:["春","夏","秋"],seasonNotes:{"春":"菜の花や桜など、海を背景にした春の花景色を楽しめる。","夏":"ひまわりと博多湾の眺めを目的に島旅ができる。","秋":"海を望むコスモス畑が広がる福岡の秋定番。"},price:"入園料・フェリー・バス料金は公式確認",hours:"季節により変動",officialUrl:"https://nokonoshima.com/",lastVerified:"2026-09-22",image:""}
+, {name:"黒木の大藤",cat:"tourism",lat:33.2131047,lng:130.6729387,area:"八女市黒木町",note:"樹齢600年以上とされる大藤と長い藤棚で知られる八女・黒木の春名所。見頃と催事日程を確認して訪れたい。",tags:["季節の定番"],season:["春"],seasonNotes:{"春":"歴史ある大藤と藤棚が紫色に染まる、筑後を代表する春の花景観。"},price:"見学無料を基本（催事・駐車場は当年情報を確認）",hours:"開花状況・当年の催事日程を公式確認",officialUrl:"https://yame.travel/",lastVerified:"2026-09-22",image:""}
+, {name:"中山大藤",cat:"tourism",lat:33.1694573,lng:130.4724836,area:"柳川市三橋町中山",note:"熊野神社境内に広がる県指定天然記念物の大藤。例年春の見頃に合わせて多くの人が訪れる柳川の花名所。",tags:["季節の定番"],season:["春"],seasonNotes:{"春":"大きな藤棚から花房が垂れる、柳川を代表する春景色。"},price:"見学無料を基本",hours:"開花状況・当年の催事日程を公式確認",officialUrl:"https://www.yanagawa-net.com/",lastVerified:"2026-09-22",image:""}
+, {name:"柳川ひまわり園",cat:"tourism",lat:33.1183040,lng:130.3831630,area:"柳川市橋本町",note:"有明海沿いの干拓地に大規模なひまわり畑が広がる柳川の夏景色。開園時期と開花状況は年ごとに確認が必要。",tags:["季節の定番"],season:["夏"],seasonNotes:{"夏":"有明海沿いに広がる大規模なひまわり畑を楽しめる。"},price:"当年の公式情報を確認",hours:"開園期間・開花状況を公式確認",closed:"開園期間外は観覧対象外",officialUrl:"https://www.yanagawa-net.com/",lastVerified:"2026-09-22",image:""}
+, {name:"杷木大ひまわり園",cat:"tourism",lat:33.3536866,lng:130.7848733,area:"朝倉市杷木久喜宮",note:"道の駅原鶴前の畑を大輪のひまわりが彩る朝倉の季節景観。開花時期は年により変わるため最新情報を確認したい。",tags:["季節の定番"],season:["夏"],seasonNotes:{"夏":"道の駅原鶴周辺を大輪のひまわりが彩る、朝倉ドライブの季節目的地。"},price:"見学無料を基本",hours:"開花状況・当年の催事日程を公式確認",officialUrl:"https://amagiasakura.net/",lastVerified:"2026-09-22",image:""}
+, {name:"呑山観音寺",cat:"tourism",lat:33.6588993,lng:130.5681729,area:"糟屋郡篠栗町",note:"山あいの広い境内をモミジやドウダンツツジが彩る紅葉名所。寺院景観と秋色を目的に訪れる価値が高い。",tags:["季節の定番"],season:["秋"],seasonNotes:{"秋":"境内の紅葉とドウダンツツジが鮮やかに色づく篠栗の代表的な秋名所。"},price:"参拝無料を基本",hours:"拝観時間・紅葉状況を公式確認",officialUrl:"https://sasagurikanko.com/",lastVerified:"2026-09-22",image:""}
+, {name:"宝満宮竈門神社",cat:"tourism",lat:33.5288297,lng:130.5524449,area:"太宰府市内山",note:"宝満山の麓に鎮座し、秋は境内の紅葉と期間限定のライトアップで知られる神社。太宰府観光から足を延ばす理由が明確。",tags:["季節の定番"],season:["秋"],seasonNotes:{"秋":"境内を包む紅葉と、実施年のライトアップが見どころ。"},price:"参拝無料",hours:"ライトアップ等は当年の公式情報を確認",officialUrl:"https://kamadojinja.or.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"柳坂曽根のハゼ並木",cat:"tourism",lat:33.3048820,lng:130.5872510,area:"久留米市山本町豊田",note:"街道沿いに続くハゼの木が赤く色づく、久留米を代表する秋景色。見頃を確認して訪れたい季節限定の並木道。",tags:["季節の定番"],season:["秋"],seasonNotes:{"秋":"ハゼ並木が深い赤色に染まり、筑後らしい秋の街道景観をつくる。"},price:"見学無料",hours:"見頃・交通案内を当年の観光情報で確認",officialUrl:"https://welcome-kurume.com/",lastVerified:"2026-09-22",image:""}
+, {name:"太原のイチョウ",cat:"tourism",lat:33.2483338,lng:130.5595555,area:"八女郡広川町久泉",note:"多くのイチョウが一面を黄金色に染める広川町の秋名所。私有地のため公開状況や観覧ルールを必ず確認して訪れたい。",tags:["季節の定番"],season:["秋"],seasonNotes:{"秋":"イチョウの葉が頭上と地面を黄金色に染める、広川町を代表する季節景観。"},price:"当年の公開情報を確認",hours:"公開期間・観覧ルールを公式確認",closed:"私有地のため非公開年・入場制限に注意",officialUrl:"https://www.hirokankou.org/",lastVerified:"2026-09-22",image:""}
+, {name:"Christmas Advent（博多駅周辺）",cat:"tourism",lat:33.5898,lng:130.4207,area:"福岡市博多区・博多駅周辺",note:"イルミネーションとクリスマスマーケットを中心に、博多駅周辺で冬の街歩きを楽しめる恒例企画。開催名称・会場・期間は年度ごとに確認する。",tags:["季節の定番"],season:["冬"],seasonNotes:{"冬":"イルミネーション、飲食、音楽をまとめて楽しめる福岡の冬の街歩き定番。"},price:"入場無料を基本（飲食・物販は有料）",hours:"当年の開催期間・会場別時間を公式確認",officialUrl:"https://christmas-advent.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"小倉イルミネーション",cat:"tourism",lat:33.8867602,lng:130.8821843,area:"北九州市小倉北区・小倉駅周辺",note:"小倉駅や紫川周辺など中心市街地を光でつなぐ冬の恒例企画。実施エリアと期間は年度ごとの公式発表を確認したい。",tags:["季節の定番"],season:["冬"],seasonNotes:{"冬":"小倉駅から紫川周辺へ、光の街並みを歩いて楽しめる。"},price:"観覧無料",hours:"当年の点灯期間・時間を公式確認",officialUrl:"https://kokura-illumination.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"梅林寺外苑",cat:"tourism",lat:33.3236256,lng:130.4993233,area:"久留米市京町",note:"筑後川沿いの禅寺外苑に梅が咲く久留米の早春名所。開花状況を確認し、寺院景観と梅を静かに楽しみたい。",tags:["季節の定番"],season:["冬"],seasonNotes:{"冬":"白梅・紅梅が咲き始め、久留米で早春の訪れを感じられる。"},price:"見学無料を基本",hours:"開花状況・参拝案内を確認",officialUrl:"https://welcome-kurume.com/",lastVerified:"2026-09-22",image:""}
 , {name:"北九州市立いのちのたび博物館",cat:"tourism",lat:33.8704,lng:130.8113,area:"北九州市八幡東区",note:"恐竜の全身骨格から北九州の自然史・歴史まで大規模展示でたどれる、西日本有数の博物館。子ども連れに限らず北九州観光の目的地として成立する。",tags:["王道観光","歴史・文化"],price:"大人600円／小中学生240円を基本",hours:"9:00〜17:00（入館16:30まで）",closed:"年末年始・館内整理日など",officialUrl:"https://www.kmnh.jp/",lastVerified:"2026-09-22",image:"IMG_0501.jpeg"}
 , {name:"MPLC石炭館（大牟田市石炭産業科学館）",cat:"tourism",lat:33.0310707,lng:130.4244537,area:"大牟田市岬町",note:"三池炭鉱の採炭技術、石炭とエネルギー、地下坑道の雰囲気を体験展示で学べる。宮原坑・三池港と合わせて大牟田の産業遺産を立体的に理解できる。",tags:["歴史・文化"],price:"大人420円／4歳〜中学生210円を基本",hours:"9:30〜17:00",closed:"最終月曜日・年末年始など",officialUrl:"https://www.sekitan-omuta.jp/",lastVerified:"2026-09-22",image:""}
 
@@ -1086,6 +1097,7 @@ function spotVisual(s){
  const described=pattern=>pattern.test(details);
 
  // 1. 施設名から分かるタイプ。別用途の紹介文や複合タグに影響されない。
+ if(named(/福岡タワー|博多ポートタワー/)) return SPOT_VISUALS.classic;
  if(named(/水族館|マリンワールド|アクアリウム/)) return SPOT_VISUALS.aquarium;
  if(named(/動物園|動植物園|牧場|ふれあい動物/)) return SPOT_VISUALS.animal;
  if(named(/温泉|温泉館|湯どころ|湯乃禅|清滝|波葉の湯|天拝の郷|恋ぼたる|べんがら村|スパリゾート/)) return SPOT_VISUALS.spa;
@@ -1176,6 +1188,13 @@ function makeIcon(s){
  return L.divIcon({className:'leaflet-div-icon',html,iconSize:[36,44],iconAnchor:[18,42],popupAnchor:[0,-39]});
 }
 
+function displayNote(s){
+ if(s.cat==='tourism' && activeSubfilter==='季節の定番' && activeTourismSeason!=='all' && s.seasonNotes && s.seasonNotes[activeTourismSeason]){
+  return s.seasonNotes[activeTourismSeason];
+ }
+ return s.note;
+}
+
 function popupHtml(s){
  const st=styles[s.cat];
  const tags=s.tags.map(t=>`<span class="tag">${t}</span>`).join('');
@@ -1199,7 +1218,7 @@ function popupHtml(s){
   <div class="popup-visual" style="background:${st.grad}">${s.image ? `<img src="${s.image}" alt="${s.name}">` : st.emoji}</div>
   <div class="popup-title">${s.name}</div>
   <div class="tags">${tags}</div>
-  <div class="popup-note">${s.note}</div>
+  <div class="popup-note">${displayNote(s)}</div>
   ${info ? `<div class="popup-info">${info}</div><div class="popup-disclaimer">営業時間・定休日・評価は変更される場合があります。最新情報は店舗・Googleマップ等でご確認ください。</div>` : ''}
   ${s.officialUrl ? `<a class="official-link" target="_blank" rel="noopener" href="${s.officialUrl}">公式情報を確認</a>` : ''}
   <a class="gmaps" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${q}">Googleマップで見る</a>`;
@@ -1248,7 +1267,7 @@ function focusSpot(s, marker){
  map.flyTo([s.lat,s.lng],12,{duration:.55});
  marker.openPopup();
  document.getElementById('recTitle').textContent=s.name;
- document.getElementById('recMeta').textContent=s.note;
+ document.getElementById('recMeta').textContent=displayNote(s);
  document.getElementById('recommendCard').style.background=spotBackground(s,styles[s.cat]);
 }
 
@@ -1263,6 +1282,7 @@ let activeOutdoorType='all';
 let activeAnimalType='all';
 let activeLearningType='all';
 let activeSeasonType='all';
+let activeTourismSeason='all';
 let activeKidsPrice='all';
 
 function buildSubfilters(cat){
@@ -1289,6 +1309,7 @@ function buildSubfilters(cat){
      activeAnimalType='all';
      activeLearningType='all';
      activeSeasonType='all';
+     activeTourismSeason='all';
      activeKidsPrice='all';
      buildSubfilters(cat);
      buildCafeTimeFilters(cat);
@@ -1307,9 +1328,10 @@ function buildCafeTimeFilters(cat){
  const isKidsAnimal = cat==='kids' && activeSubfilter==='動物・水族館';
  const isKidsLearning = cat==='kids' && activeSubfilter==='学び・体験';
  const isKidsSeason = cat==='kids' && activeSubfilter==='季節イベント';
+ const isTourismSeason = cat==='tourism' && activeSubfilter==='季節の定番';
  const isKidsPrice = cat==='kids' && activeSubfilter==='料金';
- wrap.classList.toggle('show',isCafe || isKidsIndoor || isKidsOutdoor || isKidsAnimal || isKidsLearning || isKidsSeason || isKidsPrice);
- if(!isCafe && !isKidsIndoor && !isKidsOutdoor && !isKidsAnimal && !isKidsLearning && !isKidsSeason && !isKidsPrice) return;
+ wrap.classList.toggle('show',isCafe || isKidsIndoor || isKidsOutdoor || isKidsAnimal || isKidsLearning || isKidsSeason || isTourismSeason || isKidsPrice);
+ if(!isCafe && !isKidsIndoor && !isKidsOutdoor && !isKidsAnimal && !isKidsLearning && !isKidsSeason && !isTourismSeason && !isKidsPrice) return;
  const options = isCafe
    ? [['all','すべて'],['day','☀️ 昼カフェ'],['night','🌙 夜カフェ'],['bar','🍸 バー']]
    : isKidsIndoor
@@ -1322,10 +1344,12 @@ function buildCafeTimeFilters(cat){
    ? [['all','すべて'],['科学・自然','科学・自然'],['ものづくり','ものづくり'],['仕事・社会','仕事・社会'],['歴史・文化','歴史・文化'],['食・農業','食・農業']]
    : isKidsSeason
    ? [['all','すべて'],['春','春'],['夏','夏'],['秋','秋'],['冬','冬']]
+   : isTourismSeason
+   ? [['all','すべて'],['春','春'],['夏','夏'],['秋','秋'],['冬','冬']]
    : [['all','すべて'],['無料','無料'],['〜1,000円','〜1,000円'],['〜3,000円','〜3,000円'],['〜5,000円','〜5,000円'],['5,000円以上','5,000円以上'],['要確認','要確認']];
  options.forEach(([value,label])=>{
    const b=document.createElement('button');
-   const activeValue = isCafe ? activeCafeTime : isKidsIndoor ? activeKidsAge : isKidsOutdoor ? activeOutdoorType : isKidsAnimal ? activeAnimalType : isKidsLearning ? activeLearningType : isKidsSeason ? activeSeasonType : activeKidsPrice;
+   const activeValue = isCafe ? activeCafeTime : isKidsIndoor ? activeKidsAge : isKidsOutdoor ? activeOutdoorType : isKidsAnimal ? activeAnimalType : isKidsLearning ? activeLearningType : isKidsSeason ? activeSeasonType : isTourismSeason ? activeTourismSeason : activeKidsPrice;
    b.className='cafetime'+(activeValue===value?' active':'');
    b.textContent=label;
    b.addEventListener('click',()=>{
@@ -1335,6 +1359,7 @@ function buildCafeTimeFilters(cat){
      else if(isKidsAnimal) activeAnimalType=value;
      else if(isKidsLearning) activeLearningType=value;
      else if(isKidsSeason) activeSeasonType=value;
+     else if(isTourismSeason) activeTourismSeason=value;
      else activeKidsPrice=value;
      buildCafeTimeFilters(cat);
      renderCategory(cat);
@@ -1371,6 +1396,9 @@ function renderCategory(cat){
  if(cat==='kids' && activeSubfilter==='季節イベント' && activeSeasonType!=='all'){
    chosen=chosen.filter(s=>s.tags.includes(activeSeasonType));
  }
+ if(cat==='tourism' && activeSubfilter==='季節の定番' && activeTourismSeason!=='all'){
+   chosen=chosen.filter(s=>Array.isArray(s.season) && s.season.includes(activeTourismSeason));
+ }
  if(cat==='kids' && activeSubfilter==='料金' && activeKidsPrice!=='all'){
    chosen=chosen.filter(s=>getFamilyPriceBand(s)===activeKidsPrice);
  }
@@ -1389,7 +1417,7 @@ function renderCategory(cat){
    document.getElementById('recommendCard').style.background=spotBackground(chosen[0],st);
    document.getElementById('recBadge').textContent=`${st.emoji} ${st.label.replace('向け','')}`;
    document.getElementById('recTitle').textContent=chosen[0].name;
-   document.getElementById('recMeta').textContent=chosen[0].note;
+   document.getElementById('recMeta').textContent=displayNote(chosen[0]);
  } else if(cat==='kids' && activeSubfilter==='季節イベント'){
    document.getElementById('recommendCard').style.background=st.grad;
    document.getElementById('recBadge').textContent='開催情報';
@@ -1406,7 +1434,7 @@ function renderCategory(cat){
   marker.bindPopup(popupHtml(s));
   marker.on('click',()=>{
     document.getElementById('recTitle').textContent=s.name;
-    document.getElementById('recMeta').textContent=s.note;
+    document.getElementById('recMeta').textContent=displayNote(s);
     document.getElementById('recommendCard').style.background=spotBackground(s,styles[s.cat]);
   });
   markers.push(marker); bounds.push([s.lat,s.lng]);
@@ -1417,6 +1445,8 @@ function renderCategory(cat){
    ? `家族料金目安：${getFamilyPriceBand(s)}`
    : s.eventStart
    ? `${formatEventRange(s)}｜${getEventState(s)}`
+   : cat==='tourism' && activeSubfilter==='季節の定番' && activeTourismSeason!=='all'
+   ? displayNote(s)
    : s.tags.join('・');
   card.innerHTML=`<div class="mini-photo">${s.image ? `<img src="${s.image}" alt="${s.name}">` : styles[s.cat].emoji}</div><div class="mini-body"><div class="mini-title">${s.name}</div><div class="mini-meta">${miniMeta}</div></div>`;
   card.addEventListener('click',()=>focusSpot(s,marker));
@@ -1435,6 +1465,7 @@ function showCategory(cat){
  activeAnimalType='all';
  activeLearningType='all';
  activeSeasonType='all';
+ activeTourismSeason='all';
  activeKidsPrice='all';
  document.getElementById('mapHeadTitle').textContent=styles[cat].label;
  buildSubfilters(cat);
