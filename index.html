@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260922-food1" />
+  <meta name="app-build" content="20260922-food2" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -537,7 +537,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260922-food1';
+const APP_BUILD='20260922-food2';
 
 async function ensureLatestBuild(){
   try{
@@ -1390,7 +1390,7 @@ function buildCafeTimeFilters(cat){
  const isKidsSeason = cat==='kids' && activeSubfilter==='季節イベント';
  const isTourismSeason = cat==='tourism' && activeSubfilter==='季節の定番';
  const isKidsPrice = cat==='kids' && activeSubfilter==='料金';
- const isFoodPrice = cat==='food' && activeSubfilter==='料金';
+ const isFoodPrice = cat==='food' && ['料金','ランチ','ディナー'].includes(activeSubfilter);
  wrap.classList.toggle('show',isCafe || isKidsIndoor || isKidsOutdoor || isKidsAnimal || isKidsLearning || isKidsSeason || isTourismSeason || isKidsPrice || isFoodPrice);
  if(!isCafe && !isKidsIndoor && !isKidsOutdoor && !isKidsAnimal && !isKidsLearning && !isKidsSeason && !isTourismSeason && !isKidsPrice && !isFoodPrice) return;
  const options = isCafe
@@ -1466,7 +1466,7 @@ function renderCategory(cat){
  if(cat==='kids' && activeSubfilter==='料金' && activeKidsPrice!=='all'){
    chosen=chosen.filter(s=>getFamilyPriceBand(s)===activeKidsPrice);
  }
- if(cat==='food' && activeSubfilter==='料金' && activeFoodPrice!=='all'){
+ if(cat==='food' && ['料金','ランチ','ディナー'].includes(activeSubfilter) && activeFoodPrice!=='all'){
    chosen=chosen.filter(s=>getFoodPriceBand(s)===activeFoodPrice);
  }
  if(cat==='kids' && activeSubfilter==='季節イベント'){
@@ -1510,7 +1510,7 @@ function renderCategory(cat){
   card.className='mini-card';
   const miniMeta=cat==='kids' && activeSubfilter==='料金'
    ? `家族料金目安：${getFamilyPriceBand(s)}`
-   : cat==='food' && activeSubfilter==='料金'
+   : cat==='food' && ['料金','ランチ','ディナー'].includes(activeSubfilter) && activeFoodPrice!=='all'
    ? `1人あたり：${getFoodPriceBand(s)}`
    : s.eventStart
    ? `${formatEventRange(s)}｜${getEventState(s)}`
