@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260922-svgpins72" />
+  <meta name="app-build" content="20260922-tourism73" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -459,7 +459,7 @@ to{transform:scale(1.08)}}
           <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20 10.2 6.5 14 13l2.1-3.5L21 20Z"/><path d="m8.2 10.2 2 1.7 1.7-2"/></svg></span>
           <span class="purpose-label">一人旅</span>
         </button>
-        <button class="purpose soon1" data-soon="観光・定番">
+        <button class="purpose soon1" data-go="tourism">
           <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h3l1.3-2h7.4l1.3 2h3a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5a2 2 0 0 1 2-2Z"/><circle cx="12" cy="13.5" r="4"/></svg></span>
           <span class="purpose-label">観光・定番</span>
         </button>
@@ -536,7 +536,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260922-svgpins72';
+const APP_BUILD='20260922-tourism73';
 
 async function ensureLatestBuild(){
   try{
@@ -816,6 +816,46 @@ const spots = [
  {name:"南蔵院",cat:"solo",lat:33.62096,lng:130.57374,area:"篠栗町",note:"世界最大級の釈迦涅槃像を、自分のペースで参拝・散策できる福岡らしい目的地。博多駅からJR福北ゆたか線で約20分、城戸南蔵院前駅から参道入口まで徒歩約3分で、車なしの一人旅にも向く。",tags:["街歩き・散策","文化・学び","公共交通向き"],price:"国内在住者・19歳未満は参拝料無料（条件により異なる）",hours:"涅槃像側 9:00〜17:00（最終受付16:30）",closed:"行事期間は参拝時間変更の場合あり",officialUrl:"https://nanzoin.net/",soloEvidence:"駅徒歩約3分・一人で参拝と境内散策をしやすい",lastVerified:"2026-09-21",image:""},
  {name:"皿倉山展望台",cat:"solo",lat:33.84685,lng:130.79625,area:"北九州市八幡東区",note:"北九州の市街地を一望でき、夜景そのものを目的に訪れる価値がある展望台。ケーブルカーとスロープカーで山頂まで約10分、JR八幡駅から山麓駅への無料シャトルバスもあり、門司港・小倉観光と組み合わせやすい。",tags:["自然・絶景","夜景","一人ドライブ","公共交通向き"],price:"ケーブルカー・スロープカー運賃は公式で要確認",hours:"展望台 10:00〜ケーブルカー下り最終時刻の20分前",closed:"ケーブルカー運休日は閉館",officialUrl:"https://www.sarakurayama-cablecar.co.jp/",soloEvidence:"一人で夜景鑑賞・ドライブ・公共交通利用が可能",lastVerified:"2026-09-21",image:""},
  {name:"旧伊藤伝右衛門邸",cat:"solo",lat:33.65873,lng:130.68084,area:"飯塚市",note:"筑豊の炭鉱王・伊藤伝右衛門の邸宅で、和洋の建築と庭園を自分のペースで見学できる。歴史観光の目的地として、飯塚のうどんやスイーツと組み合わせた一人旅コースを作りやすい。",tags:["文化・学び","街歩き・散策","一人ドライブ"],price:"高校生以上300円、小・中学生100円",hours:"9:30〜17:00（入館16:30まで）",closed:"水曜（祝日は開館）・12月29日〜1月3日",officialUrl:"https://www.city.iizuka.lg.jp/site/itoutei/",soloEvidence:"歴史・建築・庭園を一人でじっくり見学できる",lastVerified:"2026-09-21",image:""}
+,
+ {name:"福岡タワー",cat:"tourism",lat:33.5933,lng:130.3515,area:"福岡市早良区",note:"海と福岡市街を360度見渡せる福岡の代表的ランドマーク。昼景から夕景・夜景まで楽しめ、初めての福岡観光でも候補に入れやすい。",tags:["王道観光","絶景・景色"],price:"展望料 大人1,000円",hours:"9:30〜22:00（最終入館21:30）",officialUrl:"https://www.fukuokatower.co.jp/"},
+ {name:"太宰府天満宮",cat:"tourism",lat:33.5214,lng:130.5349,area:"太宰府市",note:"全国的な知名度があり、御本殿参拝に加えて参道散策や九州国立博物館まで回遊できる福岡観光の王道。",tags:["王道観光","歴史・文化","街歩き・エリア"],price:"参拝無料",hours:"開門時間は季節により変動",officialUrl:"https://www.dazaifutenmangu.or.jp/"},
+ {name:"門司港レトロ",cat:"tourism",lat:33.9477,lng:130.9610,area:"北九州市門司区",note:"門司港駅や洋館、海峡沿いの景色を徒歩で巡れる北九州の代表的観光エリア。建築・食・夜景を一度に組み合わせやすい。",tags:["王道観光","歴史・文化","街歩き・エリア"],price:"散策無料（各施設は別料金）",hours:"各施設により異なる",officialUrl:"https://www.mojiko.info/"},
+ {name:"大濠公園",cat:"tourism",lat:33.5861,lng:130.3764,area:"福岡市中央区",note:"大きな池を中心に散策、美術館、日本庭園、カフェを組み合わせられる市街地の定番。地下鉄で訪れやすく地元の休日利用にも向く。",tags:["王道観光","絶景・景色"],price:"公園無料",hours:"終日（一部施設を除く）",officialUrl:"https://www.ohorikouen.jp/"},
+ {name:"桜井二見ヶ浦 夫婦岩",cat:"tourism",lat:33.6380,lng:130.1927,area:"糸島市",note:"海上の白い鳥居と夫婦岩、夕景で知られる糸島の代表的景勝地。海岸ドライブと組み合わせて訪れる目的が明確。",tags:["王道観光","絶景・景色"],price:"見学無料（駐車場は有料の場合あり）",hours:"終日・日中〜夕方推奨",officialUrl:"https://kanko-itoshima.jp/spot/sakuraihutamigaura/"},
+ {name:"宗像大社 辺津宮",cat:"tourism",lat:33.8310594,lng:130.5143997,area:"宗像市",note:"世界文化遺産の構成資産を巡る起点となる古社。境内と神宝館を通して宗像・沖ノ島の歴史に触れられる。",tags:["王道観光","歴史・文化"],price:"参拝無料（神宝館は有料）",hours:"施設により異なる",officialUrl:"https://munakata-taisha.or.jp/"},
+ {name:"柳川川下り",cat:"tourism",lat:33.1648,lng:130.4061,area:"柳川市",note:"城下町の掘割をどんこ舟で進む、柳川を代表する観光体験。船頭の案内や水辺の景色そのものが旅の目的になる。",tags:["王道観光","体験・名物","街歩き・エリア"],price:"乗船会社・コースにより異なる",hours:"各運航会社の最新情報を確認",officialUrl:"https://www.yanagawa-net.com/"},
+ {name:"小倉城",cat:"tourism",lat:33.8844357,lng:130.8742541,area:"北九州市小倉北区",note:"展示演出のある天守閣と庭園、紫川周辺をまとめて楽しめる北九州の歴史観光拠点。小倉駅から徒歩圏。",tags:["王道観光","歴史・文化"],price:"天守閣は有料",hours:"9:00〜20:00を基本（季節変動あり）",officialUrl:"https://www.kokura-castle.jp/"},
+ {name:"海の中道海浜公園",cat:"tourism",lat:33.6745,lng:130.3648,area:"福岡市東区",note:"季節の花畑、海辺の景観、広大な園内を一日かけて楽しめる福岡の定番公園。ネモフィラやコスモスの時期は特に観光価値が高い。",tags:["王道観光","季節の定番"],price:"大人450円を基本",hours:"季節により変動",officialUrl:"https://uminaka-park.jp/"},
+ {name:"マリンワールド海の中道",cat:"tourism",lat:33.6610,lng:130.3632,area:"福岡市東区",note:"九州の海をテーマにした展示と博多湾を背景にしたショーが楽しめる、天候を選びにくい福岡の代表的観光施設。",tags:["王道観光"],price:"大人2,500円、高校生2,500円、小中学生1,200円、幼児700円を基本",hours:"季節・日により変動",officialUrl:"https://marine-world.jp/"},
+ {name:"櫛田神社",cat:"tourism",lat:33.5932,lng:130.4105,area:"福岡市博多区",note:"博多祇園山笠が奉納される博多の総鎮守。常設の飾り山笠や博多旧市街散策と合わせ、短時間でも福岡らしい文化に触れられる。",tags:["王道観光","歴史・文化","街歩き・エリア"],price:"参拝無料",hours:"境内参拝時間は公式確認",officialUrl:"https://hakatanomiryoku.com/spot/櫛田神社"},
+ {name:"宮地嶽神社",cat:"tourism",lat:33.7817,lng:130.4937,area:"福津市",note:"参道が海へ一直線に延びる景観と大注連縄で知られる古社。年2回の「光の道」の時期は全国から訪れる季節の定番になる。",tags:["歴史・文化","絶景・景色","季節の定番"],price:"参拝無料",hours:"終日（授与所等は時間あり）",officialUrl:"https://www.miyajidake.or.jp/"},
+ {name:"九州国立博物館",cat:"tourism",lat:33.5182175,lng:130.5384608,area:"太宰府市",note:"日本文化をアジア史の視点から紹介する国立博物館。建築自体にも見応えがあり、太宰府天満宮から徒歩で回遊できる。",tags:["歴史・文化","王道観光"],price:"文化交流展 一般700円",hours:"9:30〜17:00を基本",closed:"月曜日（祝日の場合は翌日）",officialUrl:"https://www.kyuhaku.jp/"},
+ {name:"舞鶴公園・福岡城跡",cat:"tourism",lat:33.5860599,lng:130.3831703,area:"福岡市中央区",note:"石垣や櫓跡、天守台からの眺めを楽しめる都心の史跡。大濠公園と徒歩でつながり、桜の季節は特に定番度が高い。",tags:["歴史・文化","季節の定番","街歩き・エリア"],price:"散策無料（一部施設を除く）",hours:"終日（一部施設を除く）",officialUrl:"https://www.midorimachi.jp/maiduru/"},
+ {name:"南蔵院",cat:"tourism",lat:33.6206,lng:130.5722,area:"篠栗町",note:"巨大な釈迦涅槃像で知られ、篠栗観光の明確な目的地になる寺院。JR城戸南蔵院前駅から徒歩圏で公共交通でも訪れやすい。",tags:["歴史・文化","王道観光"],price:"参拝無料",hours:"参拝時間・注意事項は公式確認",officialUrl:"https://nanzoin.net/"},
+ {name:"秋月城下町",cat:"tourism",lat:33.4695721,lng:130.693526,area:"朝倉市",note:"石垣や黒門、寺社、古い町並みを歩いて楽しめる城下町。桜と紅葉の名所としても知られ、季節を変えて訪れる価値がある。",tags:["歴史・文化","街歩き・エリア","季節の定番"],price:"散策無料（各施設は別料金）",hours:"終日（各施設は異なる）",officialUrl:"https://amagiasakura.net/"},
+ {name:"旧伊藤伝右衛門邸",cat:"tourism",lat:33.65873,lng:130.68084,area:"飯塚市",note:"筑豊の炭鉱王の暮らしを伝える和洋折衷の邸宅と庭園。飯塚・筑豊を観光する際の核になる歴史建築。",tags:["歴史・文化"],price:"高校生以上300円、小・中学生100円",hours:"9:30〜17:00",closed:"水曜日・年末年始など",officialUrl:"https://www.kankou-iizuka.jp/denemon/"},
+ {name:"田川市石炭・歴史博物館",cat:"tourism",lat:33.6407,lng:130.8053,area:"田川市",note:"炭坑跡地の公園、竪坑櫓、SLとともに筑豊の石炭産業を立体的に理解できる博物館。山本作兵衛コレクションも大きな見どころ。",tags:["歴史・文化"],price:"一般400円、高校生100円、小中学生50円を基本",hours:"9:30〜17:30",closed:"月曜日・年末年始など",officialUrl:"https://www.joho.tagawa.fukuoka.jp/list00784.html"},
+ {name:"三池炭鉱 宮原坑",cat:"tourism",lat:33.0139,lng:130.4693,area:"大牟田市",note:"世界文化遺産「明治日本の産業革命遺産」の構成資産。現存する竪坑櫓と巻揚機室から、大牟田の近代化の歴史を体感できる。",tags:["歴史・文化"],price:"見学無料",hours:"公開時間・休場日は公式確認",officialUrl:"https://www.city.omuta.lg.jp/kiji0037272/index.html"},
+ {name:"新原・奴山古墳群",cat:"tourism",lat:33.7950,lng:130.4890,area:"福津市",note:"世界文化遺産の構成資産で、古墳群と田園、玄界灘が重なる景観が魅力。宗像・福津の歴史観光ルートに組み込みやすい。",tags:["歴史・文化","絶景・景色"],price:"見学無料",hours:"日中推奨",officialUrl:"https://www.crossroadfukuoka.jp/spot/13115"},
+ {name:"皿倉山展望台",cat:"tourism",lat:33.84685,lng:130.79625,area:"北九州市八幡東区",note:"北九州市街と洞海湾を一望でき、夜景そのものを目的に訪れる価値が高い展望台。ケーブルカー・スロープカーの乗車も観光体験になる。",tags:["絶景・景色","体験・名物"],price:"ケーブルカー等の往復運賃は公式確認",hours:"運行日・営業時間は公式確認",officialUrl:"https://www.sarakurayama-cablecar.co.jp/"},
+ {name:"平尾台",cat:"tourism",lat:33.7486,lng:130.9055,area:"北九州市小倉南区",note:"白い石灰岩が点在する日本有数のカルスト台地。展望ドライブ、散策、鍾乳洞を組み合わせられ、景色目的の滞在価値が高い。",tags:["絶景・景色","王道観光"],price:"散策無料（各施設は別料金）",hours:"日中推奨",officialUrl:"https://www.hiraodai.jp/"},
+ {name:"千仏鍾乳洞",cat:"tourism",lat:33.7543635,lng:130.9043258,area:"北九州市小倉南区",note:"平尾台の地下を流れる水の中を歩いて進む天然記念物の鍾乳洞。景観だけでなく探検感のある体験自体が目的になる。",tags:["絶景・景色","体験・名物"],price:"大人1,000円目安",hours:"9:00〜17:00目安（季節変動）",officialUrl:"https://www.senbutsu-cave.com/"},
+ {name:"志賀島",cat:"tourism",lat:33.6773,lng:130.3027,area:"福岡市東区",note:"海沿いを巡りながら金印公園や潮見公園、志賀海神社に立ち寄れる島。市街地から近く、ドライブと船旅の両方で楽しめる。",tags:["絶景・景色","街歩き・エリア"],price:"散策無料",hours:"終日・日中推奨",officialUrl:"https://www.crossroadfukuoka.jp/spot/12433"},
+ {name:"高良大社",cat:"tourism",lat:33.3014,lng:130.5654,area:"久留米市",note:"筑後国一の宮としての歴史と、筑後平野を見渡す眺望を同時に楽しめる久留米の代表的観光地。",tags:["歴史・文化","絶景・景色"],price:"参拝無料",hours:"授与所等の時間は公式確認",officialUrl:"https://www.kourataisya.or.jp/"},
+ {name:"八女中央大茶園 展望所",cat:"tourism",lat:33.2385212,lng:130.6010123,area:"八女市",note:"丘陵一面に広がる茶畑を見渡せる八女らしい景観。八女福島の町並みや茶の体験と組み合わせやすい。",tags:["絶景・景色"],price:"無料",hours:"日中推奨",officialUrl:"https://www.crossroadfukuoka.jp/spot/10763"},
+ {name:"博多旧市街",cat:"tourism",lat:33.5944,lng:130.4147,area:"福岡市博多区",note:"寺社や博多町家、伝統文化が徒歩圏に集まる歴史散策エリア。櫛田神社を起点に、福岡らしい町の成り立ちを感じられる。",tags:["街歩き・エリア","歴史・文化"],price:"散策無料（各施設は別料金）",hours:"各施設により異なる",officialUrl:"https://www.hakatamachiya.com/"},
+ {name:"太宰府門前町",cat:"tourism",lat:33.5199,lng:130.5327,area:"太宰府市",note:"西鉄太宰府駅から天満宮へ続く参道を中心に、名物、工芸、歴史施設を歩いて楽しめる県内屈指の観光エリア。",tags:["街歩き・エリア","王道観光"],price:"散策無料",hours:"各店舗・施設により異なる",officialUrl:"https://dazaifu.org/"},
+ {name:"柳川城下町",cat:"tourism",lat:33.1637,lng:130.4058,area:"柳川市",note:"掘割沿いの町並み、御花、北原白秋ゆかりの場所を徒歩と舟で巡れる水郷の観光エリア。",tags:["街歩き・エリア","歴史・文化"],price:"散策無料（各施設・川下りは別料金）",hours:"各施設により異なる",officialUrl:"https://www.yanagawa-net.com/"},
+ {name:"八女福島の町並み",cat:"tourism",lat:33.2107,lng:130.5584,area:"八女市",note:"白壁の商家や伝統工芸の店が残る重要伝統的建造物群保存地区。町家を巡りながら八女茶や工芸文化に触れられる。",tags:["街歩き・エリア","歴史・文化"],price:"散策無料（各施設は別料金）",hours:"各施設により異なる",officialUrl:"https://yamedentoukougeikan.jimdofree.com/"},
+ {name:"津屋崎千軒",cat:"tourism",lat:33.7877,lng:130.4668,area:"福津市",note:"古い商家や酒蔵、工房が点在する海辺の町並み。宮地嶽神社や福津の海と組み合わせて歩ける。",tags:["街歩き・エリア","歴史・文化"],price:"散策無料",hours:"各施設により異なる",officialUrl:"https://tsuyazaki-sengen.jp/"},
+ {name:"八女伝統工芸館",cat:"tourism",lat:33.2114,lng:130.5577,area:"八女市",note:"八女提灯、手すき和紙、仏壇など地域の伝統工芸をまとめて見られる施設。実演や体験の実施日は観光目的として価値が高い。",tags:["体験・名物","歴史・文化"],price:"入館無料（体験は別料金）",hours:"9:00〜17:00を基本",closed:"月曜日など",officialUrl:"https://yamedentoukougeikan.jimdofree.com/"},
+ {name:"小石原焼伝統産業会館",cat:"tourism",lat:33.4621,lng:130.8242,area:"東峰村",note:"小石原焼の歴史と作品を見た後、周辺の窯元巡りへつなげられる。陶芸体験の開催状況を確認して訪れたい地域文化の拠点。",tags:["体験・名物","歴史・文化"],price:"入館料・体験料は公式確認",hours:"9:00〜17:00を基本",closed:"火曜日など",officialUrl:"https://koishiwara.com/"},
+ {name:"九州鉄道記念館",cat:"tourism",lat:33.9450,lng:130.9618,area:"北九州市門司区",note:"九州鉄道の歴史、実物車両、運転シミュレーターを楽しめる門司港ならではの施設。レトロ地区の街歩きと相性が良い。",tags:["体験・名物","歴史・文化"],price:"大人300円、中学生以下150円を基本",hours:"9:00〜17:00",closed:"不定休・公式確認",officialUrl:"https://www.k-rhm.jp/"},
+ {name:"関門海峡ミュージアム",cat:"tourism",lat:33.9442,lng:130.9678,area:"北九州市門司区",note:"関門海峡の歴史と文化を大型映像や体験展示で紹介。展望デッキからの海峡景観もあり、門司港での滞在を深められる。",tags:["体験・名物","歴史・文化","絶景・景色"],price:"無料エリアあり（展示は有料）",hours:"9:00〜17:00を基本",officialUrl:"https://www.kanmon-kaikyo-museum.jp/"},
+ {name:"河内藤園",cat:"tourism",lat:33.8326,lng:130.7935,area:"北九州市八幡東区",note:"藤のトンネルで世界的に知られる春の景勝地。見頃・営業期間が限られ、事前予約制になる場合があるため公式確認が必須。",tags:["季節の定番","絶景・景色"],price:"開花状況により変動",hours:"春季・秋季の開園情報を公式確認",closed:"開園期間外は入園不可",officialUrl:"https://kawachi-fujien.com/"},
+ {name:"柳川雛祭り さげもんめぐり",cat:"tourism",lat:33.1639,lng:130.4055,area:"柳川市",note:"町中が色鮮やかな「さげもん」で彩られる柳川の春の風物詩。例年2〜4月頃に開催され、川下りや城下町散策と合わせて楽しめる。",tags:["季節の定番","街歩き・エリア"],price:"散策無料（各催事・施設は別料金）",hours:"開催年の公式日程を確認",officialUrl:"https://www.yanagawa-net.com/"},
+ {name:"博多祇園山笠",cat:"tourism",lat:33.5932,lng:130.4105,area:"福岡市博多区",note:"博多の町を舞台に毎年7月に行われるユネスコ無形文化遺産の祭り。飾り山笠の公開や追い山笠など、時期そのものが訪問理由になる。",tags:["季節の定番","歴史・文化","街歩き・エリア"],price:"見物無料",hours:"毎年7月・当年の行事日程を公式確認",officialUrl:"https://www.hakatayamakasa.com/"},
+ {name:"筥崎宮 放生会",cat:"tourism",lat:33.6180,lng:130.4239,area:"福岡市東区",note:"毎年9月に参道一帯で行われる博多三大祭りの一つ。神事と多くの露店が並び、福岡の秋を代表する季節行事。",tags:["季節の定番","歴史・文化"],price:"参拝・見物無料",hours:"毎年9月・当年の公式日程を確認",officialUrl:"https://www.hakozakigu.or.jp/"}
 ];
 
 // 「料金」は大人2名＋小学生1名＋未就学児1名の基本利用料で区分する。
@@ -934,7 +974,8 @@ startHeroSlideshow();
 const styles={
  date:{color:"#ff5f8f",emoji:"❤️",label:"カップル",grad:"linear-gradient(135deg,#ff6a98,#ff8e73)"},
  kids:{color:"#4f8cff",emoji:"🎈",label:"家族",grad:"linear-gradient(135deg,#4f8cff,#68c9ff)"},
- solo:{color:"#7a67ee",emoji:"🧳",label:"一人旅",grad:"linear-gradient(135deg,#7a67ee,#a06cf2)"}
+ solo:{color:"#7a67ee",emoji:"🧳",label:"一人旅",grad:"linear-gradient(135deg,#7a67ee,#a06cf2)"},
+ tourism:{color:"#4A90E2",emoji:"★",label:"観光・定番",grad:"linear-gradient(135deg,#4A90E2,#65B6D9)"}
 };
 
 const map=L.map('map',{zoomControl:false}).setView([33.5902,130.4017],10);
@@ -946,7 +987,7 @@ let markers=[], userMarker=null, userAccuracy=null, activeCat='date';
 
 function spotVisual(s){
  const tags=s.tags||[];
- const base={date:{icon:'heart',color:'#FF7A6B'},kids:{icon:'home',color:'#F08A42'},solo:{icon:'compass',color:'#5FA57A'}}[s.cat] || {icon:'dots',color:'#7D8791'};
+ const base={date:{icon:'heart',color:'#FF7A6B'},kids:{icon:'home',color:'#F08A42'},solo:{icon:'compass',color:'#5FA57A'},tourism:{icon:'star',color:'#4A90E2'}}[s.cat] || {icon:'dots',color:'#7D8791'};
  if(activeSubfilter==='雨の日' || tags.includes('雨の日')) return {icon:'umbrella',color:'#7E6AAE'};
  if(tags.includes('水遊び') || tags.includes('プール')) return {icon:'waves',color:'#43AFC4'};
  if(activeCat==='kids' && activeSubfilter==='動物・水族館'){
@@ -956,6 +997,13 @@ function spotVisual(s){
  }
  if(activeCat==='kids' && activeSubfilter==='学び・体験') return {icon:'book',color:'#D39A2C'};
  if(activeCat==='kids' && activeSubfilter==='公園・外遊び') return {icon:'tree',color:'#5FA57A'};
+ if(activeCat==='tourism'){
+  if(tags.includes('歴史・文化')) return {icon:'landmark',color:'#4A90E2'};
+  if(tags.includes('絶景・景色')) return {icon:'mountain',color:'#3E83C7'};
+  if(tags.includes('街歩き・エリア')) return {icon:'compass',color:'#4A90E2'};
+  if(tags.includes('体験・名物')) return {icon:'flag',color:'#397BB8'};
+  return {icon:'star',color:'#4A90E2'};
+ }
  if(activeCat==='solo'){
   if(tags.includes('カフェ・喫茶')) return {icon:'cup',color:'#A7674F'};
   if(tags.includes('パン') || tags.includes('サンドイッチ') || tags.includes('スイーツ') || tags.includes('食べ歩き') || tags.includes('ひとりグルメ')) return {icon:'meal',color:'#B96E4B'};
@@ -985,7 +1033,7 @@ function spotVisual(s){
  return base;
 }
 
-const pinIcons={"heart":"<path d=\"M12 20.2 4.7 13.1A5.1 5.1 0 0 1 11.9 5.9L12 6l.1-.1a5.1 5.1 0 0 1 7.2 7.2Z\" fill=\"currentColor\" stroke=\"none\"/>","home":"<path d=\"m3 11 9-7 9 7\"/><path d=\"M5.5 9.5V20h13V9.5\"/><path d=\"M9.5 20v-6h5v6\"/>","compass":"<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"m15.8 8.2-2.1 5.5-5.5 2.1 2.1-5.5Z\" fill=\"currentColor\" stroke=\"none\"/>","star":"<path d=\"m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9Z\" fill=\"currentColor\" stroke=\"none\"/>","cup":"<path d=\"M4 7h13v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z\"/><path d=\"M17 9h1.5a3 3 0 0 1 0 6H17M3 21h16\"/>","umbrella":"<path d=\"M4 12a8 8 0 0 1 16 0Z\"/><path d=\"M12 12v6.2a2.2 2.2 0 0 0 4.4 0\"/>","waves":"<path d=\"M3 9c3-2 5-2 8 0s5 2 10 0M3 14c3-2 5-2 8 0s5 2 10 0M3 19c3-2 5-2 8 0s5 2 10 0\"/>","paw":"<circle cx=\"7\" cy=\"9\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"17\" cy=\"9\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"10\" cy=\"5.5\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"14\" cy=\"5.5\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M7.2 16.1c0-3 2.2-5.2 4.8-5.2s4.8 2.2 4.8 5.2c0 2.4-2 3.7-4.8 3.7s-4.8-1.3-4.8-3.7Z\" fill=\"currentColor\" stroke=\"none\"/>","fish":"<path d=\"M4 12c3.8-5 9.2-5.7 13.8-1.2L21 8v8l-3.2-2.8C13.2 17.7 7.8 17 4 12Z\"/><circle cx=\"14.5\" cy=\"11\" r=\"1\" fill=\"currentColor\" stroke=\"none\"/>","book":"<path d=\"M4 5.5h5.2c1.6 0 2.8 1.2 2.8 2.8V20c0-1.6-1.2-2.8-2.8-2.8H4Z\"/><path d=\"M20 5.5h-5.2c-1.6 0-2.8 1.2-2.8 2.8V20c0-1.6 1.2-2.8 2.8-2.8H20Z\"/>","dots":"<circle cx=\"5\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"19\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/>","meal":"<path d=\"M6 4v7M3.5 4v4.5A2.5 2.5 0 0 0 6 11v9M8.5 4v4.5A2.5 2.5 0 0 1 6 11\"/><path d=\"M16 4v16M16 4c3 1 4 3.5 4 6h-4\"/>","spa":"<path d=\"M7 4c-2 2 2 3 0 5M12 4c-2 2 2 3 0 5M17 4c-2 2 2 3 0 5M4 14c3-2 5-2 8 0s5 2 8 0M4 19c3-2 5-2 8 0s5 2 8 0\"/>","mountain":"<path d=\"m3 19 7-12 4 6 2-3 5 9Z\"/><path d=\"m8 11 2 2 2-3\"/>","car":"<path d=\"m5 15 1.8-6h10.4l1.8 6\"/><rect x=\"3\" y=\"13\" width=\"18\" height=\"6\" rx=\"2\"/><circle cx=\"7\" cy=\"19\" r=\"1.5\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"17\" cy=\"19\" r=\"1.5\" fill=\"currentColor\" stroke=\"none\"/>","activity":"<path d=\"M13 2 5 13h6l-1 9 9-13h-6Z\" fill=\"currentColor\" stroke=\"none\"/>","tent":"<path d=\"m3 20 9-16 9 16ZM12 4v16M8 20l4-7 4 7\"/>","bag":"<path d=\"M5 8h14l-1 12H6Z\"/><path d=\"M9 9V7a3 3 0 0 1 6 0v2\"/>","moon":"<path d=\"M19 15.5A8.5 8.5 0 0 1 8.5 5 8.5 8.5 0 1 0 19 15.5Z\" fill=\"currentColor\" stroke=\"none\"/>","tree":"<path d=\"M12 3 6 11h3l-5 7h16l-5-7h3Z\"/><path d=\"M12 18v3\"/>","landmark":"<path d=\"m3 9 9-5 9 5ZM5 10v8M10 10v8M14 10v8M19 10v8M3 20h18\"/>"};
+const pinIcons={"heart":"<path d=\"M12 20.2 4.7 13.1A5.1 5.1 0 0 1 11.9 5.9L12 6l.1-.1a5.1 5.1 0 0 1 7.2 7.2Z\" fill=\"currentColor\" stroke=\"none\"/>","home":"<path d=\"m3 11 9-7 9 7\"/><path d=\"M5.5 9.5V20h13V9.5\"/><path d=\"M9.5 20v-6h5v6\"/>","compass":"<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"m15.8 8.2-2.1 5.5-5.5 2.1 2.1-5.5Z\" fill=\"currentColor\" stroke=\"none\"/>","star":"<path d=\"m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9Z\" fill=\"currentColor\" stroke=\"none\"/>","cup":"<path d=\"M4 7h13v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z\"/><path d=\"M17 9h1.5a3 3 0 0 1 0 6H17M3 21h16\"/>","umbrella":"<path d=\"M4 12a8 8 0 0 1 16 0Z\"/><path d=\"M12 12v6.2a2.2 2.2 0 0 0 4.4 0\"/>","waves":"<path d=\"M3 9c3-2 5-2 8 0s5 2 10 0M3 14c3-2 5-2 8 0s5 2 10 0M3 19c3-2 5-2 8 0s5 2 10 0\"/>","paw":"<circle cx=\"7\" cy=\"9\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"17\" cy=\"9\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"10\" cy=\"5.5\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"14\" cy=\"5.5\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M7.2 16.1c0-3 2.2-5.2 4.8-5.2s4.8 2.2 4.8 5.2c0 2.4-2 3.7-4.8 3.7s-4.8-1.3-4.8-3.7Z\" fill=\"currentColor\" stroke=\"none\"/>","fish":"<path d=\"M4 12c3.8-5 9.2-5.7 13.8-1.2L21 8v8l-3.2-2.8C13.2 17.7 7.8 17 4 12Z\"/><circle cx=\"14.5\" cy=\"11\" r=\"1\" fill=\"currentColor\" stroke=\"none\"/>","book":"<path d=\"M4 5.5h5.2c1.6 0 2.8 1.2 2.8 2.8V20c0-1.6-1.2-2.8-2.8-2.8H4Z\"/><path d=\"M20 5.5h-5.2c-1.6 0-2.8 1.2-2.8 2.8V20c0-1.6 1.2-2.8 2.8-2.8H20Z\"/>","dots":"<circle cx=\"5\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"19\" cy=\"12\" r=\"2\" fill=\"currentColor\" stroke=\"none\"/>","meal":"<path d=\"M6 4v7M3.5 4v4.5A2.5 2.5 0 0 0 6 11v9M8.5 4v4.5A2.5 2.5 0 0 1 6 11\"/><path d=\"M16 4v16M16 4c3 1 4 3.5 4 6h-4\"/>","spa":"<path d=\"M7 4c-2 2 2 3 0 5M12 4c-2 2 2 3 0 5M17 4c-2 2 2 3 0 5M4 14c3-2 5-2 8 0s5 2 8 0M4 19c3-2 5-2 8 0s5 2 8 0\"/>","mountain":"<path d=\"m3 19 7-12 4 6 2-3 5 9Z\"/><path d=\"m8 11 2 2 2-3\"/>","car":"<path d=\"m5 15 1.8-6h10.4l1.8 6\"/><rect x=\"3\" y=\"13\" width=\"18\" height=\"6\" rx=\"2\"/><circle cx=\"7\" cy=\"19\" r=\"1.5\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"17\" cy=\"19\" r=\"1.5\" fill=\"currentColor\" stroke=\"none\"/>","activity":"<path d=\"M13 2 5 13h6l-1 9 9-13h-6Z\" fill=\"currentColor\" stroke=\"none\"/>","tent":"<path d=\"m3 20 9-16 9 16ZM12 4v16M8 20l4-7 4 7\"/>","bag":"<path d=\"M5 8h14l-1 12H6Z\"/><path d=\"M9 9V7a3 3 0 0 1 6 0v2\"/>","moon":"<path d=\"M19 15.5A8.5 8.5 0 0 1 8.5 5 8.5 8.5 0 1 0 19 15.5Z\" fill=\"currentColor\" stroke=\"none\"/>","tree":"<path d=\"M12 3 6 11h3l-5 7h16l-5-7h3Z\"/><path d=\"M12 18v3\"/>","landmark":"<path d=\"m3 9 9-5 9 5ZM5 10v8M10 10v8M14 10v8M19 10v8M3 20h18\"/>","flag":"<path d=\"M6 21V4M6 5h11l-2 4 2 4H6\"/>"};
 function pinIconSvg(icon){return pinIcons[icon] || pinIcons.dots;}
 
 function makeIcon(s){
@@ -1097,6 +1145,8 @@ function buildSubfilters(cat){
    ? ['すべて','料金','雨の日','室内遊び','公園・外遊び','動物・水族館','学び・体験','季節イベント']
    : cat==='solo'
    ? ['すべて','街歩き・散策','自然・絶景','文化・学び','ひとりグルメ','カフェ・喫茶','温泉・癒し','一人ドライブ']
+   : cat==='tourism'
+   ? ['すべて','王道観光','歴史・文化','絶景・景色','街歩き・エリア','体験・名物','季節の定番']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
