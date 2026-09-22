@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260922-season78" />
+  <meta name="app-build" content="20260922-food1" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -463,7 +463,7 @@ to{transform:scale(1.08)}}
           <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h3l1.3-2h7.4l1.3 2h3a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5a2 2 0 0 1 2-2Z"/><circle cx="12" cy="13.5" r="4"/></svg></span>
           <span class="purpose-label">観光・定番</span>
         </button>
-        <button class="purpose soon2" data-soon="カフェ・グルメ">
+        <button class="purpose soon2" data-go="food">
           <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h13v8a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z"/><path d="M17 8h1.5a3 3 0 0 1 0 6H17M3 21h16"/></svg></span>
           <span class="purpose-label">カフェ・グルメ</span>
         </button>
@@ -502,6 +502,7 @@ to{transform:scale(1.08)}}
     <button class="chip active" data-cat="date">❤️ デート</button>
     <button class="chip" data-cat="kids">🎈 子育て</button>
     <button class="chip" data-cat="solo">🧳 一人旅</button>
+    <button class="chip" data-cat="food">🍴 カフェ・グルメ</button>
   </div>
 
   <div class="recommend-wrap">
@@ -536,7 +537,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260922-season78';
+const APP_BUILD='20260922-food1';
 
 async function ensureLatestBuild(){
   try{
@@ -930,6 +931,42 @@ const spots = [
 , {name:"べんがら村",cat:"date",lat:33.2116,lng:130.5714,area:"八女市",note:"天然温泉とサウナに、レストランやカフェ、クラフトビール工房までそろう。筑後ドライブの途中に二人で半日過ごしやすい。",tags:["温泉・癒し","サウナ","食事","ドライブ","雨の日"],price:"入浴料は公式確認",hours:"温浴施設 10:00〜22:00（最終受付21:30）",closed:"火曜日（最新情報を公式確認）",officialUrl:"https://bengalamura.com/",lastVerified:"2026-09-22",image:""}
 , {name:"二日市温泉 大丸別荘",cat:"date",lat:33.4945,lng:130.5169,area:"筑紫野市・二日市",note:"歴史ある温泉と日本庭園、食事を組み合わせられる老舗旅館。福岡市から近く、日帰りの食事付き温泉デートや宿泊に使いやすい。",tags:["温泉・癒し","宿泊","食事","公共交通向き"],price:"日帰りプラン・宿泊料金は公式確認",hours:"日帰り利用はプランにより異なる",closed:"予約・最新情報を公式確認",officialUrl:"https://www.daimarubesso.com/",lastVerified:"2026-09-22",image:""}
 
+// カフェ・グルメ：料理ジャンル・利用シーン・地域で横断掲載する初期厳選店。
+, {name:"天麩羅処ひらお 本店",cat:"food",lat:33.5838436,lng:130.4565694,area:"福岡市博多区・東平尾",note:"揚げたてを一品ずつ味わえる福岡の日常定番。看板の天ぷら定食といかの塩辛を、価格も含めて目的にできる。",tags:["ランチ","ディナー","地元メシ"],badges:["県民定番","地元支持"],lunchPrice:1060,dinnerPrice:1060,price:"通常利用 1,000〜2,000円",hours:"営業時間は公式店舗情報を確認",closed:"予約不可・年末年始等は公式確認",officialUrl:"https://www.hirao-foods.net/shop/",lastVerified:"2026-09-22",image:""}
+, {name:"牧のうどん 加布里本店",cat:"food",lat:33.5502,lng:130.1748,area:"糸島市神在西",note:"食べ進めるほど麺がだしを吸う独特のうどんと、かしわご飯で知られる福岡ローカルの定番。",tags:["ランチ","ディナー","ラーメン・麺","地元メシ"],badges:["県民定番","地元支持"],lunchPrice:800,dinnerPrice:800,price:"通常利用 〜1,000円",officialUrl:"https://www.makinoudon.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"びっくり亭本家 本店",cat:"food",lat:33.5427,lng:130.4608,area:"福岡市博多区・寿町",note:"熱い鉄板で供するキャベツと豚肉の焼肉を、辛味噌と油に絡めて食べる南福岡発祥の味。",tags:["ランチ","ディナー","肉・焼肉","地元メシ","ご当地名物"],badges:["県民定番","老舗"],lunchPrice:1500,dinnerPrice:1500,price:"通常利用 1,000〜2,000円",officialUrl:"https://www.bikkuritei-honke.com/",lastVerified:"2026-09-22",image:""}
+, {name:"博多一双 博多駅東本店",cat:"food",lat:33.5863863,lng:130.4251077,area:"福岡市博多区・博多駅東",note:"濃密な豚骨スープと細麺を目当てに行く博多ラーメンの人気店。行列を見込んでも一杯の個性が明確。",tags:["ランチ","ディナー","ラーメン・麺","ご当地名物"],badges:["観光客にも人気"],lunchPrice:1000,dinnerPrice:1000,price:"通常利用 〜1,000円",officialUrl:"https://www.hakata-issou.com/",lastVerified:"2026-09-22",image:""}
+, {name:"ふくちゃんラーメン 田隈本店",cat:"food",lat:33.5473,lng:130.3343,area:"福岡市早良区・田隈",note:"住宅地で長く支持される豚骨ラーメンの名店。力強いスープと地元客が通う空気まで含めて訪れたい。",tags:["ランチ","ディナー","ラーメン・麺","地元メシ","ご当地名物"],badges:["地元支持","老舗"],lunchPrice:1000,dinnerPrice:1000,price:"通常利用 〜1,000円",lastVerified:"2026-09-22",image:""}
+, {name:"水たき 長野",cat:"food",lat:33.6032,lng:130.4110,area:"福岡市博多区・対馬小路",note:"鶏の旨味を段階的に味わう博多水炊きの老舗。名物を落ち着いて食べる目的がはっきりした一軒。",tags:["ランチ","ディナー","ご当地名物"],badges:["老舗","県民定番"],lunchPrice:5000,dinnerPrice:5000,price:"通常利用 5,000円以上",officialUrl:"https://www.mizutaki-nagano.com/",lastVerified:"2026-09-22",image:""}
+, {name:"博多ごまさば屋",cat:"food",lat:33.5949,lng:130.3964,area:"福岡市中央区・舞鶴",note:"福岡名物のごまさばを定食で気軽に味わえる専門店。昼にも夜にも、何を食べる店かが明快。",tags:["ランチ","ディナー","海鮮・寿司","ご当地名物"],badges:["市民人気"],lunchPrice:1500,dinnerPrice:2000,price:"通常利用 1,000〜2,000円",lastVerified:"2026-09-22",image:""}
+, {name:"珈琲美美",cat:"food",lat:33.5827107,lng:130.3825173,area:"福岡市中央区・赤坂",note:"深煎りのネルドリップを静かな空間で味わう福岡の珈琲名店。流行ではなく一杯そのものを目的にできる。",tags:["カフェ・喫茶"],badges:["地元支持","老舗"],lunchPrice:1000,price:"通常利用 〜1,000円",officialUrl:"https://cafebimi.com/",lastVerified:"2026-09-22",image:""}
+, {name:"REC COFFEE 薬院駅前店",cat:"food",lat:33.5816,lng:130.4019,area:"福岡市中央区・薬院",note:"福岡発のスペシャルティコーヒーを朝から夜まで楽しめる駅前店。豆と抽出を選ぶ楽しさがあり一人利用もしやすい。",tags:["カフェ・喫茶","スイーツ・パン"],badges:["地元支持"],lunchPrice:1200,dinnerPrice:1200,price:"通常利用 1,000〜2,000円",officialUrl:"https://rec-coffee.com/pages/coffee-shop-yakuin",lastVerified:"2026-09-22",image:""}
+, {name:"鈴懸 本店",cat:"food",lat:33.5954,lng:130.4064,area:"福岡市博多区・上川端町",note:"季節の生菓子と鈴乃最中で親しまれる博多の和菓子店。喫茶で甘味や食事を味わう目的にも応える。",tags:["カフェ・喫茶","スイーツ・パン","ランチ"],badges:["県民定番","老舗"],lunchPrice:1800,price:"通常利用 1,000〜2,000円",officialUrl:"https://www.suzukake.co.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"ブランジュリ ノアン 糸島本店",cat:"food",lat:33.552155,lng:130.203857,area:"糸島市篠原西",note:"糸島の素材と日々の食卓を意識したパンを選べる地域密着のベーカリー。パンを目的に足を延ばす価値がある。",tags:["スイーツ・パン","ランチ","地元メシ"],badges:["地元支持"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",officialUrl:"https://www.boulangerie-nouan.com/",lastVerified:"2026-09-22",image:""}
+, {name:"塚本鮮魚店",cat:"food",lat:33.5579,lng:130.1960,area:"糸島市加布里",note:"鮮魚店ならではの刺身や海鮮丼を求めて地元客も訪れる糸島の人気店。海沿い観光だけに寄らない食の目的地。",tags:["ランチ","ディナー","海鮮・寿司","地元メシ"],badges:["地元支持","市民人気"],lunchPrice:2500,dinnerPrice:3500,price:"昼 2,000〜3,000円／夜 3,000〜5,000円",lastVerified:"2026-09-22",image:""}
+, {name:"道の駅むなかた おふくろ食堂はまゆう",cat:"food",lat:33.848277,lng:130.503385,area:"宗像市江口",note:"玄界灘の魚を使う海鮮丼や定食を選べる宗像の食堂。直売所と合わせて地域の旬を味わえる。",tags:["ランチ","海鮮・寿司","地元メシ"],badges:["地元支持","観光客にも人気"],lunchPrice:2000,price:"通常利用 1,000〜2,000円",officialUrl:"https://www.michinoekimunakata.co.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"資さんうどん 魚町店",cat:"food",lat:33.8835055,lng:130.8807914,area:"北九州市小倉北区・魚町",note:"やわらかなうどん、ごぼ天、ぼた餅まで北九州の日常に根づくローカルの味。時間を選ばず使いやすい。",tags:["ランチ","ディナー","ラーメン・麺","地元メシ"],badges:["県民定番","地元支持"],lunchPrice:1000,dinnerPrice:1000,price:"通常利用 〜1,000円",officialUrl:"https://www.sukesanudon.com/",lastVerified:"2026-09-22",image:""}
+, {name:"シロヤベーカリー 小倉店",cat:"food",lat:33.885899,lng:130.881165,area:"北九州市小倉北区・京町",note:"サニーパンやオムレットを手頃な価格で買える小倉の定番。市民の日常と土産需要の両方に根づく。",tags:["スイーツ・パン","地元メシ","ご当地名物"],badges:["市民人気","老舗"],lunchPrice:800,price:"通常利用 〜1,000円",officialUrl:"https://shiroya-pan.com/",lastVerified:"2026-09-22",image:""}
+, {name:"サンドイッチファクトリー OCM",cat:"food",lat:33.883839,lng:130.879059,area:"北九州市小倉北区・船場町",note:"具材とパンを選ぶ注文スタイルで長年愛される小倉のサンドイッチ専門店。名物オリジナル＆チキンも目的になる。",tags:["ランチ","スイーツ・パン","地元メシ"],badges:["市民人気","老舗"],lunchPrice:1000,price:"通常利用 〜1,000円",lastVerified:"2026-09-22",image:""}
+, {name:"田舎庵 小倉本店",cat:"food",lat:33.8812,lng:130.8797,area:"北九州市小倉北区・鍛冶町",note:"鰻の火入れと香ばしさを追求する小倉の老舗。価格帯は高めでも鰻を食べに行く理由が明確。",tags:["ランチ","ディナー","ご当地名物"],badges:["老舗","観光客にも人気"],lunchPrice:5000,dinnerPrice:6000,price:"通常利用 5,000円以上",officialUrl:"https://inakaan.com/",lastVerified:"2026-09-22",image:""}
+, {name:"BEAR FRUITS",cat:"food",lat:33.9447,lng:130.9607,area:"北九州市門司区・門司港",note:"スパイス香る焼きカレーを熱々で味わう門司港の定番店。門司港で食べる意味がはっきりした地域名物。",tags:["ランチ","ディナー","ご当地名物"],badges:["観光客にも人気"],lunchPrice:1800,dinnerPrice:1800,price:"通常利用 1,000〜2,000円",officialUrl:"https://bearfruits.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"東筑軒 折尾本社うどん店",cat:"food",lat:33.8637,lng:130.7126,area:"北九州市八幡西区・折尾",note:"かしわめしと駅うどんで知られる折尾の味。地域の鉄道文化と結びついた日常食を気軽に味わえる。",tags:["ランチ","ラーメン・麺","地元メシ","ご当地名物"],badges:["県民定番","老舗"],lunchPrice:1000,price:"通常利用 〜1,000円",officialUrl:"https://tochikuken.co.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"牛牛うどん",cat:"food",lat:33.6518,lng:130.6462,area:"飯塚市伊岐須",note:"甘辛い牛肉とだしの組み合わせを求めて通う人が多い飯塚の肉うどん店。筑豊の日常的な一杯。",tags:["ランチ","ディナー","ラーメン・麺","地元メシ"],badges:["地元支持","市民人気"],lunchPrice:1000,dinnerPrice:1000,price:"通常利用 〜1,000円",lastVerified:"2026-09-22",image:""}
+, {name:"たまごハウス 飯塚本店",cat:"food",lat:33.6734,lng:130.6258,area:"飯塚市蓮台寺",note:"新鮮な卵を使うシュークリームやプリン、ロールケーキが目的になる筑豊の菓子店。",tags:["カフェ・喫茶","スイーツ・パン"],badges:["地元支持","市民人気"],lunchPrice:1000,price:"通常利用 〜1,000円",officialUrl:"https://www.tamago-house.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"大砲ラーメン 本店",cat:"food",lat:33.3152768,lng:130.5256728,area:"久留米市通外町",note:"呼び戻し製法の豚骨スープを守る久留米ラーメンの代表格。土地のラーメン史ごと味わえる。",tags:["ランチ","ディナー","ラーメン・麺","地元メシ","ご当地名物"],badges:["県民定番","老舗"],lunchPrice:1000,dinnerPrice:1000,price:"通常利用 〜1,000円",officialUrl:"https://www.taiho.net/",lastVerified:"2026-09-22",image:""}
+, {name:"丸星中華そばセンター",cat:"food",lat:33.3484,lng:130.5366,area:"久留米市高野",note:"国道沿いで長年親しまれる久留米ラーメンの象徴的な一軒。飾らない一杯と大衆食堂の空気が魅力。",tags:["ランチ","ディナー","ラーメン・麺","地元メシ","ご当地名物"],badges:["地元支持","老舗"],lunchPrice:1000,dinnerPrice:1000,price:"通常利用 〜1,000円",lastVerified:"2026-09-22",image:""}
+, {name:"富松うなぎ屋 黒田本店",cat:"food",lat:33.2700,lng:130.4896,area:"久留米市大善寺町",note:"筑後らしいせいろ蒸しを広い座敷で味わえる地元定番。甘辛いタレが染みたご飯まで主役になる。",tags:["ランチ","ディナー","地元メシ","ご当地名物"],badges:["県民定番","老舗"],lunchPrice:4000,dinnerPrice:4000,price:"通常利用 3,000〜5,000円",officialUrl:"https://tomimatsu-unagi.com/",lastVerified:"2026-09-22",image:""}
+, {name:"元祖本吉屋 本店",cat:"food",lat:33.1639,lng:130.4053,area:"柳川市旭町",note:"柳川名物うなぎのせいろ蒸しを伝える老舗。香ばしい鰻とタレを含んだご飯を目的に訪れたい。",tags:["ランチ","ディナー","ご当地名物"],badges:["老舗","観光客にも人気"],lunchPrice:5000,dinnerPrice:5000,price:"通常利用 5,000円以上",officialUrl:"https://www.motoyoshiya.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"若松屋",cat:"food",lat:33.1610,lng:130.4014,area:"柳川市沖端町",note:"川下りの町でせいろ蒸しを味わえる柳川の老舗。観光客だけでなく地元の会食にも使われる。",tags:["ランチ","ディナー","ご当地名物"],badges:["老舗","地元支持"],lunchPrice:5000,dinnerPrice:5000,price:"通常利用 5,000円以上",officialUrl:"https://wakamatuya.com/",lastVerified:"2026-09-22",image:""}
+, {name:"茶寮 千代乃園",cat:"food",lat:33.2155,lng:130.7170,area:"八女市黒木町",note:"自園の八女茶と茶を使った甘味を奥八女の景色とともに味わえる茶寮。地域性そのものが来店理由になる。",tags:["カフェ・喫茶","スイーツ・パン","ご当地名物"],badges:["地元支持"],lunchPrice:1800,price:"通常利用 1,000〜2,000円",officialUrl:"https://chiyonoen.jp/saryo",lastVerified:"2026-09-22",image:""}
+, {name:"林檎と葡萄の樹",cat:"food",lat:33.3525,lng:130.7770,area:"朝倉市山田",note:"果樹園のりんごを使ったアップルパイを古民家で味わう朝倉の定番。季節の果物を目当てに再訪できる。",tags:["カフェ・喫茶","スイーツ・パン"],badges:["地元支持","老舗"],lunchPrice:1800,price:"通常利用 1,000〜2,000円",officialUrl:"https://www.ringo-to-budou-no-ki.com/",lastVerified:"2026-09-22",image:""}
+, {name:"大力うどん",cat:"food",lat:33.1260,lng:130.4700,area:"みやま市瀬高町",note:"驚くほど手頃な価格と素早い提供で地域の日常を支える人気うどん店。安さだけでなく地元支持が強い。",tags:["ランチ","ラーメン・麺","地元メシ"],badges:["地元支持","市民人気"],lunchPrice:500,price:"通常利用 〜1,000円",lastVerified:"2026-09-22",image:""}
+, {name:"高専ダゴ 新みつや 倉永店",cat:"food",lat:33.0660,lng:130.4440,area:"大牟田市倉永",note:"大きな鉄板で焼くボリューム満点のお好み焼きは大牟田の学生文化から育った名物。複数人で囲む楽しさもある。",tags:["ランチ","ディナー","地元メシ","ご当地名物"],badges:["市民人気","老舗"],lunchPrice:1500,dinnerPrice:1500,price:"通常利用 1,000〜2,000円",officialUrl:"https://kousendago.com/",lastVerified:"2026-09-22",image:""}
+, {name:"大牟田ラーメン 東洋軒",cat:"food",lat:33.0297,lng:130.4447,area:"大牟田市不知火町",note:"駅前で長く親しまれる大牟田ラーメンの老舗。久留米・博多とは異なる地域の豚骨文化を味わえる。",tags:["ランチ","ディナー","ラーメン・麺","地元メシ","ご当地名物"],badges:["市民人気","老舗"],lunchPrice:1000,dinnerPrice:1000,price:"通常利用 〜1,000円",lastVerified:"2026-09-22",image:""}
+, {name:"焼とり鉄砲 本店",cat:"food",lat:33.3134,lng:130.5160,area:"久留米市日吉町",note:"豚バラや巻物を含む多彩な串を楽しむ久留米焼きとりの定番。街の夜文化ごと味わえる。",tags:["ディナー","肉・焼肉","地元メシ","ご当地名物"],badges:["市民人気","老舗"],dinnerPrice:3500,price:"通常利用 3,000〜5,000円",officialUrl:"https://yakitori-teppo.com/",lastVerified:"2026-09-22",image:""}
+, {name:"焼肉のMr.青木",cat:"food",lat:33.6217,lng:130.6848,area:"飯塚市鶴三緒",note:"肉質と品ぞろえを目当てに筑豊内外から客が集まる飯塚の焼肉店。家族の食事や会食にも選ばれる。",tags:["ランチ","ディナー","肉・焼肉","地元メシ"],badges:["地元支持","市民人気"],lunchPrice:2500,dinnerPrice:5000,price:"昼 2,000〜3,000円／夜 5,000円以上",officialUrl:"https://www.mraoki.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"焼肉の大昌園 本店",cat:"food",lat:33.3112,lng:130.5145,area:"久留米市六ツ門町",note:"久留米で長く支持される焼肉店。肉の品質と接客の安定感があり、普段使いから家族の節目まで選びやすい。",tags:["ランチ","ディナー","肉・焼肉","地元メシ"],badges:["地元支持","老舗"],lunchPrice:2500,dinnerPrice:5000,price:"昼 2,000〜3,000円／夜 5,000円以上",officialUrl:"https://taishoen.jp/",lastVerified:"2026-09-22",image:""}
+
 ];
 
 // 「料金」は大人2名＋小学生1名＋未就学児1名の基本利用料で区分する。
@@ -1049,7 +1086,8 @@ const styles={
  date:{color:"#ff5f8f",emoji:"❤️",label:"カップル",grad:"linear-gradient(135deg,#ff6a98,#ff8e73)"},
  kids:{color:"#4f8cff",emoji:"🎈",label:"家族",grad:"linear-gradient(135deg,#4f8cff,#68c9ff)"},
  solo:{color:"#7a67ee",emoji:"🧳",label:"一人旅",grad:"linear-gradient(135deg,#7a67ee,#a06cf2)"},
- tourism:{color:"#4A90E2",emoji:"★",label:"観光・定番",grad:"linear-gradient(135deg,#4A90E2,#65B6D9)"}
+ tourism:{color:"#4A90E2",emoji:"★",label:"観光・定番",grad:"linear-gradient(135deg,#4A90E2,#65B6D9)"},
+ food:{color:"#E88961",emoji:"🍴",label:"カフェ・グルメ",grad:"linear-gradient(135deg,#E88961,#D98278)"}
 };
 
 const map=L.map('map',{zoomControl:false}).setView([33.5902,130.4017],10);
@@ -1141,6 +1179,7 @@ function spotVisual(s){
  if(activeSubfilter==='雨の日' || has('雨の日')) return SPOT_VISUALS.rain;
  if(has('ドライブ','一人ドライブ')) return SPOT_VISUALS.drive;
  if(has('王道観光')) return SPOT_VISUALS.classic;
+ if(s.cat==='food') return SPOT_VISUALS.meal;
  if(s.cat==='date') return SPOT_VISUALS.defaultDate;
  if(s.cat==='kids') return SPOT_VISUALS.defaultKids;
  if(s.cat==='solo') return SPOT_VISUALS.defaultSolo;
@@ -1197,7 +1236,7 @@ function displayNote(s){
 
 function popupHtml(s){
  const st=styles[s.cat];
- const tags=s.tags.map(t=>`<span class="tag">${t}</span>`).join('');
+ const tags=[...(s.badges||[]),...s.tags].map(t=>`<span class="tag">${t}</span>`).join('');
  const q=encodeURIComponent(s.name);
  const eventState=s.eventStart && s.eventEnd ? getEventState(s) : '';
  const info=[
@@ -1207,6 +1246,7 @@ function popupHtml(s){
   s.eventType ? `<div class="popup-row"><b>イベント</b><span>${s.eventType}</span></div>` : '',
   s.age ? `<div class="popup-row"><b>年齢目安</b><span>${s.age}</span></div>` : '',
   s.cat==='kids' ? `<div class="popup-row"><b>家族料金区分</b><span>${getFamilyPriceBand(s)}</span></div>` : '',
+  s.cat==='food' ? `<div class="popup-row"><b>1人予算</b><span>${s.price || getFoodPriceBand(s)}</span></div>` : '',
   s.price ? `<div class="popup-row"><b>料金目安</b><span>${s.price}</span></div>` : '',
   s.hours ? `<div class="popup-row"><b>営業時間</b><span>${s.hours}</span></div>` : '',
   s.closed ? `<div class="popup-row"><b>${s.eventStart ? '注意事項' : '定休日'}</b><span>${s.closed}</span></div>` : '',
@@ -1284,6 +1324,23 @@ let activeLearningType='all';
 let activeSeasonType='all';
 let activeTourismSeason='all';
 let activeKidsPrice='all';
+let activeFoodPrice='all';
+
+function getFoodPriceValue(s){
+ if(activeSubfilter==='ランチ' && Number.isFinite(s.lunchPrice)) return s.lunchPrice;
+ if(activeSubfilter==='ディナー' && Number.isFinite(s.dinnerPrice)) return s.dinnerPrice;
+ if(Number.isFinite(s.lunchPrice) && Number.isFinite(s.dinnerPrice)) return Math.min(s.lunchPrice,s.dinnerPrice);
+ return Number.isFinite(s.lunchPrice) ? s.lunchPrice : Number.isFinite(s.dinnerPrice) ? s.dinnerPrice : null;
+}
+function getFoodPriceBand(s){
+ const value=getFoodPriceValue(s);
+ if(value===null) return '要確認';
+ if(value<=1000) return '〜1,000円';
+ if(value<=2000) return '〜2,000円';
+ if(value<=3000) return '〜3,000円';
+ if(value<5000) return '〜5,000円';
+ return '5,000円以上';
+}
 
 function buildSubfilters(cat){
  const wrap=document.getElementById('subfilters');
@@ -1296,6 +1353,8 @@ function buildSubfilters(cat){
    ? ['すべて','街歩き・散策','自然・絶景','文化・学び','ひとりグルメ','カフェ・喫茶','温泉・癒し','一人ドライブ']
    : cat==='tourism'
    ? ['すべて','王道観光','歴史・文化','絶景・景色','街歩き・エリア','体験・名物','季節の定番']
+   : cat==='food'
+   ? ['すべて','料金','カフェ・喫茶','スイーツ・パン','ランチ','ディナー','ラーメン・麺','海鮮・寿司','肉・焼肉','地元メシ','ご当地名物']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
@@ -1311,6 +1370,7 @@ function buildSubfilters(cat){
      activeSeasonType='all';
      activeTourismSeason='all';
      activeKidsPrice='all';
+     activeFoodPrice='all';
      buildSubfilters(cat);
      buildCafeTimeFilters(cat);
      renderCategory(cat);
@@ -1330,8 +1390,9 @@ function buildCafeTimeFilters(cat){
  const isKidsSeason = cat==='kids' && activeSubfilter==='季節イベント';
  const isTourismSeason = cat==='tourism' && activeSubfilter==='季節の定番';
  const isKidsPrice = cat==='kids' && activeSubfilter==='料金';
- wrap.classList.toggle('show',isCafe || isKidsIndoor || isKidsOutdoor || isKidsAnimal || isKidsLearning || isKidsSeason || isTourismSeason || isKidsPrice);
- if(!isCafe && !isKidsIndoor && !isKidsOutdoor && !isKidsAnimal && !isKidsLearning && !isKidsSeason && !isTourismSeason && !isKidsPrice) return;
+ const isFoodPrice = cat==='food' && activeSubfilter==='料金';
+ wrap.classList.toggle('show',isCafe || isKidsIndoor || isKidsOutdoor || isKidsAnimal || isKidsLearning || isKidsSeason || isTourismSeason || isKidsPrice || isFoodPrice);
+ if(!isCafe && !isKidsIndoor && !isKidsOutdoor && !isKidsAnimal && !isKidsLearning && !isKidsSeason && !isTourismSeason && !isKidsPrice && !isFoodPrice) return;
  const options = isCafe
    ? [['all','すべて'],['day','☀️ 昼カフェ'],['night','🌙 夜カフェ'],['bar','🍸 バー']]
    : isKidsIndoor
@@ -1346,10 +1407,12 @@ function buildCafeTimeFilters(cat){
    ? [['all','すべて'],['春','春'],['夏','夏'],['秋','秋'],['冬','冬']]
    : isTourismSeason
    ? [['all','すべて'],['春','春'],['夏','夏'],['秋','秋'],['冬','冬']]
+   : isFoodPrice
+   ? [['all','すべて'],['〜1,000円','〜1,000円'],['〜2,000円','〜2,000円'],['〜3,000円','〜3,000円'],['〜5,000円','〜5,000円'],['5,000円以上','5,000円以上'],['要確認','要確認']]
    : [['all','すべて'],['無料','無料'],['〜1,000円','〜1,000円'],['〜3,000円','〜3,000円'],['〜5,000円','〜5,000円'],['5,000円以上','5,000円以上'],['要確認','要確認']];
  options.forEach(([value,label])=>{
    const b=document.createElement('button');
-   const activeValue = isCafe ? activeCafeTime : isKidsIndoor ? activeKidsAge : isKidsOutdoor ? activeOutdoorType : isKidsAnimal ? activeAnimalType : isKidsLearning ? activeLearningType : isKidsSeason ? activeSeasonType : isTourismSeason ? activeTourismSeason : activeKidsPrice;
+   const activeValue = isCafe ? activeCafeTime : isKidsIndoor ? activeKidsAge : isKidsOutdoor ? activeOutdoorType : isKidsAnimal ? activeAnimalType : isKidsLearning ? activeLearningType : isKidsSeason ? activeSeasonType : isTourismSeason ? activeTourismSeason : isFoodPrice ? activeFoodPrice : activeKidsPrice;
    b.className='cafetime'+(activeValue===value?' active':'');
    b.textContent=label;
    b.addEventListener('click',()=>{
@@ -1360,6 +1423,7 @@ function buildCafeTimeFilters(cat){
      else if(isKidsLearning) activeLearningType=value;
      else if(isKidsSeason) activeSeasonType=value;
      else if(isTourismSeason) activeTourismSeason=value;
+     else if(isFoodPrice) activeFoodPrice=value;
      else activeKidsPrice=value;
      buildCafeTimeFilters(cat);
      renderCategory(cat);
@@ -1402,6 +1466,9 @@ function renderCategory(cat){
  if(cat==='kids' && activeSubfilter==='料金' && activeKidsPrice!=='all'){
    chosen=chosen.filter(s=>getFamilyPriceBand(s)===activeKidsPrice);
  }
+ if(cat==='food' && activeSubfilter==='料金' && activeFoodPrice!=='all'){
+   chosen=chosen.filter(s=>getFoodPriceBand(s)===activeFoodPrice);
+ }
  if(cat==='kids' && activeSubfilter==='季節イベント'){
    chosen.sort((a,b)=>(a.eventStart || '').localeCompare(b.eventStart || ''));
  }
@@ -1443,6 +1510,8 @@ function renderCategory(cat){
   card.className='mini-card';
   const miniMeta=cat==='kids' && activeSubfilter==='料金'
    ? `家族料金目安：${getFamilyPriceBand(s)}`
+   : cat==='food' && activeSubfilter==='料金'
+   ? `1人あたり：${getFoodPriceBand(s)}`
    : s.eventStart
    ? `${formatEventRange(s)}｜${getEventState(s)}`
    : cat==='tourism' && activeSubfilter==='季節の定番' && activeTourismSeason!=='all'
@@ -1467,6 +1536,7 @@ function showCategory(cat){
  activeSeasonType='all';
  activeTourismSeason='all';
  activeKidsPrice='all';
+ activeFoodPrice='all';
  document.getElementById('mapHeadTitle').textContent=styles[cat].label;
  buildSubfilters(cat);
  buildCafeTimeFilters(cat);
