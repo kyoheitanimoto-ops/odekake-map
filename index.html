@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260922-food2" />
+  <meta name="app-build" content="20260923-sweets1" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -537,7 +537,7 @@ to{transform:scale(1.08)}}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const APP_BUILD='20260922-food2';
+const APP_BUILD='20260923-sweets1';
 
 async function ensureLatestBuild(){
   try{
@@ -966,6 +966,22 @@ const spots = [
 , {name:"焼とり鉄砲 本店",cat:"food",lat:33.3134,lng:130.5160,area:"久留米市日吉町",note:"豚バラや巻物を含む多彩な串を楽しむ久留米焼きとりの定番。街の夜文化ごと味わえる。",tags:["ディナー","肉・焼肉","地元メシ","ご当地名物"],badges:["市民人気","老舗"],dinnerPrice:3500,price:"通常利用 3,000〜5,000円",officialUrl:"https://yakitori-teppo.com/",lastVerified:"2026-09-22",image:""}
 , {name:"焼肉のMr.青木",cat:"food",lat:33.6217,lng:130.6848,area:"飯塚市鶴三緒",note:"肉質と品ぞろえを目当てに筑豊内外から客が集まる飯塚の焼肉店。家族の食事や会食にも選ばれる。",tags:["ランチ","ディナー","肉・焼肉","地元メシ"],badges:["地元支持","市民人気"],lunchPrice:2500,dinnerPrice:5000,price:"昼 2,000〜3,000円／夜 5,000円以上",officialUrl:"https://www.mraoki.jp/",lastVerified:"2026-09-22",image:""}
 , {name:"焼肉の大昌園 本店",cat:"food",lat:33.3112,lng:130.5145,area:"久留米市六ツ門町",note:"久留米で長く支持される焼肉店。肉の品質と接客の安定感があり、普段使いから家族の節目まで選びやすい。",tags:["ランチ","ディナー","肉・焼肉","地元メシ"],badges:["地元支持","老舗"],lunchPrice:2500,dinnerPrice:5000,price:"昼 2,000〜3,000円／夜 5,000円以上",officialUrl:"https://taishoen.jp/",lastVerified:"2026-09-22",image:""}
+, {name:"パンストック",cat:"food",lat:33.6252684,lng:130.4273350,area:"福岡市東区・箱崎",note:"ハード系から惣菜パンまで、小麦の香りと独創的な組み合わせを求めて県内外から客が訪れる福岡の代表的ベーカリー。",tags:["スイーツ・パン","地元メシ"],badges:["県民定番","観光客にも人気"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",hours:"営業日・売り切れ状況は公式Instagramを確認",officialUrl:"https://painstock.theshop.jp/about",lastVerified:"2026-09-23",image:""}
+, {name:"国産小麦パン工房 フルフル松崎本店",cat:"food",lat:33.6369205,lng:130.4394430,area:"福岡市東区・松崎",note:"国産小麦のパンと、焼きたての明太フランスで世代を超えて支持される地域密着店。福岡らしいパンを目的にできる。",tags:["スイーツ・パン","地元メシ","ご当地名物"],badges:["県民定番","地元支持"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",hours:"営業時間・店休日は公式店舗情報を確認",officialUrl:"https://www.full-full.jp/shop/",lastVerified:"2026-09-23",image:""}
+, {name:"サイラー",cat:"food",lat:33.5524900,lng:130.4064656,area:"福岡市南区・長丘",note:"オーストリア伝統のパンと菓子を幅広くそろえる老舗。プレッツェルや焼き菓子まで、この店ならではの専門性がある。",tags:["スイーツ・パン","カフェ・喫茶"],badges:["県民定番","老舗"],lunchPrice:1800,price:"通常利用 1,000〜2,000円",officialUrl:"https://sailer.jp/",lastVerified:"2026-09-23",image:""}
+, {name:"ナガタパン 箱崎店",cat:"food",lat:33.6147401,lng:130.4215880,area:"福岡市東区・箱崎",note:"レトロな店構えと手作りの総菜パン・菓子パンで日常的に通われる箱崎の定番。世代を問わず選びやすい。",tags:["スイーツ・パン","地元メシ"],badges:["地元支持","老舗"],lunchPrice:1000,price:"通常利用 〜1,000円",officialUrl:"https://pannagata-hakozaki.com/",lastVerified:"2026-09-23",image:""}
+, {name:"BAKERY-SOCO Saffron 福岡飯塚店",cat:"food",lat:33.6183067,lng:130.6657642,area:"飯塚市椿",note:"黄金のメロンパンや明太バゲットなど品数が豊富な石窯ベーカリー。県民選定企画でも支持された筑豊の目的店。",tags:["スイーツ・パン","地元メシ","ご当地名物"],badges:["地元支持","市民人気"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",hours:"9:00〜18:00",closed:"月・火曜日（月曜祝日は営業）",officialUrl:"https://bakery-soco.com/",lastVerified:"2026-09-23",image:""}
+, {name:"石窯ぱん工房 どんぐりの樹 大牟田本店",cat:"food",lat:33.0396703,lng:130.4590552,area:"大牟田市通町",note:"2003年から大牟田で地域に根づく大型ベーカリー。日常の食事パンから菓子パンまで家族で選べる。",tags:["スイーツ・パン","地元メシ"],badges:["地元支持","市民人気"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",officialUrl:"https://www.dongurinoki.net/shop_omuta/",lastVerified:"2026-09-23",image:""}
+, {name:"フランス菓子16区",cat:"food",lat:33.5785946,lng:130.3943453,area:"福岡市中央区・薬院",note:"ダックワーズをはじめ、素材と技術を積み重ねたフランス菓子を選べる福岡の名店。贈答にも自宅用にも支持が厚い。",tags:["スイーツ・パン","ご当地名物"],badges:["県民定番","老舗"],lunchPrice:2500,price:"通常利用 2,000〜3,000円",officialUrl:"https://www.16ku.jp/",lastVerified:"2026-09-23",image:""}
+, {name:"チョコレートショップ 本店",cat:"food",lat:33.5971450,lng:130.4080061,area:"福岡市博多区・綱場町",note:"博多の石畳など、チョコレートを軸に長く愛される博多の洋菓子店。地域の手土産としても定着している。",tags:["スイーツ・パン","ご当地名物"],badges:["県民定番","老舗"],lunchPrice:2000,price:"通常利用 1,000〜2,000円",officialUrl:"https://chocolateshop.jp/",lastVerified:"2026-09-23",image:""}
+, {name:"銀のすぷーん 久留米本店",cat:"food",lat:33.3148522,lng:130.5275205,area:"久留米市諏訪野町",note:"1977年創業。地元食材を生かしたケーキと焼き菓子で、久留米の誕生日や手土産を長く支えてきた洋菓子店。",tags:["スイーツ・パン","地元メシ"],badges:["地元支持","老舗"],lunchPrice:1800,price:"通常利用 1,000〜2,000円",officialUrl:"https://g-spoon.co.jp/access/",lastVerified:"2026-09-23",image:""}
+, {name:"お菓子の工房 オペラ 松崎店",cat:"food",lat:33.6359202,lng:130.4360107,area:"福岡市東区・松崎",note:"ケーキ、シュークリーム、焼き菓子を幅広くそろえ、日常のおやつから贈答まで地元利用が厚い洋菓子店。",tags:["スイーツ・パン"],badges:["地元支持","市民人気"],lunchPrice:1800,price:"通常利用 1,000〜2,000円",officialUrl:"https://www.opera-sweets.com/",lastVerified:"2026-09-23",image:""}
+, {name:"氷菓子屋KOMARU 黒崎本店",cat:"food",lat:33.8627167,lng:130.7726103,area:"北九州市八幡西区・黒崎",note:"一つ星料理人が監修する無添加の濃厚アイスと黒崎アイスもなかが看板。季節を問わず店自体を目的にできる。",tags:["スイーツ・パン","カフェ・喫茶","ご当地名物"],badges:["地元支持","市民人気"],lunchPrice:1000,price:"通常利用 〜1,000円",hours:"11:00〜19:00",officialUrl:"https://komaru-ice.com/",lastVerified:"2026-09-23",image:""}
+, {name:"和菓子 なごし 本店",cat:"food",lat:33.9444888,lng:130.9667470,area:"北九州市門司区・錦町",note:"大正10年創業。星野村抹茶生大福やカマンベール生大福など、伝統と新しさを併せ持つ門司の和菓子店。",tags:["スイーツ・パン","地元メシ","ご当地名物"],badges:["地元支持","老舗"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",hours:"9:00〜18:30",closed:"不定休",officialUrl:"https://www.nagoshi.co.jp/",lastVerified:"2026-09-23",image:""}
+, {name:"お菓子の隆勝堂 八女本店",cat:"food",lat:33.2170974,lng:130.5424057,area:"八女市蒲原",note:"1924年創業。八女茶や抹茶、あんこを生かした和洋菓子を世代を超えて届ける筑後の地域銘菓店。",tags:["スイーツ・パン","地元メシ","ご当地名物"],badges:["地元支持","老舗"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",officialUrl:"https://ryushodo-foods.co.jp/archives/store",lastVerified:"2026-09-23",image:""}
+, {name:"楢橋梅月堂",cat:"food",lat:33.3205780,lng:130.5260680,area:"久留米市南薫町",note:"明治期から続き、葛菓子や羊羹、どら焼きなどを手作りする久留米の老舗。地域の季節菓子と手土産文化を伝える。",tags:["スイーツ・パン","地元メシ","ご当地名物"],badges:["地元支持","老舗"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",hours:"9:00〜19:00目安",closed:"不定休",officialUrl:"https://www.crossroadfukuoka.jp/spot/10470",lastVerified:"2026-09-23",image:""}
+, {name:"I’m donut? 天神",cat:"food",lat:33.5883191,lng:130.4023522,area:"福岡市中央区・渡辺通",note:"福岡発のベーカリー文化から生まれ、生ドーナツという新しい食感を定着させた専門店。開業後も継続して支持されるトレンド代表。",tags:["スイーツ・パン","カフェ・喫茶"],badges:["観光客にも人気","市民人気"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",hours:"10:00〜20:00目安・売り切れ次第終了",closed:"不定休・完全キャッシュレス",officialUrl:"https://www.instagram.com/i.m.donut/",lastVerified:"2026-09-23",image:""}
+, {name:"鯛宝楽 野間総本店",cat:"food",lat:33.5648695,lng:130.4158962,area:"福岡市南区・野間",note:"45年以上受け継ぐ薄皮たい焼きで知られる野間の名物店。大納言小豆のあんを使う、日常のおやつ兼地域銘菓。",tags:["スイーツ・パン","地元メシ","ご当地名物"],badges:["地元支持","老舗"],lunchPrice:1000,price:"通常利用 〜1,000円",officialUrl:"https://taihouraku.com/",lastVerified:"2026-09-23",image:""}
 
 ];
 
