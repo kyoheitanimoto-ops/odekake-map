@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260924-build-loop-fix1" />
+  <meta name="app-build" content="20260928-pet1" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -319,7 +319,7 @@
     .purpose.solo{background:#edf8ef;color:#4da466}
     .purpose.soon1{background:#f5efff;color:#8057bd}
     .purpose.soon2{background:#eef6ff;color:#4f91c6}
-    .purpose.soon3{background:#fff7dc;color:#e2a92f}
+    .purpose.pet{background:#fff1f4;color:#D87891}
     .home-nav{
       position:absolute;
       z-index:8;
@@ -465,9 +465,9 @@
           <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h13v8a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z"/><path d="M17 8h1.5a3 3 0 0 1 0 6H17M3 21h16"/></svg></span>
           <span class="purpose-label">カフェ・グルメ</span>
         </button>
-        <button class="purpose soon3" data-soon="その他">
-          <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9Z" fill="currentColor" stroke="none"/></svg></span>
-          <span class="purpose-label">その他</span>
+        <button class="purpose pet" data-go="pet">
+          <span class="purpose-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="9" r="2" fill="currentColor" stroke="none"/><circle cx="17" cy="9" r="2" fill="currentColor" stroke="none"/><circle cx="10" cy="5.5" r="2" fill="currentColor" stroke="none"/><circle cx="14" cy="5.5" r="2" fill="currentColor" stroke="none"/><path d="M7.2 16.1c0-3 2.2-5.2 4.8-5.2s4.8 2.2 4.8 5.2c0 2.4-2 3.7-4.8 3.7s-4.8-1.3-4.8-3.7Z" fill="currentColor" stroke="none"/></svg></span>
+          <span class="purpose-label">ペットとおでかけ</span>
         </button>
       </div>
     </div>
@@ -501,6 +501,7 @@
     <button class="chip" data-cat="kids">🎈 子育て</button>
     <button class="chip" data-cat="solo">🧳 一人旅</button>
     <button class="chip" data-cat="food">🍴 カフェ・グルメ</button>
+    <button class="chip" data-cat="pet">🐾 ペットとおでかけ</button>
   </div>
 
   <div class="recommend-wrap">
@@ -1001,6 +1002,25 @@ const spots = [
 , {name:"焼肉の龍園 小倉本店",cat:"food",lat:33.8830854,lng:130.8839156,area:"北九州市小倉北区・鍛冶町",note:"九州産黒毛和牛を個室で味わえる小倉の焼肉店。普段より少し良い肉を選びたい日から家族の会食まで、地域で使い分けられている。",tags:["ランチ","ディナー","肉・焼肉","地元メシ"],badges:["地元支持","市民人気"],lunchPrice:3000,dinnerPrice:6000,price:"昼 2,000〜3,000円／夜 5,000円以上",hours:"平日11:30〜14:30・17:00〜22:30／土日祝12:00〜14:30・17:00〜（日祝21:30まで）",officialUrl:"https://ryuen.biz/pages/ryuen-kokura",lastVerified:"2026-09-23",image:""}
 , {name:"鉄板焼天神ホルモン 博多駅店",cat:"food",lat:33.5898,lng:130.4207,area:"福岡市博多区・博多駅中央街",note:"目の前の鉄板で焼くホルモン定食を短時間でも熱々で味わえる福岡発の専門店。博多駅で県民の日常食と旅行動線が交わる。",tags:["ランチ","ディナー","肉・焼肉","地元メシ"],badges:["県民定番","観光客にも人気"],lunchPrice:1800,dinnerPrice:2200,price:"通常利用 1,000〜3,000円",hours:"10:00〜22:00（L.O.21:00）",officialUrl:"https://www.tenhoru.jp/page/hakata",lastVerified:"2026-09-23",image:""}
 
+// ペットとおでかけ：ペット同伴そのものが目的になる17施設を厳選。
+, {"name":"国営海の中道海浜公園","cat":"pet","lat":33.6635,"lng":130.3613,"area":"福岡市東区・海の中道","note":"園内散歩と本格ドッグランを一緒に楽しめる。","tags":["ドッグラン","公園・散歩"],"petConditions":["大型犬OK","ドッグランあり"],"petNotes":"リード管理。ドッグランは鑑札・狂犬病予防注射済票等が必要。","visualType":"park","price":"入園料 大人450円／ドッグラン1日60円","officialUrl":"https://uminaka-park.jp/facility/dogrun/","lastVerified":"2026-09-28","image":"IMG_0502.jpeg"}
+, {"name":"県営西公園ドッグラン","cat":"pet","lat":33.5968191,"lng":130.3771481,"area":"福岡市中央区・西公園","note":"公園散歩とドッグランを組み合わせられる。","tags":["ドッグラン"],"petConditions":["大型犬OK","ドッグランあり"],"petNotes":"大型犬は指定時間・予約条件あり。登録・誓約が必要。","visualType":"animal","price":"登録料500円／年・利用料200円／回","officialUrl":"https://nishikouen.jp/map/dogrun/","lastVerified":"2026-09-28","image":""}
+, {"name":"Cafe Arrivederci","cat":"pet","lat":33.5912051,"lng":130.380167,"area":"福岡市中央区・大手門","note":"愛犬と店内で食事ができ、犬用メニューと室内ドッグランもある。","tags":["カフェ・ごはん"],"petConditions":["店内OK","ドッグランあり","犬用メニュー","雨の日OK"],"petNotes":"室内ドッグランは会員制。","visualType":"cafe","officialUrl":"https://www.arrivederci.store/","lastVerified":"2026-09-28","image":""}
+, {"name":"県営春日公園ドッグラン","cat":"pet","lat":33.5301216,"lng":130.4743345,"area":"春日市・春日公園","note":"公園散歩とドッグランを一度に楽しめる。","tags":["ドッグラン"],"petConditions":["大型犬OK","ドッグランあり"],"petNotes":"大型犬は指定期間・時間。初回登録等が必要。","visualType":"park","officialUrl":"https://kasugapark.com/","lastVerified":"2026-09-28","image":""}
+, {"name":"Farm Resort 糸島","cat":"pet","lat":33.5887903,"lng":130.1472009,"area":"糸島市志摩小金丸","note":"緑豊かなカフェとドッグランで愛犬と過ごせる。","tags":["カフェ・ごはん","ドッグラン"],"petConditions":["テラスOK","ドッグランあり"],"petNotes":"受付・料金・条件は公式案内を確認。","visualType":"cafe","officialUrl":"https://www.farmresort-itoshima.com/","lastVerified":"2026-09-28","image":""}
+, {"name":"WITH DOG COFFEE","cat":"pet","lat":33.5203195,"lng":130.1610397,"area":"糸島市二丈石崎","note":"愛犬同伴の店内飲食と2面のドッグランを楽しめる。","tags":["カフェ・ごはん","ドッグラン"],"petConditions":["店内OK","大型犬OK","ドッグランあり","犬用メニュー","雨の日OK"],"visualType":"cafe","officialUrl":"https://www.instagram.com/with_dog_coffee/","lastVerified":"2026-09-28","image":""}
+, {"name":"ドッグフレンドリーパーク うえらんから糸島","cat":"pet","lat":33.590448,"lng":130.1522408,"area":"糸島市志摩小金丸","note":"貸切利用や教室もある犬のための複合施設。","tags":["ドッグラン"],"petConditions":["大型犬OK","ドッグランあり"],"visualType":"animal","officialUrl":"https://ueramkarap-itoshima.com/","lastVerified":"2026-09-28","image":""}
+, {"name":"CUTE PAWS / ドッグランド","cat":"pet","lat":33.8762119,"lng":130.53014,"area":"宗像市上八","note":"ドッグカフェと3エリアのドッグランを利用できる。","tags":["カフェ・ごはん","ドッグラン"],"petConditions":["店内OK","大型犬OK","ドッグランあり","犬用メニュー"],"visualType":"cafe","officialUrl":"https://dogcafe-cute-paws.github.io/","lastVerified":"2026-09-28","image":""}
+, {"name":"パームビーチクラブ","cat":"pet","lat":33.8483253,"lng":130.4825562,"area":"宗像市神湊","note":"海を望むテラスで愛犬と食事や景色を楽しめる。","tags":["カフェ・ごはん","観光・体験"],"petConditions":["テラスOK"],"visualType":"cafe","officialUrl":"https://the-palmbeachclub.com/","lastVerified":"2026-09-28","image":""}
+, {"name":"九州シーサイドグランピング グランドーム福岡ふくつ","cat":"pet","lat":33.7883923,"lng":130.4606068,"area":"福津市・津屋崎","note":"愛犬同伴専用ドームとプライベートドッグランを備える。","tags":["宿泊・旅行"],"petConditions":["大型犬OK","ドッグランあり","雨の日OK","宿泊可"],"visualType":"stay","officialUrl":"https://www.fukuoka-glamping.com/pet/","lastVerified":"2026-09-28","image":""}
+, {"name":"チェリーベル観光農園ふくつ","cat":"pet","lat":33.7579663,"lng":130.5027452,"area":"福津市上西郷","note":"愛犬と初夏のブルーベリー狩りを楽しめる季節型施設。","tags":["観光・体験"],"petConditions":["季節限定"],"petNotes":"営業期間・営業日は年ごとに公式情報を確認。","visualType":"activity","seasonalMonths":[5,6,7],"officialUrl":"https://cherrybell.jp/blueberry/","lastVerified":"2026-09-28","image":""}
+, {"name":"dog cafe TARO&HANA","cat":"pet","lat":33.77309,"lng":130.768716,"area":"直方市上頓野","note":"店内での食事と屋外ドッグランを楽しめる。","tags":["カフェ・ごはん","ドッグラン"],"petConditions":["店内OK","ドッグランあり","雨の日OK"],"petNotes":"2026年9月の営業投稿を確認済み。","visualType":"cafe","officialUrl":"https://www.instagram.com/tarohana2005/","lastVerified":"2026-09-28","image":""}
+, {"name":"ふらってぃールーム","cat":"pet","lat":33.6659423,"lng":130.6859521,"area":"飯塚市中","note":"店内飲食、広いドッグラン、犬用メニューを楽しめる。","tags":["カフェ・ごはん"],"petConditions":["店内OK","テラスOK","大型犬OK","ドッグランあり","犬用メニュー","雨の日OK"],"visualType":"cafe","officialUrl":"https://www.flattyroom.com/","lastVerified":"2026-09-28","image":""}
+, {"name":"日明臨海公園市営ドッグラン","cat":"pet","lat":33.902861,"lng":130.8684865,"area":"北九州市小倉北区・西港町","note":"サイズ別エリアのある市営ドッグラン。","tags":["ドッグラン"],"petConditions":["大型犬OK","ドッグランあり"],"petNotes":"年間登録と利用受付が必要。","visualType":"animal","officialUrl":"https://www.city.kitakyushu.lg.jp/contents/04700034_00001.html","lastVerified":"2026-09-28","image":""}
+, {"name":"Dog Willer","cat":"pet","lat":33.3299472,"lng":130.6914123,"area":"久留米市田主丸町","note":"中型・大型犬向け天然芝ドッグランとカフェ。","tags":["ドッグラン","カフェ・ごはん"],"petConditions":["店内OK","大型犬OK","ドッグランあり"],"petNotes":"原則8kg以上。","visualType":"animal","officialUrl":"https://www.dogwiller.com/","lastVerified":"2026-09-28","image":""}
+, {"name":"県営筑後広域公園ドッグラン","cat":"pet","lat":33.1789417,"lng":130.4990635,"area":"筑後市・筑後船小屋","note":"公園散歩とサイズ別ドッグランを一緒に楽しめる。","tags":["ドッグラン"],"petConditions":["大型犬OK","ドッグランあり"],"visualType":"park","officialUrl":"https://www.ajpark.jp/facilities/dogrun","lastVerified":"2026-09-28","image":""}
+, {"name":"THE TRAILERHOUSE VILLAGE 大牟田 SPA","cat":"pet","lat":33.0134608,"lng":130.4687081,"area":"大牟田市新勝立町","note":"ペット同宿対応客室で温泉・BBQと愛犬旅行を楽しめる。","tags":["宿泊・旅行"],"petConditions":["大型犬OK","ドッグランあり","雨の日OK","宿泊可"],"petNotes":"ペット同宿可能な客室限定。","visualType":"stay","officialUrl":"https://franping-omuta.com/","lastVerified":"2026-09-28","image":""}
+
 ];
 
 // 「料金」は大人2名＋小学生1名＋未就学児1名の基本利用料で区分する。
@@ -1121,7 +1141,8 @@ const styles={
  kids:{color:"#4f8cff",emoji:"🎈",label:"家族",grad:"linear-gradient(135deg,#4f8cff,#68c9ff)"},
  solo:{color:"#7a67ee",emoji:"🧳",label:"一人旅",grad:"linear-gradient(135deg,#7a67ee,#a06cf2)"},
  tourism:{color:"#4A90E2",emoji:"★",label:"観光・定番",grad:"linear-gradient(135deg,#4A90E2,#65B6D9)"},
- food:{color:"#E88961",emoji:"🍴",label:"カフェ・グルメ",grad:"linear-gradient(135deg,#E88961,#D98278)"}
+ food:{color:"#E88961",emoji:"🍴",label:"カフェ・グルメ",grad:"linear-gradient(135deg,#E88961,#D98278)"},
+ pet:{color:"#D87891",emoji:"🐾",label:"ペットとおでかけ",grad:"linear-gradient(135deg,#D87891,#E89A79)"}
 };
 
 const map=L.map('map',{zoomControl:false}).setView([33.5902,130.4017],10);
@@ -1161,6 +1182,7 @@ const SPOT_VISUALS={
 };
 
 function spotVisual(s){
+ if(s.visualType && SPOT_VISUALS[s.visualType]) return SPOT_VISUALS[s.visualType];
  const tags=s.tags||[];
  const has=(...values)=>values.some(value=>tags.includes(value));
  const name=s.name||'';
@@ -1286,7 +1308,9 @@ function popupHtml(s){
   s.closed ? `<div class="popup-row"><b>${s.eventStart ? '注意事項' : '定休日'}</b><span>${s.closed}</span></div>` : '',
   s.lastVerified ? `<div class="popup-row"><b>最終確認</b><span>${formatEventDate(s.lastVerified)}</span></div>` : '',
   s.rating ? `<div class="popup-row"><b>${s.ratingSource || '食べログ'}</b><span>★ ${s.rating}${s.reviews ? `（口コミ${s.reviews}件）` : ''}</span></div>` : '',
-  s.googleRating ? `<div class="popup-row"><b>Google</b><span>★ ${s.googleRating}${s.googleReviews ? `（口コミ${s.googleReviews}件）` : ''}</span></div>` : ''
+  s.googleRating ? `<div class="popup-row"><b>Google</b><span>★ ${s.googleRating}${s.googleReviews ? `（口コミ${s.googleReviews}件）` : ''}</span></div>` : '',
+  s.petConditions?.length ? `<div class="popup-row"><b>ペット条件</b><span>${s.petConditions.join('／')}</span></div>` : '',
+  s.petNotes ? `<div class="popup-row"><b>利用条件</b><span>${s.petNotes}</span></div>` : ''
  ].join('');
  return `
   <div class="popup-visual" style="background:${st.grad}">${s.image ? `<img src="${s.image}" alt="${s.name}">` : st.emoji}</div>
@@ -1331,6 +1355,7 @@ function getEventState(s){
 }
 
 function isSpotVisible(s){
+ if(Array.isArray(s.seasonalMonths) && !s.seasonalMonths.includes(new Date().getMonth()+1)) return false;
  if(!s.eventStart || !s.eventEnd) return true;
  const today=localDateKey();
  if(s.bookingRequired && s.bookingEnd && today>s.bookingEnd) return false;
@@ -1390,6 +1415,8 @@ function buildSubfilters(cat){
    ? ['すべて','王道観光','歴史・文化','絶景・景色','街歩き・エリア','体験・名物','季節の定番']
    : cat==='food'
    ? ['すべて','料金','カフェ・喫茶','スイーツ・パン','ランチ','ディナー','ラーメン・麺','海鮮・寿司','肉・焼肉','地元メシ','ご当地名物']
+   : cat==='pet'
+   ? ['すべて','ドッグラン','カフェ・ごはん','公園・散歩','観光・体験','宿泊・旅行']
    : ['すべて'];
  presets.forEach(label=>{
    const b=document.createElement('button');
