@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20260928-pet1" />
+  <meta name="app-build" content="20260929-audit1" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -500,6 +500,7 @@
     <button class="chip active" data-cat="date">❤️ デート</button>
     <button class="chip" data-cat="kids">🎈 子育て</button>
     <button class="chip" data-cat="solo">🧳 一人旅</button>
+    <button class="chip" data-cat="tourism">⭐ 観光・定番</button>
     <button class="chip" data-cat="food">🍴 カフェ・グルメ</button>
     <button class="chip" data-cat="pet">🐾 ペットとおでかけ</button>
   </div>
@@ -661,7 +662,7 @@ const spots = [
  {name:"岩井屋",cat:"date",lat:33.5838,lng:130.3369,area:"西区・愛宕",note:"愛宕神社そばの老舗甘味処。落ち着いた和の雰囲気と景色で、散歩デートの休憩にも。",tags:["カフェ","昼","和カフェ","景色"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.47",reviews:154},
  {name:"CAFFE OTTO. ROOF TOP GARDEN",cat:"date",lat:33.5833,lng:130.3595,area:"早良区・西新",note:"西新駅直結のルーフトップ系カフェ。屋上庭園と開放感があり、昼から夜まで使いやすい。",tags:["カフェ","昼","夜","SNS人気","景色","雨の日"],time:["day","night"],image:"",hours:"10:00〜21:00",closed:"PRALIVAに準ずる",rating:"3.41",reviews:98},
  {name:"そふ珈琲",cat:"date",lat:33.5746,lng:130.3692,area:"城南区・別府",note:"別府の落ち着いた喫茶店。特徴的なカフェモカや静かな空間で、ゆっくり過ごす昼カップル。",tags:["カフェ","昼","SNS人気","コーヒー","隠れ家"],time:["day"],image:"",hours:"13:00〜18:00",closed:"水曜日",rating:"3.39",reviews:130},
- {name:"サイラー",cat:"date",lat:33.5527,lng:130.3924,area:"南区・長丘",note:"オーストリア菓子とパンで人気の名店。口コミ数が非常に多く、南区の昼カフェ候補として強い。",tags:["カフェ","昼","SNS人気","スイーツ","パン"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.67",reviews:823},
+ {name:"サイラー",cat:"date",lat:33.5564471,lng:130.4003147,area:"南区・長丘",note:"オーストリア菓子とパンで人気の名店。口コミ数が非常に多く、南区の昼カフェ候補として強い。",tags:["カフェ","昼","SNS人気","スイーツ","パン"],time:["day"],image:"",hours:"最新情報を要確認",closed:"最新情報を要確認",rating:"3.67",reviews:823},
  {name:"長崎阿蘭陀珈琲館",cat:"date",lat:33.564456,lng:130.400723,area:"南区・平和",note:"蔦に包まれた洋館風の老舗カフェ。おしゃれな雰囲気と景色で、落ち着いたデート向き。",tags:["カフェ","昼","夜","SNS人気","レトロ","景色"],time:["day","night"],image:"",hours:"11:00〜21:30",closed:"年末年始",rating:"3.48",reviews:206},
  {name:"sola aburayama",cat:"date",lat:33.5209,lng:130.3578,area:"南区・油山",note:"油山の自然と福岡市街の眺めを楽しめるカフェ＆レストラン。景色重視の郊外カップル。",tags:["カフェ","昼","SNS人気","景色","ドライブ"],time:["day"],image:"",hours:"12:00〜18:00",closed:"第1・第3火曜、水曜日",rating:"3.30",reviews:46},
  {name:"パン・ナガタ 本店",cat:"date",lat:33.5225,lng:130.4662,area:"春日",note:"石窯パンで人気の春日市の定番店。ドライブ途中のモーニングや昼カフェに使いやすい。",tags:["カフェ","昼","パン"],time:["day"],image:"",hours:"8:00〜",closed:"火曜日",rating:"3.43",reviews:116},
@@ -738,7 +739,7 @@ const spots = [
  {name:"九州国立博物館 あじっぱ",cat:"kids",lat:33.5183,lng:130.5382,area:"太宰府市・石坂",note:"アジア各地の衣装、楽器、おもちゃ、生活道具などに実際に触れながら文化の違いを体験できる、子ども向けの無料展示室。",tags:["雨の日","学び・体験","歴史・文化"],age:"幼児〜小学生を中心に全年齢",price:"あじっぱは無料",image:"",hours:"9:30〜17:00（入館16:30まで）",closed:"月曜日（祝日・振替休日の場合は翌日）・年末"},
  {name:"福岡市博物館 みたいけんラボ",cat:"kids",lat:33.5952,lng:130.3519,area:"福岡市早良区・百道浜",note:"アジアの楽器や玩具、衣服、生活道具を手に取り、鳴らす・着る・遊ぶ体験ができる無料の体験学習室。展示を見るだけで終わらない。",tags:["雨の日","学び・体験","歴史・文化"],age:"幼児〜小学生を中心に全年齢",price:"みたいけんラボは無料／常設展示は別料金",image:"",hours:"9:30〜17:30（入館17:00まで）",closed:"月曜日（祝休日の場合は翌平日）・年末年始"},
  {name:"博多の食と文化の博物館 ハクハク",cat:"kids",lat:33.6120,lng:130.4447,area:"福岡市東区・社領",note:"明太子の原料や製造工程、博多の食文化を体験展示で学べる。予約制の明太子手作り体験は、味付けから持ち帰りまで子どもも参加しやすい。",tags:["雨の日","学び・体験","食・農業","ものづくり"],age:"幼児〜小学生（手作り体験は保護者同伴推奨）",price:"入館・手作り体験料金は最新情報を公式で要確認",image:"",hours:"10:00〜16:00頃（入館・体験受付は公式で要確認）",closed:"火曜日・水曜日・年末年始ほか"},
- {name:"関門海峡ミュージアム",cat:"kids",lat:33.9446,lng:130.9593,area:"北九州市門司区・門司港レトロ",note:"巨大映像、操船シミュレーション、インタラクティブ展示などで関門海峡の自然・交通・歴史を体験的に学べる。未就学児向けの海峡こども広場もある。",tags:["雨の日","学び・体験","歴史・文化","一日遊べる"],age:"4歳頃〜小学生を中心に全年齢",price:"有料展示 大人500円／小中学生200円／未就学児無料",image:"",hours:"9:00〜17:00（入館16:30まで）",closed:"年5回程度の休館日あり"},
+ {name:"関門海峡ミュージアム",cat:"kids",lat:33.9438125,lng:130.9569375,area:"北九州市門司区・門司港レトロ",note:"巨大映像、操船シミュレーション、インタラクティブ展示などで関門海峡の自然・交通・歴史を体験的に学べる。未就学児向けの海峡こども広場もある。",tags:["雨の日","学び・体験","歴史・文化","一日遊べる"],age:"4歳頃〜小学生を中心に全年齢",price:"有料展示 大人500円／小中学生200円／未就学児無料",image:"",hours:"9:00〜17:00（入館16:30まで）",closed:"年5回程度の休館日あり",officialUrl:"https://mojiko-retoro9.jp/spot/kanmon_kaikyo_museum/",lastVerified:"2026-09-29"},
  {name:"星の文化館",cat:"kids",lat:33.2517,lng:130.7587,area:"八女市星野村",note:"九州最大級の100cm反射望遠鏡とプラネタリウムで、昼も夜も天体観測を体験できる公開天文台。小学生向けの手作り望遠鏡体験もある。",tags:["学び・体験","科学・自然","ものづくり"],age:"幼児〜小学生を中心に全年齢",price:"入館・観望料金は時間帯やプログラムにより異なる",image:"",hours:"曜日・季節で異なるため公式カレンダーを要確認",closed:"火曜日ほか（夏休み等は変更あり）"},
  {name:"リトルプラネット ゆめタウン久留米",cat:"kids",lat:33.321723,lng:130.538436,area:"久留米市・ゆめタウン久留米",note:"デジタルボールプールやAR砂遊びなど、デジタル技術と遊びを組み合わせた屋内型テーマパーク。公式では3歳以上のアトラクション利用を推奨しており、未就学児〜小学生に特に向く。",tags:["雨の日","室内遊び"],age:"利用は年齢不問／アトラクションは3歳以上推奨",ageGroups:["3〜6歳","小学生"],price:"平日30分 幼児500円・4〜12歳700円〜／1歳以下無料（会員登録料あり）",image:"",hours:"10:00〜20:00（最終受付19:30）",closed:"ゆめタウン久留米に準ずる"},
  {name:"ファンタジーキッズリゾート福岡",cat:"kids",lat:33.608364,lng:130.451965,area:"糟屋郡粕屋町・イオン福岡東",note:"約1,100坪の大型室内遊園地。ふわふわ遊具、砂場、ごっこ遊び、乗り物、アーケードゲームに加え、0〜2歳専用エリアもあり、きょうだいで一日過ごしやすい。",tags:["雨の日","室内遊び","一日遊べる"],age:"0〜12歳向け（0〜2歳専用エリアあり）",ageGroups:["0〜2歳","3〜6歳","小学生","全年齢"],price:"0歳無料／1人 平日680円〜・休日940円〜（年会費1家族400円）",image:"",hours:"10:00〜18:00",closed:"営業カレンダーを要確認"},
@@ -858,7 +859,7 @@ const spots = [
  {name:"八女伝統工芸館",cat:"tourism",lat:33.2114,lng:130.5577,area:"八女市",note:"八女提灯、手すき和紙、仏壇など地域の伝統工芸をまとめて見られる施設。実演や体験の実施日は観光目的として価値が高い。",tags:["体験・名物","歴史・文化"],price:"入館無料（体験は別料金）",hours:"9:00〜17:00を基本",closed:"月曜日など",officialUrl:"https://yamedentoukougeikan.jimdofree.com/"},
  {name:"小石原焼伝統産業会館",cat:"tourism",lat:33.4621,lng:130.8242,area:"東峰村",note:"小石原焼の歴史と作品を見た後、周辺の窯元巡りへつなげられる。陶芸体験の開催状況を確認して訪れたい地域文化の拠点。",tags:["体験・名物","歴史・文化"],price:"入館料・体験料は公式確認",hours:"9:00〜17:00を基本",closed:"火曜日など",officialUrl:"https://koishiwara.com/"},
  {name:"九州鉄道記念館",cat:"tourism",lat:33.9450,lng:130.9618,area:"北九州市門司区",note:"九州鉄道の歴史、実物車両、運転シミュレーターを楽しめる門司港ならではの施設。レトロ地区の街歩きと相性が良い。",tags:["体験・名物","歴史・文化"],price:"大人300円、中学生以下150円を基本",hours:"9:00〜17:00",closed:"不定休・公式確認",officialUrl:"https://www.k-rhm.jp/"},
- {name:"関門海峡ミュージアム",cat:"tourism",lat:33.9442,lng:130.9678,area:"北九州市門司区",note:"関門海峡の歴史と文化を大型映像や体験展示で紹介。展望デッキからの海峡景観もあり、門司港での滞在を深められる。",tags:["体験・名物","歴史・文化","絶景・景色"],price:"無料エリアあり（展示は有料）",hours:"9:00〜17:00を基本",officialUrl:"https://www.kanmon-kaikyo-museum.jp/"},
+ {name:"関門海峡ミュージアム",cat:"tourism",lat:33.9438125,lng:130.9569375,area:"北九州市門司区",note:"関門海峡の歴史と文化を大型映像や体験展示で紹介。展望デッキからの海峡景観もあり、門司港での滞在を深められる。",tags:["体験・名物","歴史・文化","絶景・景色"],price:"無料エリアあり（展示は有料）",hours:"9:00〜17:00を基本",officialUrl:"https://mojiko-retoro9.jp/spot/kanmon_kaikyo_museum/",lastVerified:"2026-09-29"},
  {name:"河内藤園",cat:"tourism",lat:33.8326,lng:130.7935,area:"北九州市八幡東区",note:"藤のトンネルで世界的に知られる春の景勝地。見頃・営業期間が限られ、事前予約制になる場合があるため公式確認が必須。",tags:["季節の定番","絶景・景色"],season:["春","秋"],seasonNotes:{"春":"藤トンネルと大藤棚が見頃を迎える、福岡を代表する春の花名所。","秋":"秋季開園時には園内の紅葉景観を楽しめる。"},price:"開花状況により変動",hours:"春季・秋季の開園情報を公式確認",closed:"開園期間外は入園不可",officialUrl:"https://kawachi-fujien.com/",lastVerified:"2026-09-22"},
  {name:"柳川雛祭り さげもんめぐり",cat:"tourism",lat:33.1639,lng:130.4055,area:"柳川市",note:"町中が色鮮やかな「さげもん」で彩られる柳川の春の風物詩。例年2〜4月頃に開催され、川下りや城下町散策と合わせて楽しめる。",tags:["季節の定番","街歩き・エリア"],season:["冬","春"],seasonNotes:{"冬":"例年2月頃から、色鮮やかなさげもんが柳川の町を彩る。","春":"さげもん展示と川下りを組み合わせて柳川の春を楽しめる。"},price:"散策無料（各催事・施設は別料金）",hours:"開催年の公式日程を確認",officialUrl:"https://www.yanagawa-net.com/",lastVerified:"2026-09-22"},
  {name:"博多祇園山笠",cat:"tourism",lat:33.5932,lng:130.4105,area:"福岡市博多区",note:"博多の町を舞台に毎年7月に行われるユネスコ無形文化遺産の祭り。飾り山笠の公開や追い山笠など、時期そのものが訪問理由になる。",tags:["季節の定番","歴史・文化","街歩き・エリア"],season:["夏"],seasonNotes:{"夏":"飾り山笠から追い山笠まで、博多の熱気を体感できる代表的な夏祭り。"},price:"見物無料",hours:"毎年7月・当年の行事日程を公式確認",officialUrl:"https://www.hakatayamakasa.com/",lastVerified:"2026-09-22"},
@@ -974,7 +975,7 @@ const spots = [
 , {name:"焼肉の大昌園 本店",cat:"food",lat:33.3112,lng:130.5145,area:"久留米市六ツ門町",note:"久留米で長く支持される焼肉店。肉の品質と接客の安定感があり、普段使いから家族の節目まで選びやすい。",tags:["ランチ","ディナー","肉・焼肉","地元メシ"],badges:["地元支持","老舗"],lunchPrice:2500,dinnerPrice:5000,price:"昼 2,000〜3,000円／夜 5,000円以上",officialUrl:"https://taishoen.jp/",lastVerified:"2026-09-22",image:""}
 , {name:"パンストック",cat:"food",lat:33.6252684,lng:130.4273350,area:"福岡市東区・箱崎",note:"ハード系から惣菜パンまで、小麦の香りと独創的な組み合わせを求めて県内外から客が訪れる福岡の代表的ベーカリー。",tags:["スイーツ・パン","地元メシ"],badges:["県民定番","観光客にも人気"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",hours:"営業日・売り切れ状況は公式Instagramを確認",officialUrl:"https://painstock.theshop.jp/about",lastVerified:"2026-09-23",image:""}
 , {name:"国産小麦パン工房 フルフル松崎本店",cat:"food",lat:33.6369205,lng:130.4394430,area:"福岡市東区・松崎",note:"国産小麦のパンと、焼きたての明太フランスで世代を超えて支持される地域密着店。福岡らしいパンを目的にできる。",tags:["スイーツ・パン","地元メシ","ご当地名物"],badges:["県民定番","地元支持"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",hours:"営業時間・店休日は公式店舗情報を確認",officialUrl:"https://www.full-full.jp/shop/",lastVerified:"2026-09-23",image:""}
-, {name:"サイラー",cat:"food",lat:33.5524900,lng:130.4064656,area:"福岡市南区・長丘",note:"オーストリア伝統のパンと菓子を幅広くそろえる老舗。プレッツェルや焼き菓子まで、この店ならではの専門性がある。",tags:["スイーツ・パン","カフェ・喫茶"],badges:["県民定番","老舗"],lunchPrice:1800,price:"通常利用 1,000〜2,000円",officialUrl:"https://sailer.jp/",lastVerified:"2026-09-23",image:""}
+, {name:"サイラー",cat:"food",lat:33.5564471,lng:130.4003147,area:"福岡市南区・長丘",note:"オーストリア伝統のパンと菓子を幅広くそろえる老舗。プレッツェルや焼き菓子まで、この店ならではの専門性がある。",tags:["スイーツ・パン","カフェ・喫茶"],badges:["県民定番","老舗"],lunchPrice:1800,price:"通常利用 1,000〜2,000円",officialUrl:"https://sailer.jp/",lastVerified:"2026-09-23",image:""}
 , {name:"ナガタパン 箱崎店",cat:"food",lat:33.6147401,lng:130.4215880,area:"福岡市東区・箱崎",note:"レトロな店構えと手作りの総菜パン・菓子パンで日常的に通われる箱崎の定番。世代を問わず選びやすい。",tags:["スイーツ・パン","地元メシ"],badges:["地元支持","老舗"],lunchPrice:1000,price:"通常利用 〜1,000円",officialUrl:"https://pannagata-hakozaki.com/",lastVerified:"2026-09-23",image:""}
 , {name:"BAKERY-SOCO Saffron 福岡飯塚店",cat:"food",lat:33.6183067,lng:130.6657642,area:"飯塚市椿",note:"黄金のメロンパンや明太バゲットなど品数が豊富な石窯ベーカリー。県民選定企画でも支持された筑豊の目的店。",tags:["スイーツ・パン","地元メシ","ご当地名物"],badges:["地元支持","市民人気"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",hours:"9:00〜18:00",closed:"月・火曜日（月曜祝日は営業）",officialUrl:"https://bakery-soco.com/",lastVerified:"2026-09-23",image:""}
 , {name:"石窯ぱん工房 どんぐりの樹 大牟田本店",cat:"food",lat:33.0396703,lng:130.4590552,area:"大牟田市通町",note:"2003年から大牟田で地域に根づく大型ベーカリー。日常の食事パンから菓子パンまで家族で選べる。",tags:["スイーツ・パン","地元メシ"],badges:["地元支持","市民人気"],lunchPrice:1500,price:"通常利用 1,000〜2,000円",officialUrl:"https://www.dongurinoki.net/shop_omuta/",lastVerified:"2026-09-23",image:""}
@@ -1032,6 +1033,7 @@ const familyPriceGroups={
   '九州国立博物館 あじっぱ','福岡市博物館 みたいけんラボ','博多の食と文化の博物館 ハクハク',
   '香春町子育て支援施設 かぱる','大川市子育て支援総合施設 モッカランド','今津運動公園',
   '大野城いこいの森 中央公園','筑紫野市総合公園','夜須高原記念の森','古賀グリーンパーク',
+  '白糸の滝',
   '平尾台自然の郷','福岡県営筑豊緑地','あまぎ水の文化村','白水大池公園','浦山公園','筑後広域公園',
   'むつごろうランド','諏訪公園','ABURAYAMA FUKUOKA 牧場エリア','筑後川防災施設 くるめウス',
   'むつごろうランド 有明海水族館','北九州市立 水環境館'
