@@ -1471,13 +1471,14 @@ spots.forEach(spot=>{
 const facilityRegistry = facilityCanonicalNames.map(canonicalName=>{
  const first=firstSpotByFacilityName.get(canonicalName);
  const coordinate=facilityCoordinateOverrides[canonicalName];
+ if(!first && !coordinate) return null;
  return Object.freeze({
   facilityId:facilityIdByCanonicalName[canonicalName],canonicalName,
   aliases:Object.freeze(Object.keys(facilityNameAliases).filter(name=>name!==canonicalName && facilityNameAliases[name]===canonicalName)),
   lat:coordinate?.[0] ?? first.lat,lng:coordinate?.[1] ?? first.lng,
   coordinateStatus:coordinate?.[2] || "source-record"
  });
-});
+}).filter(Boolean);
 const facilityById = Object.freeze(Object.fromEntries(facilityRegistry.map(f=>[f.facilityId,f])));
 // One shared photo record per facility. Photo rights and provider data stay facility-scoped.
 const facilityPhotoMetadata = Object.fromEntries(facilityRegistry.map(({facilityId})=>[facilityId,{
