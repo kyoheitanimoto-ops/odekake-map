@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20261003-photo-phase2-b4" />
+  <meta name="app-build" content="20261004-external-api-pilot" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -1496,10 +1496,53 @@ Object.assign(facilityPhotoMetadata['fuk-0328'],{
  license:'CC BY 2.5',licenseUrl:'https://creativecommons.org/licenses/by/2.5/',sourcePageUrl:'https://commons.wikimedia.org/wiki/File:140721_Mojiko_Retro_Kitakyushu_Japan01s3.jpg',commercialUse:true
 });
 Object.assign(facilityPhotoMetadata['fuk-0264'],{
- imageSource:'Google Places',imageType:'external_api',imageRole:'basic',imageCheckedAt:'2026-09-29',placeholderType:'food',provider:'google_places',status:'requires_backend',googleMapsUri:null,authorAttributions:[]
+ imageUrl:null,imageSource:'Google Places',imageType:'external_api',imageRole:'basic',imageCheckedAt:'2026-10-04',placeholderType:'food',
+ provider:'google_places',status:'pilot_loading',googleMapsUri:null,authorAttributions:[],imageCredit:null,sourcePageUrl:null
 });
 Object.assign(facilityPhotoMetadata['fuk-0067'],{
- imageSource:'Google Places',imageType:'external_api',imageRole:'basic',imageCheckedAt:'2026-09-29',placeholderType:'pet',provider:'google_places',status:'requires_backend',googleMapsUri:null,authorAttributions:[]
+ imageUrl:null,imageSource:'Google Places',imageType:'external_api',imageRole:'basic',imageCheckedAt:'2026-10-04',placeholderType:'pet',
+ provider:'google_places',status:'pilot_loading',googleMapsUri:null,authorAttributions:[],imageCredit:null,sourcePageUrl:null
+});
+
+const EXTERNAL_PHOTO_API_BASE='https://mycocomo-photo-api.kyoheeeei224.workers.dev';
+const EXTERNAL_PHOTO_PILOT_IDS=['fuk-0264','fuk-0067'];
+
+async function hydrateExternalApiPhotoMetadata(){
+ await Promise.all(EXTERNAL_PHOTO_PILOT_IDS.map(async facilityId=>{
+  const photo=facilityPhotoMetadata[facilityId];
+  try{
+   const response=await fetch(`${EXTERNAL_PHOTO_API_BASE}/api/photo-meta?facilityId=${encodeURIComponent(facilityId)}`,{
+    headers:{Accept:'application/json'}
+   });
+   if(!response.ok) throw new Error(`photo metadata ${response.status}`);
+   const data=await response.json();
+   if(!data?.ok || data.status!=='available' || !data.imageUrl) throw new Error('photo unavailable');
+   const attribution=Array.isArray(data.authorAttributions) ? data.authorAttributions[0] : null;
+   Object.assign(photo,{
+    imageUrl:data.imageUrl,
+    status:'available',
+    googleMapsUri:data.googleMapsUri || null,
+    authorAttributions:data.authorAttributions || [],
+    imageCredit:attribution?.displayName || 'Google Maps',
+    sourcePageUrl:attribution?.uri || data.googleMapsUri || null
+   });
+  }catch(error){
+   Object.assign(photo,{
+    imageUrl:null,
+    status:'provider_error',
+    imageCredit:null,
+    sourcePageUrl:null
+   });
+   console.warn('external photo pilot failed',facilityId,error);
+  }
+ }));
+}
+
+const externalPhotoHydrationPromise=hydrateExternalApiPhotoMetadata();
+externalPhotoHydrationPromise.finally(()=>{
+ if(typeof activeCat!=='undefined' && !document.getElementById('mapScreen')?.classList.contains('hidden')){
+  renderCategory(activeCat);
+ }
 });
 Object.assign(facilityPhotoMetadata['fuk-0288'],{
  imageUrl:'https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Tocho-ji-Hakata.jpg/960px-Tocho-ji-Hakata.jpg',
