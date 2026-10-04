@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20261004-external-api-pilot" />
+  <meta name="app-build" content="20261004-external-api-pilot-lazy" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -1507,43 +1507,42 @@ Object.assign(facilityPhotoMetadata['fuk-0067'],{
 const EXTERNAL_PHOTO_API_BASE='https://mycocomo-photo-api.kyoheeeei224.workers.dev';
 const EXTERNAL_PHOTO_PILOT_IDS=['fuk-0264','fuk-0067'];
 
-async function hydrateExternalApiPhotoMetadata(){
- await Promise.all(EXTERNAL_PHOTO_PILOT_IDS.map(async facilityId=>{
-  const photo=facilityPhotoMetadata[facilityId];
+const externalPhotoRequests=new Map();
+
+async function ensureExternalPhotoMetadata(facilityId){
+ const photo=facilityPhotoMetadata[facilityId];
+ if(!photo || photo.imageType!=='external_api') return false;
+ if(photo.status==='available' && photo.imageUrl) return true;
+ if(externalPhotoRequests.has(facilityId)) return externalPhotoRequests.get(facilityId);
+
+ const request=(async()=>{
   try{
+   photo.status='pilot_loading';
    const response=await fetch(`${EXTERNAL_PHOTO_API_BASE}/api/photo-meta?facilityId=${encodeURIComponent(facilityId)}`,{
     headers:{Accept:'application/json'}
    });
    if(!response.ok) throw new Error(`photo metadata ${response.status}`);
    const data=await response.json();
    if(!data?.ok || data.status!=='available' || !data.imageUrl) throw new Error('photo unavailable');
-   const attribution=Array.isArray(data.authorAttributions) ? data.authorAttributions[0] : null;
    Object.assign(photo,{
     imageUrl:data.imageUrl,
     status:'available',
     googleMapsUri:data.googleMapsUri || null,
-    authorAttributions:data.authorAttributions || [],
-    imageCredit:attribution?.displayName || 'Google Maps',
-    sourcePageUrl:attribution?.uri || data.googleMapsUri || null
+    authorAttributions:Array.isArray(data.authorAttributions) ? data.authorAttributions : []
    });
+   return true;
   }catch(error){
-   Object.assign(photo,{
-    imageUrl:null,
-    status:'provider_error',
-    imageCredit:null,
-    sourcePageUrl:null
-   });
+   Object.assign(photo,{imageUrl:null,status:'provider_error',authorAttributions:[]});
    console.warn('external photo pilot failed',facilityId,error);
+   return false;
+  }finally{
+   externalPhotoRequests.delete(facilityId);
   }
- }));
-}
+ })();
 
-const externalPhotoHydrationPromise=hydrateExternalApiPhotoMetadata();
-externalPhotoHydrationPromise.finally(()=>{
- if(typeof activeCat!=='undefined' && !document.getElementById('mapScreen')?.classList.contains('hidden')){
-  renderCategory(activeCat);
- }
-});
+ externalPhotoRequests.set(facilityId,request);
+ return request;
+}
 Object.assign(facilityPhotoMetadata['fuk-0288'],{
  imageUrl:'https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Tocho-ji-Hakata.jpg/960px-Tocho-ji-Hakata.jpg',
  imageSource:'Wikimedia Commons',imageCredit:'WolfgangMichel',imageType:'area',imageRole:'area',imageCheckedAt:'2026-09-29',placeholderType:'heritage',
@@ -2119,9 +2118,22 @@ function facilityVisualHtml(s,st){
  const photo=facilityPhotoMetadata[s.facilityId];
  const hasPilotRecord=Boolean(photo?.imageType);
  const imageUrl=hasPilotRecord ? photo.imageUrl : s.image;
- const credit=photo?.imageCredit && photo?.sourcePageUrl
-  ? `<span class="photo-credit">写真: <a href="${photo.sourcePageUrl}" target="_blank" rel="noopener noreferrer">${photo.imageCredit}</a>${photo.license && photo.licenseUrl ? ` · <a href="${photo.licenseUrl}" target="_blank" rel="noopener noreferrer">${photo.license}</a>` : ''}</span>`
-  : '';
+ let credit='';
+ if(photo?.imageType==='external_api' && imageUrl){
+  const authors=Array.isArray(photo.authorAttributions) ? photo.authorAttributions : [];
+  const authorHtml=authors.map(author=>{
+   const name=author?.displayName || '写真提供者';
+   return author?.uri
+    ? `<a href="${author.uri}" target="_blank" rel="noopener noreferrer">${name}</a>`
+    : name;
+  }).join('・');
+  const googleLink=photo.googleMapsUri
+   ? `<a href="${photo.googleMapsUri}" target="_blank" rel="noopener noreferrer">Google Maps</a>`
+   : 'Google Maps';
+  credit=`<span class="photo-credit">${googleLink}${authorHtml ? ` · 写真: ${authorHtml}` : ''}</span>`;
+ } else if(photo?.imageCredit && photo?.sourcePageUrl){
+  credit=`<span class="photo-credit">写真: <a href="${photo.sourcePageUrl}" target="_blank" rel="noopener noreferrer">${photo.imageCredit}</a>${photo.license && photo.licenseUrl ? ` · <a href="${photo.licenseUrl}" target="_blank" rel="noopener noreferrer">${photo.license}</a>` : ''}</span>`;
+ }
  const image=imageUrl
   ? `<img class="popup-photo" src="${imageUrl}" alt="${s.name}の写真" loading="lazy" decoding="async" onerror="handlePhotoError(this)">`
   : '';
@@ -2425,6 +2437,13 @@ function renderCategory(cat){
  chosen.forEach((s,i)=>{
   const marker=L.marker([s.lat,s.lng],{icon:makeIcon(s)}).addTo(map);
   marker.bindPopup(popupHtml(s));
+  marker.on('popupopen',async()=>{
+    const photo=facilityPhotoMetadata[s.facilityId];
+    if(photo?.imageType==='external_api' && photo.status!=='available'){
+      const ok=await ensureExternalPhotoMetadata(s.facilityId);
+      if(ok && marker.isPopupOpen()) marker.setPopupContent(popupHtml(s));
+    }
+  });
   marker.on('click',()=>{
     document.getElementById('recTitle').textContent=s.name;
     document.getElementById('recMeta').textContent=displayNote(s);
