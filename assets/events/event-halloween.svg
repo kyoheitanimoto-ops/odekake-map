@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3a1b63"/><stop offset="1" stop-color="#7d3bb5"/></linearGradient></defs>
+<rect width="960" height="720" rx="48" fill="url(#g)"/><path d="M0 520h960v200H0z" fill="#fff" opacity=".95"/>
+<path d="M80 80h250l-25 90H80z" fill="#8651e6"/><text x="120" y="145" font-size="72" font-family="sans-serif" font-weight="800" fill="white">EVENT</text>
+<circle cx="660" cy="265" r="110" fill="#ffd45d"/><circle cx="355" cy="340" r="120" fill="#ff8a2b"/><path d="M300 345l35-30 25 30 35-30 25 30-20 70h-80z" fill="#5a2a24"/>
+<path d="M640 350l45-80 45 80z" fill="#221336"/><rect x="655" y="350" width="60" height="100" fill="#221336"/>
+<text x="70" y="605" font-size="58" font-family="sans-serif" font-weight="800" fill="#6c38bb">ハロウィンイベント</text>
+<text x="70" y="670" font-size="32" font-family="sans-serif" fill="#333">仮装・パレード・秋の催し</text></svg>
