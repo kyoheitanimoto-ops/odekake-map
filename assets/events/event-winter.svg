@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#12205d"/><stop offset="1" stop-color="#5833b7"/></linearGradient></defs>
+<rect width="960" height="720" rx="48" fill="url(#g)"/><path d="M0 520h960v200H0z" fill="#fff" opacity=".95"/>
+<path d="M80 80h250l-25 90H80z" fill="#8a5cff"/><text x="120" y="145" font-size="72" font-family="sans-serif" font-weight="800" fill="white">EVENT</text>
+<path d="M500 180l-120 280h240z" fill="#66d0ff"/><path d="M500 220l-95 220h190z" fill="#8ee8ff"/><circle cx="500" cy="165" r="22" fill="#ffe66d"/>
+<g fill="#fff8b0"><circle cx="180" cy="275" r="9"/><circle cx="250" cy="350" r="8"/><circle cx="720" cy="260" r="9"/><circle cx="790" cy="365" r="10"/></g>
+<text x="70" y="605" font-size="58" font-family="sans-serif" font-weight="800" fill="#6c3fd1">冬のイベント</text>
+<text x="70" y="670" font-size="32" font-family="sans-serif" fill="#333">イルミネーション・冬の催し</text></svg>
