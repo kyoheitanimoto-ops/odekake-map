@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffb34c"/><stop offset="1" stop-color="#ffe0a0"/></linearGradient></defs>
+<rect width="960" height="720" rx="48" fill="url(#g)"/><path d="M0 520h960v200H0z" fill="#fff" opacity=".94"/>
+<path d="M80 80h250l-25 90H80z" fill="#ff6b2d"/><text x="120" y="145" font-size="72" font-family="sans-serif" font-weight="800" fill="white">EVENT</text>
+<g fill="#f65f2c"><path d="M230 255l55 25-38 46-17 73-17-73-38-46z"/><path d="M520 220l60 34-43 45-17 75-17-75-43-45z"/><path d="M730 300l48 27-34 40-14 60-14-60-34-40z"/></g>
+<path d="M120 460c160-90 310-90 470-10 110 55 200 55 290 20" fill="none" stroke="#b95024" stroke-width="24" stroke-linecap="round"/>
+<text x="70" y="605" font-size="58" font-family="sans-serif" font-weight="800" fill="#e45a25">秋のイベント</text>
+<text x="70" y="670" font-size="32" font-family="sans-serif" fill="#333">秋祭り・自然体験・季節の催し</text></svg>
