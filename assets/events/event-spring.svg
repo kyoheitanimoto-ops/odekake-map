@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd9e7"/><stop offset="1" stop-color="#9ed8ff"/></linearGradient></defs>
+<rect width="960" height="720" rx="48" fill="url(#g)"/>
+<path d="M0 520h960v200H0z" fill="#fff" opacity=".9"/>
+<path d="M80 80h250l-25 90H80z" fill="#ff667f"/><text x="120" y="145" font-size="72" font-family="sans-serif" font-weight="800" fill="white">EVENT</text>
+<circle cx="170" cy="300" r="86" fill="#ffbdd2"/><circle cx="250" cy="260" r="70" fill="#ffe4ee"/><circle cx="325" cy="315" r="78" fill="#ffc7dc"/>
+<path d="M170 395c120-110 220-135 345-85" fill="none" stroke="#8d5a42" stroke-width="22" stroke-linecap="round"/>
+<circle cx="530" cy="260" r="42" fill="#ffbfd7"/><circle cx="595" cy="300" r="48" fill="#ffe4ef"/><circle cx="660" cy="245" r="38" fill="#ffafcb"/>
+<text x="70" y="605" font-size="58" font-family="sans-serif" font-weight="800" fill="#e83f70">春のイベント</text>
+<text x="70" y="670" font-size="32" font-family="sans-serif" fill="#333">花・春祭り・季節の催し</text></svg>
