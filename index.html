@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="app-build" content="20261006-photo-rule-audit1" />
+  <meta name="app-build" content="20261006-favorites-settings" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -425,6 +425,65 @@
       .brand-lockup{top:calc(7px + env(safe-area-inset-top));right:10px;padding:6px 8px 6px 7px}
       .brand-symbol{width:30px;height:30px}.brand-name{font-size:14px}.brand-tagline{font-size:7px}
     }
+    /* Favorites / Settings */
+    .utility-screen{background:#f6f7f9;overflow:hidden}
+    .utility-head{
+      display:flex;align-items:center;gap:12px;
+      padding:calc(14px + env(safe-area-inset-top)) 16px 12px;
+      background:rgba(255,255,255,.96);border-bottom:1px solid #eceef1
+    }
+    .utility-back{
+      border:0;background:#f2f4f6;width:38px;height:38px;border-radius:13px;
+      font-size:22px;line-height:1;color:#333
+    }
+    .utility-title{font-size:20px;font-weight:900;letter-spacing:-.025em}
+    .utility-body{
+      flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
+      padding:16px 14px calc(88px + env(safe-area-inset-bottom))
+    }
+    .utility-lead{font-size:13px;color:#737984;line-height:1.6;margin:0 2px 14px}
+    .favorites-empty{
+      margin-top:42px;text-align:center;background:#fff;border-radius:22px;padding:34px 20px;
+      box-shadow:0 8px 24px rgba(30,40,50,.06)
+    }
+    .favorites-empty-icon{font-size:36px;margin-bottom:10px}
+    .favorites-empty-title{font-size:16px;font-weight:900}
+    .favorites-empty-text{font-size:12px;line-height:1.65;color:#7b818a;margin-top:7px}
+    .favorite-list{display:grid;gap:10px}
+    .favorite-card{
+      background:#fff;border-radius:18px;padding:14px;
+      box-shadow:0 7px 20px rgba(30,40,50,.055)
+    }
+    .favorite-card-top{display:flex;gap:12px;align-items:flex-start}
+    .favorite-emoji{
+      width:48px;height:48px;border-radius:15px;display:grid;place-items:center;
+      font-size:23px;flex:0 0 auto;background:#f4f5f7
+    }
+    .favorite-copy{min-width:0;flex:1}
+    .favorite-name{font-size:15px;font-weight:900;line-height:1.35}
+    .favorite-meta{font-size:11px;color:#858b94;margin-top:4px;line-height:1.45}
+    .favorite-actions{display:flex;gap:8px;margin-top:12px}
+    .favorite-open,.favorite-remove,.favorite-btn{
+      border:0;border-radius:12px;font-weight:850;-webkit-tap-highlight-color:transparent
+    }
+    .favorite-open{flex:1;padding:10px 12px;background:#22232a;color:#fff;font-size:12px}
+    .favorite-remove{padding:10px 12px;background:#f3f4f6;color:#686e77;font-size:12px}
+    .favorite-btn{
+      width:100%;margin:9px 0 2px;padding:10px 12px;
+      background:#fff1f5;color:#dc557a;border:1px solid #ffd4e0;font-size:12px
+    }
+    .favorite-btn.saved{background:#ffedf3;color:#cf3e68;border-color:#ffc6d7}
+    .settings-group{background:#fff;border-radius:20px;overflow:hidden;margin-bottom:12px;box-shadow:0 7px 20px rgba(30,40,50,.05)}
+    .settings-row{padding:15px 16px;border-bottom:1px solid #eff1f3}
+    .settings-row:last-child{border-bottom:0}
+    .settings-label{font-size:13px;font-weight:850}
+    .settings-value{font-size:12px;color:#7b818a;line-height:1.55;margin-top:4px}
+    .settings-danger{
+      width:100%;border:0;background:#fff;color:#d94d5f;padding:16px;
+      text-align:left;font-size:13px;font-weight:850
+    }
+    .settings-note{font-size:11px;color:#8a9098;line-height:1.65;padding:2px 3px 12px}
+    .utility-nav{position:absolute}
   </style>
 </head>
 <body>
@@ -479,15 +538,15 @@
     </div>
 
     <nav class="home-nav" aria-label="メインナビゲーション">
-      <button class="home-nav-item active" type="button">
+      <button class="home-nav-item active" type="button" data-nav="home">
         <span class="home-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10H6V10"/><path d="M9 20v-6h6v6"/></svg></span>
         <span>ホーム</span>
       </button>
-      <button class="home-nav-item" type="button" data-soon="お気に入り">
+      <button class="home-nav-item" type="button" data-nav="favorites">
         <span class="home-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.6 4.2 13A5.3 5.3 0 0 1 11.7 5.5L12 5.8l.3-.3A5.3 5.3 0 0 1 19.8 13Z"/></svg></span>
         <span>お気に入り</span>
       </button>
-      <button class="home-nav-item" type="button" data-soon="設定">
+      <button class="home-nav-item" type="button" data-nav="settings">
         <span class="home-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.8 1.8 0 0 0 .36 2l.06.06-2.76 2.76-.06-.06a1.8 1.8 0 0 0-2-.36 1.8 1.8 0 0 0-1.1 1.65V21h-3.9v-.08A1.8 1.8 0 0 0 8.9 19.3a1.8 1.8 0 0 0-2 .36l-.06.06-2.76-2.76.06-.06a1.8 1.8 0 0 0 .36-2 1.8 1.8 0 0 0-1.65-1.1H2.8V10h.08A1.8 1.8 0 0 0 4.5 8.9a1.8 1.8 0 0 0-.36-2l-.06-.06 2.76-2.76.06.06a1.8 1.8 0 0 0 2 .36A1.8 1.8 0 0 0 10 2.85V2.8h3.9v.08A1.8 1.8 0 0 0 15 4.5a1.8 1.8 0 0 0 2-.36l.06-.06 2.76 2.76-.06.06a1.8 1.8 0 0 0-.36 2 1.8 1.8 0 0 0 1.65 1.1h.08v3.9h-.08A1.8 1.8 0 0 0 19.4 15Z"/></svg></span>
         <span>設定</span>
       </button>
@@ -538,6 +597,64 @@
     <button class="floating" id="locateBtn" aria-label="現在地を表示">◎</button>
     <div class="toast" id="toast"></div>
   </div>
+  </section>
+
+  <section class="screen utility-screen hidden" id="favoritesScreen">
+    <div class="utility-head">
+      <button class="utility-back" type="button" data-nav="home" aria-label="ホームへ戻る">‹</button>
+      <div class="utility-title">お気に入り</div>
+    </div>
+    <div class="utility-body">
+      <p class="utility-lead">行きたい場所を保存して、あとからすぐ地図で開けます。</p>
+      <div id="favoritesContent"></div>
+    </div>
+    <nav class="home-nav utility-nav" aria-label="メインナビゲーション">
+      <button class="home-nav-item" type="button" data-nav="home"><span class="home-nav-icon">⌂</span><span>ホーム</span></button>
+      <button class="home-nav-item active" type="button" data-nav="favorites"><span class="home-nav-icon">♡</span><span>お気に入り</span></button>
+      <button class="home-nav-item" type="button" data-nav="settings"><span class="home-nav-icon">⚙</span><span>設定</span></button>
+    </nav>
+  </section>
+
+  <section class="screen utility-screen hidden" id="settingsScreen">
+    <div class="utility-head">
+      <button class="utility-back" type="button" data-nav="home" aria-label="ホームへ戻る">‹</button>
+      <div class="utility-title">設定</div>
+    </div>
+    <div class="utility-body">
+      <div class="settings-group">
+        <div class="settings-row">
+          <div class="settings-label">myCocomoについて</div>
+          <div class="settings-value">福岡県内のおでかけ先を、目的や気分から探せるガイドです。</div>
+        </div>
+        <div class="settings-row">
+          <div class="settings-label">バージョン</div>
+          <div class="settings-value" id="settingsBuild"></div>
+        </div>
+      </div>
+      <div class="settings-group">
+        <div class="settings-row">
+          <div class="settings-label">位置情報</div>
+          <div class="settings-value">現在地ボタンを押したときだけ、端末の位置情報を使って地図上に現在地を表示します。</div>
+        </div>
+        <div class="settings-row">
+          <div class="settings-label">写真について</div>
+          <div class="settings-value">施設写真はWikimedia Commons、Google Placesなどの外部提供元や、myCocomoのオリジナル素材を利用しています。提供元情報は写真に応じて表示します。</div>
+        </div>
+        <div class="settings-row">
+          <div class="settings-label">お気に入りの保存</div>
+          <div class="settings-value">お気に入りはこの端末のブラウザ内に保存されます。端末変更やブラウザデータ削除では引き継がれません。</div>
+        </div>
+      </div>
+      <div class="settings-group">
+        <button class="settings-danger" type="button" id="clearFavoritesBtn">お気に入りをすべて削除</button>
+      </div>
+      <div class="settings-note">営業時間・料金・イベント情報などは変更される場合があります。お出かけ前に各施設の公式情報をご確認ください。</div>
+    </div>
+    <nav class="home-nav utility-nav" aria-label="メインナビゲーション">
+      <button class="home-nav-item" type="button" data-nav="home"><span class="home-nav-icon">⌂</span><span>ホーム</span></button>
+      <button class="home-nav-item" type="button" data-nav="favorites"><span class="home-nav-icon">♡</span><span>お気に入り</span></button>
+      <button class="home-nav-item active" type="button" data-nav="settings"><span class="home-nav-icon">⚙</span><span>設定</span></button>
+    </nav>
   </section>
 </div>
 
@@ -3177,6 +3294,82 @@ function handlePhotoError(img){
  if(placeholder) placeholder.hidden=false;
 }
 
+const FAVORITES_STORAGE_KEY='mycocomo_favorites_v1';
+function loadFavoriteIds(){
+ try{
+  const value=JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY)||'[]');
+  return new Set(Array.isArray(value)?value.filter(id=>facilityById[id]):[]);
+ }catch(e){ return new Set(); }
+}
+const favoriteIds=loadFavoriteIds();
+function saveFavoriteIds(){
+ try{ localStorage.setItem(FAVORITES_STORAGE_KEY,JSON.stringify([...favoriteIds])); }catch(e){}
+}
+function isFavorite(facilityId){ return Boolean(facilityId && favoriteIds.has(facilityId)); }
+function favoriteButtonHtml(s){
+ const saved=isFavorite(s.facilityId);
+ return `<button class="favorite-btn${saved?' saved':''}" type="button" onclick="toggleFavorite('${s.facilityId}',event)">${saved?'♥ お気に入り済み':'♡ お気に入りに追加'}</button>`;
+}
+function toggleFavorite(facilityId,event){
+ if(!facilityId) return;
+ if(favoriteIds.has(facilityId)) favoriteIds.delete(facilityId);
+ else favoriteIds.add(facilityId);
+ saveFavoriteIds();
+ if(event?.currentTarget){
+  const saved=favoriteIds.has(facilityId);
+  event.currentTarget.classList.toggle('saved',saved);
+  event.currentTarget.textContent=saved?'♥ お気に入り済み':'♡ お気に入りに追加';
+ }
+ if(!document.getElementById('favoritesScreen').classList.contains('hidden')) renderFavorites();
+}
+function favoriteSpotForId(facilityId){
+ return spots.find(s=>s.facilityId===facilityId && isSpotVisible(s)) || spots.find(s=>s.facilityId===facilityId) || null;
+}
+function renderFavorites(){
+ const wrap=document.getElementById('favoritesContent');
+ if(!wrap) return;
+ const ids=[...favoriteIds].filter(id=>facilityById[id]);
+ if(!ids.length){
+  wrap.innerHTML='<div class="favorites-empty"><div class="favorites-empty-icon">♡</div><div class="favorites-empty-title">まだお気に入りはありません</div><div class="favorites-empty-text">地図の施設詳細から「お気に入りに追加」を押すと、ここに保存されます。</div></div>';
+  return;
+ }
+ const cards=ids.map(id=>{
+  const s=favoriteSpotForId(id);
+  if(!s) return '';
+  const st=styles[s.cat]||styles.date;
+  const meta=[s.area,st.label.replace('向け','')].filter(Boolean).join('・');
+  return `<div class="favorite-card"><div class="favorite-card-top"><div class="favorite-emoji">${st.emoji}</div><div class="favorite-copy"><div class="favorite-name">${s.name}</div><div class="favorite-meta">${meta}<br>${displayNote(s)}</div></div></div><div class="favorite-actions"><button class="favorite-open" type="button" onclick="openFavoriteFacility('${id}')">地図で見る</button><button class="favorite-remove" type="button" onclick="removeFavorite('${id}')">削除</button></div></div>`;
+ }).join('');
+ wrap.innerHTML=`<div class="favorite-list">${cards}</div>`;
+}
+function removeFavorite(facilityId){
+ favoriteIds.delete(facilityId);saveFavoriteIds();renderFavorites();
+}
+function openFavoriteFacility(facilityId){
+ const s=favoriteSpotForId(facilityId);
+ if(!s) return;
+ openMap(s.cat);
+ setTimeout(()=>{
+  const marker=markers.find(m=>m.__facilityId===facilityId);
+  if(marker) focusSpot(s,marker);
+ },420);
+}
+function showAppScreen(name){
+ ['homeScreen','mapScreen','favoritesScreen','settingsScreen'].forEach(id=>{
+  document.getElementById(id)?.classList.add('hidden');
+ });
+ if(name==='favorites'){
+  renderFavorites();
+  document.getElementById('favoritesScreen').classList.remove('hidden');
+ }else if(name==='settings'){
+  const build=document.getElementById('settingsBuild');
+  if(build) build.textContent=APP_BUILD;
+  document.getElementById('settingsScreen').classList.remove('hidden');
+ }else{
+  document.getElementById('homeScreen').classList.remove('hidden');
+ }
+}
+
 function facilityVisualHtml(s,st){
  const photo=facilityPhotoMetadata[s.facilityId];
  const hasPilotRecord=Boolean(photo?.imageType);
@@ -3234,6 +3427,7 @@ function popupHtml(s){
   <div class="popup-title">${s.name}</div>
   <div class="tags">${tags}</div>
   <div class="popup-note">${displayNote(s)}</div>
+  ${favoriteButtonHtml(s)}
   ${info ? `<div class="popup-info">${info}</div><div class="popup-disclaimer">営業時間・定休日・評価は変更される場合があります。最新情報は店舗・Googleマップ等でご確認ください。</div>` : ''}
   ${s.officialUrl ? `<a class="official-link" target="_blank" rel="noopener" href="${s.officialUrl}">公式情報を確認</a>` : ''}
   <a class="gmaps" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${q}">Googleマップで見る</a>`;
@@ -3499,6 +3693,7 @@ function renderCategory(cat){
 
  chosen.forEach((s,i)=>{
   const marker=L.marker([s.lat,s.lng],{icon:makeIcon(s)}).addTo(map);
+  marker.__facilityId=s.facilityId;
   marker.bindPopup(popupHtml(s));
   marker.on('popupopen',async()=>{
     const photo=facilityPhotoMetadata[s.facilityId];
@@ -3583,6 +3778,8 @@ document.getElementById('locateBtn').addEventListener('click',()=>{
 
 function openMap(cat){
  document.getElementById('homeScreen').classList.add('hidden');
+ document.getElementById('favoritesScreen').classList.add('hidden');
+ document.getElementById('settingsScreen').classList.add('hidden');
  document.getElementById('mapScreen').classList.remove('hidden');
  document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));
 
@@ -3603,10 +3800,18 @@ function openMap(cat){
 }
 
 document.querySelectorAll('[data-go]').forEach(btn=>btn.addEventListener('click',()=>openMap(btn.dataset.go)));
-document.querySelectorAll('[data-soon]').forEach(btn=>btn.addEventListener('click',()=>showToast(btn.dataset.soon+'は次のアップデートで追加予定')));
-document.getElementById('backBtn').addEventListener('click',()=>{
- document.getElementById('mapScreen').classList.add('hidden');
- document.getElementById('homeScreen').classList.remove('hidden');
+document.querySelectorAll('[data-nav]').forEach(btn=>btn.addEventListener('click',()=>{
+ const target=btn.dataset.nav;
+ if(target==='favorites') showAppScreen('favorites');
+ else if(target==='settings') showAppScreen('settings');
+ else showAppScreen('home');
+}));
+document.getElementById('backBtn').addEventListener('click',()=>showAppScreen('home'));
+document.getElementById('clearFavoritesBtn')?.addEventListener('click',()=>{
+ if(!favoriteIds.size){showToast('お気に入りはまだありません');return;}
+ if(confirm('お気に入りをすべて削除しますか？')){
+  favoriteIds.clear();saveFavoriteIds();renderFavorites();showToast('お気に入りを削除しました');
+ }
 });
 
 // 初期状態はホーム画面なので、地図の本描画は openMap() 時に行う。
