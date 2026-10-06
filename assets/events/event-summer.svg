@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#123a8a"/><stop offset="1" stop-color="#1b79c8"/></linearGradient></defs>
+<rect width="960" height="720" rx="48" fill="url(#g)"/><path d="M0 520h960v200H0z" fill="#fff" opacity=".94"/>
+<path d="M80 80h250l-25 90H80z" fill="#2386ff"/><text x="120" y="145" font-size="72" font-family="sans-serif" font-weight="800" fill="white">EVENT</text>
+<g fill="none" stroke-linecap="round"><path d="M470 310l0-110M470 255l-85-70M470 255l85-70M470 255l-105 10M470 255l105 10" stroke="#ffd45c" stroke-width="18"/>
+<path d="M690 360l0-90M690 320l-70-58M690 320l70-58M690 320l-80 8M690 320l80 8" stroke="#ff9fd0" stroke-width="15"/></g>
+<path d="M90 470c150-80 250-70 390 0s250 75 390 0v50H90z" fill="#0a315e" opacity=".55"/>
+<text x="70" y="605" font-size="58" font-family="sans-serif" font-weight="800" fill="#166ac3">夏のイベント</text>
+<text x="70" y="670" font-size="32" font-family="sans-serif" fill="#333">夏祭り・花火・季節の催し</text></svg>
