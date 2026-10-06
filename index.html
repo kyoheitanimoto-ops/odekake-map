@@ -3487,7 +3487,7 @@ function isSpotVisible(s){
  if(Array.isArray(s.seasonalMonths) && !s.seasonalMonths.includes(new Date().getMonth()+1)) return false;
  if(!s.eventStart || !s.eventEnd) return true;
  const today=localDateKey();
- if(s.bookingRequired && s.bookingEnd && today>s.bookingEnd) return false;
+ 
  return s.eventStatus!=='中止' && today<=s.eventEnd;
 }
 
