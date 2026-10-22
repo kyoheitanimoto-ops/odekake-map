@@ -1,55 +1,40 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://mycocomo.pages.dev/contact.html">
   <title>お問い合わせ｜myCocomo</title>
-  <meta name="description" content="myCocomoへの掲載情報の修正、不具合、写真・権利関係、その他のお問い合わせ窓口です。" />
-  <link rel="canonical" href="https://mycocomo.pages.dev/contact.html" />
-  <meta name="theme-color" content="#F6F2EA" />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <noscript><meta http-equiv="refresh" content="0;url=https://mycocomo.pages.dev/contact.html"></noscript>
   <style>
-    :root{color-scheme:light;--bg:#fffafc;--card:#fff;--text:#17171c;--muted:#6f7480;--accent:#df6688}
+    :root{color-scheme:light;--bg:#fffafc;--text:#20232a;--accent:#d95e7e}
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;line-height:1.75}
-    main{width:min(720px,100%);margin:0 auto;padding:calc(24px + env(safe-area-inset-top)) 18px calc(48px + env(safe-area-inset-bottom))}
-    .back{display:inline-block;margin-bottom:20px;color:var(--accent);font-weight:700;text-decoration:none}
-    h1{font-size:25px;line-height:1.35;margin:0 0 8px}
-    .lead{font-size:14px;color:#454a52;margin:0 0 20px}
-    section{background:var(--card);border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 6px 20px rgba(30,40,50,.05)}
-    h2{font-size:16px;margin:0 0 8px}
-    p{font-size:14px;margin:0;color:#454a52}
-    p+p{margin-top:8px}
-    .mail{display:inline-block;margin-top:10px;font-weight:800;color:#b9466c;text-decoration:underline;text-underline-offset:3px;word-break:break-all}
-    ul{margin:8px 0 0;padding-left:20px;color:#454a52;font-size:14px}
-    .note{font-size:12px;color:var(--muted)}
+    body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif}
+    main{width:min(520px,100%);padding:28px;border-radius:22px;background:#fff;box-shadow:0 12px 36px rgba(30,35,45,.1);text-align:center}
+    h1{font-size:22px;line-height:1.5;margin:0 0 10px}
+    p{font-size:15px;line-height:1.8;margin:0 0 18px}
+    a{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;text-decoration:none}
   </style>
 </head>
 <body>
-<main>
-  <a class="back" href="./">‹ myCocomoに戻る</a>
-  <h1>お問い合わせ</h1>
-  <p class="lead">myCocomoに関するご連絡は、下記メールアドレスまでお願いします。</p>
-
-  <section>
-    <h2>お問い合わせ先</h2>
-    <a class="mail" href="mailto:mycocomo.support@gmail.com">mycocomo.support@gmail.com</a>
-  </section>
-
-  <section>
-    <h2>ご連絡いただける内容</h2>
-    <ul>
-      <li>施設情報・営業時間・料金等の修正</li>
-      <li>写真・著作権・掲載内容に関するご連絡</li>
-      <li>表示崩れや不具合の報告</li>
-      <li>その他、myCocomoに関するお問い合わせ</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>ご注意</h2>
-    <p class="note">内容によっては返信まで時間がかかる場合があります。施設の予約、営業状況、個別サービスについては各施設へ直接お問い合わせください。</p>
-  </section>
-</main>
+  <main>
+    <h1>myCocomoのURLが新しくなりました</h1>
+    <p>お問い合わせは新しいURLでご覧いただけます。自動で移動しない場合は、下のボタンを押してください。</p>
+    <a href="https://mycocomo.pages.dev/contact.html" id="continue-link">新しいURLを開く</a>
+  </main>
+  <script>
+  (function(){
+    "use strict";
+    var oldHost = "kyoheitanimoto-ops.github.io";
+    var allowedPaths = ["/odekake-map/contact.html"];
+    var destination = new URL("https://mycocomo.pages.dev/contact.html");
+    if (window.location.hostname !== oldHost) return;
+    if (!allowedPaths.includes(window.location.pathname)) return;
+    destination.search = window.location.search;
+    destination.hash = window.location.hash;
+    window.location.replace(destination.href);
+  })();
+  </script>
 </body>
 </html>
