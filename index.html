@@ -3565,6 +3565,7 @@ function isSpotVisible(s){
 
 function focusSpot(s, marker){
  map.flyTo([s.lat,s.lng],12,{duration:.55});
+ preparePopupViewport(marker);
  marker.openPopup();
  document.getElementById('recTitle').textContent=s.name;
  document.getElementById('recMeta').textContent=displayNote(s);
@@ -3785,11 +3786,12 @@ function renderCategory(cat){
   const marker=L.marker([s.lat,s.lng],{icon:makeIcon(s)}).addTo(map);
   marker.__facilityId=s.facilityId;
   marker.bindPopup(popupHtml(s),{
-    maxHeight:Math.max(180,window.innerHeight-190-(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--safe-area-inset-top'))||0)),
-    autoPan:true,autoPanPaddingTopLeft:[18,Math.max(190,Math.round(window.innerHeight*.23))],autoPanPaddingBottomRight:[18,28],keepInView:true
+    maxHeight:Math.max(1,window.innerHeight-190),
+    autoPan:true,autoPanPaddingTopLeft:[18,Math.max(150,Math.round(window.innerHeight*.23))],autoPanPaddingBottomRight:[18,28],keepInView:true
   });
+  marker.on('preclick',()=>preparePopupViewport(marker));
   marker.on('popupopen',()=>{
-    syncPopupViewport();
+    preparePopupViewport(marker);
     const content=marker.getPopup()?.getElement()?.querySelector('.leaflet-popup-content');
     if(content){L.DomEvent.disableScrollPropagation(content);L.DomEvent.disableClickPropagation(content);}
   });
@@ -3883,12 +3885,33 @@ function syncPopupViewport(){
    filters.getBoundingClientRect().bottom
  );
  const mapRect=document.getElementById('map').getBoundingClientRect();
- const available=Math.max(180,Math.floor(mapRect.bottom-controlsBottom-20));
+ // No fixed minimum: the popup must never grow into the category/filter controls.
+ const available=Math.max(1,Math.floor(mapRect.bottom-controlsBottom-32));
  screen.style.setProperty('--popup-max-height',available+'px');
  return {top:controlsBottom,bottom:mapRect.bottom,maxHeight:available};
 }
-window.addEventListener('resize',()=>{if(!document.getElementById('mapScreen').classList.contains('hidden')) syncPopupViewport();});
-window.visualViewport?.addEventListener('resize',()=>{if(!document.getElementById('mapScreen').classList.contains('hidden')) syncPopupViewport();});
+function preparePopupViewport(marker){
+ const viewport=syncPopupViewport();
+ const popup=marker?.getPopup();
+ if(popup){
+  popup.options.maxHeight=viewport.maxHeight;
+  popup.options.autoPan=true;
+  popup.options.autoPanPaddingTopLeft=[18,Math.ceil(viewport.top+8)];
+  popup.options.autoPanPaddingBottomRight=[18,28];
+  popup.options.keepInView=true;
+ }
+ return viewport;
+}
+window.addEventListener('resize',()=>{
+ if(document.getElementById('mapScreen').classList.contains('hidden')) return;
+ syncPopupViewport();
+ markers.forEach(marker=>{if(marker.isPopupOpen()){preparePopupViewport(marker);marker.getPopup().update();}});
+});
+window.visualViewport?.addEventListener('resize',()=>{
+ if(document.getElementById('mapScreen').classList.contains('hidden')) return;
+ syncPopupViewport();
+ markers.forEach(marker=>{if(marker.isPopupOpen()){preparePopupViewport(marker);marker.getPopup().update();}});
+});
 
 function openMap(cat){
  document.getElementById('homeScreen').classList.add('hidden');
