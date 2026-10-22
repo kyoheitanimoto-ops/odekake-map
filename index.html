@@ -3470,7 +3470,7 @@ function facilityVisualHtml(s,st){
   : '';
  return `<div class="popup-visual" style="background:${st.grad}">
   ${image}
-  <div class="photo-placeholder"${image ? ' hidden' : ''}><span>${st.emoji}</span><small>イメージ</small></div>
+  <div class="photo-placeholder" style="background-image:linear-gradient(180deg,rgba(24,30,38,.02),rgba(24,30,38,.24)),url('${illustrationUrl}')"${image ? ' hidden' : ''}><span>${st.emoji}</span><small>イメージ</small></div>
   ${credit}
  </div>`;
 }
