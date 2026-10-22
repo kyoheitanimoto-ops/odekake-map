@@ -406,6 +406,26 @@
     #mapScreen .pin-shape{width:36px;height:44px}
     #mapScreen .leaflet-popup-content-wrapper{border-radius:22px!important}
     #mapScreen .leaflet-popup-content{width:226px!important;margin:11px!important}
+    /* Mobile facility detail bottom sheet */
+    .facility-sheet{
+      position:absolute;z-index:720;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));
+      display:none;flex-direction:column;max-height:var(--facility-sheet-max-height, min(62dvh, calc(100dvh - 230px - env(safe-area-inset-top) - env(safe-area-inset-bottom))));
+      overflow:hidden;border-radius:22px;background:rgba(255,255,255,.98);
+      box-shadow:0 12px 34px rgba(20,25,35,.24);border:1px solid rgba(255,255,255,.9);
+      backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);touch-action:pan-y
+    }
+    .facility-sheet.show{display:flex}
+    .facility-sheet-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:0 0 auto;padding:10px 14px 8px;border-bottom:1px solid #ececf2}
+    .facility-sheet-heading{font-size:12px;font-weight:850;color:#6d717b}
+    .facility-sheet-close{width:36px;height:36px;border:0;border-radius:50%;background:#f1f2f5;color:#333;font-size:23px;line-height:1;display:grid;place-items:center}
+    .facility-sheet-body{min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;padding:10px 12px calc(14px + env(safe-area-inset-bottom));scrollbar-width:thin}
+    .facility-sheet-body::-webkit-scrollbar{width:4px}
+    .facility-sheet-body::-webkit-scrollbar-thumb{background:rgba(80,85,95,.28);border-radius:4px}
+    .facility-sheet-body .popup-visual{margin-top:0}
+    .facility-sheet-body .popup-title{font-size:17px}
+    .facility-sheet-body .favorite-btn{min-height:42px}
+    .facility-sheet-body .gmaps,.facility-sheet-body .official-link{min-height:44px;display:grid;place-items:center}
+    @media(min-width:768px){.facility-sheet{display:none!important}}
     #mapScreen .popup-visual{aspect-ratio:4/3;margin-bottom:10px}
     #mapScreen .leaflet-tile-pane{filter:saturate(.62) brightness(1.08) contrast(.90)}
     #mapScreen .leaflet-control-attribution{opacity:.62}
@@ -588,6 +608,13 @@
 
   <div class="map-shell">
     <div id="map"></div>
+    <section class="facility-sheet" id="facilitySheet" aria-label="施設詳細" aria-hidden="true">
+      <div class="facility-sheet-head">
+        <span class="facility-sheet-heading">施設情報</span>
+        <button class="facility-sheet-close" id="facilitySheetClose" type="button" aria-label="施設詳細を閉じる">×</button>
+      </div>
+      <div class="facility-sheet-body" id="facilitySheetBody"></div>
+    </section>
     <div class="map-toolbar">
       <div class="glass" id="spotCount">4スポット</div>
       <div class="glass" id="categoryLabel">カップル</div>
@@ -3548,9 +3575,55 @@ function isSpotVisible(s){
  return s.eventStatus!=='中止' && today<=s.eventEnd;
 }
 
+let activeSheetFacilityId=null;
+const facilitySheet=document.getElementById('facilitySheet');
+const facilitySheetBody=document.getElementById('facilitySheetBody');
+const isMobileMap=()=>window.matchMedia('(max-width:767px)').matches;
+
+function syncFacilitySheetHeight(){
+ const filters=document.getElementById('cafeTimeFilters').classList.contains('show')
+   ? document.getElementById('cafeTimeFilters') : document.getElementById('subfilters');
+ const controlsBottom=Math.max(
+   document.querySelector('#mapScreen .map-head').getBoundingClientRect().bottom,
+   filters.getBoundingClientRect().bottom
+ );
+ const mapRect=document.getElementById('map').getBoundingClientRect();
+ const sheetBottom=parseFloat(getComputedStyle(facilitySheet).bottom)||12;
+ const viewportHeight=window.visualViewport?.height||window.innerHeight;
+ const available=Math.max(1,Math.floor(mapRect.bottom-controlsBottom-sheetBottom-12));
+ const maxHeight=Math.min(Math.floor(viewportHeight*.62),available);
+ document.getElementById('mapScreen').style.setProperty('--facility-sheet-max-height',maxHeight+'px');
+ return maxHeight;
+}
+function openFacilitySheet(s){
+ if(!isMobileMap()) return;
+ activeSheetFacilityId=s.facilityId;
+ facilitySheetBody.innerHTML=popupHtml(s);
+ facilitySheet.classList.add('show');
+ facilitySheet.setAttribute('aria-hidden','false');
+ syncFacilitySheetHeight();
+ facilitySheetBody.scrollTop=0;
+}
+function closeFacilitySheet(){
+ activeSheetFacilityId=null;
+ facilitySheet.classList.remove('show');
+ facilitySheet.setAttribute('aria-hidden','true');
+ facilitySheetBody.innerHTML='';
+}
+L.DomEvent.disableScrollPropagation(facilitySheetBody);
+L.DomEvent.disableClickPropagation(facilitySheet);
+document.getElementById('facilitySheetClose').addEventListener('click',closeFacilitySheet);
+window.addEventListener('resize',()=>{if(isMobileMap()&&facilitySheet.classList.contains('show')) syncFacilitySheetHeight();});
+window.visualViewport?.addEventListener('resize',()=>{if(isMobileMap()&&facilitySheet.classList.contains('show')) syncFacilitySheetHeight();});
+
 function focusSpot(s, marker){
- map.flyTo([s.lat,s.lng],12,{duration:.55});
- marker.openPopup();
+ if(isMobileMap()){
+  map.once('moveend',()=>openFacilitySheet(s));
+  map.flyTo([s.lat,s.lng],12,{duration:.55});
+ }else{
+  map.flyTo([s.lat,s.lng],12,{duration:.55});
+  marker.openPopup();
+ }
  document.getElementById('recTitle').textContent=s.name;
  document.getElementById('recMeta').textContent=displayNote(s);
  document.getElementById('recommendCard').style.background=spotBackground(s,styles[s.cat]);
@@ -3701,6 +3774,7 @@ function buildCafeTimeFilters(cat){
 }
 
 function renderCategory(cat){
+ closeFacilitySheet();
  markers.forEach(m=>map.removeLayer(m)); markers=[];
  let chosen=spots.filter(s=>s.cat===cat && isSpotVisible(s));
  if(cat==='food' && activeFoodFilters.length){
@@ -3769,18 +3843,28 @@ function renderCategory(cat){
  chosen.forEach((s,i)=>{
   const marker=L.marker([s.lat,s.lng],{icon:makeIcon(s)}).addTo(map);
   marker.__facilityId=s.facilityId;
-  marker.bindPopup(popupHtml(s));
-  marker.on('popupopen',async()=>{
-    const photo=facilityPhotoMetadata[s.facilityId];
-    if(photo?.imageType==='external_api' && photo.status!=='available'){
-      const ok=await ensureExternalPhotoMetadata(s.facilityId);
-      if(ok && marker.isPopupOpen()) marker.setPopupContent(popupHtml(s));
-    }
-  });
-  marker.on('click',()=>{
+  if(!isMobileMap()){
+    marker.bindPopup(popupHtml(s));
+    marker.on('popupopen',async()=>{
+      const photo=facilityPhotoMetadata[s.facilityId];
+      if(photo?.imageType==='external_api' && photo.status!=='available'){
+        const ok=await ensureExternalPhotoMetadata(s.facilityId);
+        if(ok && marker.isPopupOpen()) marker.setPopupContent(popupHtml(s));
+      }
+    });
+  }
+  marker.on('click',async()=>{
     document.getElementById('recTitle').textContent=s.name;
     document.getElementById('recMeta').textContent=displayNote(s);
     document.getElementById('recommendCard').style.background=spotBackground(s,styles[s.cat]);
+    if(isMobileMap()){
+      openFacilitySheet(s);
+      const photo=facilityPhotoMetadata[s.facilityId];
+      if(photo?.imageType==='external_api' && photo.status!=='available'){
+        const ok=await ensureExternalPhotoMetadata(s.facilityId);
+        if(ok && activeSheetFacilityId===s.facilityId) facilitySheetBody.innerHTML=popupHtml(s);
+      }
+    }
   });
   markers.push(marker); bounds.push([s.lat,s.lng]);
 
@@ -3849,6 +3933,43 @@ document.getElementById('locateBtn').addEventListener('click',()=>{
   map.setView([latitude,longitude],13,{animate:true});
   showToast('現在地を表示しました');
  },()=>showToast('位置情報を許可すると現在地を表示できます'),{enableHighAccuracy:true,timeout:8000,maximumAge:60000});
+});
+
+function syncPopupViewport(){
+ const screen=document.getElementById('mapScreen');
+ const filters=document.getElementById('cafeTimeFilters').classList.contains('show')
+   ? document.getElementById('cafeTimeFilters') : document.getElementById('subfilters');
+ const controlsBottom=Math.max(
+   screen.querySelector('.map-head').getBoundingClientRect().bottom,
+   filters.getBoundingClientRect().bottom
+ );
+ const mapRect=document.getElementById('map').getBoundingClientRect();
+ // No fixed minimum: the popup must never grow into the category/filter controls.
+ const available=Math.max(1,Math.floor(mapRect.bottom-controlsBottom-32));
+ screen.style.setProperty('--popup-max-height',available+'px');
+ return {top:controlsBottom,bottom:mapRect.bottom,maxHeight:available};
+}
+function preparePopupViewport(marker){
+ const viewport=syncPopupViewport();
+ const popup=marker?.getPopup();
+ if(popup){
+  popup.options.maxHeight=viewport.maxHeight;
+  popup.options.autoPan=true;
+  popup.options.autoPanPaddingTopLeft=[18,Math.ceil(viewport.top+8)];
+  popup.options.autoPanPaddingBottomRight=[18,28];
+  popup.options.keepInView=true;
+ }
+ return viewport;
+}
+window.addEventListener('resize',()=>{
+ if(document.getElementById('mapScreen').classList.contains('hidden')) return;
+ syncPopupViewport();
+ markers.forEach(marker=>{if(marker.isPopupOpen()){preparePopupViewport(marker);marker.getPopup().update();}});
+});
+window.visualViewport?.addEventListener('resize',()=>{
+ if(document.getElementById('mapScreen').classList.contains('hidden')) return;
+ syncPopupViewport();
+ markers.forEach(marker=>{if(marker.isPopupOpen()){preparePopupViewport(marker);marker.getPopup().update();}});
 });
 
 function openMap(cat){
