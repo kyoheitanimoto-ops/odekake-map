@@ -1,0 +1,9 @@
+MIGRATION REVIEW
+
+The active user-facing URL is https://mycocomo.pages.dev/.
+
+Existing GitHub Pages remains available at https://kyoheitanimoto-ops.github.io/odekake-map/; its deployment source/configuration must remain enabled during migration.
+
+After Cloudflare Pages production is confirmed, update Google Search Console: verify ownership of the Pages URL prefix using the preserved HTML verification file or meta token, submit https://mycocomo.pages.dev/sitemap.xml, and use Change of Address only if applicable and eligible. Do not disable the old Search Console property.
+
+This file is an informational placeholder added to the review branch. It does not change GitHub Pages behavior.
