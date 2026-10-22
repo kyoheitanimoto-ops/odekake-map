@@ -3328,6 +3328,8 @@ function loadFavoriteIds(){
  try{
   const value=JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY)||'[]');
   return new Set(Array.isArray(value)?value.filter(id=>facilityById[id]):[]);
+ }catch(e){ return new Set(); }
+}
 
 // Verified Wikimedia Commons replacements for batch 3.
 Object.assign(facilityPhotoMetadata['fuk-0233'],{
@@ -3342,8 +3344,6 @@ Object.assign(facilityPhotoMetadata['fuk-0205'],{
  imageUrl:'https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/%E4%B8%89%E6%B1%A0%E6%B8%AF%E3%81%AE%E9%96%98%E9%96%80.jpg/960px-%E4%B8%89%E6%B1%A0%E6%B8%AF%E3%81%AE%E9%96%98%E9%96%80.jpg',imageSource:'Wikimedia Commons',imageCredit:'じじき',imageType:'wikimedia',imageRole:'area',imageCheckedAt:'2026-10-22',placeholderType:'place',
  license:'CC BY-SA 4.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/',sourcePageUrl:'https://commons.wikimedia.org/wiki/File:%E4%B8%89%E6%B1%A0%E6%B8%AF%E3%81%AE%E9%96%98%E9%96%80.jpg',commercialUse:true,modificationAllowed:true,usageNote:'三池港展望所から眺望できる三池港の閘門を示すエリア画像。作者・CC BY-SA 4.0をCommons元ページで確認。施設外観として表示しない。'
 });
- }catch(e){ return new Set(); }
-}
 const favoriteIds=loadFavoriteIds();
 function saveFavoriteIds(){
  try{ localStorage.setItem(FAVORITES_STORAGE_KEY,JSON.stringify([...favoriteIds])); }catch(e){}
