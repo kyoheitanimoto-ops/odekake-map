@@ -406,6 +406,21 @@
     #mapScreen .pin-shape{width:36px;height:44px}
     #mapScreen .leaflet-popup-content-wrapper{border-radius:22px!important}
     #mapScreen .leaflet-popup-content{width:226px!important;margin:11px!important}
+    /* Mobile facility popup: keep the fixed discovery controls reachable. */
+    #mapScreen .leaflet-popup-content-wrapper{overflow:hidden}
+    #mapScreen .leaflet-popup-content{
+      max-height:var(--popup-max-height,calc(100vh - 190px - env(safe-area-inset-top) - env(safe-area-inset-bottom)))!important;
+      overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+      touch-action:pan-y;scrollbar-width:thin
+    }
+    #mapScreen .leaflet-popup-content::-webkit-scrollbar{width:4px}
+    #mapScreen .leaflet-popup-content::-webkit-scrollbar-thumb{background:rgba(80,85,95,.28);border-radius:4px}
+    #mapScreen .leaflet-popup-content a,#mapScreen .leaflet-popup-content button{touch-action:manipulation}
+    @media(max-width:600px){
+      #mapScreen .leaflet-popup{margin-bottom:8px}
+      #mapScreen .leaflet-popup-content{width:min(226px,calc(100vw - 58px))!important}
+    }
+
     #mapScreen .popup-visual{aspect-ratio:4/3;margin-bottom:10px}
     #mapScreen .leaflet-tile-pane{filter:saturate(.62) brightness(1.08) contrast(.90)}
     #mapScreen .leaflet-control-attribution{opacity:.62}
@@ -3769,7 +3784,15 @@ function renderCategory(cat){
  chosen.forEach((s,i)=>{
   const marker=L.marker([s.lat,s.lng],{icon:makeIcon(s)}).addTo(map);
   marker.__facilityId=s.facilityId;
-  marker.bindPopup(popupHtml(s));
+  marker.bindPopup(popupHtml(s),{
+    maxHeight:Math.max(180,window.innerHeight-190-(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--safe-area-inset-top'))||0)),
+    autoPan:true,autoPanPaddingTopLeft:[18,Math.max(190,Math.round(window.innerHeight*.23))],autoPanPaddingBottomRight:[18,28],keepInView:true
+  });
+  marker.on('popupopen',()=>{
+    syncPopupViewport();
+    const content=marker.getPopup()?.getElement()?.querySelector('.leaflet-popup-content');
+    if(content){L.DomEvent.disableScrollPropagation(content);L.DomEvent.disableClickPropagation(content);}
+  });
   marker.on('popupopen',async()=>{
     const photo=facilityPhotoMetadata[s.facilityId];
     if(photo?.imageType==='external_api' && photo.status!=='available'){
@@ -3850,6 +3873,22 @@ document.getElementById('locateBtn').addEventListener('click',()=>{
   showToast('現在地を表示しました');
  },()=>showToast('位置情報を許可すると現在地を表示できます'),{enableHighAccuracy:true,timeout:8000,maximumAge:60000});
 });
+
+function syncPopupViewport(){
+ const screen=document.getElementById('mapScreen');
+ const filters=document.getElementById('cafeTimeFilters').classList.contains('show')
+   ? document.getElementById('cafeTimeFilters') : document.getElementById('subfilters');
+ const controlsBottom=Math.max(
+   screen.querySelector('.map-head').getBoundingClientRect().bottom,
+   filters.getBoundingClientRect().bottom
+ );
+ const mapRect=document.getElementById('map').getBoundingClientRect();
+ const available=Math.max(180,Math.floor(mapRect.bottom-controlsBottom-20));
+ screen.style.setProperty('--popup-max-height',available+'px');
+ return {top:controlsBottom,bottom:mapRect.bottom,maxHeight:available};
+}
+window.addEventListener('resize',()=>{if(!document.getElementById('mapScreen').classList.contains('hidden')) syncPopupViewport();});
+window.visualViewport?.addEventListener('resize',()=>{if(!document.getElementById('mapScreen').classList.contains('hidden')) syncPopupViewport();});
 
 function openMap(cat){
  document.getElementById('homeScreen').classList.add('hidden');
