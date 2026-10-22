@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-    <meta name="app-build" content="20261022-photo-info-batch4" />
+    <meta name="app-build" content="20261022-placeholder-illustrations" />
     <meta name="google-site-verification" content="wVnWjVljpjpQPCquFT5xLHmWdNXDK5BQFLb0RVaaI7A" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -135,10 +135,10 @@
       position:relative;font-size:26px;font-weight:900;background:linear-gradient(135deg,#ff7da5,#ff9a7a)
     }
     .popup-photo{width:100%;height:100%;object-fit:cover;display:block}
-    .photo-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+    .photo-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background-size:cover;background-position:center}
     .photo-placeholder[hidden]{display:none}
     .photo-placeholder span{font-size:26px;line-height:1}
-    .photo-placeholder small{font-size:10px;line-height:1;font-weight:850;letter-spacing:.08em;color:rgba(255,255,255,.94);text-shadow:0 1px 4px rgba(0,0,0,.22)}
+    .photo-placeholder small{font-size:10px;line-height:1;font-weight:850;letter-spacing:.08em;color:rgba(255,255,255,.98);text-shadow:0 1px 4px rgba(0,0,0,.22);background:rgba(20,24,29,.62);padding:5px 8px;border-radius:999px}
     .photo-credit{position:absolute;left:6px;right:6px;bottom:6px;z-index:2;width:max-content;max-width:calc(100% - 12px);padding:4px 6px;border-radius:7px;background:rgba(20,24,29,.68);color:#fff;font-size:9px;line-height:1.25;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
     .photo-credit a{color:#fff;text-decoration:underline;text-underline-offset:2px}
     .popup-title{font-size:16px;font-weight:900;letter-spacing:-.02em;margin-bottom:6px}
@@ -3205,6 +3205,20 @@ const SPOT_VISUALS={
  other:{icon:'dots',color:'#7D8791'}
 };
 
+const PLACEHOLDER_ILLUSTRATIONS=Object.freeze({
+ cafe:'cafe',meal:'gourmet',water:'sea-view',nature:'mountain-nature',
+ park:'park-playground',indoor:'park-playground',shrine:'shrine-history',heritage:'shrine-history',
+ animal:'zoo-aquarium',aquarium:'zoo-aquarium',spa:'onsen',museum:'other',other:'other',
+ classic:'other',town:'other',activity:'other',night:'other',seasonal:'other',shopping:'other',
+ bar:'cafe',drive:'other',stay:'mountain-nature',rain:'park-playground'
+});
+
+function placeholderIllustrationUrl(s){
+ const visual=spotVisual(s);
+ const asset=PLACEHOLDER_ILLUSTRATIONS[Object.keys(PLACEHOLDER_ILLUSTRATIONS).find(key=>SPOT_VISUALS[key]===visual)] || 'other';
+ return `assets/placeholder-illustrations/${asset}.jpg`;
+}
+
 function spotVisual(s){
  if(s.visualType && SPOT_VISUALS[s.visualType]) return SPOT_VISUALS[s.visualType];
  const tags=s.tags||[];
@@ -3434,6 +3448,7 @@ function facilityVisualHtml(s,st){
  const photo=facilityPhotoMetadata[s.facilityId];
  const hasPilotRecord=Boolean(photo?.imageType);
  const imageUrl=hasPilotRecord ? photo.imageUrl : s.image;
+ const illustrationUrl=placeholderIllustrationUrl(s);
  let credit='';
  if(photo?.imageType==='external_api' && imageUrl){
   const authors=Array.isArray(photo.authorAttributions) ? photo.authorAttributions : [];
