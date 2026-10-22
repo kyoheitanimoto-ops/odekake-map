@@ -3564,9 +3564,12 @@ function isSpotVisible(s){
 }
 
 function focusSpot(s, marker){
+ const openAfterMove=()=>{
+  preparePopupViewport(marker);
+  marker.openPopup();
+ };
+ map.once('moveend',openAfterMove);
  map.flyTo([s.lat,s.lng],12,{duration:.55});
- preparePopupViewport(marker);
- marker.openPopup();
  document.getElementById('recTitle').textContent=s.name;
  document.getElementById('recMeta').textContent=displayNote(s);
  document.getElementById('recommendCard').style.background=spotBackground(s,styles[s.cat]);
