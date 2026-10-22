@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-    <meta name="app-build" content="20261022-search-console" />
+    <meta name="app-build" content="20261022-photo-info-batch1" />
     <meta name="google-site-verification" content="wVnWjVljpjpQPCquFT5xLHmWdNXDK5BQFLb0RVaaI7A" />
   <meta name="theme-color" content="#F6F2EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -708,7 +708,7 @@ const spots = [
  {name:"ららぽーと福岡",cat:"date",lat:33.56473,lng:130.44030,note:"買い物や食事をゆっくり楽しめる大型商業施設。天候を気にせず過ごしやすい。",tags:["王道","雨の日","ショッピング"],image:""},
  {name:"MARK IS 福岡ももち",cat:"date",lat:33.59268,lng:130.36363,note:"映画・ショッピング・食事を組み合わせやすい百道エリアの定番デートスポット。",tags:["王道","雨の日","映画","ショッピング"],image:""},
  {name:"シーサイドももち海浜公園",cat:"date",lat:33.5949,lng:130.3519,area:"百道浜",note:"白い砂浜とマリゾンを楽しめる福岡の王道デートスポット。昼・夕日・夜まで使いやすい。",tags:["王道","海","夕日","散歩"],image:""},
- {name:"のこのしまアイランドパーク",cat:"date",lat:33.6285,lng:130.3038,area:"能古島",note:"季節の花と博多湾の景色を楽しめる王道の島デート。写真映えと一日デートの両方に強い。",tags:["王道","自然","景色","一日","SNS人気"],image:""},
+ {name:"のこのしまアイランドパーク",cat:"date",lat:33.6285,lng:130.3038,area:"能古島",note:"季節の花と博多湾の景色を楽しめる王道の島デート。写真映えと一日デートの両方に強い。",tags:["王道","自然","景色","一日","SNS人気"],price:"大人1,500円／小中学生800円／3歳以上500円",image:"",hours:"平日・土曜9:00〜17:00／日祝9:00〜18:30",closed:"休園日なし（臨時変更は公式確認）",officialUrl:"https://nokonoshima.com/",lastVerified:"2026-10-22"},
  {name:"チームラボフォレスト 福岡",cat:"date",lat:33.5954,lng:130.3622,area:"地行浜",note:"光とデジタルアートを体験できる屋内スポット。雨の日や写真を残したいデートに向く。",tags:["王道","雨の日","SNS人気","アート","記念日"],image:""},
  {name:"福岡市科学館 ドームシアター",cat:"date",lat:33.5772,lng:130.3780,area:"六本松",note:"九州最大級のプラネタリウム。雨の日や落ち着いた夜デートにも使いやすい。",tags:["王道","雨の日","プラネタリウム"],image:"IMG_0500.jpeg"},
  {name:"太宰府天満宮",cat:"date",lat:33.5214,lng:130.5349,area:"太宰府",note:"参道の食べ歩きやカフェと合わせやすい福岡の王道デート。季節ごとの景色も楽しめる。",tags:["王道","街歩き","和","昼"],image:"IMG_0507.jpeg"},
@@ -856,7 +856,7 @@ const spots = [
  {name:"ふるさとわらべ館",cat:"kids",lat:33.2767408,lng:130.6277289,area:"八女市上陽町",note:"工作・つみ木・室内遊具などを楽しめる体験型ミュージアム。入館無料で、雨の日でも子どもの『やってみたい』をしっかり満たせる。",tags:["雨の日","室内遊び","学び・体験","ものづくり","一日遊べる"],age:"幼児〜小学生",ageGroups:["3〜6歳","小学生"],price:"入館無料／一部体験・遊具は有料",image:"",hours:"10:00〜16:00",closed:"火曜日・水曜日・年末年始"},
  {name:"MPLC石炭館",cat:"kids",lat:32.9896,lng:130.4329,area:"大牟田市・岬町",note:"三池炭鉱の歴史とエネルギーを学べる科学・産業系ミュージアム。遊びながら学べるエネルギー体験コーナーもある。",tags:["雨の日","学び・体験","科学・自然","歴史・文化"],age:"小学生中心",price:"4歳〜中学生210円／高校生〜大人420円",image:"",hours:"9:30〜17:00",closed:"月曜日（祝日の場合は翌平日）・年末年始"},
  {name:"福岡市民防災センター",cat:"kids",lat:33.5892713,lng:130.3550342,area:"福岡市早良区・百道浜",note:"地震、強風、煙避難、水消火器などを親子で体験し、災害時の行動を実践的に学べる。約1時間20分の一般体験コースがあり、子どもにも分かりやすい。",tags:["雨の日","学び・体験","仕事・社会"],age:"幼児〜小学生（体験内容により年齢・身長条件あり）",price:"無料／体験コースは事前予約推奨",image:"",hours:"9:30〜17:00（入館16:30まで）",closed:"月曜日・毎月最終火曜日・年末年始ほか"},
- {name:"九州鉄道記念館",cat:"kids",lat:33.9431488,lng:130.9617938,area:"北九州市門司区・門司港レトロ",note:"九州の鉄道史を実物車両や大パノラマで学べる鉄道博物館。運転シミュレーターやミニ鉄道もあり、見るだけでなく親子で体験できる。",tags:["雨の日","学び・体験","仕事・社会","歴史・文化"],age:"幼児〜小学生を中心に全年齢",price:"大人500円／中学生以下250円（ミニ鉄道等は別料金）",image:"",hours:"9:00〜17:00（入館16:30まで）",closed:"毎月第2水曜日（7月は除く）ほか"},
+ {name:"九州鉄道記念館",cat:"kids",lat:33.9431488,lng:130.9617938,area:"北九州市門司区・門司港レトロ",note:"九州の鉄道史を実物車両や大パノラマで学べる鉄道博物館。運転シミュレーターやミニ鉄道もあり、見るだけでなく親子で体験できる。",tags:["雨の日","学び・体験","仕事・社会","歴史・文化"],age:"幼児〜小学生を中心に全年齢",price:"大人500円／中学生以下250円（4歳未満無料、ミニ列車は別料金）",image:"",hours:"9:00〜17:00（入館16:30まで）",closed:"不定休（年間10日程度・公式営業カレンダー確認）",officialUrl:"https://www.k-rhm.jp/",lastVerified:"2026-10-22"},
  {name:"北九州交通公園",cat:"kids",lat:33.8801,lng:130.8418,area:"北九州市小倉北区・井堀",note:"信号機・横断歩道・踏切のある模擬道路で、遊びながら交通ルールと自転車の乗り方を学べる。子ども用自転車の無料貸出や初心者コースもある。",tags:["公園・外遊び","学び・体験","仕事・社会"],age:"幼児〜小学生（自転車利用は保護者同伴）",price:"入園・自転車貸出無料",image:"",hours:"9:00〜17:00",closed:"月曜日・祝日の翌日・年末年始"},
  {name:"貝塚公園（貝塚交通公園）",cat:"kids",lat:33.6340,lng:130.4246,area:"福岡市東区・箱崎",note:"信号や横断歩道のある交通コースをゴーカートで走り、交通ルールを楽しく学べる公園。蒸気機関車・ブルートレイン・飛行機の実物展示も楽しめる。",tags:["公園・外遊び","学び・体験","仕事・社会","歴史・文化"],age:"4歳頃〜小学生（ゴーカートは利用条件あり）",price:"入園無料／バッテリーカー1回50円",image:"",hours:"9:00〜17:00（ゴーカート貸出9:30〜16:30）",closed:"火曜日・年末年始ほか"},
  {name:"FaN Week 2026",cat:"kids",lat:33.5841636,lng:130.3796718,area:"福岡市内各所（福岡市美術館ほか）",note:"福岡の街を『アートの遊び場』にする期間限定イベント。無料展示や中学生以下無料の企画もあり、親子で現代アートに触れるきっかけになる。会場ごとに開催日・休館日が異なる。",tags:["季節イベント","秋","学び・体験","歴史・文化"],age:"幼児〜小学生を含む家族",price:"無料会場あり／一部展示は有料（中学生以下無料の企画あり）",image:"",hours:"会場ごとに異なるため公式情報を要確認",closed:"会場ごとに異なる",eventStart:"2026-09-19",eventEnd:"2026-10-12",eventType:"今年限定",lastVerified:"2026-09-21",officialUrl:"https://yokanavi.com/features/274289"},
@@ -971,7 +971,7 @@ const spots = [
  {name:"津屋崎千軒",cat:"tourism",lat:33.7877,lng:130.4668,area:"福津市",note:"古い商家や酒蔵、工房が点在する海辺の町並み。宮地嶽神社や福津の海と組み合わせて歩ける。",tags:["街歩き・エリア","歴史・文化"],price:"散策無料",hours:"各施設により異なる",officialUrl:"https://tsuyazaki-sengen.jp/"},
  {name:"八女伝統工芸館",cat:"tourism",lat:33.2114,lng:130.5577,area:"八女市",note:"八女提灯、手すき和紙、仏壇など地域の伝統工芸をまとめて見られる施設。実演や体験の実施日は観光目的として価値が高い。",tags:["体験・名物","歴史・文化"],price:"入館無料（体験は別料金）",hours:"9:00〜17:00を基本",closed:"月曜日など",officialUrl:"https://yamedentoukougeikan.jimdofree.com/"},
  {name:"小石原焼伝統産業会館",cat:"tourism",lat:33.4621,lng:130.8242,area:"東峰村",note:"小石原焼の歴史と作品を見た後、周辺の窯元巡りへつなげられる。陶芸体験の開催状況を確認して訪れたい地域文化の拠点。",tags:["体験・名物","歴史・文化"],price:"入館料・体験料は公式確認",hours:"9:00〜17:00を基本",closed:"火曜日など",officialUrl:"https://koishiwara.com/"},
- {name:"九州鉄道記念館",cat:"tourism",lat:33.9450,lng:130.9618,area:"北九州市門司区",note:"九州鉄道の歴史、実物車両、運転シミュレーターを楽しめる門司港ならではの施設。レトロ地区の街歩きと相性が良い。",tags:["体験・名物","歴史・文化"],price:"大人300円、中学生以下150円を基本",hours:"9:00〜17:00",closed:"不定休・公式確認",officialUrl:"https://www.k-rhm.jp/"},
+ {name:"九州鉄道記念館",cat:"tourism",lat:33.9450,lng:130.9618,area:"北九州市門司区",note:"九州鉄道の歴史、実物車両、運転シミュレーターを楽しめる門司港ならではの施設。レトロ地区の街歩きと相性が良い。",tags:["体験・名物","歴史・文化"],price:"大人500円／中学生以下250円（4歳未満無料、ミニ列車は別料金）",hours:"9:00〜17:00（入館16:30まで）",closed:"不定休（年間10日程度・公式営業カレンダー確認）",officialUrl:"https://www.k-rhm.jp/",lastVerified:"2026-10-22"},
  {name:"関門海峡ミュージアム",cat:"tourism",lat:33.9438125,lng:130.9569375,area:"北九州市門司区",note:"関門海峡の歴史と文化を大型映像や体験展示で紹介。展望デッキからの海峡景観もあり、門司港での滞在を深められる。",tags:["体験・名物","歴史・文化","絶景・景色"],price:"無料エリアあり（展示は有料）",hours:"9:00〜17:00を基本",officialUrl:"https://mojiko-retoro9.jp/spot/kanmon_kaikyo_museum/",lastVerified:"2026-09-29"},
  {name:"河内藤園",cat:"tourism",lat:33.8326,lng:130.7935,area:"北九州市八幡東区",note:"藤のトンネルで世界的に知られる春の景勝地。見頃・営業期間が限られ、事前予約制になる場合があるため公式確認が必須。",tags:["季節の定番","絶景・景色"],season:["春","秋"],seasonNotes:{"春":"藤トンネルと大藤棚が見頃を迎える、福岡を代表する春の花名所。","秋":"秋季開園時には園内の紅葉景観を楽しめる。"},price:"開花状況により変動",hours:"春季・秋季の開園情報を公式確認",closed:"開園期間外は入園不可",officialUrl:"https://kawachi-fujien.com/",lastVerified:"2026-09-22"},
  {name:"柳川雛祭り さげもんめぐり",cat:"tourism",lat:33.1639,lng:130.4055,area:"柳川市",note:"町中が色鮮やかな「さげもん」で彩られる柳川の春の風物詩。例年2〜4月頃に開催され、川下りや城下町散策と合わせて楽しめる。",tags:["季節の定番","街歩き・エリア"],season:["冬","春"],seasonNotes:{"冬":"例年2月頃から、色鮮やかなさげもんが柳川の町を彩る。","春":"さげもん展示と川下りを組み合わせて柳川の春を楽しめる。"},price:"散策無料（各催事・施設は別料金）",hours:"開催年の公式日程を確認",officialUrl:"https://www.yanagawa-net.com/",lastVerified:"2026-09-22"},
@@ -994,7 +994,7 @@ const spots = [
 , {name:"三井港倶楽部",cat:"tourism",lat:33.018226,lng:130.42806,area:"大牟田市西港町",note:"1908年の三池港開港に合わせて建てられた迎賓館で、大牟田市指定有形文化財。洋館建築と港町の近代産業史を感じられる。",tags:["歴史・文化"],price:"館内見学・飲食料金は公式確認",hours:"10:00〜21:00（館内見学は17:00まで）",closed:"火曜日（祝日の場合は翌日）・特定日",officialUrl:"https://www.mitsui-minatoclub.com/",lastVerified:"2026-09-22",image:""}
 , {name:"直方市石炭記念館",cat:"tourism",lat:33.7507,lng:130.7227,area:"直方市直方",note:"旧筑豊石炭鉱業組合の建物を活用し、資料、救護練習坑道、蒸気機関車などで筑豊炭田の歴史を伝える代表施設。",tags:["歴史・文化"],price:"一般100円を基本",hours:"9:00〜17:00（受付16:00まで）",closed:"月曜日・年末年始など",officialUrl:"https://nogata-kankoh.com/hangout/4451.html",lastVerified:"2026-09-22",image:""}
 , {name:"全国総本宮 水天宮",cat:"tourism",lat:33.3167,lng:130.4987,area:"久留米市瀬下町",note:"全国各地にある水天宮の総本宮で、筑後川沿いに鎮座する久留米の重要な歴史観光地。JR久留米駅から徒歩約10分で訪れやすい。",tags:["歴史・文化"],price:"参拝無料",hours:"授与所・祈願受付時間は公式確認",officialUrl:"https://suitengu.net/",lastVerified:"2026-09-22",image:""}
-, {name:"のこのしまアイランドパーク",cat:"tourism",lat:33.6285,lng:130.3038,area:"福岡市西区・能古島",note:"博多湾を渡る船旅と、海を望む季節の花畑を一緒に楽しめる島の定番。菜の花、桜、コスモスなど季節ごとに訪問理由が変わる。",tags:["絶景・景色","季節の定番"],season:["春","夏","秋"],seasonNotes:{"春":"菜の花や桜など、海を背景にした春の花景色を楽しめる。","夏":"ひまわりと博多湾の眺めを目的に島旅ができる。","秋":"海を望むコスモス畑が広がる福岡の秋定番。"},price:"入園料・フェリー・バス料金は公式確認",hours:"季節により変動",officialUrl:"https://nokonoshima.com/",lastVerified:"2026-09-22",image:""}
+, {name:"のこのしまアイランドパーク",cat:"tourism",lat:33.6285,lng:130.3038,area:"福岡市西区・能古島",note:"博多湾を渡る船旅と、海を望む季節の花畑を一緒に楽しめる島の定番。菜の花、桜、コスモスなど季節ごとに訪問理由が変わる。",tags:["絶景・景色","季節の定番"],season:["春","夏","秋"],seasonNotes:{"春":"菜の花や桜など、海を背景にした春の花景色を楽しめる。","夏":"ひまわりと博多湾の眺めを目的に島旅ができる。","秋":"海を望むコスモス畑が広がる福岡の秋定番。"},price:"大人1,500円／小中学生800円／3歳以上500円（フェリー・バス別）",hours:"平日・土曜9:00〜17:00／日祝9:00〜18:30",closed:"休園日なし（臨時変更は公式確認）",officialUrl:"https://nokonoshima.com/",lastVerified:"2026-10-22",image:""}
 , {name:"黒木の大藤",cat:"tourism",lat:33.2131047,lng:130.6729387,area:"八女市黒木町",note:"樹齢600年以上とされる大藤と長い藤棚で知られる八女・黒木の春名所。見頃と催事日程を確認して訪れたい。",tags:["季節の定番"],season:["春"],seasonNotes:{"春":"歴史ある大藤と藤棚が紫色に染まる、筑後を代表する春の花景観。"},price:"見学無料を基本（催事・駐車場は当年情報を確認）",hours:"開花状況・当年の催事日程を公式確認",officialUrl:"https://yame.travel/",lastVerified:"2026-09-22",image:""}
 , {name:"中山大藤",cat:"tourism",lat:33.1694573,lng:130.4724836,area:"柳川市三橋町中山",note:"熊野神社境内に広がる県指定天然記念物の大藤。例年春の見頃に合わせて多くの人が訪れる柳川の花名所。",tags:["季節の定番"],season:["春"],seasonNotes:{"春":"大きな藤棚から花房が垂れる、柳川を代表する春景色。"},price:"見学無料を基本",hours:"開花状況・当年の催事日程を公式確認",officialUrl:"https://www.yanagawa-net.com/",lastVerified:"2026-09-22",image:""}
 , {name:"柳川ひまわり園",cat:"tourism",lat:33.1183040,lng:130.3831630,area:"柳川市橋本町",note:"有明海沿いの干拓地に大規模なひまわり畑が広がる柳川の夏景色。開園時期と開花状況は年ごとに確認が必要。",tags:["季節の定番"],season:["夏"],seasonNotes:{"夏":"有明海沿いに広がる大規模なひまわり畑を楽しめる。"},price:"当年の公式情報を確認",hours:"開園期間・開花状況を公式確認",closed:"開園期間外は観覧対象外",officialUrl:"https://www.yanagawa-net.com/",lastVerified:"2026-09-22",image:""}
@@ -1833,8 +1833,10 @@ Object.assign(facilityPhotoMetadata['fuk-0041'],{
  provider:'google_places',status:'pilot_loading',googleMapsUri:null,authorAttributions:[],imageCredit:null,sourcePageUrl:null
 });
 Object.assign(facilityPhotoMetadata['fuk-0110'],{
- imageUrl:null,imageSource:'Google Places',imageType:'external_api',imageRole:'basic',imageCheckedAt:'2026-10-05',placeholderType:'place',
- provider:'google_places',status:'pilot_loading',googleMapsUri:null,authorAttributions:[],imageCredit:null,sourcePageUrl:null
+ imageUrl:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Gate_of_Nokonoshima_Island_Park.jpg/960px-Gate_of_Nokonoshima_Island_Park.jpg',
+ imageSource:'Wikimedia Commons',imageCredit:'そらみみ',imageType:'wikimedia',imageRole:'basic',imageCheckedAt:'2026-10-22',placeholderType:'place',
+ license:'CC BY-SA 4.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/',sourcePageUrl:'https://commons.wikimedia.org/wiki/File:Gate_of_Nokonoshima_Island_Park.jpg',commercialUse:true,modificationAllowed:true,
+ usageNote:'のこのしまアイランドパーク正門の写真。Commons元ページと権利条件を2026-10-22確認。'
 });
 Object.assign(facilityPhotoMetadata['fuk-0099'],{
  imageUrl:null,imageSource:'Google Places',imageType:'external_api',imageRole:'basic',imageCheckedAt:'2026-10-05',placeholderType:'place',
@@ -2894,8 +2896,10 @@ Object.assign(facilityPhotoMetadata['fuk-0176'],{
  provider:'google_places',status:'pilot_loading',googleMapsUri:null,authorAttributions:[],imageCredit:null,sourcePageUrl:null
 });
 Object.assign(facilityPhotoMetadata['fuk-0178'],{
- imageUrl:null,imageSource:'Google Places',imageType:'external_api',imageRole:'indoor',imageCheckedAt:'2026-10-06',placeholderType:'museum',
- provider:'google_places',status:'pilot_loading',googleMapsUri:null,authorAttributions:[],imageCredit:null,sourcePageUrl:null
+ imageUrl:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Mojiko_Station_Sign_%28Former_Moji_Station%29_and_Kyushu_Railway_History_Museum.jpg/960px-Mojiko_Station_Sign_%28Former_Moji_Station%29_and_Kyushu_Railway_History_Museum.jpg',
+ imageSource:'Wikimedia Commons',imageCredit:'そらみみ (Soramimi)',imageType:'wikimedia',imageRole:'basic',imageCheckedAt:'2026-10-22',placeholderType:'museum',
+ license:'CC BY-SA 4.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/',sourcePageUrl:'https://commons.wikimedia.org/wiki/File:Mojiko_Station_Sign_(Former_Moji_Station)_and_Kyushu_Railway_History_Museum.jpg',commercialUse:true,modificationAllowed:true,
+ usageNote:'九州鉄道記念館の入口と旧門司駅の駅名標が写る写真。Commons元ページと権利条件を2026-10-22確認。'
 });
 Object.assign(facilityPhotoMetadata["fuk-0196"],{
  imageUrl:"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Beach_in_Umino_Nakamichi_Seaside_Park.jpg/960px-Beach_in_Umino_Nakamichi_Seaside_Park.jpg",imageSource:'Wikimedia Commons',imageCredit:"そらみみ",imageType:"wikimedia",imageRole:"basic",imageCheckedAt:'2026-10-01',placeholderType:'photo',
