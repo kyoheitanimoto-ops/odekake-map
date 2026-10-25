@@ -30,6 +30,8 @@ Status: REVIEW ONLY. Google photo pilot remains OFF. No paid API requests, deplo
 | Direct-call abuse and spend ceiling | FAIL for activation readiness | CORS is bypassable and no durable quota exists; repeated metadata calls can repeatedly invoke paid Text Search. |
 | Official pricing and terms | PASS (document review) | See activation gate document for current findings and official source URLs. |
 
+- Current main and PR spot arrays both evaluate to 421 facilities, not the required baseline of 347; this mismatch predates PR #20 and was not changed. Six categories are present. Facility IDs are assigned at runtime from canonical names, so a full ID-diff regression remains unrun.
+
 ## Activation blockers
 1. Add durable concurrency-safe usage limits before provider calls; account independently for Text Search and Photo Media, and fail closed.
 2. Confirm the final photo resource freshness/cache architecture complies with Google's no-caching rules.
