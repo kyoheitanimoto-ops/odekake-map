@@ -3484,6 +3484,13 @@ function showAppScreen(name){
  }
 }
 
+function escapePhotoText(value){
+ return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function safePhotoLink(value){
+ try{const u=new URL(String(value));return u.protocol==='https:' ? escapePhotoText(u.href) : null;}catch(e){return null;}
+}
+
 function facilityVisualHtml(s,st){
  const photo=facilityPhotoMetadata[s.facilityId];
  const hasPilotRecord=Boolean(photo?.imageType);
@@ -3493,13 +3500,15 @@ function facilityVisualHtml(s,st){
  if(photo?.imageType==='external_api' && imageUrl){
   const authors=Array.isArray(photo.authorAttributions) ? photo.authorAttributions : [];
   const authorHtml=authors.map(author=>{
-   const name=author?.displayName || '写真提供者';
-   return author?.uri
-    ? `<a href="${author.uri}" target="_blank" rel="noopener noreferrer">${name}</a>`
+   const name=escapePhotoText(author?.displayName || '写真提供者');
+   const uri=safePhotoLink(author?.uri);
+   return uri
+    ? `<a href="${uri}" target="_blank" rel="noopener noreferrer">${name}</a>`
     : name;
   }).join('・');
-  const googleLink=photo.googleMapsUri
-   ? `<a href="${photo.googleMapsUri}" target="_blank" rel="noopener noreferrer">Google Maps</a>`
+  const googleMapsUrl=safePhotoLink(photo.googleMapsUri);
+  const googleLink=googleMapsUrl
+   ? `<a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer">Google Maps</a>`
    : 'Google Maps';
   credit=`<span class="photo-credit">${googleLink}${authorHtml ? ` · 写真: ${authorHtml}` : ''}</span>`;
  } else if(photo?.imageCredit && photo?.sourcePageUrl){
