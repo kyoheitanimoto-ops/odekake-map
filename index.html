@@ -2756,11 +2756,13 @@ const EXTERNAL_PHOTO_PILOT_IDS=['fuk-0264','fuk-0067','fuk-0283','fuk-0339','fuk
 /* Google Places photo pilot is opt-in and OFF until explicit production approval. */
 const GOOGLE_FOOD_PHOTO_PILOT_ENABLED=false;
 const GOOGLE_FOOD_PHOTO_PILOT_IDS=new Set(['fuk-0264','fuk-0283','fuk-0339','fuk-0262','fuk-0209']);
+// Only request pilot metadata for explicitly approved IDs, even if a record changes provider.
+
 const externalPhotoRequests=new Map();
 
 async function ensureExternalPhotoMetadata(facilityId){
  const photo=facilityPhotoMetadata[facilityId];
- if(photo?.provider==='google_places' && (!GOOGLE_FOOD_PHOTO_PILOT_ENABLED || !GOOGLE_FOOD_PHOTO_PILOT_IDS.has(facilityId))) return false;
+ if(!GOOGLE_FOOD_PHOTO_PILOT_ENABLED || !GOOGLE_FOOD_PHOTO_PILOT_IDS.has(facilityId)) return false;
  if(!photo || photo.imageType!=='external_api') return false;
  if(photo.status==='available' && photo.imageUrl) return true;
  if(externalPhotoRequests.has(facilityId)) return externalPhotoRequests.get(facilityId);
