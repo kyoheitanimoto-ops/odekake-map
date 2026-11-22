@@ -760,7 +760,7 @@ const spots = [
  {name:"THE TRAILERHOUSE VILLAGE 大牟田 SPA",cat:"date",lat:33.013045,lng:130.468262,area:"大牟田",note:"トレーラーハウス宿泊に温泉・サウナ・BBQ・釣り堀などを組み合わせられる体験型リゾート。",tags:["アクティブ・体験","宿泊","スパ","サウナ","BBQ","釣り堀","ドライブ"],image:""},
  {name:"Glamping五感",cat:"date",lat:33.4688,lng:130.4143,area:"那珂川",note:"ドームテントやログハウス、薪サウナ、天然水風呂、BBQを楽しめるグランピング施設。2人で非日常を味わう宿泊デート向き。",tags:["アクティブ・体験","宿泊","グランピング","サウナ","BBQ","記念日","ドライブ"],image:"",hours:"チェックイン 15:00 / チェックアウト 10:00",closed:"木曜日"},
  {name:"フォレストアドベンチャー・糸島",cat:"date",lat:33.5068,lng:130.1669,area:"糸島・二丈",note:"森の高低差を使った本格アスレチック。ジップスライドや樹上コースを2人で一緒に楽しめる。",tags:["アクティブ・体験","アスレチック","ジップライン","自然","ドライブ"],image:"",hours:"9:00〜17:00",closed:"不定休"},
- {name:"SUPÜP 糸島",cat:"date",lat:33.6386,lng:130.1687,area:"糸島",note:"完全プライベート制のSUPツアー。サンセットSUPはカップル人気が高く、写真や動画も残しやすい。",tags:["アクティブ・体験","SUP","海","SNS人気","夕日","ドライブ"],image:"",hours:"9:00〜16:00（プランにより異なる）",closed:"海況により変動"},
+ {name:"SUPÜP 糸島",cat:"date",lat:33.6386,lng:130.1687,area:"糸島（通常集合場所：二丈深江海岸）",note:"完全プライベート制のSUPツアー。サンセットSUPはカップル人気が高く、写真や動画も残しやすい。海況により開催場所が変更されます。予約後に案内される当日の集合場所をご確認ください。",tags:["アクティブ・体験","SUP","海","SNS人気","夕日","ドライブ"],image:"",hours:"9:00〜16:00（プランにより異なる）"},
  {name:"カナディアンキャンプ乗馬クラブ 九州",cat:"date",lat:33.8488,lng:130.4932,area:"宗像・神湊",note:"玄界灘の浜辺を馬で走るビーチ乗馬体験。非日常感が強く、記念に残るアクティブカップル。",tags:["アクティブ・体験","乗馬","海","記念日","ドライブ"],image:"",hours:"9:00〜18:00",closed:"火曜日"},
  {name:"福岡市海づり公園",cat:"date",lat:33.62655,lng:130.22896,area:"西区・小田",note:"手ぶらでも始めやすい海釣り公園。貸し竿や初心者向け指導があり、海洋釣堀でマダイ釣りも体験できる。",tags:["アクティブ・体験","釣り","釣り堀","海","ドライブ"],image:"",hours:"季節により6:00〜20:00の範囲で変動",closed:"火曜日（祝日の場合は翌日）・年末年始"},
  {name:"陶芸教室やわら木",cat:"date",lat:33.5258,lng:130.4378,area:"春日・博多南",note:"手回しろくろや電動ろくろを体験できる陶芸教室。公式でもデート利用を案内しており、2人で作品を残せる。",tags:["アクティブ・体験","陶芸","ものづくり","雨の日"],image:"",hours:"10:00〜18:30",closed:"月曜日"},
@@ -3447,7 +3447,8 @@ function renderFavorites(){
   if(!s) return '';
   const st=styles[s.cat]||styles.date;
   const meta=[s.area,st.label.replace('向け','')].filter(Boolean).join('・');
-  return `<div class="favorite-card"><div class="favorite-card-top"><div class="favorite-emoji">${st.emoji}</div><div class="favorite-copy"><div class="favorite-name">${s.name}</div><div class="favorite-meta">${meta}<br>${displayNote(s)}</div></div></div><div class="favorite-actions"><button class="favorite-open" type="button" onclick="openFavoriteFacility('${id}')">地図で見る</button><button class="favorite-remove" type="button" onclick="removeFavorite('${id}')">削除</button></div></div>`;
+  const openLabel=facilitiesWithoutVerifiedMapPin.has(id)?'詳細を見る':'地図で見る';
+  return `<div class="favorite-card"><div class="favorite-card-top"><div class="favorite-emoji">${st.emoji}</div><div class="favorite-copy"><div class="favorite-name">${s.name}</div><div class="favorite-meta">${meta}<br>${displayNote(s)}</div></div></div><div class="favorite-actions"><button class="favorite-open" type="button" onclick="openFavoriteFacility('${id}')">${openLabel}</button><button class="favorite-remove" type="button" onclick="removeFavorite('${id}')">削除</button></div></div>`;
  }).join('');
  wrap.innerHTML=`<div class="favorite-list">${cards}</div>`;
 }
@@ -3461,6 +3462,7 @@ function openFavoriteFacility(facilityId){
  setTimeout(()=>{
   const marker=markers.find(m=>m.__facilityId===facilityId);
   if(marker) focusSpot(s,marker);
+  else if(facilitiesWithoutVerifiedMapPin.has(facilityId)) focusSpot(s,null);
  },420);
 }
 function showAppScreen(name){
@@ -3624,8 +3626,12 @@ document.getElementById('facilitySheetClose').addEventListener('click',closeFaci
 window.addEventListener('resize',()=>{if(isMobileMap()&&facilitySheet.classList.contains('show')) syncFacilitySheetHeight();});
 window.visualViewport?.addEventListener('resize',()=>{if(isMobileMap()&&facilitySheet.classList.contains('show')) syncFacilitySheetHeight();});
 
+const facilitiesWithoutVerifiedMapPin=new Set(['fuk-0060']);
 function focusSpot(s, marker){
- if(isMobileMap()){
+ if(facilitiesWithoutVerifiedMapPin.has(s.facilityId)){
+  if(isMobileMap()) openFacilitySheet(s);
+  else map.openPopup(popupHtml(s),map.getCenter());
+ }else if(isMobileMap()){
   map.once('moveend',()=>openFacilitySheet(s));
   map.flyTo([s.lat,s.lng],12,{duration:.55});
  }else{
@@ -3849,7 +3855,10 @@ function renderCategory(cat){
  const bounds=[];
 
  chosen.forEach((s,i)=>{
-  const marker=L.marker([s.lat,s.lng],{icon:makeIcon(s)}).addTo(map);
+  const suppressMapPin=facilitiesWithoutVerifiedMapPin.has(s.facilityId);
+  let marker=null;
+  if(!suppressMapPin){
+  marker=L.marker([s.lat,s.lng],{icon:makeIcon(s)}).addTo(map);
   marker.__facilityId=s.facilityId;
   if(!isMobileMap()){
     marker.bindPopup(popupHtml(s));
@@ -3875,6 +3884,7 @@ function renderCategory(cat){
     }
   });
   markers.push(marker); bounds.push([s.lat,s.lng]);
+  }
 
   const card=document.createElement('button');
   card.className='mini-card';
